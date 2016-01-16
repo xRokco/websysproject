@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ea1fee525914154e6d6bbf071697b5a1",
-    "content-hash": "8b1485987e7c5949da82435d403e52e8",
+    "hash": "f942c270396d0443b439cf23cc2febec",
+    "content-hash": "d5ed21923b1f913df0cb97922b42107d",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -2843,6 +2843,50 @@
             "time": "2015-06-21 13:59:46"
         },
         {
+            "name": "skydiver/laravel-materialize-css",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/skydiver/laravel-materialize-css.git",
+                "reference": "a30618793ed161f62b071d29401aad0d7e172d2c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/skydiver/laravel-materialize-css/zipball/a30618793ed161f62b071d29401aad0d7e172d2c",
+                "reference": "a30618793ed161f62b071d29401aad0d7e172d2c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Skydiver\\LaravelMaterializeCSS\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Martin",
+                    "email": "labs@flydev.com"
+                }
+            ],
+            "description": "Add Materialize CSS Framework to Laravel",
+            "keywords": [
+                "css",
+                "css framework",
+                "laravel",
+                "material design",
+                "materialize"
+            ],
+            "time": "2015-12-27 01:33:54"
+        },
+        {
             "name": "symfony/css-selector",
             "version": "v3.0.1",
             "source": {
@@ -3003,7 +3047,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "skydiver/laravel-materialize-css": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
