@@ -4,7 +4,7 @@
 
 <div class="container">
       <br><br>
-      <h1 class="header center orange-text">Please Register</h1>
+      <h2 class="header center orange-text">Please Register</h2>
       <br><br>
 </div>
 

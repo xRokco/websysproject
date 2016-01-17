@@ -1,7 +1,7 @@
 <?php $__env->startSection('content'); ?>
 <div class="container">
       <br><br>
-      <h1 class="header center orange-text">Website landing page</h1>
+      <h2 class="header center orange-text">Website landing page</h2>
       <br><br>
 </div>
 <?php $__env->stopSection(); ?>

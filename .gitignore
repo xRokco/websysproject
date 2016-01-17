@@ -1,4 +1,5 @@
-/vendor
+/vendor/*
+!/vendor/skydiver
 /node_modules
 Homestead.yaml
 Homestead.json

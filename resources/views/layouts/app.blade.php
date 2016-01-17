@@ -15,8 +15,8 @@
         }
     </style>
 </head>
-<body id="app-layout">
-    <nav class="light-blue lighten-1" role="navigation">
+<body id="app-layout" class="amber lighten-5">
+    <nav class="green" role="navigation">
         <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">WebSysProject</a>
             <ul class="right hide-on-med-and-down">
                 @if (Auth::guest())
@@ -57,7 +57,7 @@
 
     @yield('content')
 
-    <footer class="page-footer orange">
+    <footer class="page-footer green">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
