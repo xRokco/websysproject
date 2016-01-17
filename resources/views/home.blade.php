@@ -2,56 +2,15 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="panel-body">
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
+      <br><br>
+      <h4 class="header center orange-text">Hi {{ Auth::user()->name }}, you are now logged in.</h4>
+      <p class="light center">Please check out the driving directions from {{ Auth::user()->direction }} to the RDS, Dublin below.</p>
 </div>
- <div class="container">
-    <div class="section">
 
-      <!--   Icon Section   -->
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"></h2>
-            <h5 class="center">Lorem Ipsum</h5>
 
-            <p class="light">Lorem Ipsum...</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"></h2>
-            <h5 class="center">Lorem Ipsum</h5>
-
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"></h2>
-            <h5 class="center">Lorem Ipsum</h5>
-
-            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <br><br>
-
-    <div class="section">
-
-    </div>
-  </div>
+<div class="container">
+      <h2 class="header center orange-text"><iframe width="800" height="600" frameborder="0" style="border:0"
+src="https://www.google.com/maps/embed/v1/directions?origin={{ Auth::user()->direction }}&destination=place_id:ChIJR4pGA8YOZ0gRT_oe5cS4-t0&key=AIzaSyBFaySDzqmlKyFwdG9qGWxGD3rjM1Ub0Bg" allowfullscreen></iframe></h2>
+      <br><br>
+</div>
 @endsection

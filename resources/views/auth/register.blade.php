@@ -73,6 +73,15 @@
                             </div>
                         </div>
 
+
+                        <div>
+                            <label class="col-md-4 control-label">What city or town will you be travelling from?</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="direction">
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
