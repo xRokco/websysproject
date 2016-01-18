@@ -4,7 +4,7 @@
 
 <div class="container">
       <br><br>
-      <h2 class="header center blue-text text-lighten-2">Please login</h2>
+      <h2 class="header center red-text text-lighten-2">Please login</h2>
       <br><br>
 </div>
 

@@ -10,8 +10,8 @@
     {!! MaterializeCSS::include_full() !!}
 
 </head>
-<body id="app-layout" class="amber lighten-5">
-    <nav class="green" role="navigation">
+<body id="app-layout" class="lighten-5">
+    <nav class="teal" role="navigation">
         <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">WebSysProject</a>
             <ul class="right">
                 @if (Auth::guest())
@@ -32,41 +32,19 @@
     
     @yield('content')
 
-    <footer class="page-footer green">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">{{ Auth::user() }}</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+     <footer class="page-footer teal">
+          <div class="footer-copyright">
+            <div class="container">
+            Made by <a class="grey-text text-lighten-4" href="http://materializecss.com">Materialize</a>
+            <a class="grey-text text-lighten-4 right" href="#!">© Web Systems Group 2016</a>
+            </div>
+          </div>
+    </footer>
 
+    <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
 
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="container">
-      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-      </div>
-    </div>
-  </footer>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
-</body>
+  </body>
 </html>
