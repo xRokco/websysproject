@@ -33,5 +33,9 @@ Route::group(['middleware' => 'web'], function () {
     	return view('welcome');
 	});
 
+	Route::get('/dash/print', function () {
+    	return view('print');
+	});
+
     Route::get('/dash', 'HomeController@index');
 });
