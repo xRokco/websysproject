@@ -8,11 +8,11 @@
       <h1 class="header center teal-text">Manage your Events</h1>
       <br><br>
       <div class="row center">
-        <h5 class="header col s12 light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis dui elit, non malesuada sem luctus vel. Vestibulum in magna nec velit malesuada vestibulum sed ut justo. Nam eget velit tortor.</h5>
+        <h5 class="header col s12 light">Lorem ipum dolor sit amet, consectetur adipiscing elit. Mauris facilisis dui elit, non malesuada sem luctus vel. Vestibulum in magna nec velit malesuada vestibulum sed ut justo. Nam eget velit tortor.</h5>
       </div>
       <br><br>
       <div class="row center">
-        <a class="btn-large" href="#">Sign Up</a>
+        <a class="btn-large" href="{{ url('/register') }}">Sign Up</a>
         <a class="btn-large grey lighten-4 black-text" href="#learn">Learn More</a>
       </div>
       <br><br><br><br><br><br><br><br>
