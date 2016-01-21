@@ -5,7 +5,7 @@
 <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
-      <h1 class="header center red-text">Manage your Events</h1>
+      <h1 class="header center teal-text">Manage your Events</h1>
       <br><br>
       <div class="row center">
         <h5 class="header col s12 light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis dui elit, non malesuada sem luctus vel. Vestibulum in magna nec velit malesuada vestibulum sed ut justo. Nam eget velit tortor.</h5>

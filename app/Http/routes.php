@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +29,9 @@ Route::get('/', function () {
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
+    Route::get('/', function () {
+    	return view('welcome');
+	});
+
     Route::get('/dash', 'HomeController@index');
-    Route::get('/', 'HomeController@index');
 });
