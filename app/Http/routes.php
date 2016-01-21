@@ -39,3 +39,9 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/dash', 'HomeController@index');
 });
+
+// route to show the login form
+Route::group(array('namespace'=>'Admin'), function()
+{
+    Route::get('/admin', array('as' => 'admin', 'uses' => 'LoginController@index'));
+});
