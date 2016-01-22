@@ -39,7 +39,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/dash', 'HomeController@index');
 
-    Route::resource('event', 'EventController');
+    Route::resource('events', 'EventController');
 });
 
 // route to show the login form

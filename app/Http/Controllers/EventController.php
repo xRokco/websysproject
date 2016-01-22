@@ -17,10 +17,9 @@ class EventController extends Controller
     public function index()
     {
         //
-        $event = \DB::table('events')->where('id', '1')->first();
+        $events = \DB::table('events')->get();
 
-        echo $event->name . ", " . $event->venue . ", " . $event->city . "\r\n";
-        echo "Date: " . $event->date;
+        return view('events', ['events' => $events]);
     }
 
     /**
@@ -32,7 +31,7 @@ class EventController extends Controller
     {
         //
         \DB::table('events')->insert(
-            ['name' => 'Event No. 2', 'city' => 'Dublin', 'venue' => 'RDS', 'capacity' => 300, 'date' => 2016-01-01]
+            ['name' => 'Event No. 2', 'city' => 'Dublin', 'venue' => 'RDS', 'capacity' => 300, 'date' => "2016-01-01 14:00:00"]
         );
     }
 
