@@ -36,6 +36,10 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('/dash/print', function () {
     	return view('print');
 	});
+	Route::get('/events', function () {
+    	return view('events');
+	});
+	
 
     Route::get('/dash', 'HomeController@index');
 });

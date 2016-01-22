@@ -1,20 +1,5 @@
 <?php
-
-use Illuminate\Database\Seeder;
-
-class DatabaseSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-    	Eloquent::unguard();
-         $this->call('EventsTableSeeder');
-    }
-}
+use Illuminate\Support\Facades\DB;
 class EventsTableSeeder extends Seeder {
 	public function run() {
 		DB::table('events')->delete();
@@ -30,8 +15,7 @@ class EventsTableSeeder extends Seeder {
        "created_at" => "2016-01-21 14:06:45",
        "updated_at" => "2016-01-21 14:06:45"
 
-				)
-		,
+				),
 			array(
 				"id" => "2",
        "name" => "Spring",

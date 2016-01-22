@@ -55,7 +55,7 @@
       </div>
       
       <div class="row center">
-        <a class="btn-large" href="events.html">Browse Events</a>
+        <a class="btn-large" href="{{ url('/events') }}">Browse Events</a>
       </div>
 
     </div>
