@@ -11,7 +11,7 @@ class EventsTableSeeder extends Seeder {
        "city" => "Dublin",
        "venue" => "RDS",
        "capacity" =>"20000",
-       "date" => "2016-01-21",
+       "date" => "2016-12-21",
        "created_at" => "2016-01-21 14:06:45",
        "updated_at" => "2016-01-21 14:06:45"
 
@@ -22,7 +22,7 @@ class EventsTableSeeder extends Seeder {
        "city" => "London",
        "venue" => "Wembley",
        "capacity" => "60000",
-       "date" => "2016-01-21",
+       "date" => "2016-03-27",
        "created_at" => "2016-01-21 14:15:23",
        "updated_at" => "2016-01-21 14:15:23"
 
@@ -33,7 +33,7 @@ class EventsTableSeeder extends Seeder {
        "city" => "Berlin",
        "venue" => "HitlersGaff",
        "capacity" => "50000",
-       "date" => "2016-01-21",
+       "date" => "2016-08-25",
        "created_at" => "2016-01-21 14:16:58",
        "updated_at" => "2016-01-21 14:16:58"
 				),
@@ -43,7 +43,7 @@ class EventsTableSeeder extends Seeder {
        "city" => "Amsterdam",
        "venue" => "HotBox",
        "capacity" =>"45000",
-       "date" => "2016-01-21",
+       "date" => "2016-05-04",
        "created_at" => "2016-01-21 14:17:48",
        "updated_at" => "2016-01-21 14:17:48"
 
