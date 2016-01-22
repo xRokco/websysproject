@@ -14,7 +14,7 @@
 			    echo "<p>" . $event->venue . ", " . $event->city . "<br>";
 			    echo $event->date;
 			    echo "</p>";
-			    echo "<a href='/print/" . $event->id . "' class='secondary-content'><i class='material-icons'>Details</i></a>";
+			    echo "<a href='events/details/" . $event->id . "' class='secondary-content'><i class='material-icons'>Details</i></a>";
 			    echo "</li>";
 			}
 		?>
