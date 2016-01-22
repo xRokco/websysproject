@@ -19,7 +19,5 @@
 			}
 		?>
 	</ul>
-
-	test
 </div>
 @endsection
