@@ -33,8 +33,8 @@ Route::group(['middleware' => 'web'], function () {
     	return view('welcome');
 	});
 
-	Route::get('/dash/print', function () {
-    	return view('print');
+	Route::get('/print/{id}', function ($id) {
+    	return view('print')->with('event', $id);
 	});
 	
 
