@@ -33,15 +33,30 @@ Route::group(['middleware' => 'web'], function () {
     	return view('welcome');
 	});
 
+	Route::get('/login', ['as' => 'login', function () {
+    	return view('auth/login');
+	}]);
+
 	Route::get('/events/details/print/{id}', function ($id) {
-    	return view('print')->with('event', $id);
+    	if (Auth::check()) {
+    		return view('print')->with('event', $id);
+    	} else {
+    		return redirect()->route('login');
+    	}
 	});
 
 	Route::get('/events/details/{id}', function ($id) {
-    	return view('details')->with('event', $id);
+    	if (Auth::check()) {
+    		return view('details')->with('event', $id);
+    	} else {	
+    		return redirect()->route('login');
+    	}
+	});
+
+	Route::get('/events/details', function () {
+    	return redirect()->action('EventController@index');
 	});
 	
-
     Route::get('/dash', 'HomeController@index');
 
     Route::resource('events', 'EventController');
