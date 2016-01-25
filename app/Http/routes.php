@@ -61,10 +61,15 @@ Route::group(['middleware' => 'web'], function () {
     	return redirect()->action('EventController@index');
 	});
 
+	Route::get('/add', function () {
+    	return view('add');
+	});
 	
     Route::get('/dash', 'HomeController@index');
 
     Route::resource('events', 'EventController');
+
+    Route::post('events', 'EventController@store');
 });
 
 // route to show the login form
