@@ -45,6 +45,10 @@ Route::group(['middleware' => 'web'], function () {
     	}
 	});
 
+	Route::get('/events/details/print', function () {
+    	return redirect()->action('EventController@index');
+	});
+
 	Route::get('/events/details/{id}', function ($id) {
     	if (Auth::check()) {
     		return view('details')->with('event', $id);
@@ -56,6 +60,7 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('/events/details', function () {
     	return redirect()->action('EventController@index');
 	});
+
 	
     Route::get('/dash', 'HomeController@index');
 
