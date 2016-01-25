@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\events;
 
 class EventController extends Controller
 {
@@ -29,10 +30,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
-        \DB::table('events')->insert(
-            ['name' => 'Event No. 2', 'city' => 'Dublin', 'venue' => 'RDS', 'capacity' => 300, 'date' => "2016-01-01 14:00:00"]
-        );
+        return view('add');
     }
 
     /**
@@ -44,6 +42,11 @@ class EventController extends Controller
     public function store(Request $request)
     {
         //
+        $input = Request::all();
+
+        events::create($input);
+
+        return redirect('events');    
     }
 
     /**
