@@ -8,7 +8,7 @@
       <br><br>
 </div>
 
-<div></div>iv class="container">
+<div class="container">
     <div class="row">
         <div class="col s6 offset-s3">
             <form role="form" method="POST" action="{{ url('/login') }}">
