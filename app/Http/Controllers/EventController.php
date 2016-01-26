@@ -18,7 +18,7 @@ class EventController extends Controller
     public function index()
     {
         //
-        $events = \DB::table('events')->get();
+        $events = events::all();
 
         return view('events', ['events' => $events]);
     }
