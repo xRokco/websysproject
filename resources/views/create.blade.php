@@ -31,10 +31,15 @@
 							{!! Form::label('date', 'Date:') !!}
 							{!! Form::date('date', null, ['class' => 'datepicker']) !!}
 						</div>
-						<div class="row">
-							{!! Form::label('image', 'Image:') !!}
-							{!! Form::file('image') !!}
-						</div>
+						<div class="row file-field input-field">
+							<div class="btn">
+								<span>File</span>
+								{!! Form::file('image') !!}
+								</div>
+								<div class="file-path-wrapper">
+									<input class="file-path validate" type="text">
+								</div>
+							</div>
 						<div class="row">
 							{!! Form::submit('Create', ['class' => 'btn grey waves-effect']) !!}
 						</div>
