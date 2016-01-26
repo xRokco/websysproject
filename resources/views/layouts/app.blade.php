@@ -13,7 +13,7 @@
 <body id="app-layout" class="lighten-5">
     <nav class="teal" role="navigation">
         <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">WebSysProject</a>
-            <ul class="right hide-on-med-and-down"">
+            <ul class="right hide-on-med-and-down">
                 @if (Auth::check())
                         
                         <!-- Dropdown Trigger -->
@@ -22,12 +22,10 @@
                             <ul id='dropdown1' class='dropdown-content'>
                                 <li><a href="{{ url('/dash') }}">Home</a></li>
 								<li><a href="{{ url('/events') }}">Browse</a></li>
-								 <li><a href="{{ url('/about') }}">About Us</a></li>
                                 <li><a href="{{ url('/logout') }}">Logout</a></li>
                             </ul>
                     @else
                             <li><a href="{{ url('/login') }}">Login</a></li>
-						<li><a href="{{ url('/about') }}">About Us</a></li>
 						<li><a href="{{ url('/events') }}">Browse</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
 
