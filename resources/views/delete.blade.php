@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
+<?php
+use App\events;
+?>
 <div class="container">
 	@if (Auth::check())
   		<h4 class="header center orange-text">Hi {{ Auth::user()->name }}, check out our events below</h4>
@@ -13,7 +15,7 @@
 	<ul class="collection">
 		@foreach ($events as $event)
 			<li class='collection-item avatar'>
-		    	<img src='img/event_images/{{ $event->image }}' class='circle'>
+		    	<img src='img/trump.jpg' alt='' class='circle'>
 		    	<span class='title'>{{ $event->name }}</span>
 			    <p>{{ $event->venue }}, {{ $event->city }}<br>
 			    {{ $event->date }}

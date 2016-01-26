@@ -10,7 +10,7 @@
 		<div class="container">
    			<div class="row">
         		<div class="col s6 offset-s3">
-					{!! Form::open(['url' => 'events']) !!}
+					{!! Form::open(['url' => 'events', 'files'=>true]) !!}
 						<div class="row">
 							{!! Form::label('name', 'Name:') !!}
 							{!! Form::text('name') !!}
@@ -29,7 +29,11 @@
 						</div>
 						<div class="row">
 							{!! Form::label('date', 'Date:') !!}
-							{!! Form::text('date', null, ['placeholder' => '2016-01-01']) !!}
+							{!! Form::date('date', null, ['class' => 'datepicker']) !!}
+						</div>
+						<div class="row">
+							{!! Form::label('image', 'Image:') !!}
+							{!! Form::file('image') !!}
 						</div>
 						<div class="row">
 							{!! Form::submit('Create', ['class' => 'btn grey waves-effect']) !!}
@@ -38,4 +42,12 @@
 				</div>
 			</div>
 		</div>	
+
+		<script>
+			$('.datepicker').pickadate({
+    			selectMonths: true, // Creates a dropdown to control month
+    			selectYears: 15, // Creates a dropdown of 15 years to control year
+    			format: 'yyyy-mm-dd'   
+  			});
+		</script>
 	@stop

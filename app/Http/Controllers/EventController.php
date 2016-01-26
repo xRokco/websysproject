@@ -7,6 +7,7 @@ use Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\events;
+use Illuminate\Support\Facades\Input;
 
 class EventController extends Controller
 {
@@ -30,7 +31,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('add');
+        return view('create');
     }
 
     /**
@@ -45,6 +46,13 @@ class EventController extends Controller
         $input = Request::all();
 
         events::create($input);
+
+        $name = Input::file('image')->getClientOriginalName();        
+        Input::file('image')->move(__DIR__.'/../../../public/img/event_images',$name);
+        
+        $image = events::latest()->first();
+        $image->image = $name;
+        $image->save();
 
         return redirect('events');    
     }

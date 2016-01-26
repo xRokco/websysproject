@@ -61,9 +61,6 @@ Route::group(['middleware' => 'web'], function () {
     	return redirect()->action('EventController@index');
 	});
 
-	Route::get('/add', function () {
-    	return view('add');
-	});
 	
     Route::get('/dash', 'HomeController@index');
 
