@@ -28,6 +28,6 @@ class events extends Model{
      * @var array
      */
     protected $dates = [
-    	'deleted_at', 'date',
+    	'deleted_at',
     ];
 }

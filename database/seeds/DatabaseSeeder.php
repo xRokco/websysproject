@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
          $this->call('UsersTableSeeder');
     }
 }
+
 class EventsTableSeeder extends Seeder {
 	public function run() {
 		DB::table('events')->delete();
