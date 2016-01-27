@@ -2,7 +2,7 @@
 
 @section('content')
 	<div class="container">
-		<h4 class="header center orange-text">Hi {{ Auth::user()->name }}, here's some details on this event.</h4>
+		<h4 class="header center teal-text">Hi {{ Auth::user()->name }}, here's some details on this event.</h4>
 	</div>
 	<?php
 		use App\events;
