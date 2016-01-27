@@ -17,4 +17,8 @@ src="https://www.google.com/maps/embed/v1/directions?origin={{ Auth::user()->dir
   		<br><br>
 	</div>
 	<h4 class="center">Print your ticket <a href="print/{{ $event }}" > here </a></h4>
+
+	@if(Auth::user()->admin==1)
+		<h4 class="center">Delete this event by clicking <a href="/events/delete/{{ $event }}" > here </a></h4>
+	@endif
 @endsection

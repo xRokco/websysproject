@@ -31,7 +31,15 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('create');
+        if(\Auth::check()){
+            if(\Auth::user()->admin==1){
+                return view('create');
+            }else{
+                return redirect()->route('events');
+            }
+        }else{
+            return redirect()->route('events');
+        }
     }
 
     /**
@@ -99,6 +107,6 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }

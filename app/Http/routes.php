@@ -1,5 +1,7 @@
 <?php
 
+use App\events;
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
 /*
 |--------------------------------------------------------------------------
 | Routes File
@@ -66,7 +68,12 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::resource('events', 'EventController');
 
-    Route::post('events', 'EventController@store');
+    Route::post('events', ['as' => 'events', 'EventController@store' ]);
+
+    Route::get('/events/delete/{id}', function ($id) {
+        events::destroy($id);
+        return redirect()->route('events');
+    });
 });
 
 // route to show the login form
