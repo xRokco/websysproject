@@ -66,7 +66,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('about', function () {
         return view('about');
     });
-
 });
 
 // route to show the login form

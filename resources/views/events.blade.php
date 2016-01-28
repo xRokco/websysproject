@@ -13,7 +13,7 @@
                 <div class="row grey lighten-5 valign-wrapper" id="event">
                     <!-- Event Image -->
                     <div class="col center s3">
-                        <img class="responsive-img circle" src='img/event_images/{{ $event->image }}' style='max-height:200px' />
+                        <img class="responsive-img circle" src='img/event_images/{{ $event->image }}' style='height:150px;width:150px;background-size:cover;' />
                     </div>
                     
                     <!-- Event Description -->
