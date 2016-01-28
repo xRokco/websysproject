@@ -157,7 +157,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Skydiver\LaravelMaterializeCSS\MaterializeCSSServiceProvider::class,
-        Serverfireteam\Panel\PanelServiceProvider::class
+
     ],
 
     /*

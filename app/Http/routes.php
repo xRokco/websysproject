@@ -66,9 +66,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('events', ['as' => 'events', 'EventController@store' ]);
 
     Route::get('/events/delete/{id}', function ($id) {
-        if(Auth::user()->admin==1) {
-            events::destroy($id);
-        }
+        events::destroy($id);
         return redirect()->route('events');
     });
 
