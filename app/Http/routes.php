@@ -1,5 +1,6 @@
 <?php
-
+use App\events;
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
 /*
 |--------------------------------------------------------------------------
 | Routes File
@@ -10,11 +11,9 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
 //Route::get('/', function () {
 //    return view('welcome');
 //});
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -25,26 +24,55 @@
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
     Route::get('/', function () {
-    	return view('welcome');
-	});
+        return view('welcome');
+    });
 
-	Route::get('/events/details/print/{id}', function ($id) {
-    	return view('print')->with('event', $id);
-	});
+    Route::get('/login', ['as' => 'login', function () {
+        return view('auth/login');
+    }]);
 
-	Route::get('/events/details/{id}', function ($id) {
-    	return view('details')->with('event', $id);
-	});
-	
+    Route::get('/events/details/print/{id}', function ($id) {
+        if (Auth::check()) {
+            return view('print')->with('event', $id);
+        } else {
+            return redirect()->route('login');
+        }
+    });
 
+    Route::get('/events/details/print', function () {
+        return redirect()->action('EventController@index');
+    });
+
+    Route::get('/events/details/{id}', function ($id) {
+        if (Auth::check()) {
+            return view('details')->with('event', $id);
+        } else {    
+            return redirect()->route('login');
+        }
+    });
+
+    Route::get('/events/details', function () {
+        return redirect()->action('EventController@index');
+    });
+    
     Route::get('/dash', 'HomeController@index');
 
     Route::resource('events', 'EventController');
+
+    Route::post('events', ['as' => 'events', 'EventController@store' ]);
+
+    Route::get('/events/delete/{id}', function ($id) {
+        events::destroy($id);
+        return redirect()->route('events');
+    });
+
+    Route::get('about', function () {
+        return view('about');
+    });
 });
 
 // route to show the login form

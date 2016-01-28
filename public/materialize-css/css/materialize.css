@@ -2727,7 +2727,7 @@ video.responsive-video {
 }
 
 .pagination li.active {
-  background-color: #ee6e73;
+  background-color: #26a69a;
 }
 
 .pagination li.disabled a {
@@ -2913,7 +2913,6 @@ ul.staggered-list li {
 }
 
 footer.page-footer {
-  margin-top: 20px;
   padding-top: 20px;
   background-color: #ee6e73;
 }
@@ -7994,7 +7993,7 @@ small {
 }
 
 .tabs .tab a {
-  color: #ee6e73;
+  color: #26a69a ;
   display: block;
   width: 100%;
   height: 100%;
@@ -8004,11 +8003,11 @@ small {
 }
 
 .tabs .tab a:hover {
-  color: #f9c9cb;
+  color: #26a69a ;
 }
 
 .tabs .tab.disabled a {
-  color: #f9c9cb;
+  color: #26a69a ;
   cursor: default;
 }
 
@@ -8016,7 +8015,7 @@ small {
   position: absolute;
   bottom: 0;
   height: 2px;
-  background-color: #f6b2b5;
+  background-color: #26a69a ;
   will-change: left, right;
 }
 

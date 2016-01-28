@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\events;
+use Illuminate\Support\Facades\Input;
 
 class EventController extends Controller
 {
@@ -17,7 +19,7 @@ class EventController extends Controller
     public function index()
     {
         //
-        $events = \DB::table('events')->get();
+        $events = events::all();
 
         return view('events', ['events' => $events]);
     }
@@ -29,10 +31,15 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
-        \DB::table('events')->insert(
-            ['name' => 'Event No. 2', 'city' => 'Dublin', 'venue' => 'RDS', 'capacity' => 300, 'date' => "2016-01-01 14:00:00"]
-        );
+        if(\Auth::check()){
+            if(\Auth::user()->admin==1){
+                return view('create');
+            }else{
+                return redirect()->route('events');
+            }
+        }else{
+            return redirect()->route('events');
+        }
     }
 
     /**
@@ -44,6 +51,18 @@ class EventController extends Controller
     public function store(Request $request)
     {
         //
+        $input = Request::all();
+
+        events::create($input);
+
+        $name = Input::file('image')->getClientOriginalName();        
+        Input::file('image')->move(__DIR__.'/../../../public/img/event_images',$name);
+        
+        $image = events::latest()->first();
+        $image->image = $name;
+        $image->save();
+
+        return redirect('events');    
     }
 
     /**
@@ -88,6 +107,6 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }

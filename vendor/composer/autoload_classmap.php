@@ -29,6 +29,7 @@ return array(
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\User' => $baseDir . '/app/User.php',
     'App\\events' => $baseDir . '/app/events.php',
+<<<<<<< HEAD
     'Barryvdh\\Elfinder\\Connector' => $vendorDir . '/barryvdh/laravel-elfinder/src/Connector.php',
     'Barryvdh\\Elfinder\\Console\\PublishCommand' => $vendorDir . '/barryvdh/laravel-elfinder/src/Console/PublishCommand.php',
     'Barryvdh\\Elfinder\\Elfinder' => $vendorDir . '/barryvdh/laravel-elfinder/src/Elfinder.php',
@@ -36,6 +37,8 @@ return array(
     'Barryvdh\\Elfinder\\ElfinderServiceProvider' => $vendorDir . '/barryvdh/laravel-elfinder/src/ElfinderServiceProvider.php',
     'Barryvdh\\elFinderFlysystemDriver\\Driver' => $vendorDir . '/barryvdh/elfinder-flysystem-driver/src/Driver.php',
     'Barryvdh\\elFinderFlysystemDriver\\Plugin\\GetUrl' => $vendorDir . '/barryvdh/elfinder-flysystem-driver/src/Plugin/GetUrl.php',
+=======
+>>>>>>> 97619efb5e704ab787fb3a816029df3b4bd46d97
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
     'Carbon\\CarbonInterval' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
     'ClassPreloader\\ClassList' => $vendorDir . '/classpreloader/classpreloader/src/ClassList.php',
@@ -60,7 +63,10 @@ return array(
     'Collective\\Html\\HtmlBuilder' => $vendorDir . '/laravelcollective/html/src/HtmlBuilder.php',
     'Collective\\Html\\HtmlFacade' => $vendorDir . '/laravelcollective/html/src/HtmlFacade.php',
     'Collective\\Html\\HtmlServiceProvider' => $vendorDir . '/laravelcollective/html/src/HtmlServiceProvider.php',
+<<<<<<< HEAD
     'CreateAdminsTable' => $vendorDir . '/serverfireteam/panel/src/database/migrations/2014_11_16_205658_create_admins_table.php',
+=======
+>>>>>>> 97619efb5e704ab787fb3a816029df3b4bd46d97
     'CreateEventsTable' => $baseDir . '/database/migrations/2016_01_21_133400_create_events_table.php',
     'CreatePasswordRemindersTable' => $vendorDir . '/serverfireteam/panel/src/database/migrations/2014_12_02_152920_create_password_reminders_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
@@ -91,7 +97,10 @@ return array(
     'Dotenv\\Exception\\ValidationException' => $vendorDir . '/vlucas/phpdotenv/src/Exception/ValidationException.php',
     'Dotenv\\Loader' => $vendorDir . '/vlucas/phpdotenv/src/Loader.php',
     'Dotenv\\Validator' => $vendorDir . '/vlucas/phpdotenv/src/Validator.php',
+<<<<<<< HEAD
     'EditUrlTable' => $vendorDir . '/serverfireteam/panel/src/database/migrations/2015_03_15_123956_edit_url_table.php',
+=======
+>>>>>>> 97619efb5e704ab787fb3a816029df3b4bd46d97
     'EventsTableSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'Faker\\Calculator\\Luhn' => $vendorDir . '/fzaninotto/faker/src/Faker/Calculator/Luhn.php',
     'Faker\\DefaultGenerator' => $vendorDir . '/fzaninotto/faker/src/Faker/DefaultGenerator.php',
@@ -1032,6 +1041,7 @@ return array(
     'Illuminate\\View\\View' => $vendorDir . '/laravel/framework/src/Illuminate/View/View.php',
     'Illuminate\\View\\ViewFinderInterface' => $vendorDir . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
     'Illuminate\\View\\ViewServiceProvider' => $vendorDir . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
+<<<<<<< HEAD
     'Intervention\\Image\\AbstractColor' => $vendorDir . '/intervention/image/src/Intervention/Image/AbstractColor.php',
     'Intervention\\Image\\AbstractDecoder' => $vendorDir . '/intervention/image/src/Intervention/Image/AbstractDecoder.php',
     'Intervention\\Image\\AbstractDriver' => $vendorDir . '/intervention/image/src/Intervention/Image/AbstractDriver.php',
@@ -1156,6 +1166,8 @@ return array(
     'Intervention\\Image\\Point' => $vendorDir . '/intervention/image/src/Intervention/Image/Point.php',
     'Intervention\\Image\\Response' => $vendorDir . '/intervention/image/src/Intervention/Image/Response.php',
     'Intervention\\Image\\Size' => $vendorDir . '/intervention/image/src/Intervention/Image/Size.php',
+=======
+>>>>>>> 97619efb5e704ab787fb3a816029df3b4bd46d97
     'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => $vendorDir . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/ConsoleColor.php',
     'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => $vendorDir . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/InvalidStyleException.php',
     'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => $vendorDir . '/jakub-onderka/php-console-highlighter/src/JakubOnderka/PhpConsoleHighlighter/Highlighter.php',
@@ -1199,6 +1211,7 @@ return array(
     'League\\Flysystem\\Util' => $vendorDir . '/league/flysystem/src/Util.php',
     'League\\Flysystem\\Util\\ContentListingFormatter' => $vendorDir . '/league/flysystem/src/Util/ContentListingFormatter.php',
     'League\\Flysystem\\Util\\MimeType' => $vendorDir . '/league/flysystem/src/Util/MimeType.php',
+<<<<<<< HEAD
     'Maatwebsite\\Excel\\Classes\\Cache' => $vendorDir . '/maatwebsite/excel/src/Maatwebsite/Excel/Classes/Cache.php',
     'Maatwebsite\\Excel\\Classes\\FormatIdentifier' => $vendorDir . '/maatwebsite/excel/src/Maatwebsite/Excel/Classes/FormatIdentifier.php',
     'Maatwebsite\\Excel\\Classes\\LaravelExcelWorksheet' => $vendorDir . '/maatwebsite/excel/src/Maatwebsite/Excel/Classes/LaravelExcelWorksheet.php',
@@ -1226,6 +1239,8 @@ return array(
     'Maatwebsite\\Excel\\Readers\\LaravelExcelReader' => $vendorDir . '/maatwebsite/excel/src/Maatwebsite/Excel/Readers/LaravelExcelReader.php',
     'Maatwebsite\\Excel\\Writers\\CellWriter' => $vendorDir . '/maatwebsite/excel/src/Maatwebsite/Excel/Writers/CellWriter.php',
     'Maatwebsite\\Excel\\Writers\\LaravelExcelWriter' => $vendorDir . '/maatwebsite/excel/src/Maatwebsite/Excel/Writers/LaravelExcelWriter.php',
+=======
+>>>>>>> 97619efb5e704ab787fb3a816029df3b4bd46d97
     'Mockery' => $vendorDir . '/mockery/mockery/library/Mockery.php',
     'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => $vendorDir . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
     'Mockery\\Adapter\\Phpunit\\MockeryTestCase' => $vendorDir . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryTestCase.php',
@@ -1373,6 +1388,7 @@ return array(
     'Monolog\\Processor\\UidProcessor' => $vendorDir . '/monolog/monolog/src/Monolog/Processor/UidProcessor.php',
     'Monolog\\Processor\\WebProcessor' => $vendorDir . '/monolog/monolog/src/Monolog/Processor/WebProcessor.php',
     'Monolog\\Registry' => $vendorDir . '/monolog/monolog/src/Monolog/Registry.php',
+<<<<<<< HEAD
     'PHPExcel' => $vendorDir . '/phpoffice/phpexcel/Classes/PHPExcel.php',
     'PHPExcel_Autoloader' => $vendorDir . '/phpoffice/phpexcel/Classes/PHPExcel/Autoloader.php',
     'PHPExcel_Best_Fit' => $vendorDir . '/phpoffice/phpexcel/Classes/PHPExcel/Shared/trend/bestFitClass.php',
@@ -1573,6 +1589,8 @@ return array(
     'PHPExcel_Writer_PDF_DomPDF' => $vendorDir . '/phpoffice/phpexcel/Classes/PHPExcel/Writer/PDF/DomPDF.php',
     'PHPExcel_Writer_PDF_mPDF' => $vendorDir . '/phpoffice/phpexcel/Classes/PHPExcel/Writer/PDF/mPDF.php',
     'PHPExcel_Writer_PDF_tcPDF' => $vendorDir . '/phpoffice/phpexcel/Classes/PHPExcel/Writer/PDF/tcPDF.php',
+=======
+>>>>>>> 97619efb5e704ab787fb3a816029df3b4bd46d97
     'PHPUnit_Exception' => $vendorDir . '/phpunit/phpunit/src/Exception.php',
     'PHPUnit_Extensions_GroupTestSuite' => $vendorDir . '/phpunit/phpunit/src/Extensions/GroupTestSuite.php',
     'PHPUnit_Extensions_PhptTestCase' => $vendorDir . '/phpunit/phpunit/src/Extensions/PhptTestCase.php',
@@ -2244,6 +2262,7 @@ return array(
     'Prophecy\\Prophet' => $vendorDir . '/phpspec/prophecy/src/Prophecy/Prophet.php',
     'Prophecy\\Util\\ExportUtil' => $vendorDir . '/phpspec/prophecy/src/Prophecy/Util/ExportUtil.php',
     'Prophecy\\Util\\StringUtil' => $vendorDir . '/phpspec/prophecy/src/Prophecy/Util/StringUtil.php',
+<<<<<<< HEAD
     'Psr\\Http\\Message\\MessageInterface' => $vendorDir . '/psr/http-message/src/MessageInterface.php',
     'Psr\\Http\\Message\\RequestInterface' => $vendorDir . '/psr/http-message/src/RequestInterface.php',
     'Psr\\Http\\Message\\ResponseInterface' => $vendorDir . '/psr/http-message/src/ResponseInterface.php',
@@ -2251,6 +2270,8 @@ return array(
     'Psr\\Http\\Message\\StreamInterface' => $vendorDir . '/psr/http-message/src/StreamInterface.php',
     'Psr\\Http\\Message\\UploadedFileInterface' => $vendorDir . '/psr/http-message/src/UploadedFileInterface.php',
     'Psr\\Http\\Message\\UriInterface' => $vendorDir . '/psr/http-message/src/UriInterface.php',
+=======
+>>>>>>> 97619efb5e704ab787fb3a816029df3b4bd46d97
     'Psr\\Log\\AbstractLogger' => $vendorDir . '/psr/log/Psr/Log/AbstractLogger.php',
     'Psr\\Log\\InvalidArgumentException' => $vendorDir . '/psr/log/Psr/Log/InvalidArgumentException.php',
     'Psr\\Log\\LogLevel' => $vendorDir . '/psr/log/Psr/Log/LogLevel.php',
@@ -2362,8 +2383,11 @@ return array(
     'Psy\\VarDumper\\Dumper' => $vendorDir . '/psy/psysh/src/Psy/VarDumper/Dumper.php',
     'Psy\\VarDumper\\Presenter' => $vendorDir . '/psy/psysh/src/Psy/VarDumper/Presenter.php',
     'Psy\\VarDumper\\PresenterAware' => $vendorDir . '/psy/psysh/src/Psy/VarDumper/PresenterAware.php',
+<<<<<<< HEAD
     'RecursiveCallbackFilterIterator' => $vendorDir . '/studio-42/elfinder/php/elFinderVolumeLocalFileSystem.class.php',
     'S3SoapClient' => $vendorDir . '/studio-42/elfinder/php/elFinderVolumeS3.class.php',
+=======
+>>>>>>> 97619efb5e704ab787fb3a816029df3b4bd46d97
     'SebastianBergmann\\Comparator\\ArrayComparator' => $vendorDir . '/sebastian/comparator/src/ArrayComparator.php',
     'SebastianBergmann\\Comparator\\Comparator' => $vendorDir . '/sebastian/comparator/src/Comparator.php',
     'SebastianBergmann\\Comparator\\ComparisonFailure' => $vendorDir . '/sebastian/comparator/src/ComparisonFailure.php',
@@ -2400,6 +2424,7 @@ return array(
     'SebastianBergmann\\RecursionContext\\Exception' => $vendorDir . '/sebastian/recursion-context/src/Exception.php',
     'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => $vendorDir . '/sebastian/recursion-context/src/InvalidArgumentException.php',
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
+<<<<<<< HEAD
     'Serverfireteam\\Panel\\Admin' => $vendorDir . '/serverfireteam/panel/src/models/Admin.php',
     'Serverfireteam\\Panel\\AdminController' => $vendorDir . '/serverfireteam/panel/src/controllers/AdminController.php',
     'Serverfireteam\\Panel\\AuthController' => $vendorDir . '/serverfireteam/panel/src/controllers/AuthController.php',
@@ -2421,6 +2446,8 @@ return array(
     'Serverfireteam\\Panel\\libs\\AuthAdmin' => $vendorDir . '/serverfireteam/panel/src/Serverfireteam/Panel/libs/AuthAdmin.php',
     'Serverfireteam\\Panel\\libs\\AuthMiddleware' => $vendorDir . '/serverfireteam/panel/src/Serverfireteam/Panel/libs/AuthMiddleware.php',
     'Serverfireteam\\Panel\\libs\\dashboard' => $vendorDir . '/serverfireteam/panel/src/Serverfireteam/Panel/libs/dashboard.php',
+=======
+>>>>>>> 97619efb5e704ab787fb3a816029df3b4bd46d97
     'Skydiver\\LaravelMaterializeCSS\\MaterializeCSS' => $vendorDir . '/skydiver/laravel-materialize-css/src/MaterializeCSS.php',
     'Skydiver\\LaravelMaterializeCSS\\MaterializeCSSBuilder' => $vendorDir . '/skydiver/laravel-materialize-css/src/MaterializeCSSBuilder.php',
     'Skydiver\\LaravelMaterializeCSS\\MaterializeCSSServiceProvider' => $vendorDir . '/skydiver/laravel-materialize-css/src/MaterializeCSSServiceProvider.php',
@@ -2938,6 +2965,7 @@ return array(
     'Symfony\\Polyfill\\Util\\TestListener' => $vendorDir . '/symfony/polyfill-util/TestListener.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+<<<<<<< HEAD
     'TijsVerkoyen\\CssToInlineStyles\\CssToInlineStyles' => $vendorDir . '/tijsverkoyen/css-to-inline-styles/src/CssToInlineStyles.php',
     'TijsVerkoyen\\CssToInlineStyles\\Exception' => $vendorDir . '/tijsverkoyen/css-to-inline-styles/src/Exception.php',
     'TijsVerkoyen\\CssToInlineStyles\\Selector' => $vendorDir . '/tijsverkoyen/css-to-inline-styles/src/Selector.php',
@@ -3015,6 +3043,9 @@ return array(
     'elFinderVolumeLocalFileSystem' => $vendorDir . '/studio-42/elfinder/php/elFinderVolumeLocalFileSystem.class.php',
     'elFinderVolumeMySQL' => $vendorDir . '/studio-42/elfinder/php/elFinderVolumeMySQL.class.php',
     'elFinderVolumeS3' => $vendorDir . '/studio-42/elfinder/php/elFinderVolumeS3.class.php',
+=======
+    'XdgBaseDir\\Xdg' => $vendorDir . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
+>>>>>>> 97619efb5e704ab787fb3a816029df3b4bd46d97
     'phpDocumentor\\Reflection\\DocBlock' => $vendorDir . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock.php',
     'phpDocumentor\\Reflection\\DocBlock\\Context' => $vendorDir . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Context.php',
     'phpDocumentor\\Reflection\\DocBlock\\Description' => $vendorDir . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Description.php',

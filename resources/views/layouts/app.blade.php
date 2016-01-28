@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Laravel</title>
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     {!! MaterializeCSS::include_full() !!}
 
 </head>
 <body id="app-layout" class="lighten-5">
     <nav class="teal" role="navigation">
         <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">WebSysProject</a>
-            <ul class="right">
+            <ul class="right hide-on-med-and-down">
                 @if (Auth::check())
                         
                         <!-- Dropdown Trigger -->
@@ -21,16 +21,20 @@
 
                             <ul id='dropdown1' class='dropdown-content'>
                                 <li><a href="{{ url('/dash') }}">Home</a></li>
+								<li><a href="{{ url('/events') }}">Browse</a></li>
                                 <li><a href="{{ url('/logout') }}">Logout</a></li>
                             </ul>
                     @else
                             <li><a href="{{ url('/login') }}">Login</a></li>
+						<li><a href="{{ url('/events') }}">Browse</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
 
                     @endif
             </ul>
         </div>
     </nav>
+	
+	
     
     @yield('content')
 
@@ -38,7 +42,7 @@
           <div class="footer-copyright">
             <div class="container">
             Made by <a class="grey-text text-lighten-4" href="http://materializecss.com">Materialize</a>
-            <a class="grey-text text-lighten-4 right" href="#!">© Web Systems Group 2016</a>
+            <a class="grey-text text-lighten-4 right" href="{{ url('/about') }}">© Web Systems Group 2016</a>
             {{ Auth::guest() }}
             </div>
           </div>

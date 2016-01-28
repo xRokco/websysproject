@@ -22,12 +22,21 @@
     18 => 'Illuminate\\Translation\\TranslationServiceProvider',
     19 => 'Illuminate\\Validation\\ValidationServiceProvider',
     20 => 'Illuminate\\View\\ViewServiceProvider',
+<<<<<<< HEAD
     21 => 'App\\Providers\\AppServiceProvider',
     22 => 'App\\Providers\\AuthServiceProvider',
     23 => 'App\\Providers\\EventServiceProvider',
     24 => 'App\\Providers\\RouteServiceProvider',
     25 => 'Skydiver\\LaravelMaterializeCSS\\MaterializeCSSServiceProvider',
     26 => 'Serverfireteam\\Panel\\PanelServiceProvider',
+=======
+    21 => 'Collective\\Html\\HtmlServiceProvider',
+    22 => 'App\\Providers\\AppServiceProvider',
+    23 => 'App\\Providers\\AuthServiceProvider',
+    24 => 'App\\Providers\\EventServiceProvider',
+    25 => 'App\\Providers\\RouteServiceProvider',
+    26 => 'Skydiver\\LaravelMaterializeCSS\\MaterializeCSSServiceProvider',
+>>>>>>> 97619efb5e704ab787fb3a816029df3b4bd46d97
   ),
   'eager' => 
   array (
@@ -131,6 +140,10 @@
     'translation.loader' => 'Illuminate\\Translation\\TranslationServiceProvider',
     'validator' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
+    'html' => 'Collective\\Html\\HtmlServiceProvider',
+    'form' => 'Collective\\Html\\HtmlServiceProvider',
+    'Collective\\Html\\HtmlBuilder' => 'Collective\\Html\\HtmlServiceProvider',
+    'Collective\\Html\\FormBuilder' => 'Collective\\Html\\HtmlServiceProvider',
     'materialize-css' => 'Skydiver\\LaravelMaterializeCSS\\MaterializeCSSServiceProvider',
   ),
   'when' => 
@@ -169,6 +182,9 @@
     array (
     ),
     'Illuminate\\Validation\\ValidationServiceProvider' => 
+    array (
+    ),
+    'Collective\\Html\\HtmlServiceProvider' => 
     array (
     ),
     'Skydiver\\LaravelMaterializeCSS\\MaterializeCSSServiceProvider' => 

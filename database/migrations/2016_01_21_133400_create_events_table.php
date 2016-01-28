@@ -19,6 +19,8 @@ class CreateEventsTable extends Migration
             $table->string('venue');
             $table->integer('capacity');
             $table->date('date');
+            $table->string('image');
+            $table->softDeletes();
 
             $table->timestamps();
         });
