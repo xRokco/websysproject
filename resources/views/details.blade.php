@@ -12,7 +12,7 @@
             <div class="row valign-wrapper" id="event">
                 <!-- Event Image -->
                 <div class="col center s3">
-                    <img class="responsive-img" src="/img/event_img/{{ $ev->image }}" />
+                    <img class="responsive-img" src="/img/event_images/{{ $ev->image }}" />
                 </div>
                 
                 <!-- Event Description -->
@@ -40,7 +40,7 @@
                 </div>
                 <div id="description" class="col s12">
                     <br>
-                    <h5 class="teal-text">Event Name</h5>
+                    <h5 class="teal-text">{{ $ev->name }}</h5>
                     <h6 class="light">Organiser</h5>
                     <br>
                     <p id="no-margin-top">
