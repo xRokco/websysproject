@@ -24,7 +24,7 @@
                         </div>
                         <div class="col s9">
                             <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4">Matt Carrick<i class="material-icons right">expand_less</i></span>
+                                <span class="card-title activator grey-text text-darken-4">Matt Carrick<i class="material-icons right">expand_more</i></span>
                                 <p>Back End Developer</p>
                                 <p>3rd year Computer Science in UCC </p>
                                 <p><a href="#">matt@rokco.org</a></p>
@@ -34,9 +34,9 @@
                 </div>
             </div>
             <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">More info<i class="material-icons right">expand_more</i></span>
+            <span class="card-title grey-text text-darken-4">More info<i class="material-icons right">expand_less</i></span>
             <p>Project Manager</p>
-            <p>Coder</p>
+            <p>Back End Coder</p>
             <p>Database Admin</p>
             </div>
         </div>
@@ -53,7 +53,7 @@
                         </div>
                         <div class="col s9">
                             <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4">Conor Molloy<i class="material-icons right">expand_less</i></span>
+                                <span class="card-title activator grey-text text-darken-4">Conor Molloy<i class="material-icons right">expand_more</i></span>
                                 <p>Front End Developer</p>
                                 <p>3rd year Computer Science in UCC </p>
                                 <p><a href="#">conmolloy@gmail.com</a></p>
@@ -63,7 +63,7 @@
                 </div>
             </div>
             <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">More info<i class="material-icons right">expand_more</i></span>
+            <span class="card-title grey-text text-darken-4">More info<i class="material-icons right">expand_less</i></span>
             <p>Here is some more information about this product that is only revealed once clicked on.</p>
             </div>
         </div>
@@ -80,7 +80,7 @@
                         </div>
                         <div class="col s9">
                             <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4">Darragh Drohan<i class="material-icons right">expand_less</i></span>
+                                <span class="card-title activator grey-text text-darken-4">Darragh Drohan<i class="material-icons right">expand_more</i></span>
                                 <p>Front End Developer</p>
                                 <p>3rd year Computer Science in UCC </p>
                                 <p><a href="#">darraghddrohan@gmail.com</a></p>
@@ -90,7 +90,7 @@
                 </div>
             </div>
             <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">What I Did<i class="material-icons right">expand_more</i></span>
+            <span class="card-title grey-text text-darken-4">What I Did<i class="material-icons right">expand_less</i></span>
             <p>Dindu Nuffin</p>
             </div>
         </div>
@@ -107,7 +107,7 @@
                         </div>
                         <div class="col s9">
                             <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4">Kieran O'Driscoll<i class="material-icons right">expand_less</i></span>
+                                <span class="card-title activator grey-text text-darken-4">Kieran O'Driscoll<i class="material-icons right">expand_more</i></span>
                                 <p>?</p>
                                 <p>3rd year Computer Science in UCC </p>
                                 <p><a href="#">?</a></p>
@@ -117,7 +117,7 @@
                 </div>
             </div>
             <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">More info<i class="material-icons right">expand_more</i></span>
+            <span class="card-title grey-text text-darken-4">More info<i class="material-icons right">expand_less</i></span>
             <p>Here is some more information about this product that is only revealed once clicked on.</p>
             </div>
         </div>
@@ -134,7 +134,7 @@
                         </div>
                         <div class="col s9">
                             <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4">Peter Fitzgerald<i class="material-icons right">expand_less</i></span>
+                                <span class="card-title activator grey-text text-darken-4">Peter Fitzgerald<i class="material-icons right">expand_more</i></span>
                                 <p>?</p>
                                 <p>3rd year Computer Science in UCC </p>
                                 <p><a href="#">?</a></p>
@@ -144,7 +144,7 @@
                 </div>
             </div>
             <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">More info<i class="material-icons right">expand_more</i></span>
+            <span class="card-title grey-text text-darken-4">More info<i class="material-icons right">expand_less</i></span>
             <p>Here is some more information about this product that is only revealed once clicked on.</p>
             </div>
         </div>

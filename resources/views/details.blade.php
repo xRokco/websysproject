@@ -12,7 +12,7 @@
             <div class="row valign-wrapper" id="event">
                 <!-- Event Image -->
                 <div class="col center s3">
-                    <img class="responsive-img" src="/img/event_img/{{ $ev->image }}" />
+                    <img class="responsive-img" src="/img/event_images/{{ $ev->image }}" />
                 </div>
                 
                 <!-- Event Description -->
