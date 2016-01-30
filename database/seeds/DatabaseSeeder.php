@@ -111,38 +111,3 @@ class UsersTableSeeder extends Seeder {
     DB::table('users')->insert($users);
   }
 }
-class RsvpTableSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-        DB::table('rsvp')->delete();
-
-  $rsvp = array(
-      array(
-       "userid" => "1",
-       "eventid" => "1"
-       
-        ),
-      array(
-       "userid" => "1",
-       "eventid" => "2"
-       
-        ),
-       array(
-       "userid" => "2",
-       "eventid" => "1"
-       
-        ),
-        array(
-       "userid" => "2",
-       "eventid" => "2"
-       )
-      );
-   DB::table('rsvp')->insert($rsvp);
-    }
-}
