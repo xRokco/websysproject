@@ -35,25 +35,13 @@ Route::group(['middleware' => 'web'], function () {
         return view('auth/login');
     }]);
 
-    Route::get('/events/details/print/{id}', function ($id) {
-        if (Auth::check()) {
-            return view('print')->with('event', $id);
-        } else {
-            return redirect()->route('login');
-        }
-    });
+   
 
     Route::get('/events/details/print', function () {
         return redirect()->action('EventController@index');
     });
 
-    Route::get('/events/details/{id}', function ($id) {
-        if (Auth::check()) {
-            return view('details')->with('event', $id);
-        } else {    
-            return redirect()->route('login');
-        }
-    });
+    Route::get('/events/details/{id}','EventController@getEventDetails');
 
     Route::get('/events/details', function () {
         return redirect()->action('EventController@index');
@@ -65,8 +53,13 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('events', 'EventController');
 
     Route::post('events', ['as' => 'events', 'EventController@store' ]);
+    
+    //This is the route to print your ticket
+    Route::get('/events/details/print/{id}','EventController@printEventTicket');
 
+    //This is the route to delete an event
     Route::get('/events/delete/{id}','EventController@deleteEvent');
+
     //This is the route for the rsvp page
     Route::get('rsvp', 'EventController@showUserEvents');
 

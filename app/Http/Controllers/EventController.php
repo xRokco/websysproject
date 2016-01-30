@@ -64,6 +64,23 @@ class EventController extends Controller
 
         return redirect('events');    
     }
+public function getEventDetails($id)
+{
+     if (\Auth::check()) {
+            return view('details')->with('event', $id);
+        } else {    
+            return redirect()->route('login');
+        }
+}
+
+public function printEventTicket($id)
+{
+     if (\Auth::check()) {
+            return view('print')->with('event', $id);
+        } else {
+            return redirect()->route('login');
+        }
+}
 
 public function showUserEvents()
     {
