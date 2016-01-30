@@ -3,7 +3,11 @@
 @section('content')
 <div class="container">
 		@if (Auth::check())
+            @if ($rsvp)
       		<h4 class="header center orange-text">Hi {{ Auth::user()->name }}, these are the events you are going to</h4>
+            @else
+                <h4 class="header center orange-text">You are currently not attending any events, Please go to the <a href="/events" >events </a> page to see upcoming events</h4>
+            @endif
       	@else
       		<h4 class="header center orange-text">Hi, check out our events, and login or register to see more details on them</h4>
       	@endif
