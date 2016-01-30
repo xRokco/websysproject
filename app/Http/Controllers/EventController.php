@@ -65,6 +65,21 @@ class EventController extends Controller
         return redirect('events');    
     }
 
+public function showUserEvents()
+    {
+        //
+
+         $rsvp = \DB::table('events')
+            ->join('rsvp', 'events.id', '=', 'rsvp.eventid')
+            ->join('users', 'users.id', '=', 'rsvp.userid')
+            ->select('events.*')
+            ->where('rsvp.userid', '=', \Auth::user()->id)
+            ->distinct()
+            ->get();
+
+        return view('rsvp', ['rsvp' => $rsvp]);
+    }
+    
     /**
      * Display the specified resource.
      *

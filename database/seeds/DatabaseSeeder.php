@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
     	Eloquent::unguard();
          $this->call('EventsTableSeeder');
          $this->call('UsersTableSeeder');
+         $this->call('RsvpTableSeeder');
+
     }
 }
 
@@ -103,9 +105,44 @@ class UsersTableSeeder extends Seeder {
        "updated_at" => "2016-01-21 14:06:45",
        "direction" => "13 Garranmore, Dunmore Road, Waterford",
        "surname" => "Fitzgeralnd",
-       "admin" => 0
+       "admin" => 1
         )
       );
     DB::table('users')->insert($users);
   }
+}
+class RsvpTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        DB::table('rsvp')->delete();
+
+  $rsvp = array(
+      array(
+       "userid" => "1",
+       "eventid" => "1"
+       
+        ),
+      array(
+       "userid" => "1",
+       "eventid" => "2"
+       
+        ),
+       array(
+       "userid" => "2",
+       "eventid" => "1"
+       
+        ),
+        array(
+       "userid" => "2",
+       "eventid" => "2"
+       )
+      );
+   DB::table('rsvp')->insert($rsvp);
+    }
 }
