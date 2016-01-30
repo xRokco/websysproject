@@ -97,7 +97,13 @@ public function unattendEvent($id)
 }
 
 
-    
+public function deleteEvent($id)  
+{
+    if(\Auth::user()->admin==1){
+            events::destroy($id);
+        }
+        return redirect()->route('events');
+} 
     /**
      * Display the specified resource.
      *

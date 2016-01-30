@@ -66,15 +66,10 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::post('events', ['as' => 'events', 'EventController@store' ]);
 
-    Route::get('/events/delete/{id}', function ($id) {
-        if(Auth::user()->admin==1){
-            events::destroy($id);
-        }
-        return redirect()->route('events');
-    });
+    Route::get('/events/delete/{id}','EventController@deleteEvent');
     //This is the route for the rsvp page
     Route::get('rsvp', 'EventController@showUserEvents');
-    
+
     // This is the route to attend an event
     Route::get('/events/details/attend/{id}','EventController@attendEvent');
 
