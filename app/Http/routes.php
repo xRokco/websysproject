@@ -60,7 +60,7 @@ Route::group(['middleware' => 'web'], function () {
     });
     
     Route::get('/dash', 'HomeController@index');
-    Route::get('rsvp', 'EventController@showUserEvents');
+    
 
     Route::resource('events', 'EventController');
 
@@ -72,24 +72,15 @@ Route::group(['middleware' => 'web'], function () {
         }
         return redirect()->route('events');
     });
-    Route::get('/events/details/attend/{id}', function ($id) {
-       if(Auth::check()){
-            DB::table('rsvp')->insert(
-    ['userid' => \Auth::user()->id, 'eventid' => $id]
-);
-    return redirect('rsvp');     
-        }
-      
-    });
-    Route::get('/events/details/unattend/{id}', function ($id) {
-       if(Auth::check()){
-            DB::table('rsvp')->where(
-    ['userid' => \Auth::user()->id, 'eventid' => $id]
-)->delete();
-    return redirect('rsvp');     
-        }
-      
-    });
+    //This is the route for the rsvp page
+    Route::get('rsvp', 'EventController@showUserEvents');
+    
+    // This is the route to attend an event
+    Route::get('/events/details/attend/{id}','EventController@attendEvent');
+
+    // This is the route to unattend an event 
+    Route::get('/events/details/unattend/{id}','EventController@unattendEvent');
+
     Route::get('about', function () {
         return view('about');
     });

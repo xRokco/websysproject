@@ -67,7 +67,7 @@ class EventController extends Controller
 
 public function showUserEvents()
     {
-        //
+        // Displays all events that the user is attending
 
          $rsvp = \DB::table('events')
             ->join('rsvp', 'events.id', '=', 'rsvp.eventid')
@@ -79,6 +79,24 @@ public function showUserEvents()
 
         return view('rsvp', ['rsvp' => $rsvp]);
     }
+// Attend an event function
+// Database insertion links user to event
+public function attendEvent($id) 
+{
+    \DB::table('rsvp')->insert(
+    ['userid' => \Auth::user()->id, 'eventid' => $id]);
+    return redirect('rsvp');     
+    }
+//Unattend an event function 
+//Database deletion removes link between user and event
+public function unattendEvent($id) 
+{
+    \DB::table('rsvp')->where(
+            ['userid' => \Auth::user()->id, 'eventid' => $id])->delete();
+            return redirect('rsvp');     
+}
+
+
     
     /**
      * Display the specified resource.
