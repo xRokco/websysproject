@@ -30,6 +30,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/', function () {
         return view('welcome');
     });
+    Route::get('create', 'EventController@create');
+    Route::post('events','EventController@store');
 
     Route::get('/login', ['as' => 'login', function () {
         return view('auth/login');
@@ -52,7 +54,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::resource('events', 'EventController');
 
-    Route::post('events', ['as' => 'events', 'EventController@store' ]);
+    
     
     //This is the route to print your ticket
     Route::get('/events/details/print/{id}','EventController@printEventTicket');

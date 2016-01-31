@@ -48,7 +48,7 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         //
         $input = Request::all();
@@ -119,7 +119,7 @@ public function deleteEvent($id)
     if(\Auth::user()->admin==1){
             events::destroy($id);
         }
-        return redirect()->route('events');
+        return redirect('events');
 } 
     /**
      * Display the specified resource.
