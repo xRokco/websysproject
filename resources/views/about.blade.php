@@ -48,7 +48,7 @@
                     <div class="row valign-wrapper">
                         <div class="col s2">
                             <div class=" waves-effect waves-block waves-light">
-                                <img src="person.png" alt="" class="activator circle responsive-img">
+                                <img src="/img/person.png" alt="" class="activator circle responsive-img">
                             </div>
                         </div>
                         <div class="col s9">
@@ -75,7 +75,7 @@
                     <div class="row valign-wrapper">
                         <div class="col s2">
                             <div class=" waves-effect waves-block waves-light">
-                                <img src="person.png" alt="" class="activator circle responsive-img">
+                                <img src="/img/person.png" alt="" class="activator circle responsive-img">
                             </div>
                         </div>
                         <div class="col s9">
@@ -102,7 +102,7 @@
                     <div class="row valign-wrapper">
                         <div class="col s2">
                             <div class=" waves-effect waves-block waves-light">
-                                <img src="/img/ kieran.jpg" alt="" class="activator circle responsive-img">
+                                <img src="/img/person.png" alt="" class="activator circle responsive-img">
                             </div>
                         </div>
                         <div class="col s9">
