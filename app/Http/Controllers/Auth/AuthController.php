@@ -73,4 +73,6 @@ class AuthController extends Controller
             'direction' => $data['direction'],
         ]);
     }
+
+    
 }

@@ -38,7 +38,7 @@ Route::group(['middleware' => 'web'], function () {
     }]);
 
    
-
+Route::patch('events','HomeController@update');
     Route::get('/events/details/print', function () {
         return redirect()->action('EventController@index');
     });
@@ -54,7 +54,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::resource('events', 'EventController');
 
-    
+    Route::get('account', 'HomeController@editUserInfo');
     
     //This is the route to print your ticket
     Route::get('/events/details/print/{id}','EventController@printEventTicket');
