@@ -30,46 +30,49 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/', function () {
         return view('welcome');
     });
+    Route::get('create', 'EventController@create');
+    Route::post('events','EventController@store');
 
     Route::get('/login', ['as' => 'login', function () {
         return view('auth/login');
     }]);
 
-    Route::get('/events/details/print/{id}', function ($id) {
-        if (Auth::check()) {
-            return view('print')->with('event', $id);
-        } else {
-            return redirect()->route('login');
-        }
-    });
-
+   
+Route::patch('events','HomeController@update');
     Route::get('/events/details/print', function () {
         return redirect()->action('EventController@index');
     });
 
-    Route::get('/events/details/{id}', function ($id) {
-        if (Auth::check()) {
-            return view('details')->with('event', $id);
-        } else {    
-            return redirect()->route('login');
-        }
-    });
+    Route::get('/events/details/{id}','EventController@getEventDetails');
 
     Route::get('/events/details', function () {
         return redirect()->action('EventController@index');
     });
     
     Route::get('/dash', 'HomeController@index');
+    
 
     Route::resource('events', 'EventController');
 
-    Route::post('events', ['as' => 'events', 'EventController@store' ]);
+    Route::get('account', 'HomeController@editUserInfo');
+    
+    //This is the route to print your ticket
+    Route::get('/events/details/print/{id}','EventController@printEventTicket');
 
-    Route::get('/events/delete/{id}', function ($id) {
-        if(Auth::user()->admin==1){
-            events::destroy($id);
-        }
-        return redirect()->route('events');
+    //This is the route to delete an event
+    Route::get('/events/delete/{id}','EventController@deleteEvent');
+
+    //This is the route for the rsvp page
+    Route::get('rsvp', 'EventController@showUserEvents');
+
+    // This is the route to attend an event
+    Route::get('/events/details/attend/{id}','EventController@attendEvent');
+
+    // This is the route to unattend an event 
+    Route::get('/events/details/unattend/{id}','EventController@unattendEvent');
+
+    Route::get('about', function () {
+        return view('about');
     });
 
     Route::get('about', function () {

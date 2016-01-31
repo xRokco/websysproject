@@ -10,7 +10,7 @@
 		<div class="container">
    			<div class="row">
         		<div class="col s6 offset-s3">
-					{!! Form::open(['url' => 'events', 'files'=>true]) !!}
+					{!! Form::open(['url' => '/events', 'files'=>true]) !!}
 						<div class="row">
 							{!! Form::label('name', 'Name:') !!}
 							{!! Form::text('name') !!}

@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
     	Eloquent::unguard();
          $this->call('EventsTableSeeder');
          $this->call('UsersTableSeeder');
+         $this->call('RsvpTableSeeder');
+
     }
 }
 
@@ -103,7 +105,7 @@ class UsersTableSeeder extends Seeder {
        "updated_at" => "2016-01-21 14:06:45",
        "direction" => "13 Garranmore, Dunmore Road, Waterford",
        "surname" => "Fitzgeralnd",
-       "admin" => 0
+       "admin" => 1
         )
       );
     DB::table('users')->insert($users);

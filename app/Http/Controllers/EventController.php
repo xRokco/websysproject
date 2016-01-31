@@ -48,7 +48,7 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         //
         $input = Request::all();
@@ -64,7 +64,63 @@ class EventController extends Controller
 
         return redirect('events');    
     }
+public function getEventDetails($id)
+{
+     if (\Auth::check()) {
+            return view('details')->with('event', $id);
+        } else {    
+            return redirect()->route('login');
+        }
+}
 
+public function printEventTicket($id)
+{
+     if (\Auth::check()) {
+            return view('print')->with('event', $id);
+        } else {
+            return redirect()->route('login');
+        }
+}
+
+public function showUserEvents()
+    {
+        // Displays all events that the user is attending
+
+         $rsvp = \DB::table('events')
+            ->join('rsvp', 'events.id', '=', 'rsvp.eventid')
+            ->join('users', 'users.id', '=', 'rsvp.userid')
+            ->select('events.*')
+            ->where('rsvp.userid', '=', \Auth::user()->id)
+            ->distinct()
+            ->get();
+
+        return view('rsvp', ['rsvp' => $rsvp]);
+    }
+// Attend an event function
+// Database insertion links user to event
+public function attendEvent($id) 
+{
+    \DB::table('rsvp')->insert(
+    ['userid' => \Auth::user()->id, 'eventid' => $id]);
+    return redirect('rsvp');     
+    }
+//Unattend an event function 
+//Database deletion removes link between user and event
+public function unattendEvent($id) 
+{
+    \DB::table('rsvp')->where(
+            ['userid' => \Auth::user()->id, 'eventid' => $id])->delete();
+            return redirect('rsvp');     
+}
+
+
+public function deleteEvent($id)  
+{
+    if(\Auth::user()->admin==1){
+            events::destroy($id);
+        }
+        return redirect('events');
+} 
     /**
      * Display the specified resource.
      *

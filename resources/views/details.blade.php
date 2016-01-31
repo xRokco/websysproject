@@ -1,6 +1,13 @@
 <?php
 	use App\events;
 	$ev = events::where('id', $event)->first();
+    $rsvp = \DB::table('events')
+            ->join('rsvp', 'events.id', '=', 'rsvp.eventid')
+            ->join('users', 'users.id', '=', 'rsvp.userid')
+            ->select('events.*')
+            ->where(['userid' => \Auth::user()->id, 'eventid' => $event])
+            ->distinct()
+            ->get();
 ?>
 @extends('layouts.app')
 
@@ -27,7 +34,14 @@
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">today</i>{{ $ev->date }}</p>
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">location_on</i>{{ $ev->venue}}, {{ $ev->city }}</p>
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">payment</i>&euro;99</p>
-                    <a class="btn" href="print/{{ $event }}" >Print Ticket</a>
+            <!-- Check if clicked attend already -->
+            @if($rsvp)
+                <a class="btn" href="print/{{ $event }}">Print Ticket</a>
+                <a class="btn" href="unattend/{{ $event }}">Unattend Event</a>
+                @else
+                    <a class="btn" href="attend/{{ $event }}">Attend Event</a>
+            @endif
+                    
                 </div>
             </div>
             
