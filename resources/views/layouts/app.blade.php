@@ -22,6 +22,9 @@
                             <ul id='dropdown1' class='dropdown-content'>
                                 <li><a href="{{ url('/dash') }}">Home</a></li>
 								<li><a href="{{ url('/events') }}">Events</a></li>
+                                @if(Auth::user()->admin==1)
+                                <li><a href="create">New event</a></li>
+                                @endif
                                 <li><a href="{{ url('/logout') }}">Logout</a></li>
                             </ul>
                     @else
