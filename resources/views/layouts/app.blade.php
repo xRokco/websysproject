@@ -17,9 +17,8 @@
                 @if (Auth::check())     
                     <!-- Dropdown Trigger -->
                     <a style="margin:0px" class='dropdown-button btn transparent' href='#' data-beloworigin="true" data-hover='false' data-activates='dropdown1'>{{ Auth::user()->name }}</a>
-
                     <ul id='dropdown1' class='dropdown-content'>
-                        <li><a href="{{ url('/dash') }}">Home</a></li>
+                        <li><a href="{{ url('/dash') }}">Dash</a></li>
 						<li><a href="{{ url('/events') }}">Events</a></li>
                         @if(Auth::user()->admin==1)
                             <li><a href="create">New event</a></li>
@@ -28,9 +27,13 @@
                     </ul>
                 @else
                         <li><a href="{{ url('/login') }}">Login</a></li>
+						<li><a href="{{ url('/events') }}">Events</a></li>
+                        <li><a href="{{ url('/logout') }}">Logout</a></li>
+                    </ul>
+                @else
+                    <li><a href="{{ url('/login') }}">Login</a></li>
 					<li><a href="{{ url('/events') }}">Events</a></li>
                     <li><a href="{{ url('/register') }}">Register</a></li>
-
                 @endif
             </ul>
         </div>

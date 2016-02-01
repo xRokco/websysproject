@@ -13,7 +13,7 @@
 <div class="container">
    			<div class="row">
         		<div class="col s6 offset-s3">
-					{!! Form::model($user, ['method' =>'PATCH', 'action' => 'HomeController@update']) !!}
+					{!! Form::model($user, ['method' =>'PATCH', 'action' => ['HomeController@update', $user->id]]) !!}
 						<div class="row">
 							{!! Form::label('name', 'Name:') !!}
 							{!! Form::text('name') !!}

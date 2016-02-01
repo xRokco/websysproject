@@ -38,7 +38,7 @@ Route::group(['middleware' => 'web'], function () {
     }]);
 
    
-Route::patch('events','HomeController@update');
+Route::patch('/dash/{id}','HomeController@update');
     Route::get('/events/details/print', function () {
         return redirect()->action('EventController@index');
     });
