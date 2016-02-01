@@ -6,8 +6,6 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\User;
 use App\Http\Controllers\Controller;
-use App\events;
-use Illuminate\Support\Facades\Input;
 
 class HomeController extends Controller
 {
