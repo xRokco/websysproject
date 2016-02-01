@@ -9,6 +9,18 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     {!! MaterializeCSS::include_full() !!}
 
+    <style type="text/css">
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1 0 auto;
+        }
+    </style>
+
 </head>
 <body id="app-layout" class="lighten-5">
     <nav class="teal" role="navigation">
@@ -35,8 +47,9 @@
     </nav>
 	
 	
-    
-    @yield('content')
+    <main>
+        @yield('content')
+    </main>
 
      <footer class="page-footer teal">
           <div class="footer-copyright">

@@ -103,7 +103,7 @@ public function attendEvent($id)
 {
     \DB::table('rsvp')->insert(
     ['userid' => \Auth::user()->id, 'eventid' => $id]);
-    return redirect('rsvp');     
+    return redirect('dash');     
     }
 //Unattend an event function 
 //Database deletion removes link between user and event
@@ -111,7 +111,7 @@ public function unattendEvent($id)
 {
     \DB::table('rsvp')->where(
             ['userid' => \Auth::user()->id, 'eventid' => $id])->delete();
-            return redirect('rsvp');     
+            return redirect('dash');     
 }
 
 
