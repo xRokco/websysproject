@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use Request;
+use Illuminate\Http\Request;
+use App\User;
+
 class HomeController extends Controller
 {
     /**
@@ -36,13 +38,14 @@ public function editUserInfo()
 
 public function update(Request $request) 
     {
-       $model = \DB::table('users')->select('users.*')->where('id', '=', \Auth::user()->id);
-       $user = $model->first();
-        
-      // $user = \DB::table('users')->select('users.*')->where('id', '=', \Auth::user()->id)->get();
-        $user->update($request->all());
+        $name = $request->input('name');
+        $surname = $request->input('surname');
+        $email = $request->input('email');
+        $direction = $request->input('direction');
 
-        return redirect('events');
+        User::where('id', \Auth::user()->id)->update(['name'=>$name, 'surname'=>$surname, 'email'=>$email, 'direction'=>$direction]);
+
+        return redirect('dash');
     }
 
 }
