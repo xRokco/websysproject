@@ -94,8 +94,9 @@ public function showUserEvents()
             ->distinct()
             ->get();
 
-        return view('rsvp', ['rsvp' => $rsvp]);
+        return view('dash', ['rsvp' => $rsvp]);
     }
+
 // Attend an event function
 // Database insertion links user to event
 public function attendEvent($id) 

@@ -12,6 +12,7 @@
       		<h4 class="header center orange-text">Hi, check out our events, and login or register to see more details on them</h4>
       	@endif
 </div>
+<br><br><br>
 <div class="container">
        
             @foreach ($rsvp as $event)

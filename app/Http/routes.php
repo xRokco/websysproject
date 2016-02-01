@@ -38,7 +38,7 @@ Route::group(['middleware' => 'web'], function () {
     }]);
 
    
-Route::patch('/dash/{id}','HomeController@update');
+    Route::patch('/dash/{id}','HomeController@update');
     Route::get('/events/details/print', function () {
         return redirect()->action('EventController@index');
     });
@@ -48,9 +48,6 @@ Route::patch('/dash/{id}','HomeController@update');
     Route::get('/events/details', function () {
         return redirect()->action('EventController@index');
     });
-    
-    Route::get('/dash', 'HomeController@index');
-    
 
     Route::resource('events', 'EventController');
 
@@ -63,7 +60,7 @@ Route::patch('/dash/{id}','HomeController@update');
     Route::get('/events/delete/{id}','EventController@deleteEvent');
 
     //This is the route for the rsvp page
-    Route::get('rsvp', 'EventController@showUserEvents');
+    Route::get('dash', 'EventController@showUserEvents');
 
     // This is the route to attend an event
     Route::get('/events/details/attend/{id}','EventController@attendEvent');
