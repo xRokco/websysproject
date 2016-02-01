@@ -93,6 +93,12 @@
 
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="direction">
+
+                                @if ($errors->has('direction'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('direction') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
