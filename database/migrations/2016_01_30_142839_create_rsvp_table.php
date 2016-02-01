@@ -15,6 +15,7 @@ class CreateRsvpTable extends Migration
         Schema::create('rsvp', function (Blueprint $table) {
             $table->integer('userid');
             $table->integer('eventid');
+            $table->softDeletes();
         });
     }
 

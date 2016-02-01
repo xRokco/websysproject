@@ -7,6 +7,7 @@ use Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\events;
+use App\Rsvp;
 use Illuminate\Support\Facades\Input;
 
 class EventController extends Controller
@@ -119,6 +120,7 @@ public function deleteEvent($id)
 {
     if(\Auth::user()->admin==1){
             events::destroy($id);
+            Rsvp::where('eventid',$id)->delete();
         }
         return redirect('events');
 } 
