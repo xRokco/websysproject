@@ -91,7 +91,7 @@ class UsersTableSeeder extends Seeder {
        "remember_token" => "r4p9i7hRC0i8uVvMSoSZ0qALdbCZolkZHOggIGTGJ7ZExEFF6WCckdIVbYNw",
        "created_at" => "2016-01-21 14:06:45",
        "updated_at" => "2016-01-21 14:06:45",
-       "direction" => "4 Salvador Place, Western Road, Cork",
+       "direction" => "13 Garranmore, Dunmore Road, Waterford",
        "surname" => "Carrick",
        "admin" => 1
         ),
@@ -103,9 +103,21 @@ class UsersTableSeeder extends Seeder {
        "remember_token" => "r4p9i7hRC0i8uVvMSoSZ0qALdbCZolkZHOggIGTGJ7ZExEFF6WCckdIVbYNw",
        "created_at" => "2016-01-21 14:06:45",
        "updated_at" => "2016-01-21 14:06:45",
-       "direction" => "13 Garranmore, Dunmore Road, Waterford",
-       "surname" => "Fitzgeralnd",
+       "direction" => "4 Salvador Place, Western Road, Cork",
+       "surname" => "Fitzgerald",
        "admin" => 1
+        ),
+      array(
+       "id" => "3",
+       "name" => "NonAdmin",
+       "email" => "reg@rokco.org",
+       "password" => bcrypt('secret'),
+       "remember_token" => "r4p9i7hRC0i8uVvMSoSZ0qALdbCZolkZHOggIGTGJ7ZExEFF6WCckdIVbYNw",
+       "created_at" => "2016-01-21 14:06:45",
+       "updated_at" => "2016-01-21 14:06:45",
+       "direction" => "Belfast",
+       "surname" => "User",
+       "admin" => 0
         )
       );
     DB::table('users')->insert($users);
