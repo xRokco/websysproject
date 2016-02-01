@@ -25,6 +25,7 @@
                                 @if(Auth::user()->admin==1)
                                 <li><a href="create">New event</a></li>
                                 @endif
+                                <li><a href="{{ url('/account') }}">Account</a></li>
                                 <li><a href="{{ url('/logout') }}">Logout</a></li>
                             </ul>
                     @else
