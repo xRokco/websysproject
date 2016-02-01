@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\User;
-use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
@@ -37,7 +36,7 @@ public function editUserInfo()
     }
 
 
-public function update($id) 
+public function update(Request $request) 
     {
         $name = $request->input('name');
         $surname = $request->input('surname');
