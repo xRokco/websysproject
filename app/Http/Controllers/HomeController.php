@@ -28,15 +28,15 @@ class HomeController extends Controller
         
     }
 
-public function editUserInfo() 
+    public function editUserInfo() 
     {
 
-       $user = \DB::table('users')->select('users.*')->where('id', '=', \Auth::user()->id)->first();
+        $user = \DB::table('users')->select('users.*')->where('id', '=', \Auth::user()->id)->first();
         return view('account',['user' => $user]);
     }
 
 
-public function update(Request $request) 
+    public function update(Request $request) 
     {
         $name = $request->input('name');
         $surname = $request->input('surname');

@@ -19,9 +19,10 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        //Gets all the event details from the event database table
         $events = events::all();
 
+        //Returns the events view along with the $events array containing the query results from above
         return view('events', ['events' => $events]);
     }
 
@@ -32,14 +33,14 @@ class EventController extends Controller
      */
     public function create()
     {
-        if(\Auth::check()){
-            if(\Auth::user()->admin==1){
-                return view('create');
+        if(\Auth::check()){ //Checks if the user is logged in
+            if(\Auth::user()->admin==1){ //checks that the logged in user is an admin
+                return view('admin/create'); //returns create view if both are true
             }else{
-                return redirect()->route('events');
+                return redirect('events'); //otherwise redirects to events view
             }
         }else{
-            return redirect()->route('events');
+            return redirect('events');
         }
     }
 
@@ -51,36 +52,36 @@ class EventController extends Controller
      */
     public function store()
     {
-        $input = Request::all();
+        $input = Request::all(); //takes all the details from the create event form when submitted
 
-        events::create($input);
+        events::create($input); //creates a new event with these details
 
-        $name = events::latest()->first()->id . "." . Input::file('image')->getClientOriginalExtension(); 
-        Input::file('image')->move(__DIR__.'/../../../public/img/event_images',$name);
+        $name = events::latest()->first()->id . "." . Input::file('image')->getClientOriginalExtension(); //gets the event ID and concat on the imaage file extension that was uploaded 
+        Input::file('image')->move(__DIR__.'/../../../public/img/event_images',$name); //moves the uploaded image from the tmp directory to a premanant one (/public/img/event_images) and renames it to <eventID>.<fileExt>
         
-        $image = events::latest()->first();
-        $image->image = $name;
-        $image->save();
+        $image = events::latest()->first();//returns the latest event added to the table (the one just added above)
+        $image->image = $name; //adds the image name from above to the image column of the latest event
+        $image->save(); //saves the above action
 
-        return redirect('events');    
+        return redirect('events'); //redirects to events view when finished
     }
 
     public function getEventDetails($id)
     {
-         if (\Auth::check()) {
-                return view('details')->with('event', $id);
-            } else {    
-                return redirect()->route('login');
-            }
+        if (\Auth::check()) { //checks if user is logged in
+            return view('details')->with('event', $id); //returns event details page for the corresponding ID
+        } else {    
+            return redirect()->route('login'); //otherwise redirects to the login page
+        }
     }
 
     public function printEventTicket($id)
     {
-         if (\Auth::check()) {
-                return view('print')->with('event', $id);
-            } else {
-                return redirect()->route('login');
-            }
+        if (\Auth::check()) { //checks if user is logged in
+            return view('print')->with('event', $id); //returns event ticket print page for the corresponding ID
+        } else {
+            return redirect()->route('login'); //otherwise redirects to the login page
+        }
     }
 
     public function showUserEvents()
@@ -95,7 +96,7 @@ class EventController extends Controller
                 ->distinct()
                 ->get();
 
-            return view('dash', ['rsvp' => $rsvp]);
+            return view('dash', ['rsvp' => $rsvp]); //returns dash view with $rsvp array with query results from above
         }
 
     // Attend an event function

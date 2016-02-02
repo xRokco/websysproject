@@ -27,30 +27,41 @@ use Illuminate\Database\Eloquent\SoftDeletingTrait;
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
+    //Route to return homepage
     Route::get('/', function () {
         return view('welcome');
     });
+
+    //Route to return the create event page
     Route::get('create', 'EventController@create');
+
+    //Route to be called when submit on create events page is clicked
     Route::post('events','EventController@store');
 
+    //Route to return login page
     Route::get('/login', ['as' => 'login', function () {
         return view('auth/login');
     }]);
-
    
     Route::patch('/dash/{id}','HomeController@update');
+
+    //Route to redirect to events page if user navigates to print page without an event ID
     Route::get('/events/details/print', function () {
-        return redirect()->action('EventController@index');
+        return redirect('events');
     });
 
+    //Route to return the event details page
     Route::get('/events/details/{id}','EventController@getEventDetails');
 
+    //Route to redirect to events page if user navigates to the deatails page without an event ID
     Route::get('/events/details', function () {
-        return redirect()->action('EventController@index');
+        return redirect('events');
     });
 
+    //Route to return EventController@index and return the event page view
     Route::resource('events', 'EventController');
 
+    //Route to return the edit user info page.
     Route::get('account', 'HomeController@editUserInfo');
     
     //This is the route to print your ticket
@@ -68,17 +79,14 @@ Route::group(['middleware' => 'web'], function () {
     // This is the route to unattend an event 
     Route::get('/events/details/unattend/{id}','EventController@unattendEvent');
 
-    Route::get('about', function () {
-        return view('about');
-    });
-
+    //Route to return the about our team page
     Route::get('about', function () {
         return view('about');
     });
 });
 
 // route to show the login form
-Route::group(array('namespace'=>'Admin'), function()
-{
-    Route::get('/admin', array('as' => 'admin', 'uses' => 'LoginController@index'));
-});
+//Route::group(array('namespace'=>'Admin'), function()
+//{
+//    Route::get('/admin', array('as' => 'admin', 'uses' => 'LoginController@index'));
+//});

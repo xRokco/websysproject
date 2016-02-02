@@ -33,7 +33,7 @@ class EventsTableSeeder extends Seeder {
        "date" => "2016-12-21",
        "created_at" => "2016-01-21 14:06:45",
        "updated_at" => "2016-01-21 14:06:45",
-       "image" => "trump.jpg",
+       "image" => "1.jpg",
        "deleted_at" => NULL
 
 				),
@@ -46,7 +46,7 @@ class EventsTableSeeder extends Seeder {
        "date" => "2016-03-27",
        "created_at" => "2016-01-21 14:15:23",
        "updated_at" => "2016-01-21 14:15:23",
-       "image" => "trump.jpg",
+       "image" => "2.jpg",
        "deleted_at" => NULL
 				),
 			array(
@@ -58,7 +58,7 @@ class EventsTableSeeder extends Seeder {
        "date" => "2016-08-25",
        "created_at" => "2016-01-21 14:16:58",
        "updated_at" => "2016-01-21 14:16:58",
-       "image" => "n72bKGj.jpg",
+       "image" => "3.jpg",
        "deleted_at" => NULL
 				),
 			array(
@@ -70,7 +70,7 @@ class EventsTableSeeder extends Seeder {
        "date" => "2016-05-04",
        "created_at" => "2016-01-21 14:17:48",
        "updated_at" => "2016-01-21 14:17:48",
-       "image" => "5iXoAQJ.jpg",
+       "image" => "4.jpg",
        "deleted_at" => NULL
 				)
 			);
