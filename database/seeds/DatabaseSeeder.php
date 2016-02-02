@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     	Eloquent::unguard();
          $this->call('EventsTableSeeder');
          $this->call('UsersTableSeeder');
-         $this->call('RsvpTableSeeder');
+         
 
     }
 }
@@ -29,6 +29,8 @@ class EventsTableSeeder extends Seeder {
        "name" => "Winter Event",
        "city" => "Dublin",
        "venue" => "RDS",
+       "price" => "99",
+       "information" => "Lets make Ireland Great Again! Listen to a man who went to the Wharton School of Finance tell you how to fix all of Irelands problems.",
        "capacity" =>"20000",
        "date" => "2016-12-21",
        "created_at" => "2016-01-21 14:06:45",
@@ -42,6 +44,8 @@ class EventsTableSeeder extends Seeder {
        "name" => "Spring Event",
        "city" => "London",
        "venue" => "Wembley Stadium",
+       "price" => "149",
+       "information" => "Britan has a problem and that problem is Muslims. Find out what you can do to fix this problem at this event.",
        "capacity" => "60000",
        "date" => "2016-03-27",
        "created_at" => "2016-01-21 14:15:23",
@@ -54,6 +58,8 @@ class EventsTableSeeder extends Seeder {
        "name" => "Autumn Event",
        "city" => "Berlin",
        "venue" => "Huxleys Neue Welt",
+       "price" => "199",
+       "information" => "Lets build a Giant wall, I know you are sick of walls after the Berlin wall but my wall will be better.",
        "capacity" => "50000",
        "date" => "2016-08-25",
        "created_at" => "2016-01-21 14:16:58",
@@ -66,6 +72,8 @@ class EventsTableSeeder extends Seeder {
        "name" => "Summer Event",
        "city" => "Amsterdam",
        "venue" => "Heineken Music Hall",
+       "price" => "420",
+       "information" => "It’s freezing and snowing in New York – we need global warming! Find out why rising sea levels are actually good for the Netherlands.",
        "capacity" =>"45000",
        "date" => "2016-05-04",
        "created_at" => "2016-01-21 14:17:48",

@@ -26,7 +26,7 @@
                 <div class="left-align col s5">
                     <h5>{{ $ev->name }}</h5>
                     <p class="light">Organiser<p>
-                    <p>Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus...</p>
+                    <p>{{ $ev->information }}</p>
                 </div>
                 
                 <!-- Event Details -->
