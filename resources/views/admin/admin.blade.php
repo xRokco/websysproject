@@ -31,7 +31,7 @@
 				                    <!-- Event Details -->
 				                    <div class="col s3" id="test">
 				                        
-				                        <a class="btn teal lighten-1" href="events/details/{{ $event->id }}">Attendees</a>
+				                        <a class="btn teal lighten-1" href="admin/attendees/{{ $event->id }}">Attendees</a>
 				                        <a class="btn teal lighten-1" href="admin/edit/{{ $event->id }}">Edit Event</a>
 				                        <a class="btn teal lighten-1" href="admin/delete/{{ $event->id }}">Delete Event</a>
 				                    </div>

@@ -75,6 +75,19 @@ class EventController extends Controller
         }
     }
 
+    public function getAttendees($id)
+    {
+        if (\Auth::check()) { //checks if user is logged in
+            if(\Auth::user()->admin==1){ //checks that the logged in user is an admin
+                return view('admin/attendees')->with('atnd', $id);
+            }else{
+                return redirect('events'); //otherwise redirects to the login page
+            }
+        } else {    
+            return redirect('events'); //otherwise redirects to the login page
+        }
+    }
+
     public function printEventTicket($id)
     {
         if (\Auth::check()) { //checks if user is logged in
@@ -106,7 +119,8 @@ class EventController extends Controller
         \DB::table('rsvp')->insert(
         ['userid' => \Auth::user()->id, 'eventid' => $id]);
         return redirect('dash');     
-        }
+    }
+
     //Unattend an event function 
     //Database deletion removes link between user and event
     public function unattendEvent($id) 
@@ -120,10 +134,10 @@ class EventController extends Controller
     public function deleteEvent($id)  
     {
         if(\Auth::user()->admin==1){
-                events::destroy($id);
-                Rsvp::where('eventid',$id)->delete();
-            }
-            return redirect('admin');
+            events::destroy($id);
+            Rsvp::where('eventid',$id)->delete();
+        }
+        return redirect('admin');
     } 
         /**
          * Display the specified resource.
@@ -144,8 +158,12 @@ class EventController extends Controller
          */
         public function editEventInfo($id)
         {
-             $event = \DB::table('events')->select('events.*')->where('id', '=', $id)->first();
-        return view('admin/edit',['event' => $event]);
+            if(\Auth::user()->admin==1){
+                $event = \DB::table('events')->select('events.*')->where('id', '=', $id)->first();
+                return view('admin/edit',['event' => $event]);
+            }else{
+                return redirect('events');
+            }
         }
 
         /**
@@ -158,23 +176,23 @@ class EventController extends Controller
         public function update(Request $request, $id)
         {
 
-        $name = $request->input('name');
-        $venue = $request->input('venue');
-        $city = $request->input('city');
-        $price = $request->input('price');
-        $information = $request->input('information');
-        $capacity = $request->input('capacity');
-        $date = $request->input('date');
-        $image = $request->input('image');
+            $name = $request->input('name');
+            $venue = $request->input('venue');
+            $city = $request->input('city');
+            $price = $request->input('price');
+            $information = $request->input('information');
+            $capacity = $request->input('capacity');
+            $date = $request->input('date');
+            $image = $request->input('image');
 
-        events::where('id', $id)->update(['name'=>$name, 'venue'=>$venue, 'city'=>$city, 'price'=>$price, 'information'=>$information, 'capacity'=>$capacity, 'date'=>$date, 'image'=>$image]);
+            events::where('id', $id)->update(['name'=>$name, 'venue'=>$venue, 'city'=>$city, 'price'=>$price, 'information'=>$information, 'capacity'=>$capacity, 'date'=>$date, 'image'=>$image]);
 
-        $imgName = events::latest()->first()->id . "." . Input::file('image')->getClientOriginalExtension(); //gets the event ID and concat on the imaage file extension that was uploaded 
-        Input::file('image')->move(__DIR__.'/../../../public/img/event_images',$imgName); //moves the uploaded image from the tmp directory to a premanant one (/public/img/event_images) and renames it to <eventID>.<fileExt>
-        
-        $image = events::latest()->first();//returns the latest event added to the table (the one just added above)
-        $image->image = $imgName; //adds the image name from above to the image column of the latest event
-        $image->save(); //saves the above action
+            $imgName = $id . "." . Input::file('image')->getClientOriginalExtension(); //gets the event ID and concat on the imaage file extension that was uploaded 
+            Input::file('image')->move(__DIR__.'/../../../public/img/event_images',$imgName); //moves the uploaded image from the tmp directory to a premanant one (/public/img/event_images) and renames it to <eventID>.<fileExt>
+            
+            $image = events::where('id', $id)->first();//returns the same event as the one being updated
+            $image->image = $imgName; //adds the image name from above to the image column of the latest event
+            $image->save(); //saves the above action
 
 
 

@@ -3,7 +3,7 @@
     @section('content')
     	<div class="container">
       		<br><br>
-      		<h2 class="header center red-text text-lighten-2">Create event</h2>
+      		<h2 class="header center red-text text-lighten-2">Update event</h2>
       		<br><br>
 		</div>
 
@@ -49,7 +49,7 @@
 								</div>
 							</div>
 						<div class="row">
-							{!! Form::submit('Create', ['class' => 'btn grey waves-effect']) !!}
+							{!! Form::submit('Update', ['class' => 'btn grey waves-effect']) !!}
 						</div>
 					{!! Form::close() !!}
 				</div>

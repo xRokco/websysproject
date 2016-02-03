@@ -86,6 +86,8 @@ Route::group(['middleware' => 'web'], function () {
     // This is the route to unattend an event 
     Route::get('/events/details/unattend/{id}','EventController@unattendEvent');
 
+    Route::get('/admin/attendees/{id}','EventController@getAttendees');
+
     //Route to return the about our team page
     Route::get('about', function () {
         return view('about');

@@ -30,7 +30,11 @@ class HomeController extends Controller
         $events = events::all();
 
         //Returns the events view along with the $events array containing the query results from above
-        return view('admin/admin', ['events' => $events]);
+        if(\Auth::user()->admin==1){
+            return view('admin/admin', ['events' => $events]);
+        }else{
+            return redirect('events');
+        }
     }
 
     public function editUserInfo() 
