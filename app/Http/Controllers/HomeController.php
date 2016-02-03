@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\User;
+use App\events;
 
 class HomeController extends Controller
 {
@@ -23,9 +24,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+  public function index()
     {
-        
+        //Gets all the event details from the event database table
+        $events = events::all();
+
+        //Returns the events view along with the $events array containing the query results from above
+        return view('admin/admin', ['events' => $events]);
     }
 
     public function editUserInfo() 
@@ -47,5 +52,14 @@ class HomeController extends Controller
 
         return redirect('dash');
     }
+
+     public function deleteEvent($id)  
+    {
+        if(\Auth::user()->admin==1){
+                events::destroy($id);
+                Rsvp::where('eventid',$id)->delete();
+            }
+            return redirect('admin/admin');
+    } 
 
 }

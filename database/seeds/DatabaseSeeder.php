@@ -45,7 +45,7 @@ class EventsTableSeeder extends Seeder {
        "city" => "London",
        "venue" => "Wembley Stadium",
        "price" => "149",
-       "information" => "Britan has a problem and that problem is Muslims. Find out what you can do to fix this problem at this event.",
+       "information" => "Britain has a problem and that problem is Muslims. Find out what you can do to fix this problem at this event.",
        "capacity" => "60000",
        "date" => "2016-03-27",
        "created_at" => "2016-01-21 14:15:23",

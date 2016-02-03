@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Request;
+use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -123,7 +123,7 @@ class EventController extends Controller
                 events::destroy($id);
                 Rsvp::where('eventid',$id)->delete();
             }
-            return redirect('events');
+            return redirect('admin');
     } 
         /**
          * Display the specified resource.
@@ -142,9 +142,10 @@ class EventController extends Controller
          * @param  int  $id
          * @return \Illuminate\Http\Response
          */
-        public function edit($id)
+        public function editEventInfo($id)
         {
-            //
+             $event = \DB::table('events')->select('events.*')->where('id', '=', $id)->first();
+        return view('admin/edit',['event' => $event]);
         }
 
         /**
@@ -156,7 +157,28 @@ class EventController extends Controller
          */
         public function update(Request $request, $id)
         {
-            //
+
+        $name = $request->input('name');
+        $venue = $request->input('venue');
+        $city = $request->input('city');
+        $price = $request->input('price');
+        $information = $request->input('information');
+        $capacity = $request->input('capacity');
+        $date = $request->input('date');
+        $image = $request->input('image');
+
+        events::where('id', $id)->update(['name'=>$name, 'venue'=>$venue, 'city'=>$city, 'price'=>$price, 'information'=>$information, 'capacity'=>$capacity, 'date'=>$date, 'image'=>$image]);
+
+        $imgName = events::latest()->first()->id . "." . Input::file('image')->getClientOriginalExtension(); //gets the event ID and concat on the imaage file extension that was uploaded 
+        Input::file('image')->move(__DIR__.'/../../../public/img/event_images',$imgName); //moves the uploaded image from the tmp directory to a premanant one (/public/img/event_images) and renames it to <eventID>.<fileExt>
+        
+        $image = events::latest()->first();//returns the latest event added to the table (the one just added above)
+        $image->image = $imgName; //adds the image name from above to the image column of the latest event
+        $image->save(); //saves the above action
+
+
+
+        return redirect('admin');
         }
 
         /**

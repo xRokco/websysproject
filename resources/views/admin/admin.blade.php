@@ -13,8 +13,8 @@
                 <div id="description" class="col s12">
                 	<br><br>
                     <div class="container">
-                    	@if ($rsvp)
-				            @foreach ($rsvp as $event)
+                    	@if ($events)
+				            @foreach ($events as $event)
 				                <div class="row grey lighten-5 valign-wrapper" id="event">
 				                    <!-- Event Image -->
 				                    <div class="col center s3">
@@ -30,10 +30,10 @@
 				                    
 				                    <!-- Event Details -->
 				                    <div class="col s3" id="test">
-				                        <p class="condensed light left-align valign-wrapper"><i class="material-icons">today</i>{{ $event->date }}</p>
-				                        <p class="condensed light left-align valign-wrapper"><i class="material-icons">location_on</i>{{ $event->venue }}, {{ $event->city }}</p>
-				                        <p class="condensed light left-align valign-wrapper"><i class="material-icons">payment</i>&euro;{{ $event->price }}</p>
-				                        <a class="btn teal lighten-1" href="events/details/{{ $event->id }}">View Event</a>
+				                        
+				                        <a class="btn teal lighten-1" href="events/details/{{ $event->id }}">Attendees</a>
+				                        <a class="btn teal lighten-1" href="admin/edit/{{ $event->id }}">Edit Event</a>
+				                        <a class="btn teal lighten-1" href="admin/delete/{{ $event->id }}">Delete Event</a>
 				                    </div>
 				                </div>
 				            @endforeach

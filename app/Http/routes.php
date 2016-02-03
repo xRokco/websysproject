@@ -35,6 +35,10 @@ Route::group(['middleware' => 'web'], function () {
     //Route to return the create event page
     Route::get('create', 'EventController@create');
 
+    //Route to return the admin page
+    Route::get('admin', 'HomeController@index');
+
+
     //Route to be called when submit on create events page is clicked
     Route::post('events','EventController@store');
 
@@ -63,12 +67,15 @@ Route::group(['middleware' => 'web'], function () {
 
     //Route to return the edit user info page.
     Route::get('account', 'HomeController@editUserInfo');
+
+     //Route to return the edit event info page.
+    Route::get('admin/edit/{id}', 'EventController@editEventInfo');
     
     //This is the route to print your ticket
     Route::get('/events/details/print/{id}','EventController@printEventTicket');
 
     //This is the route to delete an event
-    Route::get('/events/delete/{id}','EventController@deleteEvent');
+    Route::get('admin/delete/{id}','EventController@deleteEvent');
 
     //This is the route for the rsvp page
     Route::get('dash', 'EventController@showUserEvents');
