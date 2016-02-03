@@ -52,7 +52,7 @@ class EventController extends Controller
      */
     public function store()
     {
-        $input = Request::all(); //takes all the details from the create event form when submitted
+        $input = \Request::all(); //takes all the details from the create event form when submitted
 
         events::create($input); //creates a new event with these details
 
