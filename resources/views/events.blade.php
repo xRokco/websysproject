@@ -28,7 +28,11 @@
                         <p class="condensed light left-align valign-wrapper"><i class="material-icons">today</i>{{ $event->date }}</p>
                         <p class="condensed light left-align valign-wrapper"><i class="material-icons">location_on</i>{{ $event->venue }}, {{ $event->city }}</p>
                         <p class="condensed light left-align valign-wrapper"><i class="material-icons">payment</i>&euro;{{ $event->price }}</p>
-                        <a class="btn teal lighten-1" href="events/details/{{ $event->id }}">View Event</a>
+                        @if(Auth::check())
+                            <a class="btn teal lighten-1" href="events/details/{{ $event->id }}">View Event</a>
+                        @else
+                            <a class="btn teal lighten-1" href="/login">Login to view</a>
+                        @endif
                     </div>
                 </div>
             @endforeach
