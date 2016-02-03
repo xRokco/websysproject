@@ -88,6 +88,19 @@ class EventController extends Controller
         }
     }
 
+    public function printAttendees($id)
+    {
+        if (\Auth::check()) { //checks if user is logged in
+            if(\Auth::user()->admin==1){ //checks that the logged in user is an admin
+                return view('admin/printall')->with('atnd', $id);
+            }else{
+                return redirect('events'); //otherwise redirects to the login page
+            }
+        } else {    
+            return redirect('events'); //otherwise redirects to the login page
+        }
+    }
+
     public function printEventTicket($id)
     {
         if (\Auth::check()) { //checks if user is logged in
