@@ -185,14 +185,19 @@ class EventController extends Controller
             $date = $request->input('date');
             $image = $request->input('image');
 
-            events::where('id', $id)->update(['name'=>$name, 'venue'=>$venue, 'city'=>$city, 'price'=>$price, 'information'=>$information, 'capacity'=>$capacity, 'date'=>$date, 'image'=>$image]);
-
-            $imgName = $id . "." . Input::file('image')->getClientOriginalExtension(); //gets the event ID and concat on the imaage file extension that was uploaded 
-            Input::file('image')->move(__DIR__.'/../../../public/img/event_images',$imgName); //moves the uploaded image from the tmp directory to a premanant one (/public/img/event_images) and renames it to <eventID>.<fileExt>
             
-            $image = events::where('id', $id)->first();//returns the same event as the one being updated
-            $image->image = $imgName; //adds the image name from above to the image column of the latest event
-            $image->save(); //saves the above action
+
+            if(Input::hasfile('image')){
+                events::where('id', $id)->update(['name'=>$name, 'venue'=>$venue, 'city'=>$city, 'price'=>$price, 'information'=>$information, 'capacity'=>$capacity, 'date'=>$date, 'image'=>$image]);
+                $imgName = $id . "." . Input::file('image')->getClientOriginalExtension(); //gets the event ID and concat on the imaage file extension that was uploaded 
+                Input::file('image')->move(__DIR__.'/../../../public/img/event_images',$imgName); //moves the uploaded image from the tmp directory to a premanant one (/public/img/event_images) and renames it to <eventID>.<fileExt>
+                
+                $image = events::where('id', $id)->first();//returns the same event as the one being updated
+                $image->image = $imgName; //adds the image name from above to the image column of the latest event
+                $image->save(); //saves the above action
+            }else{
+                events::where('id', $id)->update(['name'=>$name, 'venue'=>$venue, 'city'=>$city, 'price'=>$price, 'information'=>$information, 'capacity'=>$capacity, 'date'=>$date]);
+            }
 
 
 
