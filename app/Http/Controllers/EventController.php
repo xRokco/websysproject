@@ -119,6 +119,7 @@ class EventController extends Controller
                 ->join('users', 'users.id', '=', 'rsvp.userid')
                 ->select('events.*')
                 ->where('rsvp.userid', '=', \Auth::user()->id)
+                ->where('rsvp.deleted_at', NULL)
                 ->distinct()
                 ->get();
 
@@ -129,8 +130,7 @@ class EventController extends Controller
     // Database insertion links user to event
     public function attendEvent($id) 
     {
-        \DB::table('rsvp')->insert(
-        ['userid' => \Auth::user()->id, 'eventid' => $id]);
+        \DB::table('rsvp')->insert(['userid' => \Auth::user()->id, 'eventid' => $id]);
         return redirect('dash');     
     }
 
@@ -138,8 +138,8 @@ class EventController extends Controller
     //Database deletion removes link between user and event
     public function unattendEvent($id) 
     {
-        \DB::table('rsvp')->where(
-                ['userid' => \Auth::user()->id, 'eventid' => $id])->delete();
+        \DB::table('rsvp')->where(['userid' => \Auth::user()->id, 'eventid' => $id])->delete();
+        Rsvp::where('eventid',$id)->delete();
                 return redirect('dash');     
     }
 
