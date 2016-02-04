@@ -1,27 +1,59 @@
-## Laravel PHP Framework
+# websysproject
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+To get this up and running you need to do a few things. 
+Assuming Ubuntu - instal MySQL server:
+sudo apt-get install mysql-server
+And choose a password for the root user as it installs.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+Install php:
+sudo apt-get install php5-common libapache2-mod-php5 php5-cli
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+Install this - fixes some error I kept getting:
+sudo apt-get -y install php5-mysql
 
-## Official Documentation
+Make a database in mysql -
+Run this:
+mysql -u root -pWHATEVERPASSWORDYOUCHOSE
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+Once in mysql run this:
+CREATE DATABASE websysproject;
+(dont forget the semicolon)
 
-## Contributing
+Install composer:
+https://getcomposer.org/
+run this after composer has downloaded:
+sudo mv composer.phar /usr/local/bin/composer
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+edit your linux PATH. To do this edit .bashrc in your home directory and add these two lines
+PATH=~/.composer/vendor/bin:$PATH
+export PATH
 
-## Security Vulnerabilities
+Save the .bashrc file and restart your terminal window.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+Install Laravel with:
+composer global require "laravel/installer"
 
-### License
+Clone this repo with
+git clone https://github.com/xRokco/websysproject.git
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+This will create the websysproject folder in your home directory (assuming you ran the clone from your home directory.
+
+now create a file in the websysproject folder called .env
+Copy the contents of .env.example which is in the websysproject folder into .env and edit these lines:
+DB_DATABASE=websysproject  //your database name, created as websysproject up above
+DB_USERNAME=root          //database username, root will do here
+DB_PASSWORD=WHATEVERPASSWORDYOUCHOSE //password chose when you installed mysql
+
+Save and close .env
+
+Next make sure you are in the websysproject folder and run:
+php artisan migrate
+
+This creates the db tables if the details in .env are correct.
+Next run this:
+php artisan key:generate
+
+Project should be up and running now. Run this to start it up:
+php artisan serve
+
+Now you can go to http://localhost:8000 in your web browser to test and develope on your web app.
