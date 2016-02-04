@@ -88,6 +88,19 @@ class EventController extends Controller
         }
     }
 
+    public function printAttendees($id)
+    {
+        if (\Auth::check()) { //checks if user is logged in
+            if(\Auth::user()->admin==1){ //checks that the logged in user is an admin
+                return view('admin/printall')->with('atnd', $id);
+            }else{
+                return redirect('events'); //otherwise redirects to the login page
+            }
+        } else {    
+            return redirect('events'); //otherwise redirects to the login page
+        }
+    }
+
     public function printEventTicket($id)
     {
         if (\Auth::check()) { //checks if user is logged in
@@ -106,6 +119,7 @@ class EventController extends Controller
                 ->join('users', 'users.id', '=', 'rsvp.userid')
                 ->select('events.*')
                 ->where('rsvp.userid', '=', \Auth::user()->id)
+                ->where('rsvp.deleted_at', NULL)
                 ->distinct()
                 ->get();
 
@@ -116,8 +130,7 @@ class EventController extends Controller
     // Database insertion links user to event
     public function attendEvent($id) 
     {
-        \DB::table('rsvp')->insert(
-        ['userid' => \Auth::user()->id, 'eventid' => $id]);
+        \DB::table('rsvp')->insert(['userid' => \Auth::user()->id, 'eventid' => $id]);
         return redirect('dash');     
     }
 
@@ -125,8 +138,8 @@ class EventController extends Controller
     //Database deletion removes link between user and event
     public function unattendEvent($id) 
     {
-        \DB::table('rsvp')->where(
-                ['userid' => \Auth::user()->id, 'eventid' => $id])->delete();
+        \DB::table('rsvp')->where(['userid' => \Auth::user()->id, 'eventid' => $id])->delete();
+        Rsvp::where('eventid',$id)->delete();
                 return redirect('dash');     
     }
 

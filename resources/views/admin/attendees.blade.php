@@ -26,5 +26,6 @@
 				@endforeach
 				</tbody>
 			</table>
+			<h4 class="center"><a href="print/{{ $atnd }} ">Print all</a></h4>
 		</div>
 	@stop

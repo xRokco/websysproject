@@ -88,6 +88,8 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/admin/attendees/{id}','EventController@getAttendees');
 
+    Route::get('/admin/attendees/print/{id}','EventController@printAttendees');
+
     //Route to return the about our team page
     Route::get('about', function () {
         return view('about');
