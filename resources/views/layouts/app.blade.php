@@ -26,10 +26,11 @@
 		<body>
     
 			<nav class="red darken-2" role="navigation">
-				<div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">TRUMP</a>
+				<div class="nav-wrapper container"><a id="logo-container" href="/dash" class="brand-logo">TRUMP</a>
 				<ul class="right hide-on-med-and-down">
 					@if (Auth::check())     
 						<!-- Dropdown Trigger -->
+			<a style="margin:0px" class='dropdown-button btn transparent' href='#' data-beloworigin="true" data-hover='false' data-activates='dropdown1'>{{ Auth::user()->name }}</a>
 						<ul id='dropdown1' class='dropdown-content'>
 							<li><a href="{{ url('/dash') }}">Dash</a></li>
 							<li><a href="{{ url('/events') }}">Events</a></li>
