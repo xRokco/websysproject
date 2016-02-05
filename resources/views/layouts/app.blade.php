@@ -58,7 +58,7 @@
      <footer class="page-footer teal">
           <div class="footer-copyright">
             <div class="container">
-            Made by <a class="grey-text text-lighten-4" href="http://materializecss.com">Materialize</a>
+            
             <a class="grey-text text-lighten-4 right" href="{{ url('/about') }}">© Web Systems Group 2016</a>
             {{ Auth::guest() }}
             </div>
