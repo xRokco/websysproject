@@ -50,9 +50,20 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $input)
     {
-        $input = \Request::all(); //takes all the details from the create event form when submitted
+        //$input = \Request::all(); takes all the details from the create event form when submitted
+
+        $this->validate($input, [
+        'name' => 'required|max:40',
+        'venue' => 'required|max:30',
+        'city' => 'required|max:30',
+        'price' => 'required',
+        'information' => 'required',
+        'capacity' => 'required|numeric',
+        'date' => 'required|date',
+        'image' => 'image|required',
+        ]);
 
         events::create($input); //creates a new event with these details
 
@@ -189,6 +200,17 @@ class EventController extends Controller
         public function update(Request $request, $id)
         {
 
+            $this->validate($request, [
+            'name' => 'required|max:40',
+            'venue' => 'required|max:30',
+            'city' => 'required|max:30',
+            'price' => 'required',
+            'information' => 'required',
+            'capacity' => 'required|numeric',
+            'date' => 'required|date',
+            'image' => 'image',
+            ]);
+
             $name = $request->input('name');
             $venue = $request->input('venue');
             $city = $request->input('city');
@@ -199,7 +221,6 @@ class EventController extends Controller
             $image = $request->input('image');
 
             
-
             if(Input::hasfile('image')){
                 events::where('id', $id)->update(['name'=>$name, 'venue'=>$venue, 'city'=>$city, 'price'=>$price, 'information'=>$information, 'capacity'=>$capacity, 'date'=>$date, 'image'=>$image]);
                 $imgName = $id . "." . Input::file('image')->getClientOriginalExtension(); //gets the event ID and concat on the imaage file extension that was uploaded 

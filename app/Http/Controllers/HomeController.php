@@ -47,6 +47,13 @@ class HomeController extends Controller
 
     public function update(Request $request) 
     {
+        $this->validate($request, [
+        'name' => 'required|max:30',
+        'surname' => 'required|max:30',
+        'email' => 'required|max:30|unique:users',
+        'direction' => 'required|max:255',
+        ]);
+
         $name = $request->input('name');
         $surname = $request->input('surname');
         $email = $request->input('email');

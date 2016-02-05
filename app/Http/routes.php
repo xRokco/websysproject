@@ -33,7 +33,7 @@ Route::group(['middleware' => 'web'], function () {
     });
 
     //Route to return the create event page
-    Route::get('create', 'EventController@create');
+    Route::get('/admin/create', 'EventController@create');
 
     //Route to return the admin page
     Route::get('admin', 'HomeController@index');

@@ -10,6 +10,16 @@
       <br><br>
 </div>
 
+@if (count($errors) > 0)
+    <div class="alert alert-danger center red-text">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div class="container">
    			<div class="row">
         		<div class="col s6 offset-s3">
