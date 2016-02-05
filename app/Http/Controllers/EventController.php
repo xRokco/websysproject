@@ -252,9 +252,16 @@ class EventController extends Controller
             $date = Carbon::now();
 
             Message::create($input->all()); //creates a new event with these details
-            
+
             Message::latest()->first()->update(['date' => $date]);
 
             return redirect('/'); //redirects to events view when finished
+        }
+
+        public function markAsRead($id)
+        {
+            Message::where('id', $id)->delete();
+
+            return redirect('/admin/inbox');
         }
     }

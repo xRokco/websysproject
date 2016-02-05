@@ -48,6 +48,9 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::post('contact','EventController@contactUs');
 
+    Route::get('/admin/inbox/delete/{id}', 'EventController@markAsRead');
+
+
     //Route to return login page
     Route::get('/login', ['as' => 'login', function () {
         return view('auth/login');
