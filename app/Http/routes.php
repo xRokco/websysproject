@@ -35,6 +35,10 @@ Route::group(['middleware' => 'web'], function () {
     //Route to return the create event page
     Route::get('/admin/create', 'EventController@create');
 
+    Route::get('/contact', function () {
+        return view('contact');
+    });
+
     //Route to return the admin page
     Route::get('admin', 'HomeController@index');
 
@@ -67,6 +71,8 @@ Route::group(['middleware' => 'web'], function () {
 
     //Route to return the edit user info page.
     Route::get('account', 'HomeController@editUserInfo');
+
+    Route::get('admin/inbox', 'HomeController@showInbox');
 
      //Route to return the edit event info page.
     Route::get('admin/edit/{id}', 'EventController@editEventInfo');

@@ -6,6 +6,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\User;
 use App\events;
+use App\Message;
 
 class HomeController extends Controller
 {
@@ -71,6 +72,19 @@ class HomeController extends Controller
                 Rsvp::where('eventid',$id)->delete();
             }
             return redirect('admin/admin');
-    } 
+    }
 
+    public function contactUs(Request $request)
+    {
+        
+    }
+
+    public function showInbox()
+    {
+        $messages = Message::all();
+        $readMessages = Message::withTrashed()->whereNotNull('deleted_at')->get();
+
+        return view('admin/inbox', ['messages' => $messages, 'readMessages' => $readMessages]);
+   
+    }
 }

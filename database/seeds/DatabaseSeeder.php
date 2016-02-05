@@ -14,8 +14,7 @@ class DatabaseSeeder extends Seeder
     	Eloquent::unguard();
          $this->call('EventsTableSeeder');
          $this->call('UsersTableSeeder');
-         
-
+         $this->call('MessagesTableSeeder');
     }
 }
 
@@ -129,5 +128,33 @@ class UsersTableSeeder extends Seeder {
         )
       );
     DB::table('users')->insert($users);
+  }
+}
+
+class MessagesTableSeeder extends Seeder {
+  public function run() {
+    DB::table('messages')->delete();
+
+  $messages = array(
+      array(
+       "id" => "1",
+       "name" => "Mary Whatever",
+       "email" => "mary@whatever.com",
+       "subject" => "I found a bug",
+       "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
+       "date" => "2016-01-01 14:00:00",
+       "deleted_at" => NULL
+        ),
+      array(
+       "id" => "2",
+       "name" => "John Someone",
+       "email" => "john@whatever.com",
+       "subject" => "I also found a bug",
+       "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
+       "date" => "2016-01-01 14:00:00",
+       "deleted_at" => "2016-01-02 14:00:00"
+        )
+      );
+    DB::table('messages')->insert($messages);
   }
 }
