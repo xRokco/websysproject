@@ -21,7 +21,8 @@
 		<div class="container">
    			<div class="row">
         		<div class="col s6 offset-s3">
-					{!! Form::model(['method' => 'PATCH', 'action' => ['EventController@update']]) !!}						<div class="row">
+						{!! Form::open(['url' => '/contact']) !!}
+						<div class="row">
 							{!! Form::label('name', 'Your own name:') !!}
 							{!! Form::text('name') !!}
 						</div>

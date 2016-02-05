@@ -27,7 +27,7 @@
                                 <a href="inbox/delete/{{ $message->id }}"><i class="material-icons right">delete</i></a>
                                 <p>{{ $message->name }}</p>
                                 <p>{{ $message->email }}</p>
-                                <p>{{ $message->date }}</p>
+                                <p>{{ $message->created_at }}</p>
                             </div>
                         </div>
                     </div>

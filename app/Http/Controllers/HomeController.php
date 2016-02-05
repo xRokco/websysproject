@@ -74,11 +74,6 @@ class HomeController extends Controller
             return redirect('admin/admin');
     }
 
-    public function contactUs(Request $request)
-    {
-        
-    }
-
     public function showInbox()
     {
         $messages = Message::all();

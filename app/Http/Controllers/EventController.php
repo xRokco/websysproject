@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use App\events;
 use App\Rsvp;
 use Illuminate\Support\Facades\Input;
+use App\Message;
+use Carbon\Carbon;
 
 class EventController extends Controller
 {
@@ -58,14 +60,14 @@ class EventController extends Controller
         'name' => 'required|max:40',
         'venue' => 'required|max:30',
         'city' => 'required|max:30',
-        'price' => 'required',
+        'price' => 'required|numeric',
         'information' => 'required',
         'capacity' => 'required|numeric',
         'date' => 'required|date',
         'image' => 'image|required',
         ]);
 
-        events::create($input); //creates a new event with these details
+        events::create($input->all()); //creates a new event with these details
 
         $name = events::latest()->first()->id . "." . Input::file('image')->getClientOriginalExtension(); //gets the event ID and concat on the imaage file extension that was uploaded 
         Input::file('image')->move(__DIR__.'/../../../public/img/event_images',$name); //moves the uploaded image from the tmp directory to a premanant one (/public/img/event_images) and renames it to <eventID>.<fileExt>
@@ -204,7 +206,7 @@ class EventController extends Controller
             'name' => 'required|max:40',
             'venue' => 'required|max:30',
             'city' => 'required|max:30',
-            'price' => 'required',
+            'price' => 'required|numeric',
             'information' => 'required',
             'capacity' => 'required|numeric',
             'date' => 'required|date',
@@ -238,14 +240,21 @@ class EventController extends Controller
         return redirect('admin');
         }
 
-        /**
-         * Remove the specified resource from storage.
-         *
-         * @param  int  $id
-         * @return \Illuminate\Http\Response
-         */
-        public function destroy($id)
+        public function contactUs(Request $input)
         {
+            $this->validate($input, [
+            'name' => 'required|max:60',
+            'subject' => 'required|max:30',
+            'email' => 'required|max:30',
+            'message' => 'required',
+            ]);
+
+            $date = Carbon::now();
+
+            Message::create($input->all()); //creates a new event with these details
             
+            Message::latest()->first()->update(['date' => $date]);
+
+            return redirect('/'); //redirects to events view when finished
         }
     }

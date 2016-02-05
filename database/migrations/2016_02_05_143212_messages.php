@@ -18,7 +18,8 @@ class Messages extends Migration
             $table->string('email');
             $table->string('subject');
             $table->text('message');
-            $table->dateTime('date');
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at');
             $table->softDeletes();
         });
     }

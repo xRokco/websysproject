@@ -142,7 +142,8 @@ class MessagesTableSeeder extends Seeder {
        "email" => "mary@whatever.com",
        "subject" => "I found a bug",
        "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
-       "date" => "2016-01-01 14:00:00",
+       "created_at" => "2016-01-01 14:00:00",
+       "updated_at" => "2016-01-01 14:00:00",
        "deleted_at" => NULL
         ),
       array(
@@ -151,7 +152,8 @@ class MessagesTableSeeder extends Seeder {
        "email" => "john@whatever.com",
        "subject" => "I also found a bug",
        "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
-       "date" => "2016-01-01 14:00:00",
+       "created_at" => "2016-01-01 14:00:00",
+       "updated_at" => "2016-01-01 14:00:00",
        "deleted_at" => "2016-01-02 14:00:00"
         )
       );

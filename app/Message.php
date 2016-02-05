@@ -9,4 +9,7 @@ class Message extends Model
 {
     use SoftDeletes;
     protected $softDelete = true;
+
+    protected $fillable = array('name', 'email', 'subject', 'message');
+
 }

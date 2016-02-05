@@ -46,6 +46,8 @@ Route::group(['middleware' => 'web'], function () {
     //Route to be called when submit on create events page is clicked
     Route::post('events','EventController@store');
 
+    Route::post('contact','EventController@contactUs');
+
     //Route to return login page
     Route::get('/login', ['as' => 'login', function () {
         return view('auth/login');
