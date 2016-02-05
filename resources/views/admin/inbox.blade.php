@@ -40,14 +40,13 @@
             </div>
             @endforeach
 
-            @if(! isset($message))
-                <h4 class="center">No unread messages</h4>
-            @endif
+         
 
             <br><br>
                 <div class="divider"></div>
                 <br><br>
 
+        @if ($readMessages)
             @foreach ($readMessages as $readMessage)
             <div class="card">
                 <div class="col s12  offset-m2 l6 offset-l3">
@@ -75,9 +74,7 @@
                 </div>
             </div>
             @endforeach
-        @if(! isset($readMessage))
-                <h4 class="center">No read messages</h4>
-        @endif
+       
 
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
