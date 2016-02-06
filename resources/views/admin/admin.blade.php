@@ -47,7 +47,7 @@
 
         <div id="inbox" class="col s12">
 			<div class="section no-pad-bot" id="index-banner">
-            	<h1 class="header center teal-text">Inbox</h1>
+            	<h1 class="header center red-text">Inbox</h1>
             	<br>
             	<div class="divider"></div>
 			</div>
