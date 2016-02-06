@@ -40,6 +40,8 @@ class HomeController extends Controller
         }
     }
 
+    //Called when the user clicks edit on the dash
+    //Returns the auth users details and then returns the account view
     public function editUserInfo() 
     {
 
@@ -47,7 +49,9 @@ class HomeController extends Controller
         return view('account',['user' => $user]);
     }
 
-
+    //Called when update is clicked on the account page
+    //Adds the new values to the users DB while validating the input
+    //Returns redirect to dash view
     public function update(Request $request) 
     {
         $this->validate($request, [
@@ -67,6 +71,8 @@ class HomeController extends Controller
         return redirect('dash');
     }
 
+    //Called when delete is clicked on the admin page
+    //Checks the user is an admin and deletes the selected event
      public function deleteEvent($id)  
     {
         if(\Auth::user()->admin==1){
