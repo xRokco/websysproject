@@ -36,6 +36,7 @@
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">payment</i>&euro;99</p>
             <!-- Check if clicked attend already -->
             @if($rsvp)
+                    
                 <a class="btn" href="print/{{ $event }}">Print Ticket</a>
                 <a class="btn" href="unattend/{{ $event }}">Unattend Event</a>
                 @else
