@@ -148,13 +148,33 @@ class MessagesTableSeeder extends Seeder {
         ),
       array(
        "id" => "2",
+       "name" => "Sue Jester",
+       "email" => "sue@whatever.com",
+       "subject" => "Here's an idea",
+       "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
+       "created_at" => "2016-01-05 14:00:00",
+       "updated_at" => "2016-01-05 14:00:00",
+       "deleted_at" => NULL
+        ),
+      array(
+       "id" => "3",
+       "name" => "Mark Whatever",
+       "email" => "mark@whatever.com",
+       "subject" => "I need help!",
+       "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
+       "created_at" => "2015-12-28 14:00:00",
+       "updated_at" => "2015-12-28 14:00:00",
+       "deleted_at" => "2015-12-29 14:00:00"
+        ),
+      array(
+       "id" => "4",
        "name" => "John Someone",
        "email" => "john@whatever.com",
        "subject" => "I also found a bug",
        "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
        "created_at" => "2016-01-01 14:00:00",
        "updated_at" => "2016-01-01 14:00:00",
-       "deleted_at" => "2016-01-02 14:00:00"
+       "deleted_at" => "2015-12-29 15:00:00"
         )
       );
     DB::table('messages')->insert($messages);

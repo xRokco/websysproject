@@ -6,11 +6,11 @@
 	<div class="row">
 		<div class="col s12">
 			<ul class="tabs">
-				<li class="tab col s6"><a href="#description">Events</a></li>
-				<li class="tab col s6"><a href="#location">Inbox</a></li>
+				<li class="tab col s6"><a href="#events">Events</a></li>
+				<li class="tab col s6"><a href="#inbox">Inbox</a></li>
 			</ul>
 		</div>
-		<div id="description" class="col s12">
+		<div id="events" class="col s12">
 			<br><br>
 			<div class="container">
             	@if ($events)
@@ -44,19 +44,17 @@
         </div>
 
 
-        <div id="location" class="col s12">
+        <div id="inbox" class="col s12">
 	        <?php
 	        	use App\Message;
-	        	$messages = Message::all();
-				$readMessages = Message::withTrashed()->whereNotNull('deleted_at')->get();
+	        	$messages = Message::orderBy('created_at', 'desc')->get();
+				$readMessages = Message::withTrashed()->whereNotNull('deleted_at')->orderBy('created_at', 'desc')->get();
 	        ?>
 
 			<div class="section no-pad-bot" id="index-banner">
-            	<br><br>
             	<h1 class="header center teal-text">Inbox</h1>
-            	<br><br>
+            	<br>
             	<div class="divider"></div>
-            	<br><br>
 			</div>
 
 			@foreach ($messages as $message)
@@ -72,7 +70,7 @@
 			                    <div class="col s9">
 			                        <div class="card-content">
 			                            <span class="card-title activator grey-text text-darken-4">{{ $message->subject }}<i class="material-icons right">expand_more</i></span>
-			                            <a href="inbox/delete/{{ $message->id }}"><i class="material-icons right">delete</i></a>
+			                            <a href="/admin/inbox/delete/{{ $message->id }}"><i class="material-icons right">done</i></a>
 			                            <p>{{ $message->name }}</p>
 			                            <p>{{ $message->email }}</p>
 			                            <p>{{ $message->created_at }}</p>
@@ -90,6 +88,7 @@
 
 			@if(! isset($message))
 			    <h4 class="center">No unread messages</h4>
+			    <div class="divider"></div>
 			@endif
 
 			<h4 class="center">Read Messages:</h4>
@@ -110,7 +109,7 @@
 			                            <span class="card-title activator grey-text text-darken-4">{{ $readMessage->subject }}<i class="material-icons right">expand_more</i></span>
 			                            <p>{{ $readMessage->name }}</p>
 			                            <p>{{ $readMessage->email }}</p>
-			                            <p>{{ $readMessage->date }}</p>
+			                            <p>{{ $readMessage->created_at }}</p>
 			                        </div>
 			                    </div>
 			                </div>

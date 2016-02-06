@@ -262,6 +262,6 @@ class EventController extends Controller
         {
             Message::where('id', $id)->delete();
 
-            return redirect('/admin');
+            return redirect('/admin#inbox');
         }
     }
