@@ -38,8 +38,8 @@
             @if($rsvp)
                     <div title="Add to Calendar" class="addeventatc">
                     Add to Calendar
-                    <span class="start">{{ $ev->date }} {{ $ev->start_date }}</span>
-                    <span class="end">{{ $ev->date }} {{ $ev->end_date }}</span>
+                    <span class="start">{{ $ev->date }} {{ $ev->start_time }}</span>
+                    <span class="end">{{ $ev->date }} {{ $ev->end_time }}</span>
                     <span class="title">{{ $ev->name }}</span>
                     <span class="description">{{ $ev->information }}</span>
                     <span class="location">{{ $ev->venue}}, {{ $ev->city }}</span>
