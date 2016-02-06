@@ -45,10 +45,10 @@
                     <span class="location">{{ $ev->venue}}, {{ $ev->city }}</span>
                     <span class="date_format">MM/DD/YYYY</span>
                 </div>
-                <a class="btn" href="print/{{ $event }}">Print Ticket</a>
-                <a class="btn" href="unattend/{{ $event }}">Unattend Event</a>
+                <a class="btn red darken-3" href="print/{{ $event }}">Print Ticket</a>
+                <a class="btn red darken-3" href="unattend/{{ $event }}">Unattend Event</a>
                 @else
-                    <a class="btn" href="attend/{{ $event }}">Attend Event</a>
+                    <a class="btn red darken-3" href="attend/{{ $event }}">Attend Event</a>
             @endif
                     
                 </div>
@@ -57,8 +57,9 @@
             <div class="row">
                 <div class="col s12">
                   <ul class="tabs">
-                    <li class="tab col s6"><a href="#description">Description</a></li>
-                    <li class="tab col s6"><a href="#location">Directions</a></li>
+                    <li class="tab col s6"><a class="red-text" href="#description">Description</a></li>
+                    <li class="tab col s6"><a class="red-text" href="#location">Directions</a></li>
+                    <div class="indicator red" style="z-index:1"> </div>
                   </ul>
                 </div>
                 <div id="description" class="col s12">

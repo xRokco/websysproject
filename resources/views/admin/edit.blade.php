@@ -54,7 +54,7 @@
 							{!! Form::textarea('description', NULL, ['class' => 'materialize-textarea']) !!}
 						</div>
 						<div class="row file-field input-field">
-							<div class="btn">
+							<div class="btn red darken-3">
 								<span>File</span>
 								{!! Form::file('image') !!}
 								</div>
@@ -63,7 +63,7 @@
 								</div>
 							</div>
 						<div class="row">
-							{!! Form::submit('Update', ['class' => 'btn grey waves-effect']) !!}
+							{!! Form::submit('Update', ['class' => 'btn red darken-3 waves-effect']) !!}
 						</div>
 					{!! Form::close() !!}
 				</div>

@@ -3,7 +3,7 @@
     @section('content')
     	<div class="container">
       		<br><br>
-      		<h2 class="header center red-text text-lighten-2">Contact us</h2>
+      		<h2 class="header center red-text">Contact us</h2>
       		<p class="center">If you find a bug or have a suggestion, message us here to let us know.</p>
       		<br><br>
 		</div>
@@ -39,7 +39,7 @@
 							{!! Form::textarea('message', NULL, ['class' => 'materialize-textarea']) !!}
 						</div>
 						<div class="row">
-							{!! Form::submit('Create', ['class' => 'btn grey waves-effect']) !!}
+							{!! Form::submit('Send', ['class' => 'btn red darken-3 waves-effect']) !!}
 						</div>
 					{!! Form::close() !!}
 				</div>

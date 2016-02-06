@@ -41,7 +41,7 @@
 							{!! Form::text('direction') !!}
 						</div>
 						<div class="row">
-							{!! Form::submit('Update', ['class' => 'btn grey waves-effect']) !!}
+							{!! Form::submit('Update', ['class' => 'btn red darken-3 waves-effect']) !!}
 						</div>
 					{!! Form::close() !!}
 				</div>

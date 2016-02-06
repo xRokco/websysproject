@@ -6,8 +6,9 @@
             <div class="row">
                 <div class="col s12">
                   <ul class="tabs">
-                    <li class="tab col s6"><a href="#description">Events</a></li>
-                    <li class="tab col s6"><a href="#location">User Details</a></li>
+                    <li class="tab col s6"><a class="red-text" href="#description">Events</a></li>
+                    <li class="tab col s6"><a class="red-text" href="#location">User Details</a></li>
+                    <div class="indicator red" style="z-index:1"> </div>
                   </ul>
                 </div>
                 <div id="description" class="col s12">
@@ -38,7 +39,7 @@
 				                </div>
 				            @endforeach
 				        @else
-				        	<h4 class="center orange-text">You aren't attending any events yet. Checkout our <a href="{{ url('events') }}" >events</a> page.</h4>
+				        	<h4 class="center red-text">You aren't attending any events yet. Checkout our <a class="red-text text-lighten-3" href="{{ url('events') }}" >events</a> page.</h4>
 				        @endif
             			<br>
        				</div>  

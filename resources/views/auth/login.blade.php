@@ -4,7 +4,7 @@
 
 <div class="container">
       <br><br>
-      <h2 class="header center red-text text-lighten-2">Please login</h2>
+      <h2 class="header center red-text">Please login</h2>
       <br><br>
 </div>
 
@@ -33,8 +33,8 @@
                         </span>
                     @endif
                 </div>
-                    <button type="submit" class="btn waves-effect grey">Login</button>
-                    <a class="btn waves-effect grey" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+                    <button type="submit" class="btn waves-effect red darken-3">Login</button>
+                    <a class="btn waves-effect red darken-3" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
             </form>
         </div>
     </div>

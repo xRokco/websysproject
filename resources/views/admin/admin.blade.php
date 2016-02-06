@@ -6,8 +6,9 @@
 	<div class="row">
 		<div class="col s12">
 			<ul class="tabs">
-				<li class="tab col s6"><a href="#events">Events</a></li>
-				<li class="tab col s6"><a href="#inbox">Inbox</a></li>
+				<li class="tab col s6"><a class="red-text" href="#events">Events</a></li>
+				<li class="tab col s6"><a class="red-text" href="#inbox">Inbox</a></li>
+                <div class="indicator red" style="z-index:1"> </div>
 			</ul>
 		</div>
 		<div id="events" class="col s12">
@@ -30,9 +31,9 @@
 				                    
 				            <!-- Event Details -->
 				            <div class="col s3" id="test"> 
-				                <a class="btn teal lighten-1" href="admin/attendees/{{ $event->id }}">Attendees</a>
-				                <a class="btn teal lighten-1" href="admin/edit/{{ $event->id }}">Edit Event</a>
-				                <a class="btn teal lighten-1" href="admin/delete/{{ $event->id }}">Delete Event</a>
+				                <a class="btn red darken-3" href="admin/attendees/{{ $event->id }}">Attendees</a>
+				                <a class="btn red darken-3" href="admin/edit/{{ $event->id }}">Edit Event</a>
+				                <a class="btn red darken-3" href="admin/delete/{{ $event->id }}">Delete Event</a>
 				            </div>
 				        </div>
 				    @endforeach

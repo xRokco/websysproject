@@ -6,7 +6,7 @@
     
     <div class="container">
         <div class="section no-pad-bot" id="index-banner">
-            <h4 class="light teal-text">Browse Events</h5>
+            <h4 class="light red-text">Browse Events</h5>
             <div class="divider"></div>
             <br>
             @foreach ($events as $event)
@@ -33,9 +33,9 @@
                         <p class="condensed light left-align valign-wrapper"><i class="material-icons">location_on</i>{{ $event->venue }}, {{ $event->city }}</p>
                         <p class="condensed light left-align valign-wrapper"><i class="material-icons">payment</i>&euro;{{ $event->price }}</p>
                         @if(Auth::check())
-                            <a class="btn teal lighten-1" href="events/details/{{ $event->id }}">View Event</a>
+                            <a class="btn red darken-3 lighten-1" href="events/details/{{ $event->id }}">View Event</a>
                         @else
-                            <a class="btn teal lighten-1" href="/login">Login to view</a>
+                            <a class="btn red darken-3 lighten-1" href="/login">Login to view</a>
                         @endif
                     </div>
                 </div>

@@ -4,7 +4,7 @@
 
 <div class="container">
       <br><br>
-      <h2 class="header center orange-text">Please Register</h2>
+      <h2 class="header center red-text">Please Register</h2>
       <br><br>
 </div>
 
@@ -104,7 +104,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn red darken-3 btn-primary">
                                     <i class="fa fa-btn fa-user"></i>Register
                                 </button>
                             </div>
