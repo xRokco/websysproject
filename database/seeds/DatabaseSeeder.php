@@ -32,6 +32,8 @@ class EventsTableSeeder extends Seeder {
        "information" => "Lets make Ireland Great Again! Listen to a man who went to the Wharton School of Finance tell you how to fix all of Irelands problems.",
        "capacity" =>"20000",
        "date" => "2016-12-21",
+       "start_time" => "11:00:00",
+       "end_time" => "14:00:00",
        "created_at" => "2016-01-21 14:06:45",
        "updated_at" => "2016-01-21 14:06:45",
        "image" => "1.jpg",
@@ -47,6 +49,8 @@ class EventsTableSeeder extends Seeder {
        "information" => "Britain has a problem and that problem is Muslims. Find out what you can do to fix this problem at this event.",
        "capacity" => "60000",
        "date" => "2016-03-27",
+       "start_time" => "11:00:00",
+       "end_time" => "14:00:00",
        "created_at" => "2016-01-21 14:15:23",
        "updated_at" => "2016-01-21 14:15:23",
        "image" => "2.jpg",
@@ -61,6 +65,8 @@ class EventsTableSeeder extends Seeder {
        "information" => "Lets build a Giant wall, I know you are sick of walls after the Berlin wall but my wall will be better.",
        "capacity" => "50000",
        "date" => "2016-08-25",
+       "start_time" => "11:00:00",
+       "end_time" => "13:00:00",
        "created_at" => "2016-01-21 14:16:58",
        "updated_at" => "2016-01-21 14:16:58",
        "image" => "3.jpg",
@@ -75,6 +81,8 @@ class EventsTableSeeder extends Seeder {
        "information" => "It’s freezing and snowing in New York – we need global warming! Find out why rising sea levels are actually good for the Netherlands.",
        "capacity" =>"45000",
        "date" => "2016-05-04",
+       "start_time" => "13:00:00",
+       "end_time" => "15:00:00",
        "created_at" => "2016-01-21 14:17:48",
        "updated_at" => "2016-01-21 14:17:48",
        "image" => "4.jpg",
@@ -148,33 +156,13 @@ class MessagesTableSeeder extends Seeder {
         ),
       array(
        "id" => "2",
-       "name" => "Sue Jester",
-       "email" => "sue@whatever.com",
-       "subject" => "Here's an idea",
-       "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
-       "created_at" => "2016-01-05 14:00:00",
-       "updated_at" => "2016-01-05 14:00:00",
-       "deleted_at" => NULL
-        ),
-      array(
-       "id" => "3",
-       "name" => "Mark Whatever",
-       "email" => "mark@whatever.com",
-       "subject" => "I need help!",
-       "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
-       "created_at" => "2015-12-28 14:00:00",
-       "updated_at" => "2015-12-28 14:00:00",
-       "deleted_at" => "2015-12-29 14:00:00"
-        ),
-      array(
-       "id" => "4",
        "name" => "John Someone",
        "email" => "john@whatever.com",
        "subject" => "I also found a bug",
        "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
        "created_at" => "2016-01-01 14:00:00",
        "updated_at" => "2016-01-01 14:00:00",
-       "deleted_at" => "2015-12-29 15:00:00"
+       "deleted_at" => "2016-01-02 14:00:00"
         )
       );
     DB::table('messages')->insert($messages);
