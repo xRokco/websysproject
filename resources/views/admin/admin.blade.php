@@ -13,44 +13,38 @@
 		</div>
 		<div id="events" class="col s12">
 			<br><br>
-			<div class="container">
-            	@if ($events)
-					@foreach ($events as $event)
-						<div class="row grey lighten-5 valign-wrapper" id="event">
-				        	<!-- Event Image -->
-				            <div class="col center s3">
-				                <a href="events/details/{{ $event->id }}"><img class="responsive-img circle" src='img/event_images/{{ $event->image }}' style='height:150px;width:150px;background-size:cover;' /></a>
-				            </div>
-				                    
-				            <!-- Event Description -->
-				            <div class="left-align col s5">
-				                <h5>{{ $event->name }}</h5>
-				                <p class="light">Organiser<p>
-				                <p>{{ $event->information }}</p>
-				            </div>
-				                    
-				            <!-- Event Details -->
-				            <div class="col s3" id="test"> 
-				                <a class="btn red darken-3" href="admin/attendees/{{ $event->id }}">Attendees</a>
-				                <a class="btn red darken-3" href="admin/edit/{{ $event->id }}">Edit Event</a>
-				                <a class="btn red darken-3" href="admin/delete/{{ $event->id }}">Delete Event</a>
-				            </div>
-				        </div>
-				    @endforeach
-				@else
-				  	<h4 class="center orange-text">You aren't attending any events yet. Checkout our <a href="{{ url('events') }}" >events</a> page.</h4>
-				@endif
-            	<br>
-       		</div>  
+        	@if ($events)
+				@foreach ($events as $event)
+					<div class="row grey lighten-5 valign-wrapper" id="event">
+			        	<!-- Event Image -->
+			            <div class="col center s3">
+			                <a href="events/details/{{ $event->id }}"><img class="responsive-img circle" src='img/event_images/{{ $event->image }}' style='height:150px;width:150px;background-size:cover;' /></a>
+			            </div>
+			                    
+			            <!-- Event Description -->
+			            <div class="left-align col s5">
+			                <h5>{{ $event->name }}</h5>
+			                <p class="light">Organiser<p>
+			                <p>{{ $event->information }}</p>
+			            </div>
+			                    
+			            <!-- Event Details -->
+			            <div class="col s3" id="test"> 
+			                <a class="btn red darken-3" href="admin/attendees/{{ $event->id }}">Attendees</a>
+			                <a class="btn red darken-3" href="admin/edit/{{ $event->id }}">Edit Event</a>
+			                <a class="btn red darken-3" href="admin/delete/{{ $event->id }}">Delete Event</a>
+			            </div>
+			        </div>
+			    @endforeach
+			@else
+			  	<h4 class="center orange-text">You aren't attending any events yet. Checkout our <a href="{{ url('events') }}" >events</a> page.</h4>
+			@endif
+        	<br>
         </div>
 
 
         <div id="inbox" class="col s12">
-			<div class="section no-pad-bot" id="index-banner">
-            	<h1 class="header center red-text">Inbox</h1>
-            	<br>
-            	<div class="divider"></div>
-			</div>
+			<br><br>
 
 			@foreach ($messages as $message)
 			    <div class="card grey lighten-5">
