@@ -60,9 +60,7 @@
      <footer class="page-footer teal">
           <div class="footer-copyright">
             <div class="container">
-            
             <a class="grey-text text-lighten-4 right" href="{{ url('/about') }}">© Web Systems Group 2016</a>
-            {{ Auth::guest() }}
             </div>
           </div>
     </footer>
