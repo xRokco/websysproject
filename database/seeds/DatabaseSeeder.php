@@ -26,7 +26,7 @@ class EventsTableSeeder extends Seeder {
 			array(
 				"id" => "1",
        "name" => "Winter Event",
-       "city" => "Dublin",
+       "city" => "Dublin, Ireland",
        "venue" => "RDS",
        "price" => "99",
        "information" => "Lets make Ireland Great Again! Listen to a man who went to the Wharton School of Finance tell you how to fix all of Irelands problems.",
@@ -44,7 +44,7 @@ class EventsTableSeeder extends Seeder {
 			array(
 				"id" => "2",
        "name" => "Spring Event",
-       "city" => "London",
+       "city" => "London, England",
        "venue" => "Wembley Stadium",
        "price" => "149",
        "information" => "Britain has a problem and that problem is Muslims. Find out what you can do to fix this problem at this event.",
@@ -61,7 +61,7 @@ class EventsTableSeeder extends Seeder {
 			array(
 				"id" => "3",
        "name" => "Autumn Event",
-       "city" => "Berlin",
+       "city" => "Berlin, Germany",
        "venue" => "Huxleys Neue Welt",
        "price" => "199",
        "information" => "Lets build a Giant wall, I know you are sick of walls after the Berlin wall but my wall will be better.",
@@ -78,7 +78,7 @@ class EventsTableSeeder extends Seeder {
 			array(
 				"id" => "4",
        "name" => "Summer Event",
-       "city" => "Amsterdam",
+       "city" => "Amsterdam, Netherlands",
        "venue" => "Heineken Music Hall",
        "price" => "420",
        "information" => "It’s freezing and snowing in New York – we need global warming! Find out why rising sea levels are actually good for the Netherlands.",
