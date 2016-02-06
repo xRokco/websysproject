@@ -45,12 +45,6 @@
 
 
         <div id="inbox" class="col s12">
-	        <?php
-	        	use App\Message;
-	        	$messages = Message::orderBy('created_at', 'desc')->get();
-				$readMessages = Message::withTrashed()->whereNotNull('deleted_at')->orderBy('created_at', 'desc')->get();
-	        ?>
-
 			<div class="section no-pad-bot" id="index-banner">
             	<h1 class="header center teal-text">Inbox</h1>
             	<br>

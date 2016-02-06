@@ -29,10 +29,12 @@ class HomeController extends Controller
     {
         //Gets all the event details from the event database table
         $events = events::all();
+        $messages = Message::orderBy('created_at', 'desc')->get();
+        $readMessages = Message::withTrashed()->whereNotNull('deleted_at')->orderBy('created_at', 'desc')->get();
 
         //Returns the events view along with the $events array containing the query results from above
         if(\Auth::user()->admin==1){
-            return view('admin/admin', ['events' => $events]);
+            return view('admin/admin', ['events' => $events, 'messages' => $messages, 'readMessages' => $readMessages]);
         }else{
             return redirect('events');
         }
