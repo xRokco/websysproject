@@ -54,7 +54,7 @@
 
             <!-- Browse Events Button -->
             <div class="row center">
-                <a class="btn-large" href="events.html">Browse Events</a>
+                <a class="btn-large" href="/events">Browse Events</a>
             </div>
         </div>
     </div>
