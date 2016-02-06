@@ -36,7 +36,8 @@
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">payment</i>&euro;99</p>
             <!-- Check if clicked attend already -->
             @if($rsvp)
-                    <div title="Add to Calendar" class="addeventatc">
+                <!-- Add to Calendar API -->
+                <div title="Add to Calendar" class="addeventatc">
                     Add to Calendar
                     <span class="start">{{ $ev->date }} {{ $ev->start_time }}</span>
                     <span class="end">{{ $ev->date }} {{ $ev->end_time }}</span>
@@ -72,7 +73,7 @@
                     <div class="row center">
                     <br><br>
                         <iframe width="700" height="525" frameborder="0" style="border:0"
-src="https://www.google.com/maps/embed/v1/directions?origin={{ Auth::user()->direction }}&destination={{ $ev->venue }}, {{ $ev->city }}&key=AIzaSyBFaySDzqmlKyFwdG9qGWxGD3rjM1Ub0Bg" allowfullscreen></iframe>
+                            src="https://www.google.com/maps/embed/v1/directions?origin={{ Auth::user()->direction }}&destination={{ $ev->venue }}, {{ $ev->city }}&key=AIzaSyBFaySDzqmlKyFwdG9qGWxGD3rjM1Ub0Bg" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
