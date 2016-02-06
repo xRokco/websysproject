@@ -27,8 +27,8 @@
 		</head>
 		<body>
     
-			<nav class="red darken-2" role="navigation">
-				<div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">TRUMP</a>
+			<nav class="red darken-3" role="navigation">
+				<div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo"><img class="responsive-img" src="/img/logo.png">TRUMP</a>
 				<ul class="right hide-on-med-and-down">
 					@if (Auth::check())     
 						<!-- Dropdown Trigger -->
@@ -57,7 +57,7 @@
         @yield('content')
     </main>
 
-     <footer class="page-footer teal">
+     <footer class="page-footer red darken-3">
           <div class="footer-copyright">
             <div class="container">
             <a class="grey-text text-lighten-4 right" href="{{ url('/about') }}">© Web Systems Group 2016</a>
