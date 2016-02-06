@@ -6,14 +6,14 @@
         <!-- Our Team -->
         <div class="section no-pad-bot" id="index-banner">
                 <br><br>
-                <h1 class="header center teal-text">Our Team</h1>
+                <h1 class="header center red-text">Our Team</h1>
                 <br><br>
                 <div class="divider"></div>
                 <br><br>
         </div>
 
         <!-- Matt -->
-        <div class="card">
+        <div class="grey lighten-5 card">
             <div class="col s12  offset-m2 l6 offset-l3">
                 <div class="grey lighten-5">
                     <div class="row valign-wrapper">
@@ -42,7 +42,7 @@
         </div>
 
         <!-- Conor -->
-        <div class="card">
+        <div class="grey lighten-5 card">
             <div class="col s12  offset-m2 l6 offset-l3">
                 <div class="grey lighten-5">
                     <div class="row valign-wrapper">
@@ -69,7 +69,7 @@
         </div>
         
         <!-- Darragh -->
-        <div class="card">
+        <div class="grey lighten-5 card">
             <div class="col s12  offset-m2 l6 offset-l3">
                 <div class="grey lighten-5">
                     <div class="row valign-wrapper">
@@ -96,13 +96,13 @@
         </div>
         
         <!-- Kieran -->
-        <div class="card">
+        <div class="grey lighten-5 card">
             <div class="col s12  offset-m2 l6 offset-l3">
                 <div class="grey lighten-5">
                     <div class="row valign-wrapper">
                         <div class="col s2">
                             <div class=" waves-effect waves-block waves-light">
-                                <img src="/img/person.png" alt="" class="activator circle responsive-img">
+                                <img src="/img/kieran.jpg" alt="" class="activator circle responsive-img">
                             </div>
                         </div>
                         <div class="col s9">
@@ -123,7 +123,7 @@
         </div>
         
         <!-- Peter -->
-        <div class="card">
+        <div class="grey lighten-5 card">
             <div class="col s12  offset-m2 l6 offset-l3">
                 <div class="grey lighten-5">
                     <div class="row valign-wrapper">
