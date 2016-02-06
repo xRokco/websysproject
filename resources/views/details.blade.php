@@ -36,7 +36,15 @@
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">payment</i>&euro;99</p>
             <!-- Check if clicked attend already -->
             @if($rsvp)
-                    
+                    <div title="Add to Calendar" class="addeventatc">
+                    Add to Calendar
+                    <span class="start">{{ $ev->date }} {{ $ev->start_date }}</span>
+                    <span class="end">{{ $ev->date }} {{ $ev->end_date }}</span>
+                    <span class="title">{{ $ev->name }}</span>
+                    <span class="description">{{ $ev->information }}</span>
+                    <span class="location">{{ $ev->venue}}, {{ $ev->city }}</span>
+                    <span class="date_format">MM/DD/YYYY</span>
+                </div>
                 <a class="btn" href="print/{{ $event }}">Print Ticket</a>
                 <a class="btn" href="unattend/{{ $event }}">Unattend Event</a>
                 @else
