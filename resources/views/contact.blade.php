@@ -34,9 +34,9 @@
 							{!! Form::label('email', 'Your email:') !!}
 							{!! Form::text('email') !!}
 						</div>
-						<div class="row">
+						<div class="input-field row">
 							{!! Form::label('message', 'Your message:') !!}
-							{!! Form::textarea('message') !!}
+							{!! Form::textarea('message', NULL, ['class' => 'materialize-textarea']) !!}
 						</div>
 						<div class="row">
 							{!! Form::submit('Create', ['class' => 'btn grey waves-effect']) !!}

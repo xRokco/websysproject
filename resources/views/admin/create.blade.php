@@ -38,16 +38,20 @@
 							{!! Form::text('price') !!}
 						</div>
 						<div class="row">
-							{!! Form::label('information', 'Information:') !!}
-							{!! Form::text('information') !!}
-						</div>
-						<div class="row">
 							{!! Form::label('capacity', 'Capacity:') !!}
 							{!! Form::text('capacity') !!}
 						</div>
 						<div class="row">
 							{!! Form::label('date', 'Date:') !!}
 							{!! Form::date('date', null, ['class' => 'datepicker']) !!}
+						</div>
+						<div class="input-field row">
+							{!! Form::label('information', 'Information:') !!}
+							{!! Form::textarea('information', NULL, ['class' => 'materialize-textarea']) !!}
+						</div>
+						<div class="input-field row">
+							{!! Form::label('description', 'Description:') !!}
+							{!! Form::textarea('description', NULL, ['class' => 'materialize-textarea']) !!}
 						</div>
 						<div class="row file-field input-field">
 							<div class="btn">

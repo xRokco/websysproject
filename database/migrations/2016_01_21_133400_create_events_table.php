@@ -19,6 +19,7 @@ class CreateEventsTable extends Migration
             $table->string('venue');
             $table->integer('price');
             $table->string('information');
+            $table->text('description');
             $table->integer('capacity');
             $table->date('date');
             $table->time('start_time');

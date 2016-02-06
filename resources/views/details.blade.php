@@ -63,17 +63,8 @@
                 </div>
                 <div id="description" class="col s12">
                     <br>
-                    <h5 class="teal-text">Event Name</h5>
-                    <h6 class="light">Organiser</h5>
-                    <br>
                     <p id="no-margin-top">
-                        Vivamus quam justo, posuere sit amet magna euismod, fermentum volutpat mauris. Pellentesque neque velit, finibus vel turpis pharetra, vulputate vehicula est. Morbi vitae tincidunt mi. Donec id lorem nunc. Ut varius erat non elit malesuada, quis rutrum ante pretium. Quisque aliquet pellentesque urna, at dictum sapien rhoncus nec. Donec ut magna vestibulum, cursus orci non, laoreet purus. Nunc sed suscipit nisl, congue aliquet nisi. Suspendisse volutpat enim eget malesuada auctor. Ut blandit mattis rutrum. Praesent facilisis ornare sem, eget sollicitudin orci consequat a. Curabitur congue porttitor laoreet. Vestibulum volutpat malesuada urna, eu laoreet orci egestas et. Etiam dictum, risus et pulvinar auctor, ligula nisl dapibus ipsum, eu efficitur sapien mi non ante. Nulla faucibus eget felis ut sagittis.
-                    </p>
-                    <p>
-                        Vestibulum euismod tincidunt interdum. Nam sit amet aliquam ligula. Curabitur tristique nibh purus, sed iaculis nisl volutpat non. Etiam condimentum mollis felis sit amet finibus. Ut augue neque, aliquam sit amet massa nec, sodales consequat nisl. Quisque rhoncus maximus odio pulvinar tincidunt. Pellentesque suscipit ligula ipsum, id sodales justo hendrerit id. Nulla euismod elit consequat, semper mauris et, egestas libero. Cras ex justo, vulputate sollicitudin neque eu, pulvinar pulvinar arcu.
-                    </p>                    
-                    <p>
-                        Nullam varius eros et consectetur rutrum. Sed rutrum at tellus et venenatis. Proin cursus eros sed augue convallis condimentum. Proin mollis sollicitudin tellus ut rhoncus. Nunc consectetur viverra arcu, vitae efficitur dui mattis in. Suspendisse nec maximus lectus. Suspendisse quis elit vitae turpis aliquam vehicula in sed urna. Morbi in dolor turpis.
+                        {{ $ev->description }}
                     </p>
                 </div>
                 <div id="location" class="col s12">

@@ -61,7 +61,8 @@ class EventController extends Controller
         'venue' => 'required|max:30',
         'city' => 'required|max:30',
         'price' => 'required|numeric',
-        'information' => 'required',
+        'information' => 'required|max:255',
+        'description' => 'required',
         'capacity' => 'required|numeric',
         'date' => 'required|date',
         'image' => 'image|required',
@@ -208,6 +209,7 @@ class EventController extends Controller
             'city' => 'required|max:30',
             'price' => 'required|numeric',
             'information' => 'required',
+            'description' => 'required|max:255',
             'capacity' => 'required|numeric',
             'date' => 'required|date',
             'image' => 'image',
@@ -218,13 +220,14 @@ class EventController extends Controller
             $city = $request->input('city');
             $price = $request->input('price');
             $information = $request->input('information');
+            $description = $request->input('description');
             $capacity = $request->input('capacity');
             $date = $request->input('date');
             $image = $request->input('image');
 
             
             if(Input::hasfile('image')){
-                events::where('id', $id)->update(['name'=>$name, 'venue'=>$venue, 'city'=>$city, 'price'=>$price, 'information'=>$information, 'capacity'=>$capacity, 'date'=>$date, 'image'=>$image]);
+                events::where('id', $id)->update(['name'=>$name, 'venue'=>$venue, 'city'=>$city, 'price'=>$price, 'information'=>$information, 'description'=>$description, 'capacity'=>$capacity, 'date'=>$date, 'image'=>$image]);
                 $imgName = $id . "." . Input::file('image')->getClientOriginalExtension(); //gets the event ID and concat on the imaage file extension that was uploaded 
                 Input::file('image')->move(__DIR__.'/../../../public/img/event_images',$imgName); //moves the uploaded image from the tmp directory to a premanant one (/public/img/event_images) and renames it to <eventID>.<fileExt>
                 
@@ -232,7 +235,7 @@ class EventController extends Controller
                 $image->image = $imgName; //adds the image name from above to the image column of the latest event
                 $image->save(); //saves the above action
             }else{
-                events::where('id', $id)->update(['name'=>$name, 'venue'=>$venue, 'city'=>$city, 'price'=>$price, 'information'=>$information, 'capacity'=>$capacity, 'date'=>$date]);
+                events::where('id', $id)->update(['name'=>$name, 'venue'=>$venue, 'city'=>$city, 'price'=>$price, 'information'=>$information, 'description'=>$description, 'capacity'=>$capacity, 'date'=>$date]);
             }
 
 
