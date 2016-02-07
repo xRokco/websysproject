@@ -34,7 +34,6 @@
 
             $id_array_zero = $id_array[0];
             $id_array_one = $id_array[1];
-
         ?>
 
         <div class="section">
