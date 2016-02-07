@@ -90,4 +90,11 @@ class HomeController extends Controller
         return view('admin/inbox', ['messages' => $messages, 'readMessages' => $readMessages]);
    
     }
+
+    public function welcome()
+    {
+        $randEvent=events::all()->random(2);
+        return view('welcome', ['randEvent' => $randEvent]);
+   
+    }
 }

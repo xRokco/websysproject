@@ -35,9 +35,7 @@ Route::group(['middleware' => 'web'], function () {
     */
 
     //Route to return homepage
-    Route::get('/', function () {
-        return view('welcome');
-    });
+    Route::get('/', 'HomeController@welcome');
 
     //Route to return the about our team page
     Route::get('/about', function () {
