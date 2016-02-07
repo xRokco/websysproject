@@ -36,7 +36,7 @@
                     <span class="date_format">MM/DD/YYYY</span>
                 </div>
                 <a class="btn red darken-3" href="print/{{ $ev->id }}">Print Ticket</a>
-                <a class="btn red darken-3" href="unattend/{{ $ev-id }}">Unattend Event</a>
+                <a class="btn red darken-3" href="unattend/{{ $ev->id }}">Unattend Event</a>
                 @else
                     <a class="btn red darken-3" href="attend/{{ $ev->id }}">Attend Event</a>
             @endif
