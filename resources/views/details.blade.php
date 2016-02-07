@@ -2,7 +2,19 @@
 
 @section('content')
     <!-- Navigation ( navigation.html ) -->
-    
+    <style>
+        .btn-container {
+          display: flex; 
+        }
+         
+        .btn-container > div {
+          width: auto; 
+        }
+         
+        .btn-container .btn, .btn-container .btn-large, .btn-container .btn-flat, .btn-container .btn-large {
+          display: block; 
+        }
+    </style>
     <div class="container">
         <div class="section no-pad-bot" id="no-padding-top">
             <div class="row valign-wrapper" id="event">
@@ -26,19 +38,23 @@
             <!-- Check if clicked attend already -->
             @if($rsvp)
                 <!-- Add to Calendar API -->
-                <div title="Add to Calendar" class="addeventatc">
-                    Add to Calendar
-                    <span class="start">{{ $ev->date }} {{ $ev->start_time }}</span>
-                    <span class="end">{{ $ev->date }} {{ $ev->end_time }}</span>
-                    <span class="title">{{ $ev->name }}</span>
-                    <span class="description">{{ $ev->information }}</span>
-                    <span class="location">{{ $ev->venue}}, {{ $ev->city }}</span>
-                    <span class="date_format">MM/DD/YYYY</span>
+                <div class="btn-container">
+                    <div>
+                        <div title="Add to Calendar" class="btn red darken-3 addeventatc">
+                            <span class="white-text">Add to Calendar</span>
+                            <span class="start">{{ $ev->date }} {{ $ev->start_time }}</span>
+                            <span class="end">{{ $ev->date }} {{ $ev->end_time }}</span>
+                            <span class="title">{{ $ev->name }}</span>
+                            <span class="description">{{ $ev->information }}</span>
+                            <span class="location">{{ $ev->venue}}, {{ $ev->city }}</span>
+                            <span class="date_format">MM/DD/YYYY</span>
+                        </div>
+                        <a class="btn red darken-3" style="margin-top:5px;margin-bottom:5px" href="print/{{ $ev->id }}">Print Ticket</a>
+                        <a class="btn red darken-3" href="unattend/{{ $ev->id }}">Unattend Event</a>
+                    </div>
                 </div>
-                <a class="btn red darken-3" href="print/{{ $ev->id }}">Print Ticket</a>
-                <a class="btn red darken-3" href="unattend/{{ $ev-id }}">Unattend Event</a>
-                @else
-                    <a class="btn red darken-3" href="attend/{{ $ev->id }}">Attend Event</a>
+            @else
+                <a class="btn red darken-3" href="attend/{{ $ev->id }}">Attend Event</a>
             @endif
                     
                 </div>

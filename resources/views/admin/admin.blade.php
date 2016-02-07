@@ -1,6 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+        .btn-container {
+          display: flex; 
+        }
+         
+        .btn-container > div {
+          width: auto; 
+        }
+         
+        .btn-container .btn, .btn-container .btn-large, .btn-container .btn-flat, .btn-container .btn-large {
+          display: block; 
+        }
+</style>
 <br><br>
 <div class="container">
 	<div class="row">
@@ -29,10 +42,12 @@
 			            </div>
 			                    
 			            <!-- Event Details -->
-			            <div class="col s3" id="test"> 
-			                <a class="btn red darken-3" href="admin/attendees/{{ $event->id }}">Attendees</a>
-			                <a class="btn red darken-3" href="admin/edit/{{ $event->id }}">Edit Event</a>
-			                <a class="btn red darken-3" href="admin/delete/{{ $event->id }}">Delete Event</a>
+			            <div class="col s3 btn-container" id="test"> 
+			            	<div>
+				                <a class="btn red darken-3" href="admin/attendees/{{ $event->id }}">Attendees</a>
+				                <a style="margin-top:5px;margin-bottom:5px" class="btn red darken-3" href="admin/edit/{{ $event->id }}">Edit Event</a>
+				                <a class="btn red darken-3" href="admin/delete/{{ $event->id }}">Delete Event</a>
+				            </div>
 			            </div>
 			        </div>
 			    @endforeach

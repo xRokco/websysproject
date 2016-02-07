@@ -34,7 +34,7 @@
 				                        <p class="condensed light left-align valign-wrapper"><i class="material-icons">today</i>{{ $event->date }}</p>
 				                        <p class="condensed light left-align valign-wrapper"><i class="material-icons">location_on</i>{{ $event->venue }}, {{ $event->city }}</p>
 				                        <p class="condensed light left-align valign-wrapper"><i class="material-icons">payment</i>&euro;{{ $event->price }}</p>
-				                        <a class="btn teal lighten-1" href="events/details/{{ $event->id }}">View Event</a>
+				                        <a class="btn red darken-3" href="events/details/{{ $event->id }}">View Event</a>
 				                    </div>
 				                </div>
 				            @endforeach
