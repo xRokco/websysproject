@@ -1,14 +1,3 @@
-<?php
-	use App\events;
-	$ev = events::where('id', $event)->first();
-    $rsvp = \DB::table('events')
-            ->join('rsvp', 'events.id', '=', 'rsvp.eventid')
-            ->join('users', 'users.id', '=', 'rsvp.userid')
-            ->select('events.*')
-            ->where(['userid' => \Auth::user()->id, 'eventid' => $event])
-            ->distinct()
-            ->get();
-?>
 @extends('layouts.app')
 
 @section('content')
@@ -46,10 +35,10 @@
                     <span class="location">{{ $ev->venue}}, {{ $ev->city }}</span>
                     <span class="date_format">MM/DD/YYYY</span>
                 </div>
-                <a class="btn red darken-3" href="print/{{ $event }}">Print Ticket</a>
-                <a class="btn red darken-3" href="unattend/{{ $event }}">Unattend Event</a>
+                <a class="btn red darken-3" href="print/{{ $ev->id }}">Print Ticket</a>
+                <a class="btn red darken-3" href="unattend/{{ $ev-id }}">Unattend Event</a>
                 @else
-                    <a class="btn red darken-3" href="attend/{{ $event }}">Attend Event</a>
+                    <a class="btn red darken-3" href="attend/{{ $ev->id }}">Attend Event</a>
             @endif
                     
                 </div>
@@ -102,7 +91,7 @@
                                 $status2 = $xml2->status;
 
                                 if($status2=="OK") {
-                                    
+
                                     for($i=0; $i<5; $i++) {
                                         $place_id = $xml2->result[$i]->place_id;
 

@@ -13,7 +13,7 @@
                     <br>
                     <div class="center">
                         <!--<img class="responsive-img center" src="/img/button.png">-->
-                        <a class="red darken-3 waves-effect waves-light btn-large"><i class="material-icons left">star</i>Browse Events<i class="material-icons right">star</i></a>
+                        <a class="red darken-3 waves-effect waves-light btn-large" href="/events" ><i class="material-icons left">star</i>Browse Events<i class="material-icons right">star</i></a>
                     </div>
                 </div>
                 

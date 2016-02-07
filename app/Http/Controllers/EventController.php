@@ -83,7 +83,16 @@ class EventController extends Controller
     public function getEventDetails($id)
     {
         if (\Auth::check()) { //checks if user is logged in
-            return view('details')->with('event', $id); //returns event details page for the corresponding ID
+            $ev = events::where('id', $id)->first();
+            $rsvp = \DB::table('events')
+                    ->join('rsvp', 'events.id', '=', 'rsvp.eventid')
+                    ->join('users', 'users.id', '=', 'rsvp.userid')
+                    ->select('events.*')
+                    ->where(['userid' => \Auth::user()->id, 'eventid' => $id])
+                    ->distinct()
+                    ->get();
+
+            return view('details', ['ev' => $ev, 'rsvp' => $rsvp]); //returns event details page for the corresponding ID
         } else {    
             return redirect()->route('login'); //otherwise redirects to the login page
         }
@@ -238,9 +247,7 @@ class EventController extends Controller
                 events::where('id', $id)->update(['name'=>$name, 'venue'=>$venue, 'city'=>$city, 'price'=>$price, 'information'=>$information, 'description'=>$description, 'capacity'=>$capacity, 'date'=>$date]);
             }
 
-
-
-        return redirect('admin');
+            return redirect('admin');
         }
 
         public function contactUs(Request $input)
