@@ -27,24 +27,35 @@
             </div>
         </div>
                 <div class="divider"></div><h1 class="red-text text-darken-2 center-align">Upcoming events</h1><div class="divider"></div>
-        @foreach ($randEvent as $event)
         <!-- Icon Section -->
         <div class="section">
             <div class="row">
                 <div class="col s6">
-                    <img class="materialboxed responsive-img" src="img/event_images/{{ $event->image }}">
+                    <img class="materialboxed responsive-img" src="img/event_images/{{ $randEvent[0]->image }}">
                 </div>            
                 
                 <div class="col s6 center">    
-                    <h2 class="center-align red-text text-darken-2">{{ $event->name }}<br>{{ $event->city }}</h1>
-                    <h5>{{ $event->information }}</h5>
-                    <a class="btn red darken-3" href="/events/details/{{ $event->id }}" style="margin-top: 20px">View Event</a>
+                    <h2 class="center-align red-text text-darken-2">{{ $randEvent[0]->name }}<br>{{ $randEvent[0]->city }}</h1>
+                    <h5>{{ $randEvent[0]->information }}</h5>
+                    <a class="btn red darken-3" href="/events/details/{{ $randEvent[0]->id }}" style="margin-top: 20px">View Event</a>
                 </div>
+            </div>            
+        </div>
+
+        <div class="section">
+            <div class="row">           
+                <div class="col s6 center">    
+                    <h2 class="center-align red-text text-darken-2">{{ $randEvent[1]->name }}<br>{{ $randEvent[1]->city }}</h1>
+                    <h5>{{ $randEvent[1]->information }}</h5>
+                    <a class="btn red darken-3" href="/events/details/{{ $randEvent[1]->id }}" style="margin-top: 20px">View Event</a>
+                </div>
+                <div class="col s6">
+                    <img class="materialboxed responsive-img" src="img/event_images/{{ $randEvent[1]->image }}">
+                </div> 
             </div>            
         </div>
         
                 
-        @endforeach
             
         <div class="section">
             <div class="row">

@@ -24,39 +24,35 @@
             </div>
         </div>
                 <div class="divider"></div><h1 class="red-text text-darken-2 center-align">Upcoming events</h1><div class="divider"></div>
-
         <!-- Icon Section -->
         <div class="section">
             <div class="row">
                 <div class="col s6">
-                    <img class="materialboxed responsive-img" src="/img/trump3.png">
+                    <img class="materialboxed responsive-img" src="img/event_images/<?php echo e($randEvent[0]->image); ?>">
                 </div>            
                 
                 <div class="col s6 center">    
-                    <h2 class="center-align red-text text-darken-2">Support TRUMP for <br>President of Ireland</h1>
-                    <h5>Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.</h5>
-                    <a class="btn red darken-3" href="/events" style="margin-top: 20px">View Event</a>
+                    <h2 class="center-align red-text text-darken-2"><?php echo e($randEvent[0]->name); ?><br><?php echo e($randEvent[0]->city); ?></h1>
+                    <h5><?php echo e($randEvent[0]->information); ?></h5>
+                    <a class="btn red darken-3" href="/events/details/<?php echo e($randEvent[0]->id); ?>" style="margin-top: 20px">View Event</a>
                 </div>
             </div>            
         </div>
-        <div class="divider"></div>
-                
+
         <div class="section">
-            <div class="row">
-            
+            <div class="row">           
                 <div class="col s6 center">    
-                    <h2 class="center-align red-text text-darken-2">Why Ireland Should <br>BUILD A WALL</h1>
-                    <h5>Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.</h5>
-                    <a class="btn red darken-3" href="events" style="margin-top: 20px">View Event</a>
+                    <h2 class="center-align red-text text-darken-2"><?php echo e($randEvent[1]->name); ?><br><?php echo e($randEvent[1]->city); ?></h1>
+                    <h5><?php echo e($randEvent[1]->information); ?></h5>
+                    <a class="btn red darken-3" href="/events/details/<?php echo e($randEvent[1]->id); ?>" style="margin-top: 20px">View Event</a>
                 </div>
-                
                 <div class="col s6">
-                    <img class="materialboxed responsive-img" src="/img/trump2.png">
-                </div>                
-                
-            </div>
+                    <img class="materialboxed responsive-img" src="img/event_images/<?php echo e($randEvent[1]->image); ?>">
+                </div> 
+            </div>            
         </div>
-        <div class="divider"></div>
+        
+                
             
         <div class="section">
             <div class="row">

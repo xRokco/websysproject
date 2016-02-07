@@ -34,9 +34,6 @@ Route::group(['middleware' => 'web'], function () {
     |These routes return regular, static web pages that don't need to interact with the database to view them
     */
 
-    //Route to return homepage
-    Route::get('/', 'HomeController@welcome');
-
     //Route to return the about our team page
     Route::get('/about', function () {
         return view('about');
@@ -79,6 +76,9 @@ Route::group(['middleware' => 'web'], function () {
     |query, database row creation, deletion or update, and often returns a view that uses the query result, or
     |redirects to a view after the creation, deletion or update.
     */
+
+    //Route to return homepage
+    Route::get('/', 'HomeController@welcome');
 
     //Route to be called when submit on create events page is clicked
     Route::post('/events','EventController@store');
