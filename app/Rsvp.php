@@ -3,13 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Rsvp extends Model
 {
 
-	use SoftDeletes;
-    protected $softDelete = true;
     public $timestamps = false;
 
 
@@ -23,9 +20,4 @@ class Rsvp extends Model
     ];
 
     protected $table = 'rsvp';
-
-    protected $dates = [
-    	'deleted_at',
-    ];
-
 }

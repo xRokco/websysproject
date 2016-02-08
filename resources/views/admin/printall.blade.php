@@ -5,9 +5,10 @@
 
 	$atns = DB::table('rsvp')
 			->join('users', 'users.id', '=', 'rsvp.userid')
-            ->select('users.*')
+            ->select('*')
             ->where('rsvp.eventid', '=', $atnd)
             ->get();
+
 ?>
 @if($atns)
 	@foreach($atns as $atn)
@@ -17,6 +18,10 @@
 			<p>{{ $atn->name }} {{ $atn->surname }}</p>
 			<p>{{ $ev->date }}</p>
 			<p>{{ $ev->venue }}, {{ $ev->city }}</p>
+			<figure>
+				<img style="margin-left:auto;margin-right:auto;display:block" alt="barcode" src="/barcode.php?text={{ $atn->code }}" />
+				<figcaption class="center-align">{{ $atn->code }}</figcaption>
+			</figure>
 		</div>
 	@endforeach
 @else

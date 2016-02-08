@@ -2,19 +2,20 @@
 <?php
 	$atns = DB::table('rsvp')
 			->join('users', 'users.id', '=', 'rsvp.userid')
-            ->select('users.*')
+            ->select('*')
             ->where('rsvp.eventid', '=', $atnd)
             ->get();
 ?>
 	@section('content')
 		<div class="container">
 			@if($atns)
-				<table>
+				<table class="highlight">
 					<thead>
 						<th data-field="id">User ID</th>
 			            <th data-field="name">Full Name</th>
 			            <th data-field="email">E-mail</th>
 			            <th data-field="admin">Admin</th>
+			            <th data-field="code">Code</th>
 					</thead>
 					<tbody>
 					@foreach($atns as $atn)
@@ -23,6 +24,7 @@
 							<td>{{ $atn->name }} {{ $atn->surname }}</td>
 							<td>{{ $atn->email }}</td>
 							<td>{{ $atn->admin }}</td>
+							<td>{{ $atn->code }}</td>
 						</tr>
 					@endforeach
 					</tbody>
