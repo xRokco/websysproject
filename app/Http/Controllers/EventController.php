@@ -197,7 +197,7 @@ class EventController extends Controller
         public function editEventInfo($id)
         {
             if(\Auth::user()->admin==1){
-                $event = \DB::table('events')->select('events.*')->where('id', '=', $id)->first();
+                $event = events::select('events.*')->where('id', '=', $id)->first();
                 return view('admin/edit',['event' => $event]);
             }else{
                 return redirect('events');
@@ -219,8 +219,8 @@ class EventController extends Controller
             'venue' => 'required|max:30',
             'city' => 'required|max:30',
             'price' => 'required|numeric',
-            'information' => 'required',
-            'description' => 'required|max:255',
+            'information' => 'required|max:255',
+            'description' => 'required',
             'capacity' => 'required|numeric',
             'date' => 'required|date',
             'image' => 'image',

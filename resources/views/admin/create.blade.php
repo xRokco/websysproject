@@ -30,7 +30,7 @@
 							{!! Form::text('venue') !!}
 						</div>
 						<div class="row">
-							{!! Form::label('city', 'City:') !!}
+							{!! Form::label('city', 'City and country:') !!}
 							{!! Form::text('city') !!}
 						</div>
 						<div class="row">

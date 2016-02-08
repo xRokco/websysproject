@@ -6,7 +6,7 @@
 
 <div class="container">
       <br><br>
-      <h2 class="header center orange-text">Please update your user settings</h2>
+      <h2 class="header center red-text">Please update your user settings</h2>
       <br><br>
 </div>
 

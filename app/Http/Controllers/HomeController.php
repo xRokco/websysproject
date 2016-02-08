@@ -45,7 +45,7 @@ class HomeController extends Controller
     public function editUserInfo() 
     {
 
-        $user = \DB::table('users')->select('users.*')->where('id', '=', \Auth::user()->id)->first();
+        $user = User::select('users.*')->where('id', '=', \Auth::user()->id)->first();
         return view('account',['user' => $user]);
     }
 
@@ -54,10 +54,12 @@ class HomeController extends Controller
     //Returns redirect to dash view
     public function update(Request $request) 
     {
+        $id = \Auth::user()->id;
+
         $this->validate($request, [
         'name' => 'required|max:30',
         'surname' => 'required|max:30',
-        'email' => 'required|max:30|unique:users',
+        'email' => 'required|max:30|unique:users,email,'.$id,
         'direction' => 'required|max:255',
         ]);
 
@@ -66,7 +68,7 @@ class HomeController extends Controller
         $email = $request->input('email');
         $direction = $request->input('direction');
 
-        User::where('id', \Auth::user()->id)->update(['name'=>$name, 'surname'=>$surname, 'email'=>$email, 'direction'=>$direction]);
+        User::where('id', $id)->update(['name'=>$name, 'surname'=>$surname, 'email'=>$email, 'direction'=>$direction]);
 
         return redirect('dash');
     }
