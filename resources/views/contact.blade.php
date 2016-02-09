@@ -41,7 +41,7 @@
 							{!! Form::textarea('message', NULL, ['class' => 'materialize-textarea']) !!}
 						</div>
 						<div class="row">
-							{!! Form::submit('Send', ['class' => 'btn red darken-3 waves-effect']) !!}
+							{!! Form::submit('Send', ['class' => 'btn red darken-3']) !!}
 						</div>
 					{!! Form::close() !!}
 				</div>

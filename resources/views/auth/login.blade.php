@@ -35,8 +35,8 @@
                         </span>
                     @endif
                 </div>
-                    <button type="submit" class="btn waves-effect red darken-3">Login</button>
-                    <a class="btn waves-effect red darken-3" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+                    <button type="submit" class="btn red darken-3">Login</button>
+                    <a class="btn red darken-3" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
             </form>
         </div>
     </div>

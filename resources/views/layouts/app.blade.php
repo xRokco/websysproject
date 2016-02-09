@@ -32,7 +32,7 @@
 				<ul class="right hide-on-med-and-down">
 					@if (Auth::check())     
 						<!-- Dropdown Trigger -->
-			<a style="margin:0px" class='dropdown-button btn transparent' href='#' data-beloworigin="true" data-hover='false' data-activates='dropdown1'>{{ Auth::user()->name }}</a>
+			<a style="margin:0px" class='dropdown-button btn blue darken-4' href="#" data-beloworigin="true" data-hover='false' data-activates='dropdown1'>{{ Auth::user()->name }}</a>
 						<ul id='dropdown1' class='dropdown-content'>
 							<li><a class="red-text" href="{{ url('/dash') }}">Dash</a></li>
 							<li><a class="red-text" href="{{ url('/events') }}">Events</a></li>

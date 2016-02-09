@@ -65,7 +65,7 @@
 								</div>
 							</div>
 						<div class="row">
-							{!! Form::submit('Create', ['class' => 'btn red darken-3 waves-effect']) !!}
+							{!! Form::submit('Create', ['class' => 'btn red darken-3']) !!}
 						</div>
 					{!! Form::close() !!}
 				</div>

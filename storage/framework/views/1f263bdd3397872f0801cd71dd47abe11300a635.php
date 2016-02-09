@@ -13,7 +13,7 @@
                     <h5 div="light center-align">Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.</h5>
                     <br>
                     <div class="center">
-                        <a class="red darken-3 waves-effect waves-light btn-large" href="/events" ><i class="material-icons left">star</i>Browse Events<i class="material-icons right">star</i></a>
+                        <a class="red darken-3 btn-large" href="/events" ><i class="material-icons left">star</i>Browse Events<i class="material-icons right">star</i></a>
                     </div>
                 </div>
                 
@@ -98,10 +98,7 @@
 
     <!-- Footer ( footer.html ) -->
 
-    <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/materialize.js"></script>
-    <script src="js/init.js"></script>
+    
   </div>
 <?php $__env->stopSection(); ?>
 

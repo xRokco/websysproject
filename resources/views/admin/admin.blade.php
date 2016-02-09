@@ -74,7 +74,7 @@
 			                <div class="row valign-wrapper">
 			                    <div class="col s2">
 			                        <div class=" waves-effect waves-block waves-light">
-			                            <i class="large material-icons">email</i>
+			                            <i class="activator large material-icons">email</i>
 			                        </div>
 			                    </div>
 			                    <div class="col s9">
@@ -111,7 +111,7 @@
 			                <div class="row valign-wrapper">
 			                    <div class="col s2">
 			                        <div class=" waves-effect waves-block waves-light">
-			                            <i class="large material-icons">email</i>
+			                            <i class="activator large material-icons">email</i>
 			                        </div>
 			                    </div>
 			                    <div class="col s9">
@@ -136,10 +136,6 @@
 			    <h4 class="center">No read messages</h4>
 			@endif
 
-			<!--  Scripts-->
-		    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-		    <script src="js/materialize.js"></script>
-		    <script src="js/init.js"></script>
 			</div>
 		</div>
 	</div>
