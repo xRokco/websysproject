@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Create Event')
+
     @section('content')
     	<div class="container">
       		<br><br>

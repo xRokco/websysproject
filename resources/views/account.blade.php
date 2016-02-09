@@ -1,6 +1,8 @@
 
 @extends('layouts.app')
 
+@section('title', 'Update Account')
+
 @section('content') 
 
 

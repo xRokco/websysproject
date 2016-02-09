@@ -6,6 +6,9 @@
             ->where('rsvp.eventid', '=', $atnd)
             ->get();
 ?>
+
+@section('title', 'All Attendees')
+
 	@section('content')
 		<div class="container">
 			@if($atns)

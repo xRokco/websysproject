@@ -1,3 +1,4 @@
+<?php $__env->startSection('title', 'Home'); ?>
 <?php $__env->startSection('content'); ?>
         
         <div class="container">
@@ -12,7 +13,6 @@
                     <h5 div="light center-align">Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.</h5>
                     <br>
                     <div class="center">
-                        <!--<img class="responsive-img center" src="/img/button.png">-->
                         <a class="red darken-3 waves-effect waves-light btn-large" href="/events" ><i class="material-icons left">star</i>Browse Events<i class="material-icons right">star</i></a>
                     </div>
                 </div>
@@ -25,30 +25,21 @@
         </div>
                 <div class="divider"></div><h1 class="red-text text-darken-2 center-align">Upcoming events</h1><div class="divider"></div>
         <!-- Icon Section -->
-        <?php
-            //$i = 0;
-            //foreach ($randEvent as $event) {
-            //    $id_array[$i] = $event->id - 1;
-            //    $i++;
-            //}     
-
-            //0 = $id_array[0];
-            //1 = $id_array[1];
-        ?>
-
         <div class="section">
             <div class="row">
                 <div class="col s6">
-                    <img class="materialboxed responsive-img" src="img/event_images/<?php echo e($randEvent[0]->image); ?>">
+                    <img class="materialboxed responsive-img" width="400" src="img/event_images/<?php echo e($randEvent[0]->image); ?>">
                 </div>            
                 
                 <div class="col s6 center">    
                     <h2 class="center-align red-text text-darken-2"><?php echo e($randEvent[0]->name); ?><br><?php echo e($randEvent[0]->city); ?></h1>
-                    <h5><?php echo e($randEvent[0]->information); ?></h5>FF
+                    <h5><?php echo e($randEvent[0]->information); ?></h5>
                     <a class="btn red darken-3" href="/events/details/<?php echo e($randEvent[0]->id); ?>" style="margin-top: 20px">View Event</a>
                 </div>
             </div>            
         </div>
+
+        <div class="divider"></div>
 
         <div class="section">
             <div class="row">           
@@ -58,7 +49,7 @@
                     <a class="btn red darken-3" href="/events/details/<?php echo e($randEvent[1]->id); ?>" style="margin-top: 20px">View Event</a>
                 </div>
                 <div class="col s6">
-                    <img class="materialboxed responsive-img" src="img/event_images/<?php echo e($randEvent[1]->image); ?>">
+                    <img class="materialboxed responsive-img" width="400" src="img/event_images/<?php echo e($randEvent[1]->image); ?>">
                 </div> 
             </div>            
         </div>

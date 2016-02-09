@@ -92,7 +92,15 @@ class EventController extends Controller
                     ->distinct()
                     ->get();
 
-            return view('details', ['ev' => $ev, 'rsvp' => $rsvp]); //returns event details page for the corresponding ID
+            $full = FALSE;
+
+            $count = Rsvp::where('eventid', $id)->count();
+            if($count >= $ev->capacity)
+            {
+                $full = TRUE;
+            }
+
+            return view('details', ['ev' => $ev, 'rsvp' => $rsvp, 'full' => $full]); //returns event details page for the corresponding ID
         } else {    
             return redirect()->route('login'); //otherwise redirects to the login page
         }
@@ -152,20 +160,36 @@ class EventController extends Controller
     // Database insertion links user to event
     public function attendEvent($id) 
     {
-        do {
-            $code = str_random(10);
-        } while (Rsvp::where("code", $code)->where('eventid', $id)->first() instanceof Rsvp);
-        Rsvp::insert(['userid' => \Auth::user()->id, 'eventid' => $id, 'code' => $code]);
-        
-        return redirect('dash');     
+        if(\Auth::check()){
+            $count = Rsvp::where('eventid', $id)->count();
+            $ev = events::where('id', $id)->first();
+            if($count < $ev->capacity)
+            {
+                do {
+                    $code = str_random(10);
+                } while (Rsvp::where("code", $code)->where('eventid', $id)->first() instanceof Rsvp);
+                
+                Rsvp::insert(['userid' => \Auth::user()->id, 'eventid' => $id, 'code' => $code]);
+                
+                return redirect('dash'); 
+            } else {
+                echo "Event full";
+            }
+        } else {
+            return redirect('login');
+        }      
     }
 
     //Unattend an event function 
     //Database deletion removes link between user and event
     public function unattendEvent($id) 
     {
-        Rsvp::where(['userid' => \Auth::user()->id, 'eventid' => $id])->delete();
-        return redirect('/events');     
+        if(\Auth::check()){
+            Rsvp::where(['userid' => \Auth::user()->id, 'eventid' => $id])->delete();
+            return redirect('/events');
+        } else {
+            return redirect('login');
+        }   
     }
 
 
@@ -177,109 +201,93 @@ class EventController extends Controller
         }
         return redirect('admin');
     } 
-        /**
-         * Display the specified resource.
-         *
-         * @param  int  $id
-         * @return \Illuminate\Http\Response
-         */
-        public function show($id)
-        {
-            //
-        }
-
-        /**
-         * Show the form for editing the specified resource.
-         *
-         * @param  int  $id
-         * @return \Illuminate\Http\Response
-         */
-        public function editEventInfo($id)
-        {
-            if(\Auth::user()->admin==1){
-                $event = events::select('events.*')->where('id', '=', $id)->first();
-                return view('admin/edit',['event' => $event]);
-            }else{
-                return redirect('events');
-            }
-        }
-
-        /**
-         * Update the specified resource in storage.
-         *
-         * @param  \Illuminate\Http\Request  $request
-         * @param  int  $id
-         * @return \Illuminate\Http\Response
-         */
-        public function update(Request $request, $id)
-        {
-
-            $this->validate($request, [
-            'name' => 'required|max:40',
-            'venue' => 'required|max:30',
-            'city' => 'required|max:30',
-            'price' => 'required|numeric',
-            'information' => 'required|max:255',
-            'description' => 'required',
-            'capacity' => 'required|numeric',
-            'date' => 'required|date',
-            'image' => 'image',
-            ]);
-
-            $name = $request->input('name');
-            $venue = $request->input('venue');
-            $city = $request->input('city');
-            $price = $request->input('price');
-            $information = $request->input('information');
-            $description = $request->input('description');
-            $capacity = $request->input('capacity');
-            $date = $request->input('date');
-            $image = $request->input('image');
-
-            
-            if(Input::hasfile('image')){
-                events::where('id', $id)->update(['name'=>$name, 'venue'=>$venue, 'city'=>$city, 'price'=>$price, 'information'=>$information, 'description'=>$description, 'capacity'=>$capacity, 'date'=>$date, 'image'=>$image]);
-                $imgName = $id . "." . Input::file('image')->getClientOriginalExtension(); //gets the event ID and concat on the imaage file extension that was uploaded 
-                Input::file('image')->move(__DIR__.'/../../../public/img/event_images',$imgName); //moves the uploaded image from the tmp directory to a premanant one (/public/img/event_images) and renames it to <eventID>.<fileExt>
-                
-                $image = events::where('id', $id)->first();//returns the same event as the one being updated
-                $image->image = $imgName; //adds the image name from above to the image column of the latest event
-                $image->save(); //saves the above action
-            }else{
-                events::where('id', $id)->update(['name'=>$name, 'venue'=>$venue, 'city'=>$city, 'price'=>$price, 'information'=>$information, 'description'=>$description, 'capacity'=>$capacity, 'date'=>$date]);
-            }
-
-            return redirect('admin');
-        }
-
-        public function contactUs(Request $input)
-        {
-            $this->validate($input, [
-            'name' => 'required|max:60',
-            'subject' => 'required|max:30',
-            'email' => 'required|max:30',
-            'message' => 'required',
-            ]);
-
-            $date = Carbon::now();
-
-            Message::create($input->all()); //creates a new event with these details
-
-            Message::latest()->first()->update(['date' => $date]);
-
-            return redirect('/'); //redirects to events view when finished
-        }
-
-        public function markAsRead($id)
-        {
-            Message::where('id', $id)->delete();
-
-            return redirect('/admin#inbox');
-        }
-
-        public function welcome()
-        {
-            $randEvent=events::orderBy(\DB::raw('RAND()'))->get();
-            return view('welcome', ['randEvent' => $randEvent]);
+        
+    public function editEventInfo($id)
+    {
+        if(\Auth::user()->admin==1){
+            $event = events::select('events.*')->where('id', '=', $id)->first();
+            return view('admin/edit',['event' => $event]);
+        }else{
+            return redirect('events');
         }
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+
+        $this->validate($request, [
+        'name' => 'required|max:40',
+        'venue' => 'required|max:30',
+        'city' => 'required|max:30',
+        'price' => 'required|numeric',
+        'information' => 'required|max:255',
+        'description' => 'required',
+        'capacity' => 'required|numeric',
+        'date' => 'required|date',
+        'image' => 'image',
+        ]);
+
+        $name = $request->input('name');
+        $venue = $request->input('venue');
+        $city = $request->input('city');
+        $price = $request->input('price');
+        $information = $request->input('information');
+        $description = $request->input('description');
+        $capacity = $request->input('capacity');
+        $date = $request->input('date');
+        $image = $request->input('image');
+
+        
+        if(Input::hasfile('image')){
+            events::where('id', $id)->update(['name'=>$name, 'venue'=>$venue, 'city'=>$city, 'price'=>$price, 'information'=>$information, 'description'=>$description, 'capacity'=>$capacity, 'date'=>$date, 'image'=>$image]);
+            $imgName = $id . "." . Input::file('image')->getClientOriginalExtension(); //gets the event ID and concat on the imaage file extension that was uploaded 
+            Input::file('image')->move(__DIR__.'/../../../public/img/event_images',$imgName); //moves the uploaded image from the tmp directory to a premanant one (/public/img/event_images) and renames it to <eventID>.<fileExt>
+            
+            $image = events::where('id', $id)->first();//returns the same event as the one being updated
+            $image->image = $imgName; //adds the image name from above to the image column of the latest event
+            $image->save(); //saves the above action
+        }else{
+            events::where('id', $id)->update(['name'=>$name, 'venue'=>$venue, 'city'=>$city, 'price'=>$price, 'information'=>$information, 'description'=>$description, 'capacity'=>$capacity, 'date'=>$date]);
+        }
+
+        return redirect('admin');
+    }
+
+    public function contactUs(Request $input)
+    {
+        $this->validate($input, [
+        'name' => 'required|max:60',
+        'subject' => 'required|max:30',
+        'email' => 'required|max:30',
+        'message' => 'required',
+        ]);
+
+        $date = Carbon::now();
+
+        Message::create($input->all()); //creates a new event with these details
+
+        Message::latest()->first()->update(['date' => $date]);
+
+        return redirect('/'); //redirects to events view when finished
+    }
+
+    public function markAsRead($id)
+    {
+        Message::where('id', $id)->delete();
+
+        return redirect('/admin#inbox');
+    }
+
+    public function welcome()
+    {
+        $randEvent=events::orderBy(\DB::raw('RAND()'))->get();
+        return view('welcome', ['randEvent' => $randEvent]);
+    }
+}

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'Event Details')
 @section('content')
     <!-- Navigation ( navigation.html ) -->
     <style>
@@ -14,6 +15,12 @@
         .btn-container .btn, .btn-container .btn-large, .btn-container .btn-flat, .btn-container .btn-large {
           display: block; 
         }
+
+        .addeventatc_icon {
+            background: url('/img/calendar.png') !important;
+        }
+
+        
     </style>
     <div class="container">
         <div class="section no-pad-bot" id="no-padding-top">
@@ -26,7 +33,6 @@
                 <!-- Event Description -->
                 <div class="left-align col s5">
                     <h5>{{ $ev->name }}</h5>
-                    <p class="light">Organiser<p>
                     <p>{{ $ev->information }}</p>
                 </div>
                 
@@ -40,8 +46,8 @@
                 <!-- Add to Calendar API -->
                 <div class="btn-container">
                     <div>
-                        <div title="Add to Calendar" class="btn red darken-3 addeventatc">
-                            <span class="white-text">Add to Calendar</span>
+                        <div title="Add to Calendar" class="btn red darken-3 addeventatc" style="padding-top:11px;">
+                            <span class="white-text" style="font-weight:normal" >Add to Calendar</span>
                             <span class="start">{{ $ev->date }} {{ $ev->start_time }}</span>
                             <span class="end">{{ $ev->date }} {{ $ev->end_time }}</span>
                             <span class="title">{{ $ev->name }}</span>
@@ -54,7 +60,11 @@
                     </div>
                 </div>
             @else
-                <a class="btn red darken-3" href="attend/{{ $ev->id }}">Attend Event</a>
+                @if($full == TRUE)
+                    <a class="btn red darken-3 disabled" title="Tickets Sold Out" href="attend/{{ $ev->id }}">Attend Event</a>
+                @else
+                    <a class="btn red darken-3" href="attend/{{ $ev->id }}">Attend Event</a>
+                @endif
             @endif
                     
                 </div>

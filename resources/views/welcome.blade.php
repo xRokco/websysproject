@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-
+@section('title', 'Home')
 @section('content')
         
         <div class="container">
@@ -15,7 +15,6 @@
                     <h5 div="light center-align">Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.</h5>
                     <br>
                     <div class="center">
-                        <!--<img class="responsive-img center" src="/img/button.png">-->
                         <a class="red darken-3 waves-effect waves-light btn-large" href="/events" ><i class="material-icons left">star</i>Browse Events<i class="material-icons right">star</i></a>
                     </div>
                 </div>
@@ -31,16 +30,18 @@
         <div class="section">
             <div class="row">
                 <div class="col s6">
-                    <img class="materialboxed responsive-img" src="img/event_images/{{ $randEvent[0]->image }}">
+                    <img class="materialboxed responsive-img" width="400" src="img/event_images/{{ $randEvent[0]->image }}">
                 </div>            
                 
                 <div class="col s6 center">    
                     <h2 class="center-align red-text text-darken-2">{{ $randEvent[0]->name }}<br>{{ $randEvent[0]->city }}</h1>
-                    <h5>{{ $randEvent[0]->information }}</h5>FF
+                    <h5>{{ $randEvent[0]->information }}</h5>
                     <a class="btn red darken-3" href="/events/details/{{ $randEvent[0]->id }}" style="margin-top: 20px">View Event</a>
                 </div>
             </div>            
         </div>
+
+        <div class="divider"></div>
 
         <div class="section">
             <div class="row">           
@@ -50,7 +51,7 @@
                     <a class="btn red darken-3" href="/events/details/{{ $randEvent[1]->id }}" style="margin-top: 20px">View Event</a>
                 </div>
                 <div class="col s6">
-                    <img class="materialboxed responsive-img" src="img/event_images/{{ $randEvent[1]->image }}">
+                    <img class="materialboxed responsive-img" width="400" src="img/event_images/{{ $randEvent[1]->image }}">
                 </div> 
             </div>            
         </div>

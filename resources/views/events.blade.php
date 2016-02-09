@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Events')
+
 @section('content') 
 
 <!-- Navigation ( navigation.html ) -->
@@ -23,7 +25,6 @@
                     <!-- Event Description -->
                     <div class="left-align col s5">
                         <h5>{{ $event->name }}</h5></a>
-                        <p class="light">Organiser<p>
                         <p>{{ $event->information }}</p>
                     </div>
                     

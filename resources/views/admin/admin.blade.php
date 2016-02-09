@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Admin')
+
 @section('content')
 <style>
         .btn-container {
@@ -37,7 +39,6 @@
 			            <!-- Event Description -->
 			            <div class="left-align col s5">
 			                <h5>{{ $event->name }}</h5>
-			                <p class="light">Organiser<p>
 			                <p>{{ $event->information }}</p>
 			            </div>
 			                    

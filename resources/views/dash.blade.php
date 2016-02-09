@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Dash')
+
 @section('content')
 <br><br>
 <div class="container">
@@ -24,7 +26,6 @@
 				                    <!-- Event Description -->
 				                    <div class="left-align col s5">
 				                        <h5>{{ $event->name }}</h5>
-				                        <p class="light">Organiser<p>
 				                        <p>{{ $event->information }}</p>
 				                    </div>
 				                    
