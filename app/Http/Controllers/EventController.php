@@ -137,7 +137,7 @@ class EventController extends Controller
         {
             // Displays all events that the user is attending
 
-             $rsvp = \DB::table('events')
+            $rsvp = \DB::table('events')
                 ->join('rsvp', 'events.id', '=', 'rsvp.eventid')
                 ->join('users', 'users.id', '=', 'rsvp.userid')
                 ->select('events.*')
@@ -275,5 +275,12 @@ class EventController extends Controller
             Message::where('id', $id)->delete();
 
             return redirect('/admin#inbox');
+        }
+
+        public function welcome()
+        {
+            $randEvent=events::all()->random(2);
+            return view('welcome', ['randEvent' => $randEvent]);
+   
         }
     }

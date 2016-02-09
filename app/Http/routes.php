@@ -78,7 +78,7 @@ Route::group(['middleware' => 'web'], function () {
     */
 
     //Route to return homepage
-    Route::get('/', 'HomeController@welcome');
+    Route::get('/', 'EventController@welcome');
 
     //Route to be called when submit on create events page is clicked
     Route::post('/events','EventController@store');

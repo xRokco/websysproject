@@ -13,7 +13,6 @@
                 </div>
                 <div id="description" class="col s12">
                 	<br><br>
-                    <div class="container">
                     	@if ($rsvp)
 				            @foreach ($rsvp as $event)
 				                <div class="row grey lighten-5 valign-wrapper" id="event">
@@ -42,7 +41,6 @@
 				        	<h4 class="center red-text">You aren't attending any events yet. Checkout our <a class="red-text text-lighten-3" href="{{ url('events') }}" >events</a> page.</h4>
 				        @endif
             			<br>
-       				</div>  
                 </div>
                 <div id="location" class="col s12">
                     <div class="row center">
@@ -55,7 +53,7 @@
 						</div>
                     </div>
                     <div class="center">
-    					<iframe width="700" height="525" frameborder="0" style="border:0"
+    					<iframe width="600" height="525" frameborder="0" style="border:0"
 src="https://www.google.com/maps/embed/v1/place?q={{ Auth::user()->direction }}&key=AIzaSyBFaySDzqmlKyFwdG9qGWxGD3rjM1Ub0Bg" allowfullscreen></iframe>
     					<br><br>
 					</div>
