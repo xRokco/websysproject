@@ -26,26 +26,26 @@
                 <div class="divider"></div><h1 class="red-text text-darken-2 center-align">Upcoming events</h1><div class="divider"></div>
         <!-- Icon Section -->
         <?php
-            $i = 0;
-            foreach ($randEvent as $event) {
-                $id_array[$i] = $event->id - 1;
-                $i++;
-            }     
+            //$i = 0;
+            //foreach ($randEvent as $event) {
+            //    $id_array[$i] = $event->id - 1;
+            //    $i++;
+            //}     
 
-            $id_array_zero = $id_array[0];
-            $id_array_one = $id_array[1];
+            //0 = $id_array[0];
+            //1 = $id_array[1];
         ?>
 
         <div class="section">
             <div class="row">
                 <div class="col s6">
-                    <img class="materialboxed responsive-img" src="img/event_images/<?php echo e($randEvent[$id_array_zero]->image); ?>">
+                    <img class="materialboxed responsive-img" src="img/event_images/<?php echo e($randEvent[0]->image); ?>">
                 </div>            
                 
                 <div class="col s6 center">    
-                    <h2 class="center-align red-text text-darken-2"><?php echo e($randEvent[$id_array_zero]->name); ?><br><?php echo e($randEvent[$id_array_zero]->city); ?></h1>
-                    <h5><?php echo e($randEvent[$id_array_zero]->information); ?></h5>
-                    <a class="btn red darken-3" href="/events/details/<?php echo e($randEvent[$id_array_zero]->id); ?>" style="margin-top: 20px">View Event</a>
+                    <h2 class="center-align red-text text-darken-2"><?php echo e($randEvent[0]->name); ?><br><?php echo e($randEvent[0]->city); ?></h1>
+                    <h5><?php echo e($randEvent[0]->information); ?></h5>FF
+                    <a class="btn red darken-3" href="/events/details/<?php echo e($randEvent[0]->id); ?>" style="margin-top: 20px">View Event</a>
                 </div>
             </div>            
         </div>
@@ -53,12 +53,12 @@
         <div class="section">
             <div class="row">           
                 <div class="col s6 center">    
-                    <h2 class="center-align red-text text-darken-2"><?php echo e($randEvent[$id_array_one]->name); ?><br><?php echo e($randEvent[$id_array_one]->city); ?></h1>
-                    <h5><?php echo e($randEvent[$id_array_one]->information); ?></h5>
-                    <a class="btn red darken-3" href="/events/details/<?php echo e($randEvent[$id_array_one]->id); ?>" style="margin-top: 20px">View Event</a>
+                    <h2 class="center-align red-text text-darken-2"><?php echo e($randEvent[1]->name); ?><br><?php echo e($randEvent[1]->city); ?></h1>
+                    <h5><?php echo e($randEvent[1]->information); ?></h5>
+                    <a class="btn red darken-3" href="/events/details/<?php echo e($randEvent[1]->id); ?>" style="margin-top: 20px">View Event</a>
                 </div>
                 <div class="col s6">
-                    <img class="materialboxed responsive-img" src="img/event_images/<?php echo e($randEvent[$id_array_one]->image); ?>">
+                    <img class="materialboxed responsive-img" src="img/event_images/<?php echo e($randEvent[1]->image); ?>">
                 </div> 
             </div>            
         </div>

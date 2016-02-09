@@ -279,8 +279,7 @@ class EventController extends Controller
 
         public function welcome()
         {
-            $randEvent=events::all()->random(2);
+            $randEvent=events::orderBy(\DB::raw('RAND()'))->get();
             return view('welcome', ['randEvent' => $randEvent]);
-   
         }
     }
