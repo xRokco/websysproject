@@ -124,7 +124,7 @@
                             src="https://www.google.com/maps/embed/v1/directions?origin={{ Auth::user()->direction }}&destination={{ $ev->venue }}, {{ $ev->city }}&key=AIzaSyBFaySDzqmlKyFwdG9qGWxGD3rjM1Ub0Bg" allowfullscreen></iframe>
                     </div>
 
-                    <h5 class="center">Here's a couple of hotels within a couple of kilometers of the venue</h5>
+                    <h5 class="center">Here's a few of hotels within a couple of kilometers of the venue</h5>
 
                     <table class="highlight">
                         <thead>

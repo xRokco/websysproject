@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col s12">
                   <ul class="tabs">
-                    <li class="tab col s6"><a class="red-text" href="#description">Events</a></li>
+                    <li class="tab col s6"><a class="red-text" href="#description">My Events</a></li>
                     <li class="tab col s6"><a class="red-text" href="#location">User Details</a></li>
                     <div class="indicator red" style="z-index:1"> </div>
                   </ul>
