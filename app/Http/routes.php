@@ -81,13 +81,13 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/', 'EventController@welcome');
 
     //Route to be called when submit on create events page is clicked
-    Route::post('/events','EventController@store');
+    Route::post('/events','HomeController@store');
 
     //Route to be called when submit on contact us page is clicked
     Route::post('/contact','EventController@contactUs');
 
     //Route to return the event details page
-    Route::get('/events/details/{id}','EventController@getEventDetails');
+    Route::get('/events/details/{id}','HomeController@getEventDetails');
 
     //Route to return EventController@index and return the event page view
     Route::resource('/events', 'EventController');
@@ -96,19 +96,19 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/account', 'HomeController@editUserInfo');
     
     //This is the route to print your ticket
-    Route::get('/events/details/print/{id}','EventController@printEventTicket');
+    Route::get('/events/details/print/{id}','HomeController@printEventTicket');
 
     //This is the route for the rsvp page
-    Route::get('/dash', 'EventController@showUserEvents');
+    Route::get('/dash', 'HomeController@showUserEvents');
 
     // This is the route to attend an event
-    Route::get('/events/details/attend/{id}','EventController@attendEvent');
+    Route::get('/events/details/attend/{id}','HomeController@attendEvent');
 
     // This is the route to unattend an event 
-    Route::get('/events/details/unattend/{id}','EventController@unattendEvent');
+    Route::get('/events/details/unattend/{id}','HomeController@unattendEvent');
 
     //This is called when the submit button on the edit user info page is called.
-    Route::patch('/dash/{id}','HomeController@update');
+    Route::patch('/dash/{id}','HomeController@updateUser');
 
     /*
     |----------------------------------------------------------------------
@@ -122,20 +122,20 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/admin', 'HomeController@index');
 
     //Route to return the create event page
-    Route::get('/admin/create', 'EventController@create');
+    Route::get('/admin/create', 'HomeController@create');
 
     //Route to return the page that lists all attendees for event with coresponding ID
-    Route::get('/admin/attendees/{id}','EventController@getAttendees');
+    Route::get('/admin/attendees/{id}','HomeController@getAttendees');
 
     //Route to return the page that lists all the tickets for all attendees for a given event with corresponding ID
-    Route::get('/admin/attendees/print/{id}','EventController@printAttendees');
+    Route::get('/admin/attendees/print/{id}','HomeController@printAttendees');
 
     //This is the route to delete an event
-    Route::get('/admin/delete/{id}','EventController@deleteEvent');
+    Route::get('/admin/delete/{id}','HomeController@deleteEvent');
 
     //Route to return the edit event info page.
-    Route::get('/admin/edit/{id}', 'EventController@editEventInfo');
+    Route::get('/admin/edit/{id}', 'HomeController@editEventInfo');
 
     //Route to mark contact us messages as read (i.e. delete them)
-    Route::get('/admin/inbox/delete/{id}', 'EventController@markAsRead');
+    Route::get('/admin/inbox/delete/{id}', 'HomeController@markAsRead');
 });
