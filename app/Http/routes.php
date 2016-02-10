@@ -117,28 +117,28 @@ Route::group(['middleware' => 'web'], function () {
     |Routes for anything related to the admin pages, which all call a controller due to there needing to be an
     |IsAdmin check before returning them, as well as most of the pages relying heavily on the database.
     */
-
     //Route to return the admin homepage
-    Route::get('/admin', 'HomeController@index');
+    Route::get('/admin', 'AdminController@index');
 
     //Route to return the create event page
-    Route::get('/admin/create', 'HomeController@create');
+    Route::get('/admin/create', 'AdminController@create');
 
     //Route to return the page that lists all attendees for event with coresponding ID
-    Route::get('/admin/attendees/{id}','HomeController@getAttendees');
+    Route::get('/admin/attendees/{id}','AdminController@getAttendees');
 
     //Route to return the page that lists all the tickets for all attendees for a given event with corresponding ID
-    Route::get('/admin/attendees/print/{id}','HomeController@printAttendees');
+    Route::get('/admin/attendees/print/{id}','AdminController@printAttendees');
 
     //This is the route to delete an event
-    Route::get('/admin/delete/{id}','HomeController@deleteEvent');
+    Route::get('/admin/delete/{id}','AdminController@deleteEvent');
 
     //Route to return the edit event info page.
-    Route::get('/admin/edit/{id}', 'HomeController@editEventInfo');
+    Route::get('/admin/edit/{id}', 'AdminController@editEventInfo');
 
     //Route to mark contact us messages as read (i.e. delete them)
-    Route::get('/admin/inbox/delete/{id}', 'HomeController@markAsRead');
+    Route::get('/admin/inbox/delete/{id}', 'AdminController@markAsRead');
 
     //This is called when the submit button on the edit event info page is clicked.
-    Route::patch('/admin/edit/{id}','HomeController@updateEvent');
+    Route::patch('/admin/edit/{id}','AdminController@updateEvent');
+    
 });
