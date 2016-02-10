@@ -99,8 +99,11 @@ class EventController extends Controller
             {
                 $full = TRUE;
             }
-
-            return view('details', ['ev' => $ev, 'rsvp' => $rsvp, 'full' => $full]); //returns event details page for the corresponding ID
+            $stripe =[
+                'publishable' => 'pk_test_qqbGUEke0JuODLnXOpEHbF7z',
+                'private' => 'sk_test_B0nWhDWzkxkF3oX6ZL9rZIEy'
+            ];
+            return view('details', ['ev' => $ev, 'rsvp' => $rsvp, 'full' => $full, 'stripe' => $stripe]); //returns event details page for the corresponding ID
         } else {    
             return redirect()->route('login'); //otherwise redirects to the login page
         }
@@ -178,6 +181,10 @@ class EventController extends Controller
         } else {
             return redirect('login');
         }      
+    }
+    public function pay($id)
+    {
+
     }
 
     //Unattend an event function 

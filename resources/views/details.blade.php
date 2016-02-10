@@ -40,7 +40,7 @@
                 <div class="col s3" id="test">
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">today</i>{{ $ev->date }}</p>
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">location_on</i>{{ $ev->venue}}, {{ $ev->city }}</p>
-                    <p class="condensed light left-align valign-wrapper"><i class="material-icons">payment</i>&euro;99</p>
+                    <p class="condensed light left-align valign-wrapper"><i class="material-icons">payment</i>&euro;{{ $ev->price }}</p>
             <!-- Check if clicked attend already -->
             @if($rsvp)
                 <!-- Add to Calendar API -->
@@ -63,7 +63,40 @@
                 @if($full == TRUE)
                     <a class="btn red darken-3 disabled" title="Tickets Sold Out" href="attend/{{ $ev->id }}">Attend Event</a>
                 @else
-                    <a class="btn red darken-3" href="attend/{{ $ev->id }}">Attend Event</a>
+                <a id="customButton" class="btn red darken-3" href="attend/{{ $ev->id }}">Attend Event</a>
+
+                    <script src="https://checkout.stripe.com/checkout.js"></script>
+                        <script>
+                          var handler = StripeCheckout.configure({
+                            key: "<?php echo $stripe['publishable']; ?>",
+                            image: '/img/event_images/{{ $ev->image }}',
+                            locale: 'auto',
+                            token: function(token) {
+                              // Use the token to create the charge with a server-side script.
+                              // You can access the token ID with `token.id`
+                               window.location.href = "attend/{{ $ev->id }}";
+                            }
+                          });
+
+                          $('#customButton').on('click', function(e) {
+                            // Open Checkout with further options
+                            handler.open({
+                              name: '{{ $ev->name }}',
+                              description: 'Non-refundable',
+                              currency: "eur",
+                              amount: '{{ $ev->price }}00',
+                              email: '{{ Auth::user()->email }}'
+                            });
+                            e.preventDefault();
+
+                          });
+
+                          // Close Checkout on page navigation
+                          $(window).on('popstate', function() {
+                            handler.close();
+
+                          });
+                        </script> 
                 @endif
             @endif
                     

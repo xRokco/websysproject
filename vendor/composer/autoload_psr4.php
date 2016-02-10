@@ -24,6 +24,7 @@ return array(
     'Symfony\\Component\\CssSelector\\' => array($vendorDir . '/symfony/css-selector'),
     'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
     'SuperClosure\\' => array($vendorDir . '/jeremeamia/SuperClosure/src'),
+    'Stripe\\' => array($vendorDir . '/stripe/stripe-php/lib'),
     'Skydiver\\LaravelMaterializeCSS\\' => array($vendorDir . '/skydiver/laravel-materialize-css/src'),
     'Psy\\' => array($vendorDir . '/psy/psysh/src/Psy'),
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),

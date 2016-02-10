@@ -1410,11 +1410,12 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
      *
      * @param  string  $column
      * @param  int  $amount
+     * @param  array  $extra
      * @return int
      */
-    protected function increment($column, $amount = 1)
+    protected function increment($column, $amount = 1, array $extra = [])
     {
-        return $this->incrementOrDecrement($column, $amount, 'increment');
+        return $this->incrementOrDecrement($column, $amount, $extra, 'increment');
     }
 
     /**
@@ -1422,11 +1423,12 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
      *
      * @param  string  $column
      * @param  int  $amount
+     * @param  array  $extra
      * @return int
      */
-    protected function decrement($column, $amount = 1)
+    protected function decrement($column, $amount = 1, array $extra = [])
     {
-        return $this->incrementOrDecrement($column, $amount, 'decrement');
+        return $this->incrementOrDecrement($column, $amount, $extra, 'decrement');
     }
 
     /**
@@ -1434,20 +1436,21 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
      *
      * @param  string  $column
      * @param  int  $amount
+     * @param  array  $extra
      * @param  string  $method
      * @return int
      */
-    protected function incrementOrDecrement($column, $amount, $method)
+    protected function incrementOrDecrement($column, $amount, $extra, $method)
     {
         $query = $this->newQuery();
 
         if (! $this->exists) {
-            return $query->{$method}($column, $amount);
+            return $query->{$method}($column, $amount, $extra);
         }
 
         $this->incrementOrDecrementAttributeValue($column, $amount, $method);
 
-        return $query->where($this->getKeyName(), $this->getKey())->{$method}($column, $amount);
+        return $query->where($this->getKeyName(), $this->getKey())->{$method}($column, $amount, $extra);
     }
 
     /**
@@ -1475,7 +1478,7 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
     public function update(array $attributes = [], array $options = [])
     {
         if (! $this->exists) {
-            return $this->newQuery()->update($attributes);
+            return false;
         }
 
         return $this->fill($attributes)->save($options);
@@ -1645,7 +1648,7 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
         // table from the database. Not all tables have to be incrementing though.
         $attributes = $this->attributes;
 
-        if ($this->incrementing) {
+        if ($this->getIncrementing()) {
             $this->insertAndSetId($query, $attributes);
         }
 
@@ -2816,7 +2819,7 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
      */
     public function getCasts()
     {
-        if ($this->incrementing) {
+        if ($this->getIncrementing()) {
             return array_merge([
                 $this->getKeyName() => 'int',
             ], $this->casts);
