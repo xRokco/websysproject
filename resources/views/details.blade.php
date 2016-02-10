@@ -61,7 +61,7 @@
                 </div>
             @else
                 @if($full == TRUE)
-                    <a class="btn red darken-3 disabled" title="Tickets Sold Out" href="attend/{{ $ev->id }}">Attend Event</a>
+                    <a class="btn red darken-3 disabled" title="Tickets Sold Out">Attend Event</a>
                 @else
                 <a id="customButton" class="btn red darken-3" href="attend/{{ $ev->id }}">Attend Event</a>
 
