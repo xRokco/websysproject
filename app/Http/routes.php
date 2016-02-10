@@ -107,7 +107,7 @@ Route::group(['middleware' => 'web'], function () {
     // This is the route to unattend an event 
     Route::get('/events/details/unattend/{id}','HomeController@unattendEvent');
 
-    //This is called when the submit button on the edit user info page is called.
+    //This is called when the submit button on the edit user info page is clicked.
     Route::patch('/dash/{id}','HomeController@updateUser');
 
     /*
@@ -138,4 +138,7 @@ Route::group(['middleware' => 'web'], function () {
 
     //Route to mark contact us messages as read (i.e. delete them)
     Route::get('/admin/inbox/delete/{id}', 'HomeController@markAsRead');
+
+    //This is called when the submit button on the edit event info page is clicked.
+    Route::patch('/admin/edit/{id}','HomeController@updateEvent');
 });
