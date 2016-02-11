@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\DB;
 class GuestController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Shows the events page.
      *
      * @return \Illuminate\Http\Response
      */
@@ -31,6 +31,12 @@ class GuestController extends Controller
         return view('events', ['events' => $events]);
 }
 
+    /**
+     * Adds a new message to the messages table.
+     *
+     * @param  \Illuminate\Http\Request  $input
+     * @return \Illuminate\Http\Response
+     */
     public function contactUs(Request $input)
     {
         $this->validate($input, [
@@ -49,6 +55,11 @@ class GuestController extends Controller
         return redirect('/'); //redirects to events view when finished
     }
 
+    /**
+     * Shows the homepage.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function welcome()
     {
         $randEvent=Event::orderBy(DB::raw('RAND()'))->get();

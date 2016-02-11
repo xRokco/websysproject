@@ -26,6 +26,12 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Show the event detail page
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
     public function getEventDetails($id)
     {
         $ev = Event::where('id', $id)->first();
@@ -51,6 +57,12 @@ class UserController extends Controller
         return view('details', ['ev' => $ev, 'rsvp' => $rsvp, 'full' => $full, 'stripe' => $stripe]); //returns event details page for the corresponding ID
     }
 
+    /**
+     * Show the print tickeyt page
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
     public function printEventTicket($id)
     {
         $ev = Event::where('id', $id)->first();
@@ -65,6 +77,12 @@ class UserController extends Controller
         return view('print', ['ev' => $ev, 'rsvp' => $rsvp]); //returns event ticket print page for the corresponding ID
     }
 
+    /**
+     * Show the user dashboard.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
     public function showUserEvents()
     {
         // Displays all events that the user is attending
@@ -80,8 +98,12 @@ class UserController extends Controller
         return view('dash', ['rsvp' => $rsvp]); //returns dash view with $rsvp array with query results from above
     }
 
-    // Attend an event function
-    // Database insertion links user to event
+    /**
+     * Store an new row in the rsvp table corresponding to the usersid and the eventid.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
     public function attendEvent($id) 
     {
         $count = Rsvp::where('eventid', $id)->count();
@@ -100,16 +122,23 @@ class UserController extends Controller
         }     
     }
 
-    //Unattend an event function 
-    //Database deletion removes link between user and event
+    /**
+     * Delete a row from the rsvp table corresponding to the event id and the user id.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
     public function unattendEvent($id) 
     {
         Rsvp::where(['userid' => Auth::user()->id, 'eventid' => $id])->delete();
         return redirect('/events');
     }
 
-    //Called when the user clicks edit on the dash
-    //Returns the auth users details and then returns the account view
+    /**
+     * Show the page that lets a user edit their personal details.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function editUserInfo() 
     {
 
@@ -117,9 +146,12 @@ class UserController extends Controller
         return view('account',['user' => $user]);
     }
 
-    //Called when update is clicked on the account page
-    //Adds the new values to the users DB while validating the input
-    //Returns redirect to dash view
+    /**
+     * Updates the user's info in the users table
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function updateUser(Request $request) 
     {
         $id = Auth::user()->id;
