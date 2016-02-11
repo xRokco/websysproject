@@ -20,6 +20,16 @@
             background: url('/img/calendar.png') !important;
         }
     </style>
+    <script type="text/javascript">
+        function soldout () {
+            document.getElementById('attend').innerHTML = "Sold Out!";
+        }
+
+        function soldout2 () {
+            document.getElementById('attend').innerHTML = "Attend Event";
+            document.getElementById('attend').style.width = "172.703px";
+        }
+    </script>
     <div class="container">
         <div class="section no-pad-bot" id="no-padding-top">
             <div class="row valign-wrapper" id="event">
@@ -59,7 +69,7 @@
                 </div>
             @else
                 @if($full == TRUE)
-                    <a class="btn red darken-3 disabled" title="Tickets Sold Out">Attend Event</a>
+                    <a id="attend" onmouseover="soldout()" onmouseout="soldout2()" class="btn red darken-3 disabled" title="Tickets Sold Out">Attend Event</a>
                 @else
                 <a id="customButton" class="btn red darken-3" href="attend/{{ $ev->id }}">Attend Event</a>
 
