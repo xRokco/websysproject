@@ -19,8 +19,6 @@
         .addeventatc_icon {
             background: url('/img/calendar.png') !important;
         }
-
-        
     </style>
     <div class="container">
         <div class="section no-pad-bot" id="no-padding-top">
