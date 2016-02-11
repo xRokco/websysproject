@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
-class events extends Model{
+class Event extends Model{
 
     use SoftDeletes;
     protected $softDelete = true;

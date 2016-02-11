@@ -1,11 +1,4 @@
 @extends('layouts.app')
-<?php
-	$atns = DB::table('rsvp')
-			->join('users', 'users.id', '=', 'rsvp.userid')
-            ->select('*')
-            ->where('rsvp.eventid', '=', $atnd)
-            ->get();
-?>
 
 @section('title', 'All Attendees')
 
@@ -32,7 +25,7 @@
 					@endforeach
 					</tbody>
 				</table>
-				<h4 class="center"><a href="print/{{ $atnd }} ">Print all</a></h4>
+				<h4 class="center"><a href="print/{{ $id }}" target="_blank">Print all</a></h4>
 			@else
 				<h4 class="center">No attendees yet</h4>
 			@endif

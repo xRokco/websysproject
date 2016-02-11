@@ -55,7 +55,7 @@
                             <span class="location">{{ $ev->venue}}, {{ $ev->city }}</span>
                             <span class="date_format">MM/DD/YYYY</span>
                         </div>
-                        <a class="btn red darken-3" style="margin-top:5px;margin-bottom:5px" href="print/{{ $ev->id }}">Print Ticket</a>
+                        <a class="btn red darken-3" style="margin-top:5px;margin-bottom:5px" target="_blank" href="print/{{ $ev->id }}">Print Ticket</a>
                         <a class="btn red darken-3" href="unattend/{{ $ev->id }}">Unattend Event</a>
                     </div>
                 </div>

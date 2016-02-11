@@ -6,13 +6,16 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\events;
+use App\Event;
 use App\Rsvp;
 use Illuminate\Support\Facades\Input;
 use App\Message;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
-class EventController extends Controller
+
+class GuestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,7 +25,7 @@ class EventController extends Controller
     public function index()
     {
         //Gets all the event details from the event database table
-        $events = events::all();
+        $events = Event::all();
 
         //Returns the events view along with the $events array containing the query results from above
         return view('events', ['events' => $events]);
@@ -48,7 +51,7 @@ class EventController extends Controller
 
     public function welcome()
     {
-        $randEvent=events::orderBy(\DB::raw('RAND()'))->get();
+        $randEvent=Event::orderBy(DB::raw('RAND()'))->get();
         return view('welcome', ['randEvent' => $randEvent]);
     }
 }

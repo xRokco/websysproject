@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\User;
-use App\events;
+use App\Event;
 use App\Message;
 use App\Rsvp;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {    
@@ -25,14 +27,14 @@ class AdminController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the admin dashboard.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
         //Gets all the event details from the event database table
-        $events = events::all();
+        $events = Event::all();
         $messages = Message::orderBy('created_at', 'desc')->get();
         $readMessages = Message::withTrashed()->whereNotNull('deleted_at')->orderBy('created_at', 'desc')->get();
 
@@ -41,7 +43,7 @@ class AdminController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new event.
      *
      * @return \Illuminate\Http\Response
      */
@@ -51,9 +53,9 @@ class AdminController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created event in the events table.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $input
      * @return \Illuminate\Http\Response
      */
     public function store(Request $input)
@@ -70,45 +72,81 @@ class AdminController extends Controller
         'image' => 'image|required',
         ]);
 
-        events::create($input->all()); //creates a new event with these details
+        Event::create($input->all()); //creates a new event with these details
 
-        $name = events::latest()->first()->id . "." . Input::file('image')->getClientOriginalExtension(); //gets the event ID and concat on the imaage file extension that was uploaded 
+        $name = Event::latest()->first()->id . "." . Input::file('image')->getClientOriginalExtension(); //gets the event ID and concat on the imaage file extension that was uploaded 
         Input::file('image')->move(__DIR__.'/../../../public/img/event_images',$name); //moves the uploaded image from the tmp directory to a premanant one (/public/img/event_images) and renames it to <eventID>.<fileExt>
         
-        $image = events::latest()->first();//returns the latest event added to the table (the one just added above)
+        $image = Event::latest()->first();//returns the latest event added to the table (the one just added above)
         $image->image = $name; //adds the image name from above to the image column of the latest event
         $image->save(); //saves the above action
 
         return redirect('events'); //redirects to events view when finished
     }
 
+    /**
+     * Show the page listing all the attendees for an event.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function getAttendees($id)
     {
-        return view('admin/attendees')->with('atnd', $id);
+        $atns = DB::table('rsvp')
+            ->join('users', 'users.id', '=', 'rsvp.userid')
+            ->select('*')
+            ->where('rsvp.eventid', '=', $id)
+            ->get();
+
+        return view('admin/attendees', ['atns' => $atns, 'id' => $id]);
     }
 
+    /**
+     * Show the page listing all the tickets in printable format for an event.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function printAttendees($id)
     {
-        return view('admin/printall')->with('atnd', $id);
+        $ev = Event::where('id', $id)->first();
+
+        $atns = DB::table('rsvp')
+            ->join('users', 'users.id', '=', 'rsvp.userid')
+            ->select('*')
+            ->where('rsvp.eventid', '=', $id)
+            ->get();
+
+        return view('admin/printall', ['atns' => $atns, 'ev' => $ev]);
     }
 
-    //Called when delete is clicked on the admin page
-    //Checks the user is an admin and deletes the selected event
+    /**
+     * Delete an existing event from the events table.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function deleteEvent($id)  
     {
-        events::destroy($id);
+        Event::destroy($id);
         Rsvp::where('eventid',$id)->delete();
         return redirect('/admin');
     }
 
+    /**
+     * Show the form for editing an existing event's info.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function editEventInfo($id)
     {
-        $event = events::select('events.*')->where('id', '=', $id)->first();
+        $event = Event::select('events.*')->where('id', '=', $id)->first();
         return view('admin/edit',['event' => $event]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update an existing event's info in the events table.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -141,20 +179,25 @@ class AdminController extends Controller
 
         
         if(Input::hasfile('image')){
-            events::where('id', $id)->update(['name'=>$name, 'venue'=>$venue, 'city'=>$city, 'price'=>$price, 'information'=>$information, 'description'=>$description, 'capacity'=>$capacity, 'date'=>$date, 'image'=>$image]);
+            Event::where('id', $id)->update(['name'=>$name, 'venue'=>$venue, 'city'=>$city, 'price'=>$price, 'information'=>$information, 'description'=>$description, 'capacity'=>$capacity, 'date'=>$date, 'image'=>$image]);
             $imgName = $id . "." . Input::file('image')->getClientOriginalExtension(); //gets the event ID and concat on the imaage file extension that was uploaded 
             Input::file('image')->move(__DIR__.'/../../../public/img/event_images',$imgName); //moves the uploaded image from the tmp directory to a premanant one (/public/img/event_images) and renames it to <eventID>.<fileExt>
             
-            $image = events::where('id', $id)->first();//returns the same event as the one being updated
+            $image = Event::where('id', $id)->first();//returns the same event as the one being updated
             $image->image = $imgName; //adds the image name from above to the image column of the latest event
             $image->save(); //saves the above action
         }else{
-            events::where('id', $id)->update(['name'=>$name, 'venue'=>$venue, 'city'=>$city, 'price'=>$price, 'information'=>$information, 'description'=>$description, 'capacity'=>$capacity, 'date'=>$date]);
+            Event::where('id', $id)->update(['name'=>$name, 'venue'=>$venue, 'city'=>$city, 'price'=>$price, 'information'=>$information, 'description'=>$description, 'capacity'=>$capacity, 'date'=>$date]);
         }
 
         return redirect('admin');
     }
 
+    /**
+     * Show the inbox page.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function showInbox()
     {
         $messages = Message::all();
@@ -163,6 +206,12 @@ class AdminController extends Controller
         return view('admin/inbox', ['messages' => $messages, 'readMessages' => $readMessages]);
     }
 
+    /**
+     * Deletes a message from the messages table.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
     public function markAsRead($id)
     {
         Message::where('id', $id)->delete();

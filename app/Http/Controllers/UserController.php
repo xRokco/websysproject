@@ -5,14 +5,16 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\User;
-use App\events;
+use App\Event;
 use App\Message;
 use App\Rsvp;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
-class HomeController extends Controller
+class UserController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -26,47 +28,52 @@ class HomeController extends Controller
 
     public function getEventDetails($id)
     {
-        if (\Auth::check()) { //checks if user is logged in
-            $ev = events::where('id', $id)->first();
-            $rsvp = \DB::table('events')
-                    ->join('rsvp', 'events.id', '=', 'rsvp.eventid')
-                    ->join('users', 'users.id', '=', 'rsvp.userid')
-                    ->select('events.*')
-                    ->where(['userid' => \Auth::user()->id, 'eventid' => $id])
-                    ->distinct()
-                    ->get();
+        $ev = Event::where('id', $id)->first();
+        $rsvp = DB::table('events')
+                ->join('rsvp', 'events.id', '=', 'rsvp.eventid')
+                ->join('users', 'users.id', '=', 'rsvp.userid')
+                ->select('events.*')
+                ->where(['userid' => Auth::user()->id, 'eventid' => $id])
+                ->distinct()
+                ->get();
 
-            $full = FALSE;
+        $full = FALSE;
 
-            $count = Rsvp::where('eventid', $id)->count();
-            if($count >= $ev->capacity)
-            {
-                $full = TRUE;
-            }
-            $stripe =[
-                'publishable' => 'pk_test_qqbGUEke0JuODLnXOpEHbF7z',
-                'private' => 'sk_test_B0nWhDWzkxkF3oX6ZL9rZIEy'
-            ];
-            return view('details', ['ev' => $ev, 'rsvp' => $rsvp, 'full' => $full, 'stripe' => $stripe]); //returns event details page for the corresponding ID
-        } else {    
-            return redirect()->route('login'); //otherwise redirects to the login page
+        $count = Rsvp::where('eventid', $id)->count();
+        if($count >= $ev->capacity)
+        {
+            $full = TRUE;
         }
+        $stripe =[
+            'publishable' => 'pk_test_qqbGUEke0JuODLnXOpEHbF7z',
+            'private' => 'sk_test_B0nWhDWzkxkF3oX6ZL9rZIEy'
+        ];
+        return view('details', ['ev' => $ev, 'rsvp' => $rsvp, 'full' => $full, 'stripe' => $stripe]); //returns event details page for the corresponding ID
     }
 
     public function printEventTicket($id)
     {
-        return view('print')->with('event', $id); //returns event ticket print page for the corresponding ID
+        $ev = Event::where('id', $id)->first();
+        
+        $rsvp = Event::join('rsvp', 'events.id', '=', 'rsvp.eventid')
+            ->join('users', 'users.id', '=', 'rsvp.userid')
+            ->select('rsvp.code')
+            ->where(['userid' => Auth::user()->id, 'eventid' => $id])
+            ->distinct()
+            ->first();
+
+        return view('print', ['ev' => $ev, 'rsvp' => $rsvp]); //returns event ticket print page for the corresponding ID
     }
 
     public function showUserEvents()
     {
         // Displays all events that the user is attending
 
-        $rsvp = \DB::table('events')
+        $rsvp = DB::table('events')
             ->join('rsvp', 'events.id', '=', 'rsvp.eventid')
             ->join('users', 'users.id', '=', 'rsvp.userid')
             ->select('events.*')
-            ->where('rsvp.userid', '=', \Auth::user()->id)
+            ->where('rsvp.userid', '=', Auth::user()->id)
             ->distinct()
             ->get();
 
@@ -78,14 +85,14 @@ class HomeController extends Controller
     public function attendEvent($id) 
     {
         $count = Rsvp::where('eventid', $id)->count();
-        $ev = events::where('id', $id)->first();
+        $ev = Event::where('id', $id)->first();
         if($count < $ev->capacity)
         {
             do {
                 $code = str_random(10);
             } while (Rsvp::where("code", $code)->where('eventid', $id)->first() instanceof Rsvp);
             
-            Rsvp::insert(['userid' => \Auth::user()->id, 'eventid' => $id, 'code' => $code]);
+            Rsvp::insert(['userid' => Auth::user()->id, 'eventid' => $id, 'code' => $code]);
             
             return redirect('dash'); 
         } else {
@@ -97,7 +104,7 @@ class HomeController extends Controller
     //Database deletion removes link between user and event
     public function unattendEvent($id) 
     {
-        Rsvp::where(['userid' => \Auth::user()->id, 'eventid' => $id])->delete();
+        Rsvp::where(['userid' => Auth::user()->id, 'eventid' => $id])->delete();
         return redirect('/events');
     }
 
@@ -106,7 +113,7 @@ class HomeController extends Controller
     public function editUserInfo() 
     {
 
-        $user = User::select('users.*')->where('id', '=', \Auth::user()->id)->first();
+        $user = User::select('users.*')->where('id', '=', Auth::user()->id)->first();
         return view('account',['user' => $user]);
     }
 
@@ -115,7 +122,7 @@ class HomeController extends Controller
     //Returns redirect to dash view
     public function updateUser(Request $request) 
     {
-        $id = \Auth::user()->id;
+        $id = Auth::user()->id;
 
         $this->validate($request, [
         'name' => 'required|max:30',
