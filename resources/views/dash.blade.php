@@ -12,6 +12,10 @@
     	width: 100%;
     	height: 100%;
 	}
+
+	.info_content h3{
+		font-size: 1.5em !important;
+	}
 </style>
 <script type="text/javascript">
 	jQuery(function($) {
