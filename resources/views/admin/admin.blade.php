@@ -16,6 +16,8 @@
           display: block; 
         }
 </style>
+<script src="/sweetalert/dist/sweetalert.min.js"></script> 
+<link rel="stylesheet" type="text/css" href="/sweetalert/dist/sweetalert.css">
 <br><br>
 <div class="container">
 	<div class="row">
@@ -47,7 +49,7 @@
 			            	<div>
 				                <a class="btn red darken-3" href="admin/attendees/{{ $event->id }}">Attendees</a>
 				                <a style="margin-top:5px;margin-bottom:5px" class="btn red darken-3" href="admin/edit/{{ $event->id }}">Edit Event</a>
-				                <a class="btn red darken-3" href="admin/delete/{{ $event->id }}">Delete Event</a>
+				                <button class="btn red darken-3" id="delete" eventid="{{ $event->id }}">Delete Event</button>
 				            </div>
 			            </div>
 			        </div>
@@ -137,6 +139,29 @@
 			@endif
 
 			</div>
+			<script type="text/javascript">
+				$('button#delete').on('click', function(){
+					var id = $(this).attr('eventid');
+					swal({   
+						title: "Are you sure?",   
+						text: "This will delete the event and remove all attendees. This cannot be undone. Type \"delete\" below to confirm you want to do this:",   
+						type: "input",   
+						showCancelButton: true,   
+						closeOnConfirm: false,   
+						animation: "slide-from-top",   
+						inputPlaceholder: "Write \"delete\""
+					}, 
+					function(inputValue){   
+						if (inputValue === false) return false;      
+						if (inputValue != "delete") {     
+							swal.showInputError("You need to write \"delete\"!");     
+							return false   
+						}     
+						swal("Event deleted", "");
+						setTimeout(function(){ window.location.href = "/admin/delete/" + id; }, 1000);
+					});
+				})
+			</script>
 		</div>
 	</div>
 </div>

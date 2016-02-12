@@ -20,6 +20,8 @@
             background: url('/img/calendar.png') !important;
         }
     </style>
+    <script src="/sweetalert/dist/sweetalert.min.js"></script> 
+<link rel="stylesheet" type="text/css" href="/sweetalert/dist/sweetalert.css">
     <div class="container">
         <div class="section no-pad-bot" id="no-padding-top">
             <div class="row valign-wrapper" id="event">
@@ -54,7 +56,7 @@
                             <span class="date_format">MM/DD/YYYY</span>
                         </div>
                         <a class="btn red darken-3" style="margin-top:5px;margin-bottom:5px" target="_blank" href="print/{{ $ev->id }}">Print Ticket</a>
-                        <a class="btn red darken-3" href="unattend/{{ $ev->id }}">Unattend Event</a>
+                        <button class="btn red darken-3" id="unattend">Unattend Event</button>
                     </div>
                 </div>
             @else
@@ -72,7 +74,6 @@
                             token: function(token) {
                                 // Use the token to create the charge with a server-side script.
                                 // You can access the token ID with `token.id`
-                                window.location.href = "attend/{{ $ev->id }}";
                                 <?php
                                     $count = \DB::table('rsvp')->where('eventid', $ev->id)->count();
                                     $ev = \DB::table('events')->where('id', $ev->id)->first();
@@ -126,6 +127,29 @@
                         });
                     });
                 });
+            </script>
+            <script type="text/javascript">
+                $('button#unattend').on('click', function(){
+                    var id = $(this).attr('eventid');
+                    swal({   
+                        title: "Are you sure?",   
+                        text: "This will unattend you from this event. A refund on any ticket paid for will not be given. This cannot be undone without repurchasing a ticket. Type \"{{Auth::user()->name}}\" below to confirm you want to do this:",   
+                        type: "input",   
+                        showCancelButton: true,   
+                        closeOnConfirm: false,   
+                        animation: "slide-from-top",   
+                        inputPlaceholder: "Write \"{{Auth::user()->name}}\""
+                    }, 
+                    function(inputValue){   
+                        if (inputValue === false) return false;      
+                        if (inputValue != "{{Auth::user()->name}}") {     
+                            swal.showInputError("You need to write \"{{Auth::user()->name}}\"!");     
+                            return false   
+                        }     
+                        swal("Unattended", "");
+                        setTimeout(function(){ window.location.href = "/events/details/unattend/{{$ev->id}}" }, 1000);
+                    });
+                })
             </script>
             <div class="row">
                 <div class="col s12">
