@@ -103,24 +103,25 @@ class UserController extends Controller
      *
      * @param int $id
      * @return \Illuminate\Http\Response
+     *
+     *public function attendEvent($id) 
+     * {
+     *     $count = Rsvp::where('eventid', $id)->count();
+     *     $ev = Event::where('id', $id)->first();
+     *     if($count < $ev->capacity)
+     *     {
+     *         do {
+     *             $code = str_random(10);
+     *         } while (Rsvp::where("code", $code)->where('eventid', $id)->first() instanceof Rsvp);
+     *         
+     *         Rsvp::insert(['userid' => Auth::user()->id, 'eventid' => $id, 'code' => $code]);
+     *         
+     *         return redirect('dash'); 
+     *     } else {
+     *         echo "Event full";
+     *     }     
+     * }
      */
-    public function attendEvent($id) 
-    {
-        $count = Rsvp::where('eventid', $id)->count();
-        $ev = Event::where('id', $id)->first();
-        if($count < $ev->capacity)
-        {
-            do {
-                $code = str_random(10);
-            } while (Rsvp::where("code", $code)->where('eventid', $id)->first() instanceof Rsvp);
-            
-            Rsvp::insert(['userid' => Auth::user()->id, 'eventid' => $id, 'code' => $code]);
-            
-            return redirect('dash'); 
-        } else {
-            echo "Event full";
-        }     
-    }
 
     /**
      * Delete a row from the rsvp table corresponding to the event id and the user id.

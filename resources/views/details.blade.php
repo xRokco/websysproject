@@ -80,9 +80,26 @@
                             image: '/img/event_images/{{ $ev->image }}',
                             locale: 'auto',
                             token: function(token) {
-                              // Use the token to create the charge with a server-side script.
-                              // You can access the token ID with `token.id`
-                               window.location.href = "attend/{{ $ev->id }}";
+                                // Use the token to create the charge with a server-side script.
+                                // You can access the token ID with `token.id`
+                                window.location.href = "attend/{{ $ev->id }}";
+                                <?php
+                                    $count = \DB::table('rsvp')->where('eventid', $ev->id)->count();
+                                    $ev = \DB::table('events')->where('id', $ev->id)->first();
+
+                                    if($count < $ev->capacity)
+                                    {
+                                        do {
+                                            $code = str_random(10);
+                                        } while (\DB::table('rsvp')->where("code", $code)->where('eventid', $ev->id)->first() instanceof Rsvp);
+                                        
+                                        \DB::table('rsvp')->insert(['userid' => Auth::user()->id, 'eventid' => $ev->id, 'code' => $code]);
+                                        echo "window.location.href = \"/dash\";";
+
+                                    } else {
+                                        echo "Event full";
+                                    }    
+                                ?>
                             }
                           });
 
