@@ -39,6 +39,7 @@ class GuestController extends Controller
      */
     public function contactUs(Request $input)
     {
+        //Validates the fields in the contactus form.
         $this->validate($input, [
         'name' => 'required|max:60',
         'subject' => 'required|max:30',
@@ -46,13 +47,16 @@ class GuestController extends Controller
         'message' => 'required',
         ]);
 
+        //gets current date
         $date = Carbon::now();
 
-        Message::create($input->all()); //creates a new event with these details
+        //creates a new message with details the user inputs
+        Message::create($input->all());
 
+        //Gets the latest message (the one added above) and fills the date column for it
         Message::latest()->first()->update(['date' => $date]);
 
-        return redirect('/'); //redirects to events view when finished
+        return redirect('/'); //redirects to homepage
     }
 
     /**
@@ -62,7 +66,10 @@ class GuestController extends Controller
      */
     public function welcome()
     {
+        //Gets a list of all events in a random order.
         $randEvent=Event::orderBy(DB::raw('RAND()'))->get();
+
+        //returns the welcome view with the array of events from above.
         return view('welcome', ['randEvent' => $randEvent]);
     }
 }

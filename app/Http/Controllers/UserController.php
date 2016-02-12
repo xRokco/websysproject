@@ -23,6 +23,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
+        //applies the auth middleware to all functions in this class.
         $this->middleware('auth');
     }
 
@@ -34,7 +35,10 @@ class UserController extends Controller
      */
     public function getEventDetails($id)
     {
+        //Returns the event details for event with id $id
         $ev = Event::where('id', $id)->first();
+
+        //Checks if the current user has an entry in the rsvp table for the current event
         $rsvp = DB::table('events')
                 ->join('rsvp', 'events.id', '=', 'rsvp.eventid')
                 ->join('users', 'users.id', '=', 'rsvp.userid')
@@ -43,18 +47,27 @@ class UserController extends Controller
                 ->distinct()
                 ->get();
 
+        //sets default value of full
         $full = FALSE;
 
+        //checks how many entries in the rsvp table there are for the given event, counts them
         $count = Rsvp::where('eventid', $id)->count();
+        
+        //tests the value of above with the event capacity.
         if($count >= $ev->capacity)
         {
-            $full = TRUE;
+            $full = TRUE;//sets $full to true if the check passes.
         }
+
+        //Stripes keys
         $stripe =[
             'publishable' => 'pk_test_qqbGUEke0JuODLnXOpEHbF7z',
             'private' => 'sk_test_B0nWhDWzkxkF3oX6ZL9rZIEy'
         ];
-        return view('details', ['ev' => $ev, 'rsvp' => $rsvp, 'full' => $full, 'stripe' => $stripe]); //returns event details page for the corresponding ID
+
+        //returns event details page for the corresponding ID, with event details ($ev),
+        //rsvp details ($rsvp), capacity details ($full) and stripe details ($stripe) passed in.
+        return view('details', ['ev' => $ev, 'rsvp' => $rsvp, 'full' => $full, 'stripe' => $stripe]);
     }
 
     /**
@@ -65,8 +78,10 @@ class UserController extends Controller
      */
     public function printEventTicket($id)
     {
+        //Returns the event details for event with id $id
         $ev = Event::where('id', $id)->first();
         
+        //checks that the current user is attending the current event
         $rsvp = Event::join('rsvp', 'events.id', '=', 'rsvp.eventid')
             ->join('users', 'users.id', '=', 'rsvp.userid')
             ->select('rsvp.code')
@@ -74,7 +89,9 @@ class UserController extends Controller
             ->distinct()
             ->first();
 
-        return view('print', ['ev' => $ev, 'rsvp' => $rsvp]); //returns event ticket print page for the corresponding ID
+        //returns event ticket print page with event details ($ev) and rsvp details ($rsvp)
+        //passed in
+        return view('print', ['ev' => $ev, 'rsvp' => $rsvp]);
     }
 
     /**
@@ -85,8 +102,7 @@ class UserController extends Controller
      */
     public function showUserEvents()
     {
-        // Displays all events that the user is attending
-
+        //Returns all events that the user is attending
         $rsvp = DB::table('events')
             ->join('rsvp', 'events.id', '=', 'rsvp.eventid')
             ->join('users', 'users.id', '=', 'rsvp.userid')
@@ -95,33 +111,9 @@ class UserController extends Controller
             ->distinct()
             ->get();
 
-        return view('dash', ['rsvp' => $rsvp]); //returns dash view with $rsvp array with query results from above
+        //returns dash view with $rsvp array with query results from above
+        return view('dash', ['rsvp' => $rsvp]);
     }
-
-    /**
-     * Store an new row in the rsvp table corresponding to the usersid and the eventid.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     *
-     *public function attendEvent($id) 
-     * {
-     *     $count = Rsvp::where('eventid', $id)->count();
-     *     $ev = Event::where('id', $id)->first();
-     *     if($count < $ev->capacity)
-     *     {
-     *         do {
-     *             $code = str_random(10);
-     *         } while (Rsvp::where("code", $code)->where('eventid', $id)->first() instanceof Rsvp);
-     *         
-     *         Rsvp::insert(['userid' => Auth::user()->id, 'eventid' => $id, 'code' => $code]);
-     *         
-     *         return redirect('dash'); 
-     *     } else {
-     *         echo "Event full";
-     *     }     
-     * }
-     */
 
     /**
      * Delete a row from the rsvp table corresponding to the event id and the user id.
@@ -131,7 +123,11 @@ class UserController extends Controller
      */
     public function unattendEvent($id) 
     {
+        //deletes the row corresponding to the current user and the eventid $id from
+        //the rsvp table
         Rsvp::where(['userid' => Auth::user()->id, 'eventid' => $id])->delete();
+        
+        //redirects to the events page.
         return redirect('/events');
     }
 
@@ -142,8 +138,10 @@ class UserController extends Controller
      */
     public function editUserInfo() 
     {
-
+        //gets the current user's info.
         $user = User::select('users.*')->where('id', '=', Auth::user()->id)->first();
+        
+        //returs the account page with the users details passed through.
         return view('account',['user' => $user]);
     }
 
@@ -155,22 +153,27 @@ class UserController extends Controller
      */
     public function updateUser(Request $request) 
     {
+        //Sets the id of the current user to $id.
         $id = Auth::user()->id;
 
+        //validates the input of the editUserInfo form
         $this->validate($request, [
         'name' => 'required|max:30',
         'surname' => 'required|max:30',
-        'email' => 'required|max:30|unique:users,email,'.$id,
+        'email' => 'required|max:30|unique:users,email,'.$id,//makes sure the email entered is unique in the users table, but excludes the current user from the check, so that if the current user doesn't want to change his email it doesn't give an error.
         'direction' => 'required|max:255',
         ]);
 
+        //Assigns each value from the form to a variable.
         $name = $request->input('name');
         $surname = $request->input('surname');
         $email = $request->input('email');
         $direction = $request->input('direction');
 
+        //Updates the users table with the data from the form.
         User::where('id', $id)->update(['name'=>$name, 'surname'=>$surname, 'email'=>$email, 'direction'=>$direction]);
 
-        return redirect('dash');
+        //redirects to the dash page.
+        return redirect('/dash');
     }
 }
