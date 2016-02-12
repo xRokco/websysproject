@@ -23,6 +23,7 @@ class AdminController extends Controller
      */
     public function __construct()
     {
+        //applies the admin middleware to all functions in this class.
         $this->middleware('admin');
     }
 
@@ -33,12 +34,16 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //Gets all the event details from the event database table
+        //Gets all the event details from the event table
         $events = Event::all();
+
+        //gets all messages from the messages table
         $messages = Message::orderBy('created_at', 'desc')->get();
+
+        //gets all the read (deleted) messages from the messags table.
         $readMessages = Message::withTrashed()->whereNotNull('deleted_at')->orderBy('created_at', 'desc')->get();
 
-        //Returns the events view along with the $events array containing the query results from above
+        //Returns the events view along with the $events, $messages and $readMessages arrays containing the query results from above
         return view('admin/admin', ['events' => $events, 'messages' => $messages, 'readMessages' => $readMessages]);
     }
 
@@ -49,7 +54,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin/create'); //returns create view if both are true
+        //returns create view.
+        return view('admin/create'); 
     }
 
     /**
@@ -60,6 +66,7 @@ class AdminController extends Controller
      */
     public function store(Request $input)
     {
+        //Validates the input from the create event page
         $this->validate($input, [
         'name' => 'required|max:40',
         'venue' => 'required|max:30',
@@ -72,9 +79,13 @@ class AdminController extends Controller
         'image' => 'image|required',
         ]);
 
-        Event::create($input->all()); //creates a new event with these details
+        //adds all the data from the create events page to the database in the events table
+        Event::create($input->all());
 
+        //gets the id of the event above and concats it to the file extension of the image uploaded.
         $name = Event::latest()->first()->id . "." . Input::file('image')->getClientOriginalExtension(); //gets the event ID and concat on the imaage file extension that was uploaded 
+        
+        //moves and renames the image selected from a temp directory to the event_images folder as 
         Input::file('image')->move(__DIR__.'/../../../public/img/event_images',$name); //moves the uploaded image from the tmp directory to a premanant one (/public/img/event_images) and renames it to <eventID>.<fileExt>
         
         $image = Event::latest()->first();//returns the latest event added to the table (the one just added above)
