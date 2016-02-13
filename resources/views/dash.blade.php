@@ -15,6 +15,10 @@
 	.info_content h3{
 		font-size: 1.5em !important;
 	}
+
+    .indicator {
+        width:49% !important;
+    }
 </style>
 <script type="text/javascript">
 	jQuery(function($) {
