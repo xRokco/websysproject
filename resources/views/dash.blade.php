@@ -9,8 +9,7 @@
 	}
 
 	#map_canvas {
-    	width: 100%;
-    	height: 100%;
+    	height: 400px;
 	}
 
 	.info_content h3{
@@ -21,7 +20,7 @@
 	jQuery(function($) {
     // Asynchronously Load the map API 
     var script = document.createElement('script');
-    script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
+    script.src = "http://maps.googleapis.com/maps/api/js?callback=initialize";
     document.body.appendChild(script);
 });
 
@@ -106,8 +105,12 @@ function initialize() {
         this.setZoom(5);
         google.maps.event.removeListener(boundsListener);
     });
-    
 }
+</script>
+<script type="text/javascript">
+    function display () {
+        setTimeout(function(){ initialize(); }, 300);
+    }
 </script>
 <br><br>
 <div class="container">
@@ -115,7 +118,7 @@ function initialize() {
                 <div class="col s12">
                   <ul class="tabs">
                     <li class="tab col s6"><a class="red-text" href="#description">My Events</a></li>
-                    <li class="tab col s6"><a class="red-text" href="#location">User Details</a></li>
+                    <li class="tab col s6"><a class="red-text" onclick="display()" href="#location">User Details</a></li>
                     <div class="indicator red" style="z-index:1"> </div>
                   </ul>
                 </div>
@@ -160,10 +163,7 @@ function initialize() {
 						</div>
                     </div>
                     <div class="center">
-    					<!--<iframe width="600" height="525" frameborder="0" style="border:0"
-src="https://www.google.com/maps/embed/v1/place?q={{ Auth::user()->direction }}&key=AIzaSyBFaySDzqmlKyFwdG9qGWxGD3rjM1Ub0Bg" allowfullscreen></iframe>
-    					--><br><br>
-
+                        <br><br>
     					<div id="map_wrapper">
 						    <div id="map_canvas" class="mapping"></div>
 						</div> 
