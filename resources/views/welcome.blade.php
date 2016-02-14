@@ -12,7 +12,7 @@
                 <div class="col s6">
                     <h1 class=" red-text text-darken-2 center">Make Ireland <br> Great Again</h1>
                     <br>
-                    <h5 div="light center-align">Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.</h5>
+                    <h5 div="light center-align">Listen to a man who went to the Wharton School of Finance tell you how to fix all of Irelands problems and why Ireland needs a wall!</h5>
                     <br>
                     <div class="center">
                         <a class="red darken-3 btn-large" href="/events" ><i class="material-icons left">star</i>Browse Events<i class="material-icons right">star</i></a>
@@ -66,7 +66,7 @@
                     <div class="icon-block">
                         <h2 class="center red-text text-darken-1"><i class="material-icons">search</i></h2>
                         <h5 class="center red-text text-lighten-1">Find Events</h5>
-                        <p class="light">Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.</p>
+                        <p class="light">Find past and future European Trump events and information about how to get to these events. We also provide accommadation recommendations.</p>
                     </div>
                 </div>
 
@@ -75,7 +75,7 @@
                     <div class="icon-block">
                         <h2 class="center red-text text-darken-1"><i class="material-icons">list</i></h2>
                         <h5 class="center red-text text-lighten-1">List your Event</h5>
-                        <p class="light">Etiam non aliquet lacus, quis efficitur quam. Nam placerat odio ut orci auctor, ullamcorper pharetra arcu varius.</p>
+                        <p class="light">We know how much trump means to and thats why we are giving you the opportunity to host your very own Trump meetup event for free!</p>
                     </div>
                 </div>
 
@@ -84,7 +84,7 @@
                     <div class="icon-block">
                         <h2 class="center red-text text-darken-1"><i class="material-icons">announcement</i></h2>
                         <h5 class="center red-text text-lighten-1">Keep your Event updated</h5>
-                        <p class="light">Maecenas vel purus a orci imperdiet rutrum. Ut non mattis dolor, non ultricies tortor. Morbi volutpat consequat hendrerit.</p>
+                        <p class="light">Our user friendly website interface allowes you to easily edit your event details and keep your attendees up to date with the latest information.</p>
                     </div>
                 </div>
             </div>
