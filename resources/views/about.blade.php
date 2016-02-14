@@ -137,9 +137,9 @@
                         <div class="col s9">
                             <div class="card-content">
                                 <span class="card-title activator grey-text text-darken-4">Peter Fitzgerald<i class="material-icons right">expand_more</i></span>
-                                <p>?</p>
+                                <p>Back end developer</p>
                                 <p>3rd year Computer Science in UCC </p>
-                                <p><a href="#">?</a></p>
+                                <p><a href="#">petermfitz94@gmail.com</a></p>
                             </div>
                         </div>
                     </div>
@@ -147,7 +147,10 @@
             </div>
             <div class="card-reveal">
             <span class="card-title grey-text text-darken-4">More info<i class="material-icons right">expand_less</i></span>
-            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            <p>Back end developer.</p>
+            <p>Junior Vice President</p>
+            <p>Mobile commercial goods container reallocation technician.</p>
+            <p>Teleprocessing Services Analyst B</p>
             </div>
         </div>
     </div>
