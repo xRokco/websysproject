@@ -140,5 +140,13 @@ Route::group(['middleware' => 'web'], function () {
 
     //This is called when the submit button on the edit event info page is clicked.
     Route::patch('/admin/edit/{id}','AdminController@updateEvent');
-    
+   
+    //Route to return the manage users page.
+    Route::get('/admin/manage', 'AdminController@manageAdmins');
+
+    //Route to promote a regular user to admin.
+    Route::get('/admin/promote/{id}', 'AdminController@promote');
+
+    //Route to demote an admin to a regular user.
+    Route::get('/admin/demote/{id}', 'AdminController@demote');
 });

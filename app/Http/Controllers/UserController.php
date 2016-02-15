@@ -61,8 +61,8 @@ class UserController extends Controller
 
         //Stripes keys
         $stripe =[
-            'publishable' => 'pk_test_qqbGUEke0JuODLnXOpEHbF7z',
-            'private' => 'sk_test_B0nWhDWzkxkF3oX6ZL9rZIEy'
+            'publishable' => env('STRIPE_PUB'),
+            'private' => env('STRIPE_PRI')
         ];
 
         //returns event details page for the corresponding ID, with event details ($ev),
