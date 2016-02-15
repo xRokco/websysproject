@@ -58,11 +58,14 @@
 			  	<h4 class="center orange-text">You aren't attending any events yet. Checkout our <a href="{{ url('events') }}" >events</a> page.</h4>
 			@endif
         	<br>
-				<div class="fixed-action-btn" title="Create event" style="bottom: 25px; right: 24px;">
-				    <a href="/admin/create" class="btn-floating btn-large red darken-3">
+				<div class="fixed-action-btn" style="bottom: 25px; right: 24px;">
+					<a href="/admin/create" title="Create event" class="btn-floating btn-large red darken-3">
 				    	<i class="large material-icons">add</i>
 				    </a>
-				</div>        
+				    <ul>
+				    	<li><a href="/admin/manage" title="Manage users" class="btn-floating blue"><i class="material-icons">perm_identity</i></a></li>
+					</ul>
+				</div>      
   			</div>
 
 

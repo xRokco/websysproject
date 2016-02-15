@@ -237,11 +237,9 @@ class AdminController extends Controller
      */
     public function manageAdmins()
     {
-        $users = User::where('admin', 0)->get();
+        $users = User::orderBy('admin', 'desc')->get();
 
-        $adminUsers = User::where('admin', 1)->get();
-
-        return view('admin/manage', ['users' => $users, 'adminUsers' => $adminUsers]);
+        return view('admin/manage', ['users' => $users]);
     }
 
     /**
