@@ -42,7 +42,7 @@
 			                    
 			            <!-- Event Description -->
 			            <div class="left-align col s5">
-			                <h5>Hey{{ $event->name }}</h5>
+			                <h5>{{ $event->name }}</h5>
 			                <p>{{ $event->information }}</p>
 			            </div>
 			                    
