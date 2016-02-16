@@ -1,6 +1,9 @@
-# WebSysProject
+WebSysProject
 ===============
 To get this up and running you need to do a few things. 
+
+PHP and MYSQL
+-------------
 
 * Assuming Ubuntu - instal MySQL server:
   * ```sudo apt-get install mysql-server```
@@ -19,18 +22,21 @@ To get this up and running you need to do a few things.
     * ```CREATE DATABASE websysproject;```
       * (dont forget the semicolon)
 
-Install composer:
-https://getcomposer.org/
-run this after composer has downloaded:
-sudo mv composer.phar /usr/local/bin/composer
+Composer
+----------
 
-edit your linux PATH. To do this edit .bashrc in your home directory and add these two lines
-PATH=~/.composer/vendor/bin:$PATH
-export PATH
+* Go to https://getcomposer.org/ and run the command they give you
+* Run this after composer has downloaded:
+  * `sudo mv composer.phar /usr/local/bin/composer`
 
-Save the .bashrc file and restart your terminal window.
+* Edit your linux PATH. 
+  * To do this edit .bashrc in your home directory and add these two lines
+    * `PATH=~/.composer/vendor/bin:$PATH`
+    * `export PATH`
+  * Save the .bashrc file and restart your terminal window.
 
-Install Laravel with:
+Laravel
+--------
 composer global require "laravel/installer"
 
 Clone this repo with
