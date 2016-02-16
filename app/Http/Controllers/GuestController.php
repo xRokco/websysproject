@@ -41,8 +41,8 @@ class GuestController extends Controller
     {
         //Validates the fields in the contactus form.
         $this->validate($input, [
-        'name' => 'required|max:60',
-        'subject' => 'required|max:30',
+        'name' => 'required|max:40',
+        'subject' => 'required|max:40',
         'email' => 'required|max:30',
         'message' => 'required',
         ]);

@@ -30,7 +30,9 @@
 		</div>
 		<div id="events" class="col s12">
 			<br><br>
+			<!--Checks that there are any events at all-->
         	@if ($events)
+        		<!--Outputs html for each event returned-->
 				@foreach ($events as $event)
 					<div class="row grey lighten-5 valign-wrapper" id="event">
 			        	<!-- Event Image -->
@@ -54,8 +56,9 @@
 			            </div>
 			        </div>
 			    @endforeach
+			<!--If there are no events, output this message-->
 			@else
-			  	<h4 class="center orange-text">You aren't attending any events yet. Checkout our <a href="{{ url('events') }}" >events</a> page.</h4>
+			  	<h4 class="center orange-text">There aren't any events. <a href="{{ url('/admin/create') }}" >Create one </a>.</h4>
 			@endif
         	<br>
 				<div class="fixed-action-btn" style="bottom: 25px; right: 24px;">
@@ -71,36 +74,35 @@
 
         <div id="inbox" class="col s12">
 			<br><br>
-
-			@foreach ($messages as $message)
-			    <div class="card grey lighten-5">
-			        <div class="col s12">
-			            <div class="grey lighten-5">
-			                <div class="row valign-wrapper">
-			                    <div class="col s2">
-			                        <div class=" waves-effect waves-block waves-light">
-			                            <i class="activator large material-icons">email</i>
-			                        </div>
-			                    </div>
-			                    <div class="col s9">
-			                        <div class="card-content">
-			                            <span class="card-title activator grey-text text-darken-4">{{ $message->subject }}<i class="material-icons right">expand_more</i></span>
-			                            <a href="/admin/inbox/delete/{{ $message->id }}"><i class="material-icons right">done</i></a>
-			                            <p>{{ $message->name }}</p>
-			                            <p>{{ $message->email }}</p>
-			                            <p>{{ $message->created_at }}</p>
-			                        </div>
-			                    </div>
-			                </div>
-			            </div>
-			        </div>
-			        <div class="card-reveal">
-			            <span class="card-title grey-text text-darken-4"><i class="material-icons right">expand_less</i></span>
-			            <p>{{ $message->message }}</p>
-			        </div>
-			    </div>
-			@endforeach
-
+			@if ($messages)
+				@foreach ($messages as $message)
+				    <div class="card grey lighten-5">
+				        <div class="col s12">
+				            <div class="grey lighten-5">
+				                <div class="row valign-wrapper">
+				                    <div class="col s2">
+				                        <div class=" waves-effect waves-block waves-light">
+				                            <i class="activator large material-icons">email</i>
+				                        </div>
+				                    </div>
+				                    <div class="col s9">
+				                        <div class="card-content">
+				                            <span class="card-title activator grey-text text-darken-4">{{ $message->subject }}<i class="material-icons right">expand_more</i></span>
+				                            <a href="/admin/inbox/delete/{{ $message->id }}"><i class="material-icons right">done</i></a>
+				                            <p>{{ $message->name }}</p>
+				                            <p>{{ $message->email }}</p>
+				                            <p>{{ $message->created_at }}</p>
+				                        </div>
+				                    </div>
+				                </div>
+				            </div>
+				        </div>
+				        <div class="card-reveal">
+				            <span class="card-title grey-text text-darken-4"><i class="material-icons right">expand_less</i></span>
+				            <p>{{ $message->message }}</p>
+				        </div>
+				    </div>
+				@endforeach
 			@if(! isset($message))
 			    <h4 class="center">No unread messages</h4>
 			    <div class="divider"></div>
