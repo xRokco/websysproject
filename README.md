@@ -37,29 +37,37 @@ Composer
 
 Laravel
 --------
-composer global require "laravel/installer"
+* Run this: 
+    * `composer global require "laravel/installer"`
 
-Clone this repo with
-git clone https://github.com/xRokco/websysproject.git
+* Clone this repo with:
+    * `git clone https://github.com/xRokco/websysproject.git`
+    * This will create the websysproject folder in your home directory (assuming you ran the clone from your home directory.
 
-This will create the websysproject folder in your home directory (assuming you ran the clone from your home directory.
+* now create a file in the websysproject folder called .env
+  * Copy the contents of .env.example which is in the websysproject folder into .env and edit these lines:
+    * `DB_DATABASE=websysproject  //your database name, created as websysproject up above`
+    * `DB_USERNAME=root          //database username, root will do here`
+    * `DB_PASSWORD=WHATEVERPASSWORDYOUCHOSE //password chose when you installed mysql`
+    * `MAPS_API=AIzaSyBFaySDzqmlKyFwdG9qGWxGD3rjM1Ub0Bg //our API keys, don't share.`
+    * `STRIPE_PRI=sk_test_B0nWhDWzkxkF3oX6ZL9rZIEy`
+    * `STRIPE_PUB=pk_test_qqbGUEke0JuODLnXOpEHbF7z`
+  * Save and close .env
 
-now create a file in the websysproject folder called .env
-Copy the contents of .env.example which is in the websysproject folder into .env and edit these lines:
-DB_DATABASE=websysproject  //your database name, created as websysproject up above
-DB_USERNAME=root          //database username, root will do here
-DB_PASSWORD=WHATEVERPASSWORDYOUCHOSE //password chose when you installed mysql
+* Next `cd` into the websysproject folder and run:
+  * `php artisan migrate`
+  * This creates the database tables we need from the various migration files.
 
-Save and close .env
+* Next run this:
+  * `php artisan key:generate`
+  * This generates a key for your project.
 
-Next make sure you are in the websysproject folder and run:
-php artisan migrate
+* Project should be read to go now. Run this to start it up:
+  * `php artisan serve`
 
-This creates the db tables if the details in .env are correct.
-Next run this:
-php artisan key:generate
+* Now you can go to http://localhost:8000 in your web browser to test and develope on your web app.
 
-Project should be up and running now. Run this to start it up:
-php artisan serve
+More nice info
+-------------
+* The command `php artisan migrate:refresh --seed` will rebuild your database if you need to reset the data to whatevers in the migrations and seeds if you mess something up, or if the seed/migrations files get changed.
 
-Now you can go to http://localhost:8000 in your web browser to test and develope on your web app.
