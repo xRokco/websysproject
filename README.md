@@ -46,12 +46,12 @@ Laravel
 
 * now create a file in the websysproject folder called .env
   * Copy the contents of .env.example which is in the websysproject folder into .env and edit these lines:
-    * DB_DATABASE=websysproject  //your database name, created as websysproject up above
-    * DB_USERNAME=root          //database username, root will do here
-    * DB_PASSWORD=WHATEVERPASSWORDYOUCHOSE //password chose when you installed mysql
-    * MAPS_API=AIzaSyBFaySDzqmlKyFwdG9qGWxGD3rjM1Ub0Bg //our API keys, don't share.
-    * STRIPE_PRI=sk_test_B0nWhDWzkxkF3oX6ZL9rZIEy
-    * STRIPE_PUB=pk_test_qqbGUEke0JuODLnXOpEHbF7z
+    * `DB_DATABASE=websysproject  //your database name, created as websysproject up above`
+    * `DB_USERNAME=root          //database username, root will do here`
+    * `DB_PASSWORD=WHATEVERPASSWORDYOUCHOSE //password chose when you installed mysql`
+    * `MAPS_API=AIzaSyBFaySDzqmlKyFwdG9qGWxGD3rjM1Ub0Bg //our API keys, don't share.`
+    * `STRIPE_PRI=sk_test_B0nWhDWzkxkF3oX6ZL9rZIEy`
+    * `STRIPE_PUB=pk_test_qqbGUEke0JuODLnXOpEHbF7z`
   * Save and close .env
 
 * Next `cd` into the websysproject folder and run:
@@ -66,3 +66,7 @@ Laravel
   * `php artisan serve`
 
 * Now you can go to http://localhost:8000 in your web browser to test and develope on your web app.
+
+More nice info
+-------------
+* The command `php artisan migrate:refresh --seed` will rebuild your database if you need to reset the data to whatevers in the migrations and seeds if you mess something up, or if the seed/migrations files get changed.
