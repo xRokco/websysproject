@@ -1,5 +1,6 @@
 /vendor/*
 !/vendor/skydiver
+!/vendor/laravelcollective
 /node_modules
 Homestead.yaml
 Homestead.json
