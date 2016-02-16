@@ -5,15 +5,12 @@ To get this up and running you need to do a few things.
 * Assuming Ubuntu - instal MySQL server:
 `sudo apt-get install mysql-server`
 ...And choose a password for the root user as it installs.
-------------------------------------------
 
 * Install php:
 `sudo apt-get install php5-common libapache2-mod-php5 php5-cli`
-------------------------------
 
 * Run this - fixes some error I kept getting:
 `sudo apt-get -y install php5-mysql`
-----------------------------
 
 * Make a database in mysql -
 ..* login to mysql from terminal
