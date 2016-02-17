@@ -20,7 +20,7 @@
             background: url('/img/calendar.png') !important;
         }
     </style>
-    <script src="/sweetalert/dist/sweetalert.min.js"></script> 
+    <script src="/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/sweetalert/dist/sweetalert.css">
     <div class="container">
         <div class="section no-pad-bot" id="no-padding-top">
@@ -121,7 +121,7 @@
             <script>
                 $(document).ready(function(){
                     $("#locationbutton").click(function(){
-                        $("#hotels").load('/hotels.php', {'venue':'{{ $ev->venue }}', 'city':'{{ $ev->city }}'});                    
+                        $("#hotels").load('/hotels.php', {'venue':'{{ $ev->venue }}', 'city':'{{ $ev->city }}', 'api':'{{ env('MAPS_API')}}'});                    
                         $( document ).ajaxComplete(function() {
                             $(".progress").hide();
                         });
@@ -169,7 +169,7 @@
                     <div class="row center">
                     <br><br>
                         <iframe width="700" height="525" frameborder="0" style="border:0"
-                            src="https://www.google.com/maps/embed/v1/directions?origin={{ Auth::user()->direction }}&destination={{ $ev->venue }}, {{ $ev->city }}&key=AIzaSyBFaySDzqmlKyFwdG9qGWxGD3rjM1Ub0Bg" allowfullscreen></iframe>
+                            src="https://www.google.com/maps/embed/v1/directions?origin={{ Auth::user()->direction }}&destination={{ $ev->venue }}, {{ $ev->city }}&key={{ env('MAPS_API') }}" allowfullscreen></iframe>
                     </div>
                     <h5 class="center">Here's a few of hotels within a couple of kilometers of the venue</h5>
                     <table class="highlight">

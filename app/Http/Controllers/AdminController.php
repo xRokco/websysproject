@@ -229,4 +229,42 @@ class AdminController extends Controller
 
         return redirect('/admin#inbox');
     }
+
+    /**
+     * Show the page listing all the users.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function manageAdmins()
+    {
+        $users = User::orderBy('admin', 'desc')->get();
+
+        return view('admin/manage', ['users' => $users]);
+    }
+
+    /**
+     * Updates the admin column of the user table to 1 for a given user.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function promote($id)
+    {
+        User::where('id', $id)->update(['admin' => 1]);
+
+        return redirect('admin/manage');
+    }
+
+    /**
+     * Updates the admin column of the user table to 0 for a given user.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function demote($id)
+    {
+        User::where('id', $id)->update(['admin' => 0]);
+
+        return redirect('admin/manage');
+    }
 }

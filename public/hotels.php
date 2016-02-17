@@ -2,6 +2,7 @@
     $address_to_coordinates = "http://maps.googleapis.com/maps/api/geocode/xml?address=" . $_REQUEST['venue'] . ", " . $_REQUEST['city'] . "&sensor=true";
     $xml = simplexml_load_file($address_to_coordinates) or die("url not loading");
     $status = $xml->status;
+    $api = $_REQUEST['api'];
 
     if ($status=="OK") {
         $Lat = $xml->result->geometry->location->lat;
@@ -9,7 +10,7 @@
         $LatLng = "$Lat,$Lon";
     }
 
-    $place_id_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/xml?location=" . $LatLng . "&radius=1500&types=lodging&key=AIzaSyBFaySDzqmlKyFwdG9qGWxGD3rjM1Ub0Bg";
+    $place_id_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/xml?location=" . $LatLng . "&radius=1500&types=lodging&key=" . $api;
     $xml2 = simplexml_load_file($place_id_url) or die("url not loading");
     $status2 = $xml2->status;
 
@@ -18,7 +19,7 @@
         for($i=0; $i<5; $i++) {
             $place_id = $xml2->result[$i]->place_id;
 
-            $place_details_url = "https://maps.googleapis.com/maps/api/place/details/xml?placeid=" . $place_id . "&key=AIzaSyBFaySDzqmlKyFwdG9qGWxGD3rjM1Ub0Bg";
+            $place_details_url = "https://maps.googleapis.com/maps/api/place/details/xml?placeid=" . $place_id . "&key=" . $api;
             $xml3 = simplexml_load_file($place_details_url) or die("url not loading");
             $status3 = $xml3->status;
 

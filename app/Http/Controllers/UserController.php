@@ -61,8 +61,8 @@ class UserController extends Controller
 
         //Stripes keys
         $stripe =[
-            'publishable' => 'pk_test_qqbGUEke0JuODLnXOpEHbF7z',
-            'private' => 'sk_test_B0nWhDWzkxkF3oX6ZL9rZIEy'
+            'publishable' => env('STRIPE_PUB'),
+            'private' => env('STRIPE_PRI')
         ];
 
         //returns event details page for the corresponding ID, with event details ($ev),
@@ -158,8 +158,8 @@ class UserController extends Controller
 
         //validates the input of the editUserInfo form
         $this->validate($request, [
-        'name' => 'required|max:30',
-        'surname' => 'required|max:30',
+        'name' => 'required|max:15',
+        'surname' => 'required|max:15',
         'email' => 'required|max:30|unique:users,email,'.$id,//makes sure the email entered is unique in the users table, but excludes the current user from the check, so that if the current user doesn't want to change his email it doesn't give an error.
         'direction' => 'required|max:255',
         ]);

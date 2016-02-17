@@ -5,9 +5,9 @@
 @section('content')
 
 <div class="container">
-      <br><br>
-      <h2 class="header center red-text">Please Register</h2>
-      <br><br>
+    <br><br>
+    <h2 class="header center red-text">Please Register</h2>
+    <br><br>
 </div>
 
 <div class="container">
