@@ -15,12 +15,12 @@
                     <h5 div="light center-align">Listen to a man who went to the Wharton School of Finance tell you how to fix all of Irelands problems and why Ireland needs a wall!</h5>
                     <br>
                     <div class="center">
-                        <a class="red darken-3 btn-large" href="/events" ><i class="material-icons left">star</i>Browse Events<i class="material-icons right">star</i></a>
+                        <a class="red darken-3 btn-large" href="events" ><i class="material-icons left">star</i>Browse Events<i class="material-icons right">star</i></a>
                     </div>
                 </div>
                 
                 <div class="col s6">
-                    <img class="responsive-img center" src="/img/trumpALT.png">
+                    <img class="responsive-img center" src="img/trumpALT.png">
                 </div>
                 
             </div>
@@ -36,7 +36,7 @@
                 <div class="col s6 center">    
                     <h2 class="center-align red-text text-darken-2">{{ $randEvent[0]->name }}<br>{{ $randEvent[0]->city }}</h1>
                     <h5>{{ $randEvent[0]->information }}</h5>
-                    <a class="btn red darken-3" href="/events/details/{{ $randEvent[0]->id }}" style="margin-top: 20px">View Event</a>
+                    <a class="btn red darken-3" href="events/details/{{ $randEvent[0]->id }}" style="margin-top: 20px">View Event</a>
                 </div>
             </div>            
         </div>
@@ -48,7 +48,7 @@
                 <div class="col s6 center">    
                     <h2 class="center-align red-text text-darken-2">{{ $randEvent[1]->name }}<br>{{ $randEvent[1]->city }}</h1>
                     <h5>{{ $randEvent[1]->information }}</h5>
-                    <a class="btn red darken-3" href="/events/details/{{ $randEvent[1]->id }}" style="margin-top: 20px">View Event</a>
+                    <a class="btn red darken-3" href="events/details/{{ $randEvent[1]->id }}" style="margin-top: 20px">View Event</a>
                 </div>
                 <div class="col s6">
                     <img class="materialboxed responsive-img" width="400" src="img/event_images/{{ $randEvent[1]->image }}">
