@@ -15,7 +15,7 @@
                     <h5 div="light center-align">Listen to a man who went to the Wharton School of Finance tell you how to fix all of Irelands problems and why Ireland needs a wall!</h5>
                     <br>
                     <div class="center">
-                        <a class="red darken-3 btn-large" href="events" ><i class="material-icons left">star</i>Browse Events<i class="material-icons right">star</i></a>
+                        <a class="red darken-3 btn-large" href="{{ URL::route('events') }}" ><i class="material-icons left">star</i>Browse Events<i class="material-icons right">star</i></a>
                     </div>
                 </div>
                 

@@ -78,10 +78,10 @@ Route::group(['middleware' => 'web'], function () {
     */
 
     //Route to return homepage
-    Route::get('/', 'GuestController@welcome');
+    Route::get('/', ['as' => 'welcome', 'uses' => 'GuestController@welcome']);
 
     //Route to be called when submit on create events page is clicked
-    Route::post('/events','UserController@store');
+    Route::post('/events', 'UserController@store');
 
     //Route to be called when submit on contact us page is clicked
     Route::post('/contact','GuestController@contactUs');
@@ -90,7 +90,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/events/details/{id}','UserController@getEventDetails');
 
     //Route to return GuestController@index and return the event page view
-    Route::resource('/events', 'GuestController');
+    Route::get('/events', ['as' => 'events', 'uses' => 'GuestController@index']);
 
     //Route to return the edit user info page.
     Route::get('/account', 'UserController@editUserInfo');
