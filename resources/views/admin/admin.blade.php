@@ -104,7 +104,6 @@
 				    </div>
 				@endforeach
 			@endif
-			
 			@if(! isset($message))
 			    <h4 class="center">No unread messages</h4>
 			    <div class="divider"></div>

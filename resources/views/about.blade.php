@@ -112,7 +112,7 @@
                                 <span class="card-title activator grey-text text-darken-4">Kieran O'Driscoll<i class="material-icons right">expand_more</i></span>
                                 <p>?</p>
                                 <p>3rd year Computer Science in UCC </p>
-                                <p><a href="#">?</a></p>
+                                <p><a href="#">kieranodriscoll9@gmail.com</a></p>
                             </div>
                         </div>
                     </div>
@@ -120,7 +120,9 @@
             </div>
             <div class="card-reveal">
             <span class="card-title grey-text text-darken-4">More info<i class="material-icons right">expand_less</i></span>
-            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            <p>Kieran O'Driscoll was born at a very young age.</p>
+             <p>Clean the Bins at Trump HQ</p>
+              <p>Voting for Ben Carson or Bernie Sanders</p>
             </div>
         </div>
         
