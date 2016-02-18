@@ -120,7 +120,7 @@
             </div>
             <script>
                 $(document).ready(function(){
-                    $("#locationbutton").click(function(){
+                    $('#location').on('shown', function (e) {
                         $("#hotels").load('/hotels.php', {'venue':'{{ $ev->venue }}', 'city':'{{ $ev->city }}', 'api':'{{ env('MAPS_API')}}'});                    
                         $( document ).ajaxComplete(function() {
                             $(".progress").hide();
@@ -185,7 +185,6 @@
                             </div>
                         </tbody>
                     </table>
-                    <button>test</button>
                 </div>
             </div> 
         </div>
