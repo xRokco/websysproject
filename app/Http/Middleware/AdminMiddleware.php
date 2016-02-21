@@ -4,7 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
-
+use App\Admin;
+use App\User;
 
 class AdminMiddleware
 {
@@ -17,13 +18,19 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        $admin = \DB::table('admins')
+        ->join('users', 'users.id', '=', 'admins.userid')
+        ->select('admins.*')
+        ->where(['userid' => Auth::user()->id])
+        ->distinct()
+        ->get();
         if (Auth::guard($guard)->guest()) {
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
                 return redirect()->guest('/login');
             }
-        } elseif (Auth::guard($guard)->user()->admin==1) {
+        } elseif ($admin) {
             return $next($request);
         } else {
             return redirect('/');

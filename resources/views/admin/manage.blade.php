@@ -19,11 +19,19 @@
 							<td>{{ $user->id }}</td>
 							<td>{{ $user->name }} {{ $user->surname }}</td>
 							<td>{{ $user->email }}</td>
-							<td>{{ $user->admin }}</td>
-							@if($user->admin == 0)
-								<td><a href="/admin/promote/{{ $user->id }}">Make admin</a></td>
+							<?php
+								$admin = DB::table('admins')
+						        ->join('users', 'users.id', '=', 'admins.userid')
+						        ->select('admins.*')
+						        ->where('userid', '=', $user->id)
+						        ->get();
+							?>
+							@if($admin)
+							<td>Yes</td>
+							<td><a href="/admin/demote/{{ $user->id }}">Demote</a></td>
 							@else
-								<td><a href="/admin/demote/{{ $user->id }}">Demote</a></td>
+							<td>No</td>
+							<td><a href="/admin/promote/{{ $user->id }}">Make admin</a></td>
 							@endif
 						</tr>
 					@endforeach

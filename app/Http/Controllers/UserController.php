@@ -8,6 +8,7 @@ use App\User;
 use App\Event;
 use App\Message;
 use App\Rsvp;
+use App\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;

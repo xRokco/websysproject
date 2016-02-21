@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
          $this->call('UsersTableSeeder');
          $this->call('MessagesTableSeeder');
          $this->call('RsvpTableSeeder');
+         $this->call('AdminsTableSeeder');
     }
 }
 
@@ -112,8 +113,7 @@ class UsersTableSeeder extends Seeder {
        "created_at" => "2016-01-21 14:06:45",
        "updated_at" => "2016-01-21 14:06:45",
        "direction" => "13 Garranmore, Dunmore Road, Waterford",
-       "surname" => "Carrick",
-       "admin" => 1
+       "surname" => "Carrick"
         ),
       array(
        "id" => "2",
@@ -124,8 +124,7 @@ class UsersTableSeeder extends Seeder {
        "created_at" => "2016-01-21 14:06:45",
        "updated_at" => "2016-01-21 14:06:45",
        "direction" => "4 Salvador Place, Western Road, Cork",
-       "surname" => "Fitzgerald",
-       "admin" => 1
+       "surname" => "Fitzgerald"
         ),
       array(
        "id" => "3",
@@ -136,8 +135,7 @@ class UsersTableSeeder extends Seeder {
        "created_at" => "2016-01-21 14:06:45",
        "updated_at" => "2016-01-21 14:06:45",
        "direction" => "Belfast",
-       "surname" => "User",
-       "admin" => 0
+       "surname" => "User"
         )
       );
     DB::table('users')->insert($users);
@@ -191,5 +189,23 @@ class RsvpTableSeeder extends Seeder {
         )
       );
     DB::table('rsvp')->insert($rsvp);
+  }
+}
+
+class AdminsTableSeeder extends Seeder {
+  public function run() {
+    DB::table('admins')->delete();
+
+  $admins = array(
+      array(
+        "adminid" => "1",
+       "userid" => "1",
+        ),
+      array(
+        "adminid" => "2",
+       "userid" => "2",
+        )
+      );
+    DB::table('admins')->insert($admins);
   }
 }

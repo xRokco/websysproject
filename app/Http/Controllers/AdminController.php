@@ -8,6 +8,7 @@ use App\User;
 use App\Event;
 use App\Message;
 use App\Rsvp;
+use App\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
@@ -237,7 +238,9 @@ class AdminController extends Controller
      */
     public function manageAdmins()
     {
-        $users = User::orderBy('admin', 'desc')->get();
+        $users = User::orderBy('id', 'desc')->get();
+
+
 
         return view('admin/manage', ['users' => $users]);
     }
@@ -250,8 +253,8 @@ class AdminController extends Controller
      */
     public function promote($id)
     {
-        User::where('id', $id)->update(['admin' => 1]);
-
+    
+        \DB::table('admins')->insert(['userid' => $id]);
         return redirect('admin/manage');
     }
 
@@ -263,7 +266,7 @@ class AdminController extends Controller
      */
     public function demote($id)
     {
-        User::where('id', $id)->update(['admin' => 0]);
+        Admin::where('userid', $id)->delete();
 
         return redirect('admin/manage');
     }

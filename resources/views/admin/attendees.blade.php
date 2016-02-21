@@ -10,7 +10,6 @@
 						<th data-field="id">User ID</th>
 			            <th data-field="name">Full Name</th>
 			            <th data-field="email">E-mail</th>
-			            <th data-field="admin">Admin</th>
 			            <th data-field="code">Code</th>
 					</thead>
 					<tbody>
@@ -19,7 +18,6 @@
 							<td>{{ $atn->id }}</td>
 							<td>{{ $atn->name }} {{ $atn->surname }}</td>
 							<td>{{ $atn->email }}</td>
-							<td>{{ $atn->admin }}</td>
 							<td>{{ $atn->code }}</td>
 						</tr>
 					@endforeach

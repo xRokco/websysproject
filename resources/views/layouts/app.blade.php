@@ -35,7 +35,15 @@
 						<ul id='dropdown1' class='dropdown-content'>
 							<li><a class="red-text" href="{{ url('/dash') }}">Dash</a></li>
 							<li><a class="red-text" href="{{ url('/events') }}">Events</a></li>
-							@if(Auth::user()->admin==1)
+						<?php
+            				$admin = DB::table('admins')
+			                ->join('users', 'users.id', '=', 'admins.userid')
+			                ->select('admins.*')
+			                ->where(['userid' => Auth::user()->id])
+			                ->distinct()
+			                ->get();
+						?>
+							@if($admin)
 								<li><a class="red-text" href="/admin">Admin</a></li>
 							@endif
 							<li><a class="red-text" href="{{ url('/logout') }}">Logout</a></li>
