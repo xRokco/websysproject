@@ -72,9 +72,9 @@
 				                ->get();
 							?>
 							@if($admin)
-								<li><a class="red-text" href="/admin">Admin</a></li>
+								<li><a class="red-text" href="{{ url('/admin') }}">Admin</a></li>
 							@else
-								<li><a class="red-text" href="/contact">Contact us</a></li>
+								<li><a class="red-text" href="{{ url('/contact') }}">Contact us</a></li>
 							@endif
 							<li><a class="red-text" href="{{ url('/logout') }}">Logout</a></li>
 						@else
