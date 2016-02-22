@@ -17,7 +17,7 @@
         }
 
         .addeventatc_icon {
-            background: url('{{ url(\'/img/calendar.png\') }}') !important;
+            background: url('{{ url('/img/calendar.png') }}') !important;
         }
     </style>
     <script src="{{ url('/sweetalert/dist/sweetalert.min.js') }}"></script>
