@@ -63,7 +63,7 @@
                 @if($full == TRUE)
                     <a id="attend" class="btn red darken-3 disabled" title="Tickets Sold Out">Attend Event</a>
                 @else
-                <a id="customButton" class="btn red darken-3" href="attend/{{ $ev->id }}">Attend Event</a>
+                <a id="customButton" class="btn red darken-3" href="#">Attend Event</a>
 
                     <script src="https://checkout.stripe.com/checkout.js"></script>
                         <script>
@@ -74,23 +74,12 @@
                             token: function(token) {
                                 // Use the token to create the charge with a server-side script.
                                 // You can access the token ID with `token.id`
-                                <?php
-                                    $count = \DB::table('rsvp')->where('eventid', $ev->id)->count();
-                                    $ev = \DB::table('events')->where('id', $ev->id)->first();
-
-                                    if($count < $ev->capacity)
-                                    {
-                                        do {
-                                            $code = str_random(10);
-                                        } while (\DB::table('rsvp')->where("code", $code)->where('eventid', $ev->id)->first() instanceof Rsvp);
-                                        
-                                        \DB::table('rsvp')->insert(['userid' => Auth::user()->id, 'eventid' => $ev->id, 'code' => $code]);
-                                        echo "window.location.href = \"/dash\";";
-
-                                    } else {
-                                        echo "Event full";
-                                    }    
-                                ?>
+                                $.post('http://localhost:8000/events/details/attend', {
+                                     _token: $('meta[name=csrf-token]').attr('content'),
+                                     evid: {{ $ev->id }}
+                                 }
+                                )
+                                window.location.href = "/dash";
                             }
                           });
 
@@ -110,7 +99,6 @@
                           // Close Checkout on page navigation
                           $(window).on('popstate', function() {
                             handler.close();
-
                           });
                         </script> 
                 @endif

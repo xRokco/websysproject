@@ -102,7 +102,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/dash', 'UserController@showUserEvents');
 
     // This is the route to attend an event
-    Route::get('/events/details/attend/{id}','UserController@attendEvent');
+    Route::post('/events/details/attend','UserController@attendEvent');
 
     // This is the route to unattend an event 
     Route::get('/events/details/unattend/{id}','UserController@unattendEvent');
