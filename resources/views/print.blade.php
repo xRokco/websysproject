@@ -8,7 +8,7 @@
 			<p>{{ $ev->date }}</p>
 			<p>{{ $ev->venue }}, {{ $ev->city }}</p>
 			<figure>
-				<img style="margin-left:auto;margin-right:auto;display:block" alt="barcode" src="/barcode.php?text={{ $rsvp->code }}" />
+				<img style="margin-left:auto;margin-right:auto;display:block" alt="barcode" src="{{ url('/barcode.php?text=') }}{{ $rsvp->code }}" />
 				<figcaption class="center-align">{{ $rsvp->code }}</figcaption>
 			</figure>
 		</div>

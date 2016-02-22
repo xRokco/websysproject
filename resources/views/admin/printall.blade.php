@@ -9,7 +9,7 @@
 				<p>{{ $ev->date }}</p>
 				<p>{{ $ev->venue }}, {{ $ev->city }}</p>
 				<figure>
-					<img style="margin-left:auto;margin-right:auto;display:block" alt="barcode" src="/barcode.php?text={{ $atn->code }}" />
+					<img style="margin-left:auto;margin-right:auto;display:block" alt="barcode" src="{{ url('/barcode.php?text=') }}{{ $atn->code }}" />
 					<figcaption class="center-align">{{ $atn->code }}</figcaption>
 				</figure>
 			</div>
