@@ -166,7 +166,7 @@
 							return false   
 						}     
 						swal("Event deleted", "");
-						setTimeout(function(){ window.location.href = "{{ url('/admin/delete/') }}" + id; }, 1000);
+						setTimeout(function(){ window.location.href = "{{ url('/admin/delete/') }}/" + id; }, 1000);
 					});
 				})
 			</script>
