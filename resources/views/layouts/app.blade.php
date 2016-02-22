@@ -27,7 +27,7 @@
 		<body>
     
 			<nav class="red darken-3" role="navigation">
-				<div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo"><img class="responsive-img" src="/img/logo.png">TRUMP</a>
+				<div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo"><img class="responsive-img" width="60px" src="/img/logo.png"><span style="margin-left:-10px">TRUMP</span></a>
 				<ul class="right hide-on-med-and-down">
 					@if (Auth::check())     
 						<!-- Dropdown Trigger -->
