@@ -149,8 +149,7 @@ class MessagesTableSeeder extends Seeder {
   $messages = array(
       array(
        "id" => "1",
-       "name" => "Mary Whatever",
-       "email" => "mary@whatever.com",
+      "userid" => "2",
        "subject" => "I found a bug",
        "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
        "created_at" => "2016-01-01 14:00:00",
@@ -159,8 +158,7 @@ class MessagesTableSeeder extends Seeder {
         ),
       array(
        "id" => "2",
-       "name" => "John Someone",
-       "email" => "john@whatever.com",
+       "userid" => "1",
        "subject" => "I also found a bug",
        "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
        "created_at" => "2016-01-01 14:00:00",

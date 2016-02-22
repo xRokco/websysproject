@@ -14,8 +14,7 @@ class Messages extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email');
+            $table->integer('userid');
             $table->string('subject');
             $table->text('message');
             $table->dateTime('created_at');
