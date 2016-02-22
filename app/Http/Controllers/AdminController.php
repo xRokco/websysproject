@@ -42,12 +42,18 @@ class AdminController extends Controller
          $messages = DB::table('messages')
             ->join('users', 'users.id', '=', 'messages.userid')
             ->select('users.name', 'users.email', 'messages.*')
+            ->whereNull('deleted_at')
             ->get();
                      
 
         //gets all the read (deleted) messages from the messags table.
-        $readMessages = Message::withTrashed()->whereNotNull('deleted_at')->orderBy('created_at', 'desc')->get();
-
+        
+         $readMessages = DB::table('messages')
+            ->join('users', 'users.id', '=', 'messages.userid')
+            ->select('users.name', 'users.email', 'messages.*')
+            ->whereNotNull('deleted_at')
+            ->orderBy('created_at', 'desc')
+            ->get();
         //Returns the events view along with the $events, $messages and $readMessages arrays containing the query results from above
         return view('admin/admin', ['events' => $events, 'messages' => $messages, 'readMessages' => $readMessages]);
     }
@@ -209,20 +215,6 @@ class AdminController extends Controller
         return redirect('admin');
     }
 
-    /**
-     * Show the inbox page.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function showInbox()
-    {
-        
-        $readMessages = Message::withTrashed()->whereNotNull('deleted_at')->get();
-                              
-                                        
-
-        return view('admin/inbox', ['messages' => $messages,  'readMessages' => $readMessages]);
-    }
 
     /**
      * Deletes a message from the messages table.

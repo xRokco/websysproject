@@ -127,7 +127,8 @@
 			                    <div class="col s9">
 			                        <div class="card-content">
 			                            <span class="card-title activator grey-text text-darken-4">{{ $readMessage->subject }}<i class="material-icons right">expand_more</i></span>
-			                     
+			                     		<p>{{ $readMessage->name }}</p>
+				                        <p>{{ $readMessage->email }}</p>
 			                            <p>{{ $readMessage->created_at }}</p>
 			                        </div>
 			                    </div>
