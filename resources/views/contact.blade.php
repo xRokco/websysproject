@@ -24,18 +24,12 @@
    			<div class="row">
         		<div class="col s6 offset-s3">
 						{!! Form::open(['url' => '/contact']) !!}
-						<div class="row">
-							{!! Form::label('name', 'Your own name:') !!}
-							{!! Form::text('name') !!}
-						</div>
+						
 						<div class="row">
 							{!! Form::label('subject', 'Subject:') !!}
 							{!! Form::text('subject') !!}
 						</div>
-						<div class="row">
-							{!! Form::label('email', 'Your email:') !!}
-							{!! Form::text('email') !!}
-						</div>
+						
 						<div class="input-field row">
 							{!! Form::label('message', 'Your message:') !!}
 							{!! Form::textarea('message', NULL, ['class' => 'materialize-textarea']) !!}

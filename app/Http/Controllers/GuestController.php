@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Event;
 use App\Rsvp;
+use App\User;
 use Illuminate\Support\Facades\Input;
 use App\Message;
 use Carbon\Carbon;
@@ -39,19 +40,21 @@ class GuestController extends Controller
      */
     public function contactUs(Request $input)
     {
+         //Sets the id of the current user to $id.
+         $id = Auth::user()->id;
         //Validates the fields in the contactus form.
         $this->validate($input, [
-        'name' => 'required|max:40',
         'subject' => 'required|max:40',
-        'email' => 'required|max:30',
         'message' => 'required',
         ]);
 
+        $subject = $input->input('subject');
+        $message = $input->input('message');
         //gets current date
         $date = Carbon::now();
 
         //creates a new message with details the user inputs
-        Message::create($input->all());
+        \DB::table('messages')->insert(['userid' => $id, 'subject' => $subject, 'message' => $message]);
 
         //Gets the latest message (the one added above) and fills the date column for it
         Message::latest()->first()->update(['date' => $date]);

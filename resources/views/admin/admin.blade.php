@@ -74,6 +74,7 @@
 
         <div id="inbox" class="col s12">
 			<br><br>
+			<div>
 			@if ($messages)
 				@foreach ($messages as $message)
 				    <div class="card grey lighten-5">
@@ -89,6 +90,7 @@
 				                        <div class="card-content">
 				                            <span class="card-title activator grey-text text-darken-4">{{ $message->subject }}<i class="material-icons right">expand_more</i></span>
 				                            <a href="/admin/inbox/delete/{{ $message->id }}"><i class="material-icons right">done</i></a>
+				                          
 				                            <p>{{ $message->name }}</p>
 				                            <p>{{ $message->email }}</p>
 				                            <p>{{ $message->created_at }}</p>
@@ -125,8 +127,7 @@
 			                    <div class="col s9">
 			                        <div class="card-content">
 			                            <span class="card-title activator grey-text text-darken-4">{{ $readMessage->subject }}<i class="material-icons right">expand_more</i></span>
-			                            <p>{{ $readMessage->name }}</p>
-			                            <p>{{ $readMessage->email }}</p>
+			                     
 			                            <p>{{ $readMessage->created_at }}</p>
 			                        </div>
 			                    </div>
