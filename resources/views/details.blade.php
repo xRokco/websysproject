@@ -27,7 +27,7 @@
             <div class="row valign-wrapper" id="event">
                 <!-- Event Image -->
                 <div class="col center s3">
-                    <img class="responsive-img" src="{{ url('/img/event_images/$ev->image') }}" />
+                    <img class="responsive-img" src="{{ url('/img/event_images') }}/{{ $ev->image }}" />
                 </div>
                 
                 <!-- Event Description -->
@@ -55,7 +55,7 @@
                             <span class="location">{{ $ev->venue}}, {{ $ev->city }}</span>
                             <span class="date_format">MM/DD/YYYY</span>
                         </div>
-                        <a class="btn red darken-3" style="margin-top:5px;margin-bottom:5px" target="_blank" href="print/{{ $ev->id }}">Print Ticket</a>
+                        <a class="btn red darken-3" style="margin-top:5px;margin-bottom:5px" target="_blank" href="{{ url('/events/details/print') }}/{{ $ev->id }}">Print Ticket</a>
                         <button class="btn red darken-3" id="unattend">Unattend Event</button>
                     </div>
                 </div>
@@ -69,17 +69,17 @@
                         <script>
                           var handler = StripeCheckout.configure({
                             key: "<?php echo $stripe['publishable']; ?>",
-                            image: '/img/event_images/{{ $ev->image }}',
+                            image: '{{ url('/img/event_images/') }}/{{ $ev->image }}',
                             locale: 'auto',
                             token: function(token) {
                                 // Use the token to create the charge with a server-side script.
                                 // You can access the token ID with `token.id`
-                                $.post('http://localhost:8000/events/details/attend', {
+                                $.post('{{ url('/events/details/attend') }}', {
                                      _token: $('meta[name=csrf-token]').attr('content'),
                                      evid: {{ $ev->id }}
                                  }
                                 )
-                                window.location.href = "/dash";
+                                window.location.href = "{{ url('/dash') }}";
                             }
                           });
 
@@ -135,7 +135,7 @@
                             return false   
                         }     
                         swal("Unattended", "");
-                        setTimeout(function(){ window.location.href = "/events/details/unattend/{{$ev->id}}" }, 1000);
+                        setTimeout(function(){ window.location.href = "{{ url('/events/details/unattend') }}/{{$ev->id}}" }, 1000);
                     });
                 })
             </script>
