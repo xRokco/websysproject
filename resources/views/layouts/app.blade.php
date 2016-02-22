@@ -45,6 +45,8 @@
 						?>
 							@if($admin)
 								<li><a class="red-text" href="/admin">Admin</a></li>
+							@else
+								<li><a class="red-text" href="/contact">Contact us</a></li>
 							@endif
 							<li><a class="red-text" href="{{ url('/logout') }}">Logout</a></li>
 						</ul>
