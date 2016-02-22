@@ -28,10 +28,10 @@
 							?>
 							@if($admin)
 							<td>Yes</td>
-							<td><a href="/admin/demote/{{ $user->id }}">Demote</a></td>
+							<td><a href="{{ url('/admin/demote') }}/{{ $user->id }}">Demote</a></td>
 							@else
 							<td>No</td>
-							<td><a href="/admin/promote/{{ $user->id }}">Make admin</a></td>
+							<td><a href="{{ url('/admin/promote') }}/{{ $user->id }}">Make admin</a></td>
 							@endif
 						</tr>
 					@endforeach

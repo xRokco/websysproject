@@ -16,8 +16,8 @@
           display: block; 
         }
 </style>
-<script src="/sweetalert/dist/sweetalert.min.js"></script> 
-<link rel="stylesheet" type="text/css" href="/sweetalert/dist/sweetalert.css">
+<script src="{{ url('/sweetalert/dist/sweetalert.min.js') }}"></script> 
+<link rel="stylesheet" type="text/css" href="{{ url('/sweetalert/dist/sweetalert.css') }}">
 <br><br>
 <div class="container">
 	<div class="row">
@@ -37,7 +37,7 @@
 					<div class="row grey lighten-5 valign-wrapper" id="event">
 			        	<!-- Event Image -->
 			            <div class="col center s3">
-			                <a href="events/details/{{ $event->id }}"><img class="responsive-img circle" src='img/event_images/{{ $event->image }}' style='height:150px;width:150px;background-size:cover;' /></a>
+			                <a href="{{ url('events/details') }}/{{ $event->id }}"><img class="responsive-img circle" src="{{ url('img/event_images') }}/{{ $event->image }}" style="height:150px;width:150px;background-size:cover;" /></a>
 			            </div>
 			                    
 			            <!-- Event Description -->
@@ -49,8 +49,8 @@
 			            <!-- Event Details -->
 			            <div class="col s3 btn-container" id="test"> 
 			            	<div>
-				                <a class="btn red darken-3" href="admin/attendees/{{ $event->id }}">Attendees</a>
-				                <a style="margin-top:5px;margin-bottom:5px" class="btn red darken-3" href="admin/edit/{{ $event->id }}">Edit Event</a>
+				                <a class="btn red darken-3" href="{{ url('admin/attendees') }}/{{ $event->id }}">Attendees</a>
+				                <a style="margin-top:5px;margin-bottom:5px" class="btn red darken-3" href="{{ url('admin/edit') }}/{{ $event->id }}">Edit Event</a>
 				                <button class="btn red darken-3" id="delete" eventid="{{ $event->id }}">Delete Event</button>
 				            </div>
 			            </div>
@@ -62,11 +62,11 @@
 			@endif
         	<br>
 				<div class="fixed-action-btn" style="bottom: 25px; right: 24px;">
-					<a href="/admin/create" title="Create event" class="btn-floating btn-large red darken-3">
+					<a href="{{ url('/admin/create') }}" title="Create event" class="btn-floating btn-large red darken-3">
 				    	<i class="large material-icons">add</i>
 				    </a>
 				    <ul>
-				    	<li><a href="/admin/manage" title="Manage users" class="btn-floating blue"><i class="material-icons">perm_identity</i></a></li>
+				    	<li><a href="{{ url('/admin/manage') }}" title="Manage users" class="btn-floating blue"><i class="material-icons">perm_identity</i></a></li>
 					</ul>
 				</div>      
   			</div>
@@ -89,7 +89,7 @@
 				                    <div class="col s9">
 				                        <div class="card-content">
 				                            <span class="card-title activator grey-text text-darken-4">{{ $message->subject }}<i class="material-icons right">expand_more</i></span>
-				                            <a href="/admin/inbox/delete/{{ $message->id }}"><i class="material-icons right">done</i></a>
+				                            <a href="{{ url('/admin/inbox/delete') }}/{{ $message->id }}"><i class="material-icons right">done</i></a>
 				                          
 				                            <p>{{ $message->name }}</p>
 				                            <p>{{ $message->email }}</p>
@@ -166,7 +166,7 @@
 							return false   
 						}     
 						swal("Event deleted", "");
-						setTimeout(function(){ window.location.href = "/admin/delete/" + id; }, 1000);
+						setTimeout(function(){ window.location.href = "{{ url('/admin/delete/') }}" + id; }, 1000);
 					});
 				})
 			</script>
