@@ -16,9 +16,9 @@
                     <!-- Event Image -->
                     <div class="col center s3">
                         @if(Auth::check())
-                            <a href="/events/details/{{ $event->id }}"><img class="responsive-img circle" src='/img/event_images/{{ $event->image }}' style='height:150px;width:150px;background-size:cover;' /></a>
+                            <a href="{{ url('/events/details') }}/{{ $event->id }}"><img class="responsive-img circle" src="{{ url('/img/event_images') }}/{{ $event->image }}" style="height:150px;width:150px;background-size:cover;" /></a>
                         @else
-                            <a href="/login"><img class="responsive-img circle" src='/img/event_images/{{ $event->image }}' style='height:150px;width:150px;background-size:cover;' /></a>
+                            <a href="{{ url('/login') }}"><img class="responsive-img circle" src="{{ url('/img/event_images') }}/{{ $event->image }}" style="height:150px;width:150px;background-size:cover;" /></a>
                         @endif
                     </div>
                     
@@ -34,14 +34,13 @@
                         <p class="condensed light left-align valign-wrapper"><i class="material-icons">location_on</i>{{ $event->venue }}, {{ $event->city }}</p>
                         <p class="condensed light left-align valign-wrapper"><i class="material-icons">payment</i>&euro;{{ $event->price }}</p>
                         @if(Auth::check())
-                            <a class="btn red darken-3 lighten-1" href="/events/details/{{ $event->id }}">View Event</a>
+                            <a class="btn red darken-3 lighten-1" href="{{ url('/events/details') }}/{{ $event->id }}">View Event</a>
                         @else
-                            <a class="btn red darken-3 lighten-1" href="/login">Login to view</a>
+                            <a class="btn red darken-3 lighten-1" href="{{ url('/login') }}">Login to view</a>
                         @endif
                     </div>
                 </div>
             @endforeach
-
             <br>
         </div>
     </div>
