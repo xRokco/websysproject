@@ -24,6 +24,7 @@
 			<!-- AddEvent -->
 			<script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
 			
+			<link rel="icon" href="{{ url('favicon.ico') }}" />
 		</head>
 		<body>
     
@@ -46,9 +47,9 @@
 					                ->get();
 								?>
 								@if($admin)
-									<li><a class="red-text" href="/admin">Admin</a></li>
+									<li><a class="red-text" href="{{ url('/admin') }}">Admin</a></li>
 								@else
-									<li><a class="red-text" href="/contact">Contact us</a></li>
+									<li><a class="red-text" href="{{ url('/contact') }}">Contact us</a></li>
 								@endif
 								<li><a class="red-text" href="{{ url('/logout') }}">Logout</a></li>
 							</ul>

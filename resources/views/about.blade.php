@@ -21,7 +21,7 @@
                     <div class="row valign-wrapper">
                         <div class="col s2">
                             <div class=" waves-effect waves-block waves-light">
-                                <img src="/img/matt.jpg" alt="" class="activator circle responsive-img">
+                                <img src="{{ url('/img/matt.jpg') }}" alt="" class="activator circle responsive-img">
                             </div>
                         </div>
                         <div class="col s9">
@@ -50,7 +50,7 @@
                     <div class="row valign-wrapper">
                         <div class="col s2">
                             <div class=" waves-effect waves-block waves-light">
-                                <img src="/img/conor.jpg" alt="" class="activator circle responsive-img">
+                                <img src="{{ url('/img/conor.jpg') }}" alt="" class="activator circle responsive-img">
                             </div>
                         </div>
                         <div class="col s9">
@@ -77,7 +77,7 @@
                     <div class="row valign-wrapper">
                         <div class="col s2">
                             <div class=" waves-effect waves-block waves-light">
-                                <img src="/img/darragh.jpg" alt="" class="activator circle responsive-img">
+                                <img src="{{ url('/img/darragh.jpg') }}" alt="" class="activator circle responsive-img">
                             </div>
                         </div>
                         <div class="col s9">
@@ -104,7 +104,7 @@
                     <div class="row valign-wrapper">
                         <div class="col s2">
                             <div class=" waves-effect waves-block waves-light">
-                                <img src="/img/kieran.jpg" alt="" class="activator circle responsive-img">
+                                <img src="{{ url('/img/kieran.jpg') }}" alt="" class="activator circle responsive-img">
                             </div>
                         </div>
                         <div class="col s9">
@@ -133,7 +133,7 @@
                     <div class="row valign-wrapper">
                         <div class="col s2">
                             <div class=" waves-effect waves-block waves-light">
-                                <img src="/img/peter.jpg" alt="" class="activator circle responsive-img">
+                                <img src="{{ url('/img/peter.jpg') }}" alt="" class="activator circle responsive-img">
                             </div>
                         </div>
                         <div class="col s9">
@@ -156,12 +156,4 @@
             </div>
         </div>
     </div>
-
-    <!-- Footer ( footer.html ) -->
-
-    <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/materialize.js"></script>
-    <script src="js/init.js"></script>
-
 @endsection
