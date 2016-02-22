@@ -117,9 +117,10 @@ class UserController extends Controller
     }
 
     /**
-     * Delete a row from the rsvp table corresponding to the event id and the user id.
+     * Add a row to the rsvp table corresponding to the event id and the user id.
+     * Called from a post from the Stripe payment javascript.
      *
-     * @param int $id
+     * @param  \Illuminate\Http\Request  $req
      * @return \Illuminate\Http\Response
      */
     public function attendEvent(Request $req) 
