@@ -21,6 +21,7 @@
 
 			<!-- CSS  -->
 			<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+			<link href="{{ url('MaterialDesign-Webfont/css/materialdesignicons.min.css') }}" media="all" rel="stylesheet" type="text/css" />
 			<!-- AddEvent -->
 			<script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
 			
