@@ -71,12 +71,10 @@ function initialize() {
                         
     // Info Window Content
     var infoWindowContent = [
-    <?php
-        foreach ($rsvp as $event) {
-        	echo "['<div class=\"info_content\">' + '<h3>" . $event->venue . ", " . $event->city . "</h3>' + '<p><a href=\"/events/details/" . $event->id . "#location\">" . $event->name . "</a></p>' + '</div>'],";
-        }
-    ?>
-    	['<div class="info_content">' + '<h3>{{Auth::user()->direction}}</h3>' + '<p>Your address</p>' + '</div>']
+    @foreach ($rsvp as $event)
+        ['<div class="info_content">' + '<h3>{{ $event->venue }}, {{ $event->city }}</h3>' + '<p><a href="{{ url('/events/details') }}/{{ $event->id }}#location">{{ $event->name }}</a></p>' + '</div>'],
+    @endforeach
+        ['<div class="info_content">' + '<h3>{{Auth::user()->direction}}</h3>' + '<p>Your address</p>' + '</div>']
     ];
         
     // Display multiple markers on a map
@@ -133,7 +131,7 @@ function initialize() {
 				                <div class="row grey lighten-5 valign-wrapper" id="event">
 				                    <!-- Event Image -->
 				                    <div class="col center s3">
-				                        <a href="events/details/{{ $event->id }}"><img class="responsive-img circle" src='img/event_images/{{ $event->image }}' style='height:150px;width:150px;background-size:cover;' /></a>
+				                        <a href="{{ url('events/details') }}/{{ $event->id }}"><img class="responsive-img circle" src="{{ url('img/event_images') }}/{{ $event->image }}" style="height:150px;width:150px;background-size:cover;" /></a>
 				                    </div>
 				                    
 				                    <!-- Event Description -->
@@ -147,12 +145,12 @@ function initialize() {
 				                        <p class="condensed light left-align valign-wrapper"><i class="material-icons">today</i>{{ $event->date }}</p>
 				                        <p class="condensed light left-align valign-wrapper"><i class="material-icons">location_on</i>{{ $event->venue }}, {{ $event->city }}</p>
 				                        <p class="condensed light left-align valign-wrapper"><i class="material-icons">payment</i>&euro;{{ $event->price }}</p>
-				                        <a class="btn red darken-3" href="events/details/{{ $event->id }}">View Event</a>
+				                        <a class="btn red darken-3" href="{{ url('/events/details') }}/{{ $event->id }}">View Event</a>
 				                    </div>
 				                </div>
 				            @endforeach
 				        @else
-				        	<h4 class="center red-text">You aren't attending any events yet. Checkout our <a class="red-text text-lighten-3" href="{{ url('events') }}" >events</a> page.</h4>
+				        	<h4 class="center red-text">You aren't attending any events yet. Checkout our <a class="red-text text-lighten-3" href="{{ url('/events') }}" >events</a> page.</h4>
 				        @endif
             			<br>
                 </div>
