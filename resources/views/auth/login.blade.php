@@ -12,7 +12,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col s6 offset-s3">
+        <div class="col m6 offset-m3 s12">
             <form role="form" method="POST" action="{{ url('/login') }}">
                 {!! csrf_field() !!}
 
