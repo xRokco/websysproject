@@ -24,20 +24,20 @@
 <link rel="stylesheet" type="text/css" href="{{ url('/sweetalert/dist/sweetalert.css') }}">
     <div class="container">
         <div class="section no-pad-bot" id="no-padding-top">
-            <div class="row valign-wrapper" id="event">
+            <div class="row" id="event">
                 <!-- Event Image -->
-                <div class="col center s3">
-                    <img class="responsive-img" src="{{ url('/img/event_images') }}/{{ $ev->image }}" />
+                <div class="col center m3 s6 offset-s3">
+                    <img class="responsive-img circle" src="{{ url('/img/event_images') }}/{{ $ev->image }}" />
                 </div>
                 
                 <!-- Event Description -->
-                <div class="left-align col s5">
+                <div class="left-align col m5 s6">
                     <h5>{{ $ev->name }}</h5>
                     <p>{{ $ev->information }}</p>
                 </div>
                 
                 <!-- Event Details -->
-                <div class="col s3" id="test">
+                <div class="col m3 s6">
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">today</i>{{ $ev->date }}</p>
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">location_on</i>{{ $ev->venue}}, {{ $ev->city }}</p>
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">payment</i>&euro;{{ $ev->price }}</p>
@@ -156,7 +156,7 @@
                 <div id="location" class="col s12">
                     <div class="row center">
                     <br><br>
-                        <iframe width="700" height="525" frameborder="0" style="border:0"
+                        <iframe width="700" style="max-width:100%" height="525" frameborder="0" style="border:0"
                             src="https://www.google.com/maps/embed/v1/directions?origin={{ Auth::user()->direction }}&destination={{ $ev->venue }}, {{ $ev->city }}&key={{ env('MAPS_API') }}" allowfullscreen></iframe>
                     </div>
                     <h5 class="center">Here's a few of hotels within a couple of kilometers of the venue</h5>

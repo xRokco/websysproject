@@ -18,22 +18,24 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        $admin = \DB::table('admins')
-        ->join('users', 'users.id', '=', 'admins.userid')
-        ->select('admins.*')
-        ->where(['userid' => Auth::user()->id])
-        ->distinct()
-        ->get();
         if (Auth::guard($guard)->guest()) {
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
                 return redirect()->guest('/login');
             }
-        } elseif ($admin) {
-            return $next($request);
         } else {
-            return redirect('/');
+            $admin = \DB::table('admins')
+            ->join('users', 'users.id', '=', 'admins.userid')
+            ->select('admins.*')
+            ->where(['userid' => Auth::user()->id])
+            ->distinct()
+            ->get();
+            if ($admin){
+                return $next($request);
+            } else {
+                return redirect('/');
+            }
         }
     }
 }

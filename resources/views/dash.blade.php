@@ -17,7 +17,7 @@
 	}
 
     .indicator {
-        width:49% !important;
+        width:48% !important;
     }
 </style>
 <script type="text/javascript">

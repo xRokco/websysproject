@@ -17,6 +17,22 @@
 				main {
 					flex: 1 0 auto;
 				}
+
+				.btn-container {
+		          display: flex; 
+		        }
+		         
+		        .btn-container > div {
+		          width: auto; 
+		        }
+		         
+		        .btn-container .btn, .btn-container .btn-large, .btn-container .btn-flat, .btn-container .btn-large {
+		          display: block; 
+		        }
+
+		        .indicator {
+		        	max-width: 49% !important;
+		        }
 			</style>
 
 			<!-- CSS  -->
