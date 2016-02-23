@@ -31,91 +31,87 @@
                 </div>
                 
                 <!-- Event Description -->
-                <div class="left-align col m5 s6">
+                <div class="left-align col m5 s5">
                     <h5>{{ $ev->name }}</h5>
                     <p>{{ $ev->information }}</p>
                 </div>
                 
                 <!-- Event Details -->
-                <div class="col m3 s6">
+                <div class="col m3 s7">
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">today</i>{{ $ev->date }}</p>
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">location_on</i>{{ $ev->venue}}, {{ $ev->city }}</p>
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">payment</i>&euro;{{ $ev->price }}</p>
-            <!-- Check if clicked attend already -->
-            @if($rsvp)
-                <!-- Add to Calendar API -->
-                <div class="btn-container">
-                    <div>
-                        <div title="Add to Calendar" class="btn red darken-3 addeventatc" style="padding-top:11px;">
-                            <span class="white-text" style="font-weight:normal" >Add to Calendar</span>
-                            <span class="start">{{ $ev->date }} {{ $ev->start_time }}</span>
-                            <span class="end">{{ $ev->date }} {{ $ev->end_time }}</span>
-                            <span class="title">{{ $ev->name }}</span>
-                            <span class="description">{{ $ev->information }}</span>
-                            <span class="location">{{ $ev->venue}}, {{ $ev->city }}</span>
-                            <span class="date_format">MM/DD/YYYY</span>
+                    <!-- Check if clicked attend already -->
+                    @if($rsvp)
+                        <!-- Add to Calendar API -->
+                        <div class="btn-container">
+                            <div>
+                                <div title="Add to Calendar" class="btn red darken-3 addeventatc" style="padding-top:11px;">
+                                    <span class="white-text" style="font-weight:normal" >Add to Calendar</span>
+                                    <span class="start">{{ $ev->date }} {{ $ev->start_time }}</span>
+                                    <span class="end">{{ $ev->date }} {{ $ev->end_time }}</span>
+                                    <span class="title">{{ $ev->name }}</span>
+                                    <span class="description">{{ $ev->information }}</span>
+                                    <span class="location">{{ $ev->venue}}, {{ $ev->city }}</span>
+                                    <span class="date_format">MM/DD/YYYY</span>
+                                </div>
+                                <a class="btn red darken-3" style="margin-top:5px;margin-bottom:5px" target="_blank" href="{{ url('/events/details/print') }}/{{ $ev->id }}">Print Ticket</a>
+                                <a class="btn red darken-3" id="unattend">Unattend Event</a>
+                            </div>
                         </div>
-                        <a class="btn red darken-3" style="margin-top:5px;margin-bottom:5px" target="_blank" href="{{ url('/events/details/print') }}/{{ $ev->id }}">Print Ticket</a>
-                        <button class="btn red darken-3" id="unattend">Unattend Event</button>
-                    </div>
+                    @else
+                        @if($full == TRUE)
+                            <a id="attend" class="btn red darken-3 disabled" title="Tickets Sold Out">Attend Event</a>
+                        @else
+                        <a id="customButton" class="btn red darken-3" href="#">Attend Event</a>
+
+                            <script src="https://checkout.stripe.com/checkout.js"></script>
+                                <script>
+                                  var handler = StripeCheckout.configure({
+                                    key: "<?php echo $stripe['publishable']; ?>",
+                                    image: '{{ url('/img/event_images/') }}/{{ $ev->image }}',
+                                    locale: 'auto',
+                                    token: function(token) {
+                                        // Use the token to create the charge with a server-side script.
+                                        // You can access the token ID with `token.id`
+                                        $.post('{{ url('/events/details/attend') }}', {
+                                             _token: $('meta[name=csrf-token]').attr('content'),
+                                             evid: {{ $ev->id }}
+                                         }
+                                        )
+                                        window.location.href = "{{ url('/dash') }}";
+                                    }
+                                  });
+
+                                  $('#customButton').on('click', function(e) {
+                                    // Open Checkout with further options
+                                    handler.open({
+                                      name: '{{ $ev->name }}',
+                                      description: 'Non-refundable',
+                                      currency: "eur",
+                                      amount: '{{ $ev->price }}00',
+                                      email: '{{ Auth::user()->email }}'
+                                    });
+                                    e.preventDefault();
+
+                                  });
+
+                                  // Close Checkout on page navigation
+                                  $(window).on('popstate', function() {
+                                    handler.close();
+                                  });
+                                </script> 
+                        @endif
+                    @endif 
                 </div>
-            @else
-                @if($full == TRUE)
-                    <a id="attend" class="btn red darken-3 disabled" title="Tickets Sold Out">Attend Event</a>
-                @else
-                <a id="customButton" class="btn red darken-3" href="#">Attend Event</a>
-
-                    <script src="https://checkout.stripe.com/checkout.js"></script>
-                        <script>
-                          var handler = StripeCheckout.configure({
-                            key: "<?php echo $stripe['publishable']; ?>",
-                            image: '{{ url('/img/event_images/') }}/{{ $ev->image }}',
-                            locale: 'auto',
-                            token: function(token) {
-                                // Use the token to create the charge with a server-side script.
-                                // You can access the token ID with `token.id`
-                                $.post('{{ url('/events/details/attend') }}', {
-                                     _token: $('meta[name=csrf-token]').attr('content'),
-                                     evid: {{ $ev->id }}
-                                 }
-                                )
-                                window.location.href = "{{ url('/dash') }}";
-                            }
-                          });
-
-                          $('#customButton').on('click', function(e) {
-                            // Open Checkout with further options
-                            handler.open({
-                              name: '{{ $ev->name }}',
-                              description: 'Non-refundable',
-                              currency: "eur",
-                              amount: '{{ $ev->price }}00',
-                              email: '{{ Auth::user()->email }}'
+                <script>
+                    $(document).ready(function(){
+                            $("#hotels").load('{{ url('hotels.php') }}', {'venue':'{{ $ev->venue }}', 'city':'{{ $ev->city }}', 'api':'{{ env('MAPS_API')}}'});                    
+                            $( document ).ajaxComplete(function() {
+                                $(".progress").hide();
                             });
-                            e.preventDefault();
-
-                          });
-
-                          // Close Checkout on page navigation
-                          $(window).on('popstate', function() {
-                            handler.close();
-                          });
-                        </script> 
-                @endif
-            @endif
-                    
-                </div>
-            </div>
-            <script>
-                $(document).ready(function(){
-                    //$("#locationbutton").click(function(){
-                        $("#hotels").load('{{ url('hotels.php') }}', {'venue':'{{ $ev->venue }}', 'city':'{{ $ev->city }}', 'api':'{{ env('MAPS_API')}}'});                    
-                        $( document ).ajaxComplete(function() {
-                            $(".progress").hide();
-                        });
-                    //});
-                });
-            </script>
+                    });
+                </script>
             <script type="text/javascript">
                 $('button#unattend').on('click', function(){
                     var id = $(this).attr('eventid');
