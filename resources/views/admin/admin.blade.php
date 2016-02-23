@@ -34,20 +34,20 @@
         	@if ($events)
         		<!--Outputs html for each event returned-->
 				@foreach ($events as $event)
-					<div class="row grey lighten-5 valign-wrapper" id="event">
+					<div class="row grey lighten-5" id="event">
 			        	<!-- Event Image -->
-			            <div class="col center s3">
+			            <div class="col center m3 s12" style="margin-top:20px">
 			                <a href="{{ url('events/details') }}/{{ $event->id }}"><img class="responsive-img circle" src="{{ url('img/event_images') }}/{{ $event->image }}" style="height:150px;width:150px;background-size:cover;" /></a>
 			            </div>
 			                    
 			            <!-- Event Description -->
-			            <div class="left-align col s5">
+			            <div class="left-align col m5 s5 offset-s1">
 			                <h5>{{ $event->name }}</h5>
 			                <p>{{ $event->information }}</p>
 			            </div>
 			                    
 			            <!-- Event Details -->
-			            <div class="col s3 btn-container" id="test"> 
+			            <div class="col m3 s5 offset-s1 btn-container" id="test"> 
 			            	<div>
 				                <a class="btn red darken-3" href="{{ url('admin/attendees') }}/{{ $event->id }}">Attendees</a>
 				                <a style="margin-top:5px;margin-bottom:5px" class="btn red darken-3" href="{{ url('admin/edit') }}/{{ $event->id }}">Edit Event</a>
@@ -81,12 +81,12 @@
 					        <div class="col s12">
 					            <div class="grey lighten-5">
 					                <div class="row valign-wrapper">
-					                    <div class="col s2">
+					                    <div class="col m2 offset-m1 s4">
 					                        <div class=" waves-effect waves-block waves-light">
-					                            <i class="activator large material-icons">email</i>
+					                            <i class="activator medium material-icons">email</i>
 					                        </div>
 					                    </div>
-					                    <div class="col s9">
+					                    <div class="col m9 s4 offset-s4">
 					                        <div class="card-content">
 					                            <span class="card-title activator grey-text text-darken-4">{{ $message->subject }}<i class="material-icons right">expand_more</i></span>
 					                            <a href="{{ url('/admin/inbox/delete') }}/{{ $message->id }}"><i class="material-icons right">done</i></a>
@@ -119,12 +119,12 @@
 				        <div class="col s12">
 				            <div class="grey lighten-5">
 				                <div class="row valign-wrapper">
-				                    <div class="col s2">
+				                    <div class="col m2 offset-m1 s4">
 				                        <div class=" waves-effect waves-block waves-light">
-				                            <i class="activator large material-icons">email</i>
+				                            <i class="activator medium material-icons">email</i>
 				                        </div>
 				                    </div>
-				                    <div class="col s9">
+				                    <div class="col m9 s4 offset-s4">
 				                        <div class="card-content">
 				                            <span class="card-title activator grey-text text-darken-4">{{ $readMessage->subject }}<i class="material-icons right">expand_more</i></span>
 				                     		<p>{{ $readMessage->name }}</p>
