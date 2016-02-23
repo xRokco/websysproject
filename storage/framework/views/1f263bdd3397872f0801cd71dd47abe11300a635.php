@@ -68,7 +68,7 @@
     </div>   
     <div class="section">
         <div class="row">        
-            <div class="col s12 m4">
+            <div class="col s10 offset-s1 m4">
                 <div class="icon-block">
                     <h2 class="center red-text text-darken-1"><i class="mdi mdi-twitter"></i></h2>
                     <h5 class="center red-text text-lighten-1">Twitter</h5>
@@ -88,7 +88,7 @@
                     </script>
                 </div>
             </div>
-            <div class="col s12 m4">
+            <div class="col s10 offset-s1 m4">
                 <div class="icon-block">
                     <h2 class="center red-text text-darken-1"><i class="mdi mdi-newspaper"></i></h2>
                     <h5 class="center red-text text-lighten-1">Trump in the news</h5>
@@ -97,7 +97,7 @@
                     <script src="http://www.feedgrabbr.com/widget/fgwidget.js"></script>
                 </div>
             </div>
-            <div class="col s12 m4">
+            <div class="col s10 offset-s1 m4">
                 <div class="icon-block">
                     <h2 class="center red-text text-darken-1"><i class="mdi mdi-facebook"></i></h2>
                     <h5 class="center red-text text-lighten-1">Facebook</h5>
