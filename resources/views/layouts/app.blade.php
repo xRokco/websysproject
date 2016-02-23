@@ -30,7 +30,11 @@
 		<body>
     
 			<nav class="red darken-3" role="navigation">
-				<div class="nav-wrapper container"><a id="logo-container" href="{{ url('/') }}" class="brand-logo"><img class="responsive-img" width="60px" src="{{ url('/img/logo.png') }}"><span style="margin-left:-10px">TRUMP</span></a>
+				<div class="nav-wrapper container">
+					<a id="logo-container" style="height:56px" href="{{ url('/') }}" class="brand-logo">
+						<img class="responsive-img" width="50px" style="margin-top:5px" width="auto" src="{{ url('/img/logo.png') }}" />
+						<span style="position:relative;bottom:12px;">TRUMP</span>
+					</a>
 					<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 					<ul class="right hide-on-med-and-down">
 						@if (Auth::check())     

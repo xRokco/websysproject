@@ -75,8 +75,46 @@
         <div id="inbox" class="col s12">
 			<br><br>
 			<div>
-			@if ($messages)
-				@foreach ($messages as $message)
+				@if ($messages)
+					@foreach ($messages as $message)
+					    <div class="card grey lighten-5">
+					        <div class="col s12">
+					            <div class="grey lighten-5">
+					                <div class="row valign-wrapper">
+					                    <div class="col s2">
+					                        <div class=" waves-effect waves-block waves-light">
+					                            <i class="activator large material-icons">email</i>
+					                        </div>
+					                    </div>
+					                    <div class="col s9">
+					                        <div class="card-content">
+					                            <span class="card-title activator grey-text text-darken-4">{{ $message->subject }}<i class="material-icons right">expand_more</i></span>
+					                            <a href="{{ url('/admin/inbox/delete') }}/{{ $message->id }}"><i class="material-icons right">done</i></a>
+					                          
+					                            <p>{{ $message->name }}</p>
+					                            <p>{{ $message->email }}</p>
+					                            <p>{{ $message->created_at }}</p>
+					                        </div>
+					                    </div>
+					                </div>
+					            </div>
+					        </div>
+					        <div class="card-reveal">
+					            <span class="card-title grey-text text-darken-4"><i class="material-icons right">expand_less</i></span>
+					            <p>{{ $message->message }}</p>
+					        </div>
+					    </div>
+					@endforeach
+				@endif
+				@if(! isset($message))
+				    <h4 class="center">No unread messages</h4>
+				    <div class="divider"></div>
+				@endif
+
+				<h4 class="center">Read Messages:</h4>
+				<div class="divider"></div>
+
+				@foreach ($readMessages as $readMessage)
 				    <div class="card grey lighten-5">
 				        <div class="col s12">
 				            <div class="grey lighten-5">
@@ -88,12 +126,10 @@
 				                    </div>
 				                    <div class="col s9">
 				                        <div class="card-content">
-				                            <span class="card-title activator grey-text text-darken-4">{{ $message->subject }}<i class="material-icons right">expand_more</i></span>
-				                            <a href="{{ url('/admin/inbox/delete') }}/{{ $message->id }}"><i class="material-icons right">done</i></a>
-				                          
-				                            <p>{{ $message->name }}</p>
-				                            <p>{{ $message->email }}</p>
-				                            <p>{{ $message->created_at }}</p>
+				                            <span class="card-title activator grey-text text-darken-4">{{ $readMessage->subject }}<i class="material-icons right">expand_more</i></span>
+				                     		<p>{{ $readMessage->name }}</p>
+					                        <p>{{ $readMessage->email }}</p>
+				                            <p>{{ $readMessage->created_at }}</p>
 				                        </div>
 				                    </div>
 				                </div>
@@ -101,50 +137,14 @@
 				        </div>
 				        <div class="card-reveal">
 				            <span class="card-title grey-text text-darken-4"><i class="material-icons right">expand_less</i></span>
-				            <p>{{ $message->message }}</p>
+				            <p>{{ $readMessage->message }}</p>
 				        </div>
 				    </div>
 				@endforeach
-			@endif
-			@if(! isset($message))
-			    <h4 class="center">No unread messages</h4>
-			    <div class="divider"></div>
-			@endif
-
-			<h4 class="center">Read Messages:</h4>
-			<div class="divider"></div>
-
-			@foreach ($readMessages as $readMessage)
-			    <div class="card grey lighten-5">
-			        <div class="col s12">
-			            <div class="grey lighten-5">
-			                <div class="row valign-wrapper">
-			                    <div class="col s2">
-			                        <div class=" waves-effect waves-block waves-light">
-			                            <i class="activator large material-icons">email</i>
-			                        </div>
-			                    </div>
-			                    <div class="col s9">
-			                        <div class="card-content">
-			                            <span class="card-title activator grey-text text-darken-4">{{ $readMessage->subject }}<i class="material-icons right">expand_more</i></span>
-			                     		<p>{{ $readMessage->name }}</p>
-				                        <p>{{ $readMessage->email }}</p>
-			                            <p>{{ $readMessage->created_at }}</p>
-			                        </div>
-			                    </div>
-			                </div>
-			            </div>
-			        </div>
-			        <div class="card-reveal">
-			            <span class="card-title grey-text text-darken-4"><i class="material-icons right">expand_less</i></span>
-			            <p>{{ $readMessage->message }}</p>
-			        </div>
-			    </div>
-			@endforeach
-			
-			@if(! isset($readMessage))
-			    <h4 class="center">No read messages</h4>
-			@endif
+				
+				@if(! isset($readMessage))
+				    <h4 class="center">No read messages</h4>
+				@endif
 
 			</div>
 			<script type="text/javascript">

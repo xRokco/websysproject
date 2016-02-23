@@ -4,20 +4,8 @@
 @section('content')
     <!-- Navigation ( navigation.html ) -->
     <style>
-        .btn-container {
-          display: flex; 
-        }
-         
-        .btn-container > div {
-          width: auto; 
-        }
-         
-        .btn-container .btn, .btn-container .btn-large, .btn-container .btn-flat, .btn-container .btn-large {
-          display: block; 
-        }
-
-        .addeventatc_icon {
-            background: url('/img/calendar.png') !important;
+        .indicator {
+            width:49% !important;
         }
     </style>
     <script src="/sweetalert/dist/sweetalert.min.js"></script>
@@ -63,17 +51,19 @@
                     </p>
                 </div>
                 <div id="location" class="col s12">
-                    <div class="row center">
-                     @foreach ($videos as $video)
-
-                        <p>{{ $ev->name }}</p>
-                        <p>{{ $ev->venue }}</p>
-                        <p>Submitted by user: {{ $video->name }}</p>
-                       <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $video->link }}" frameborder="0" allowfullscreen></iframe>
-                        
-                     @endforeach
-                    </div>
-                    
+                    @foreach ($videos as $video)
+                        <div class="row center">
+                            <br/>
+                            <table class="col m3 s7 offset-m1 offset-s4">
+                                <tr><td>{{ $ev->name }}</td></tr>
+                                <tr><td>{{ $ev->venue }}</td></tr>
+                                <tr><td>Submitted by user: {{ $video->name }}</td></tr>
+                            </table>
+                            <iframe class="col m8 s12" height="315" src="https://www.youtube.com/embed/{{ $video->link }}" frameborder="0" allowfullscreen></iframe>
+                            <br/>
+                        </div>
+                        <div class="divider"></div>
+                    @endforeach
                 </div>
             </div> 
         </div>
