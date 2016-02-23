@@ -35,8 +35,16 @@
                         </span>
                     @endif
                 </div>
+                <div class="hide-on-small-only">
                     <button type="submit" class="btn red darken-3">Login</button>
-                    <a class="btn red darken-3" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+                    <a class="btn red darken-3" href="{{ url('/password/reset') }}">Forgot password?</a>
+                </div>
+                <div class="btn-container hide-on-med-and-up">
+                    <div class="col m4 s12" style="margin-right:auto">
+                        <button type="submit" style="width:100%;margin-bottom:5px;" class="btn red darken-3">Login</button>
+                        <a class="btn red darken-3" href="{{ url('/password/reset') }}">Forgot password?</a>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

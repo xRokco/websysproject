@@ -3,19 +3,6 @@
 @section('title', 'Admin')
 
 @section('content')
-<style>
-        .btn-container {
-          display: flex; 
-        }
-         
-        .btn-container > div {
-          width: auto; 
-        }
-         
-        .btn-container .btn, .btn-container .btn-large, .btn-container .btn-flat, .btn-container .btn-large {
-          display: block; 
-        }
-</style>
 <script src="{{ url('/sweetalert/dist/sweetalert.min.js') }}"></script> 
 <link rel="stylesheet" type="text/css" href="{{ url('/sweetalert/dist/sweetalert.css') }}">
 <br><br>
@@ -47,7 +34,7 @@
 			            </div>
 			                    
 			            <!-- Event Details -->
-			            <div class="col m3 s5 offset-s1 btn-container" id="test"> 
+			            <div class="col m3 s5 offset-s1 btn-container" style="margin-top:20px;" id="test"> 
 			            	<div>
 				                <a class="btn red darken-3" href="{{ url('admin/attendees') }}/{{ $event->id }}">Attendees</a>
 				                <a style="margin-top:5px;margin-bottom:5px" class="btn red darken-3" href="{{ url('admin/edit') }}/{{ $event->id }}">Edit Event</a>
