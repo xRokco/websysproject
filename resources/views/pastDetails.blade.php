@@ -8,14 +8,13 @@
             width:49% !important;
         }
     </style>
-    <script src="/sweetalert/dist/sweetalert.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/sweetalert/dist/sweetalert.css">
+  
     <div class="container">
         <div class="section no-pad-bot" id="no-padding-top">
             <div class="row valign-wrapper" id="event">
                 <!-- Event Image -->
                 <div class="col center s3">
-                    <img class="responsive-img" src="/img/event_images/{{ $ev->image }}" />
+                    <img class="responsive-img" src="{{ url('/img/event_images/') }}/{{ $ev->image }}" />
                 </div>
                 
                 <!-- Event Description -->
