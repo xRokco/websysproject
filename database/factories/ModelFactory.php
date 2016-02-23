@@ -22,16 +22,12 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Rsvp::class, function (Faker\Generator $faker) {
-	$values = array();
-for ($i=4; $i < 53; $i++) {
-  // get a random digit, but always a new one, to avoid duplicates
-  $values []= $faker->unique()->randomDigit;
-}
+$factory->define(App\Rsvp::class, function (Faker\Generator $faker) use ($factory) {
+
     return [
-        'userid' => $values,
+        'userid' => factory(App\User::class)->create()->id,
         'eventid' => $faker->numberBetween($min = 1, $max = 4),
-        'code' => bcrypt(str_random(5)),
+        'code' => str_random(10),
         
     ];
 });
