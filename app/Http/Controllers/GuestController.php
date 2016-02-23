@@ -32,6 +32,14 @@ class GuestController extends Controller
         return view('events', ['events' => $events]);
 }
 
+public function pastEvents()
+    {
+        //Gets all the event details from the event database table
+        $events = Event::onlyTrashed()->get();
+
+        //Returns the events view along with the $events array containing the query results from above
+        return view('past', ['events' => $events]);
+}
     /**
      * Adds a new message to the messages table.
      *

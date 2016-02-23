@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
          $this->call('MessagesTableSeeder');
          $this->call('RsvpTableSeeder');
          $this->call('AdminsTableSeeder');
+         $this->call('VideosTableSeeder');
     }
 }
 
@@ -205,5 +206,57 @@ class AdminsTableSeeder extends Seeder {
         )
       );
     DB::table('admins')->insert($admins);
+  }
+}
+
+class VideosTableSeeder extends Seeder {
+  public function run() {
+    DB::table('videos')->delete();
+
+  $videos = array(
+      array(
+        "id" => "1",
+       "userid" => "2",
+       "eventid" => "2",
+       "link" => "Uh_fPsFbgMQ"
+        ),
+      array(
+        "id" => "2",
+       "userid" => "1",
+       "eventid" => "2",
+       "link" => "RfUxoOFk0HI"
+        ),
+      array(
+        "id" => "3",
+       "userid" => "1",
+       "eventid" => "2",
+       "link" => "U_wTDUzcxCY"
+        ),
+      array(
+        "id" => "4",
+       "userid" => "1",
+       "eventid" => "2",
+       "link" => "6YvVqF3G1vI"
+        ),
+      array(
+        "id" => "5",
+       "userid" => "1",
+       "eventid" => "3",
+       "link" => "Y9DJrA8gBwM"
+        ),
+      array(
+        "id" => "6",
+       "userid" => "1",
+       "eventid" => "3",
+       "link" => "aMyE1W59Vqo"
+        ),
+     array(
+        "id" => "7",
+       "userid" => "1",
+       "eventid" => "3",
+       "link" => "QAFYfsA28-Q"
+        )
+      );
+    DB::table('videos')->insert($videos);
   }
 }

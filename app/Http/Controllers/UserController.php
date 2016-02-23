@@ -71,6 +71,28 @@ class UserController extends Controller
         return view('details', ['ev' => $ev, 'rsvp' => $rsvp, 'full' => $full, 'stripe' => $stripe]);
     }
 
+
+public function getPastEventDetails($id)
+    {
+        //Returns the event details for event with id $id
+       $ev = Event::where('id', $id)->withTrashed()->first();
+
+      $videos = DB::table('videos')
+            ->join('events', 'events.id', '=', 'videos.eventid')
+            ->join('users', 'users.id', '=', 'videos.userid')
+            ->select('videos.link', 'users.*')
+            ->where('events.id', '=', $id)
+            ->get();
+
+
+       //checks how many entries in the rsvp table there are for the given event, counts them
+        $count = Rsvp::where('eventid', $id)->count();
+
+
+        //returns event details page for the corresponding ID, with event details ($ev),
+        //rsvp details ($rsvp), capacity details ($full) and stripe details ($stripe) passed in.
+        return view('pastDetails', ['ev' => $ev, 'count' => $count, 'videos' => $videos]);
+    }
     /**
      * Show the print tickeyt page
      *

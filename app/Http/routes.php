@@ -88,9 +88,14 @@ Route::group(['middleware' => 'web'], function () {
 
     //Route to return the event details page
     Route::get('/events/details/{id}','UserController@getEventDetails');
+    //Route to return the event details page
+    Route::get('/past/pastDetails/{id}','UserController@getPastEventDetails');
+
 
     //Route to return GuestController@index and return the event page view
     Route::get('/events', ['as' => 'events', 'uses' => 'GuestController@index']);
+    //Route to return GuestController@index and return the past events page view
+    Route::get('/past', ['as' => 'past', 'uses' => 'GuestController@pastEvents']);
 
     //Route to return the edit user info page.
     Route::get('/account', 'UserController@editUserInfo');
