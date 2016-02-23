@@ -119,12 +119,12 @@
 				        <div class="col s12">
 				            <div class="grey lighten-5">
 				                <div class="row valign-wrapper">
-				                    <div class="col m2 offset-m1 s2 offset-s1">
+				                    <div class="col m2 offset-m1 s3 offset-s1">
 				                        <div class=" waves-effect waves-block waves-light">
 				                            <i class="activator medium material-icons">email</i>
 				                        </div>
 				                    </div>
-				                    <div class="col m9 s9">
+				                    <div class="col m9 s8">
 				                        <div class="card-content">
 				                            <span class="card-title activator grey-text text-darken-4">{{ $readMessage->subject }}<i class="material-icons right">expand_more</i></span>
 				                     		<p>{{ $readMessage->name }}</p>
