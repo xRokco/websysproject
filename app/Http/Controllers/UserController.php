@@ -74,7 +74,7 @@ class UserController extends Controller
 
 public function getPastEventDetails($id)
     {
-        //Returns the event details for event with id $id
+        //Returns the past event details for event with id $id
        $ev = Event::where('id', $id)->withTrashed()->first();
 
       $videos = DB::table('videos')
@@ -89,8 +89,7 @@ public function getPastEventDetails($id)
         $count = Rsvp::where('eventid', $id)->count();
 
 
-        //returns event details page for the corresponding ID, with event details ($ev),
-        //rsvp details ($rsvp), capacity details ($full) and stripe details ($stripe) passed in.
+        //returns event details page for the corresponding ID, with event details ($ev), event videos ($videos)
         return view('pastDetails', ['ev' => $ev, 'count' => $count, 'videos' => $videos]);
     }
     /**

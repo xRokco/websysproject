@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Event Details')
+@section('title', ' Past Event Details')
 @section('content')
     <!-- Navigation ( navigation.html ) -->
     <style>
@@ -59,7 +59,8 @@
                                 <tr><td>{{ $ev->venue }}</td></tr>
                                 <tr><td>Submitted by user: {{ $video->name }}</td></tr>
                             </table>
-                            <iframe class="col m8 s12" height="315" src="https://www.youtube.com/embed/{{ $video->link }}" frameborder="0" allowfullscreen></iframe>
+                            <object width= "425" height="344"><param name="movie" value="https://www.youtube.com/v/{{ $video->link }}&ap=%2526fmt%3D18" /><param name="allowFullScreen" value="true" /><embed src="https://www.youtube.com/v/{{ $video->link }}&ap=%2526fmt%3D18&showinfo=0&controls=0" type="application/x-shockwave-flash" allowfullscreen="false" width="593" height="315"></embed></object>
+
                             <br/>
                         </div>
                         <div class="divider"></div>
