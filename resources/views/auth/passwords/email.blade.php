@@ -12,7 +12,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col s8 offset-s2">
+        <div class="col m6 offset-m3 s12">
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}

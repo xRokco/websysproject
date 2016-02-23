@@ -11,20 +11,20 @@
   
     <div class="container">
         <div class="section no-pad-bot" id="no-padding-top">
-            <div class="row valign-wrapper" id="event">
+            <div class="row" id="event">
                 <!-- Event Image -->
-                <div class="col center s3">
-                    <img class="responsive-img" src="{{ url('/img/event_images/') }}/{{ $ev->image }}" />
+                <div class="col center m3 s6 offset-s3">
+                    <img class="responsive-img circle" src="{{ url('/img/event_images/') }}/{{ $ev->image }}" />
                 </div>
                 
                 <!-- Event Description -->
-                <div class="left-align col s5">
+                <div class="left-align col m5 s6">
                     <h5>{{ $ev->name }}</h5>
                     <p>{{ $ev->information }}</p>
                 </div>
                 
                 <!-- Event Details -->
-                <div class="col s3" id="test">
+                <div class="col m3 s6">
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">today</i>{{ $ev->date }}</p>
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">location_on</i>{{ $ev->venue}}, {{ $ev->city }}</p>
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons"></i>Attendence: {{ $count }}</p>
@@ -58,7 +58,7 @@
                                 <tr><td>{{ $ev->venue }}</td></tr>
                                 <tr><td>Submitted by user: {{ $video->name }}</td></tr>
                             </table>
-                            <object width= "425" height="344"><param name="movie" value="https://www.youtube.com/v/{{ $video->link }}&ap=%2526fmt%3D18" /><param name="allowFullScreen" value="true" /><embed src="https://www.youtube.com/v/{{ $video->link }}&ap=%2526fmt%3D18&showinfo=0&controls=0" type="application/x-shockwave-flash" allowfullscreen="false" width="593" height="315"></embed></object>
+                            <object width="425" height="344"><param name="movie" value="https://www.youtube.com/v/{{ $video->link }}&ap=%2526fmt%3D18" /><param name="allowFullScreen" value="true" /><embed style="max-width:100%" src="https://www.youtube.com/v/{{ $video->link }}&ap=%2526fmt%3D18&showinfo=0&controls=0" type="application/x-shockwave-flash" allowfullscreen="false" width="593" height="315"></embed></object>
 
                             <br/>
                         </div>

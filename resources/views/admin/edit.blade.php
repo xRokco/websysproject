@@ -21,7 +21,7 @@
 
 		<div class="container">
    			<div class="row">
-        		<div class="col s6 offset-s3">
+        		<div class="col m6 offset-m3 s12">
 					{!! Form::model($event, ['method' => 'PATCH', 'action' => ['AdminController@updateEvent', $event->id], 'files'=>true]) !!}
 						<div class="row">
 							{!! Form::label('name', 'Name:') !!}

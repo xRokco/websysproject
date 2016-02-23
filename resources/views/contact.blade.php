@@ -22,7 +22,7 @@
 
 		<div class="container">
    			<div class="row">
-        		<div class="col s6 offset-s3">
+        		<div class="col m6 offset-m3 s12">
 						{!! Form::open(['url' => '/contact']) !!}
 						
 						<div class="row">

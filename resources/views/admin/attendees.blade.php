@@ -5,7 +5,7 @@
 	@section('content')
 		<div class="container">
 			@if($atns)
-				<table class="highlight">
+				<table class="responsive-table highlight">
 					<thead>
 						<th data-field="id">User ID</th>
 			            <th data-field="name">Full Name</th>
