@@ -151,7 +151,7 @@ class AdminController extends Controller
     public function deleteEvent($id)  
     {
         Event::destroy($id);
-        Rsvp::where('eventid',$id)->delete();
+      
         return redirect('/admin');
     }
 

@@ -131,6 +131,7 @@ public function getPastEventDetails($id)
             ->join('users', 'users.id', '=', 'rsvp.userid')
             ->select('events.*')
             ->where('rsvp.userid', '=', Auth::user()->id)
+            ->whereNull('events.deleted_at')
             ->distinct()
             ->get();
 
