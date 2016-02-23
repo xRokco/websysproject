@@ -11,6 +11,7 @@
 			            <th data-field="name">Full Name</th>
 			            <th data-field="email">E-mail</th>
 			            <th data-field="code">Code</th>
+			            <h4 class="center"><a href="{{ url('/admin/attendees/print') }}/{{ $id }}" target="_blank">Print all {{ $count }} attendees </a></h4>
 					</thead>
 					<tbody>
 					@foreach($atns as $atn)
@@ -23,7 +24,7 @@
 					@endforeach
 					</tbody>
 				</table>
-				<h4 class="center"><a href="{{ url('print') }}/{{ $id }}" target="_blank">Print all</a></h4>
+		
 			@else
 				<h4 class="center">No attendees yet</h4>
 			@endif
