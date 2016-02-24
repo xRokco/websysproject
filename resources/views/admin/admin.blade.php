@@ -48,12 +48,13 @@
 			  	<h4 class="center orange-text">There aren't any events. <a href="{{ url('/admin/create') }}" >Create one </a>.</h4>
 			@endif
         	<br>
-				<div class="fixed-action-btn" style="bottom: 25px; right: 24px;">
-					<a href="{{ url('/admin/create') }}" title="Create event" class="btn-floating btn-large red darken-3">
-				    	<i class="large material-icons">add</i>
+				<div class="fixed-action-btn click-to-toggle" style="bottom: 25px; right: 24px;">
+					<a class="btn-floating btn-large red darken-3">
+				    	<i class="large mdi-navigation-menu"></i>
 				    </a>
 				    <ul>
-				    	<li><a href="{{ url('/admin/manage') }}" title="Manage users" class="btn-floating blue"><i class="material-icons">perm_identity</i></a></li>
+				    	<li><a href="{{ url('/admin/manage') }}" title="Manage users" class="btn-floating green"><i class="material-icons">perm_identity</i></a></li>
+				    	<li><a href="{{ url('/admin/create') }}" title="Create event" class="btn-floating blue"><i class="material-icons">add</i></a></li>
 					</ul>
 				</div>      
   			</div>
