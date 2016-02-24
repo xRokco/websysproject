@@ -9,6 +9,7 @@ use App\Event;
 use App\Message;
 use App\Rsvp;
 use App\Admin;
+use App\Video;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
@@ -80,7 +81,7 @@ public function getPastEventDetails($id)
       $videos = DB::table('videos')
             ->join('events', 'events.id', '=', 'videos.eventid')
             ->join('users', 'users.id', '=', 'videos.userid')
-            ->select('videos.link', 'users.*')
+            ->select('videos.link','videos.title', 'users.*')
             ->where('events.id', '=', $id)
             ->get();
 
@@ -91,6 +92,44 @@ public function getPastEventDetails($id)
 
         //returns event details page for the corresponding ID, with event details ($ev), event videos ($videos)
         return view('pastDetails', ['ev' => $ev, 'count' => $count, 'videos' => $videos]);
+    }
+
+     public function addVideo($ev)
+    {
+        //returns create view.
+        return view('addVideo',['ev' => $ev]); 
+    }
+
+    public function storeVideo(Request $input, $id)
+    {
+        //Validates the input from the create event page
+        $this->validate($input, [
+        'title' => 'required|max:40',
+        'link' => 'required|max:50',
+        ]);
+
+        //Assigns each value from the form to a variable.
+        $title = $input->input('title');
+        $link = $input->input('link');
+
+  //Changes link to embed url
+        if(strlen($link) > 11)
+        {
+            if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $link, $match))
+            {
+                   $link = $match[1];
+            }
+            else
+                return false;
+        }
+
+      
+        
+
+        //Updates the users table with the data from the form.
+       Video::insert(['userid' => Auth::user()->id, 'eventid' => $id, 'title' => $title, 'link' => $link]);
+
+        return redirect('past'); //redirects to events view when finished
     }
     /**
      * Show the print tickeyt page

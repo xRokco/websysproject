@@ -218,42 +218,49 @@ class VideosTableSeeder extends Seeder {
   $videos = array(
       array(
         "id" => "1",
+        "title" => "Trump at London event in Wembley",
        "userid" => "2",
        "eventid" => "2",
        "link" => "Uh_fPsFbgMQ"
         ),
       array(
         "id" => "2",
+        "title" => "Trump at London event in Wembley",
        "userid" => "1",
        "eventid" => "2",
        "link" => "RfUxoOFk0HI"
         ),
       array(
         "id" => "3",
+        "title" => "Trump at London event in Wembley",
        "userid" => "1",
        "eventid" => "2",
        "link" => "U_wTDUzcxCY"
         ),
       array(
         "id" => "4",
+        "title" => "Trump at London event in Wembley",
        "userid" => "1",
        "eventid" => "2",
        "link" => "6YvVqF3G1vI"
         ),
       array(
         "id" => "5",
+        "title" => "Trump at Berlin event in Autumn",
        "userid" => "1",
        "eventid" => "3",
        "link" => "Y9DJrA8gBwM"
         ),
       array(
         "id" => "6",
+     "title" => "Trump at Berlin event in Autumn",
        "userid" => "1",
        "eventid" => "3",
        "link" => "aMyE1W59Vqo"
         ),
      array(
         "id" => "7",
+         "title" => "Trump at Berlin event in Autumn",
        "userid" => "1",
        "eventid" => "3",
        "link" => "QAFYfsA28-Q"

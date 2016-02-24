@@ -28,6 +28,7 @@
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">today</i>{{ $ev->date }}</p>
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">location_on</i>{{ $ev->venue}}, {{ $ev->city }}</p>
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons"></i>Attendence: {{ $count }}</p>
+                     <a class="btn red darken-3" style="margin-top:5px;margin-bottom:5px" target="_blank" href="{{ url('/past/pastDetails/addVideo/') }}/{{ $ev->id }}">Add Video</a>
             <!-- Check if clicked attend already -->
             
                     
@@ -44,6 +45,7 @@
                   </ul>
                 </div>
                 <div id="description" class="col s12">
+                
                     <br>
                     <p id="no-margin-top">
                         {{ $ev->description }}
@@ -56,6 +58,7 @@
                             <table class="col m3 s7 offset-m1 offset-s4">
                                 <tr><td>{{ $ev->name }}</td></tr>
                                 <tr><td>{{ $ev->venue }}</td></tr>
+                                 <tr><td>{{ $video->title }}</td></tr>
                                 <tr><td>Submitted by user: {{ $video->name }}</td></tr>
                             </table>
                             <object width="425" height="344"><param name="movie" value="https://www.youtube.com/v/{{ $video->link }}&ap=%2526fmt%3D18" /><param name="allowFullScreen" value="true" /><embed style="max-width:100%" src="https://www.youtube.com/v/{{ $video->link }}&ap=%2526fmt%3D18&showinfo=0&controls=0" type="application/x-shockwave-flash" allowfullscreen="false" width="593" height="315"></embed></object>
