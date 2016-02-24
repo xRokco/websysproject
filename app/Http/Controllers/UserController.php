@@ -129,7 +129,7 @@ public function getPastEventDetails($id)
         //Updates the users table with the data from the form.
        Video::insert(['userid' => Auth::user()->id, 'eventid' => $id, 'title' => $title, 'link' => $link]);
 
-        return redirect('past'); //redirects to events view when finished
+        return redirect('past/pastDetails/' .$id.'#video'); //redirects to events view when finished
     }
     /**
      * Show the print tickeyt page

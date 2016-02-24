@@ -40,7 +40,7 @@
                 <div class="col s12">
                   <ul class="tabs">
                     <li class="tab col s6"><a class="red-text" href="#description">Description</a></li>
-                    <li class="tab col s6"><a id="locationbutton" class="red-text" href="#location">Event Media</a></li>
+                    <li class="tab col s6"><a id="locationbutton" class="red-text" href="#video">Event Media</a></li>
                     <div class="indicator red" style="z-index:1"> </div>
                   </ul>
                 </div>
