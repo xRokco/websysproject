@@ -26,7 +26,7 @@ $factory->define(App\Rsvp::class, function (Faker\Generator $faker) use ($factor
 
     return [
         'userid' => factory(App\User::class)->create()->id,
-        'eventid' => $faker->numberBetween($min = 1, $max = 4),
+        'eventid' => $faker->numberBetween($min = 1, $max = 8),
         'code' => str_random(10),
         
     ];

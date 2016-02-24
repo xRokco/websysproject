@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
          $this->call('AdminsTableSeeder');
          $this->call('VideosTableSeeder');
          factory(App\User::class, 50)->create();
-         factory(App\Rsvp::class, 50)->create();
+         factory(App\Rsvp::class, 100)->create();
     }
 }
 

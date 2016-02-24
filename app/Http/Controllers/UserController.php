@@ -85,13 +85,15 @@ public function getPastEventDetails($id)
             ->where('events.id', '=', $id)
             ->get();
 
-
+        $rsvp = DB::table('rsvp')->where('eventid', $id)->where('userid', Auth::user()->id)->get();
        //checks how many entries in the rsvp table there are for the given event, counts them
         $count = Rsvp::where('eventid', $id)->count();
 
 
         //returns event details page for the corresponding ID, with event details ($ev), event videos ($videos)
-        return view('pastDetails', ['ev' => $ev, 'count' => $count, 'videos' => $videos]);
+       
+        return view('pastDetails', ['ev' => $ev, 'count' => $count, 'videos' => $videos, 'rsvp' => $rsvp]);
+      
     }
 
      public function addVideo($ev)

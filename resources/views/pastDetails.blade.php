@@ -28,8 +28,9 @@
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">today</i>{{ $ev->date }}</p>
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">location_on</i>{{ $ev->venue}}, {{ $ev->city }}</p>
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">perm_identity</i>Attendence: {{ $count }}</p>
+                    @if($rsvp)
                      <a class="btn red darken-3" style="margin-top:5px;margin-bottom:5px" href="{{ url('/past/pastDetails/addVideo/') }}/{{ $ev->id }}">Add Video</a>
-            <!-- Check if clicked attend already -->
+                    @endif
             
                     
                 </div>
