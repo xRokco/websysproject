@@ -23,7 +23,6 @@
    			<div class="row">
         		<div class="col m6 offset-m3 s12">
 					{!! Form::open(['method' => 'POST', 'action' => ['UserController@storeVideo', $ev], 'files'=>true]) !!}
-					
 						<div class="row">
 							{!! Form::label('title', 'Title:') !!}
 							{!! Form::text('title') !!}
