@@ -120,7 +120,10 @@ class AdminController extends Controller
             ->where('rsvp.eventid', '=', $id)
             ->get();
 
-        return view('admin/attendees', ['atns' => $atns, 'id' => $id]);
+//Gets the number of attendees
+$count = Rsvp::where('eventid', $id)->count();
+
+        return view('admin/attendees', ['atns' => $atns, 'id' => $id, 'count' => $count]);
     }
 
     /**

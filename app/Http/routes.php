@@ -81,7 +81,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/', ['as' => 'welcome', 'uses' => 'GuestController@welcome']);
 
     //Route to be called when submit on create events page is clicked
-    Route::post('/events', 'UserController@store');
+    Route::post('/events', 'AdminController@store');
 
     //Route to be called when submit on contact us page is clicked
     Route::post('/contact','GuestController@contactUs');
@@ -96,6 +96,10 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/events', ['as' => 'events', 'uses' => 'GuestController@index']);
     //Route to return GuestController@index and return the past events page view
     Route::get('/past', ['as' => 'past', 'uses' => 'GuestController@pastEvents']);
+    //Route to add video page
+    Route::get('/past/pastDetails/addVideo/{id}','UserController@addVideo');
+     //Route to be called when submit on add video page is clicked
+    Route::post('/past/pastDetails/addVideo/{id}', 'UserController@storeVideo');
 
     //Route to return the edit user info page.
     Route::get('/account', 'UserController@editUserInfo');
