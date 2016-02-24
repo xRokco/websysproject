@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Contact Us')
+@section('title', 'Add Video')
 
     @section('content')
     	<div class="container">
       		<br><br>
-      		<h2 class="header center red-text">Contact us</h2>
-      		<p class="center">If you find a bug or have a suggestion, message us here to let us know.</p>
+      		<h2 class="header center red-text text-lighten-2">Add an Event video</h2>
       		<br><br>
 		</div>
 
@@ -23,19 +22,18 @@
 		<div class="container">
    			<div class="row">
         		<div class="col m6 offset-m3 s12">
-						{!! Form::open(['url' => '/contact']) !!}
-						
+					{!! Form::open(['method' => 'POST', 'action' => ['UserController@storeVideo', $ev], 'files'=>true]) !!}
 						<div class="row">
-							{!! Form::label('subject', 'Subject:') !!}
-							{!! Form::text('subject') !!}
-						</div>
-						
-						<div class="input-field row">
-							{!! Form::label('message', 'Your message:') !!}
-							{!! Form::textarea('message', NULL, ['class' => 'materialize-textarea']) !!}
+							{!! Form::label('title', 'Title:') !!}
+							{!! Form::text('title') !!}
 						</div>
 						<div class="row">
-							{!! Form::submit('Send', ['class' => 'btn red darken-3']) !!}
+							{!! Form::label('link', 'Link:') !!}
+							{!! Form::text('link') !!}
+						</div>
+						
+						<div class="row">
+							{!! Form::submit('Create', ['class' => 'btn red darken-3']) !!}
 						</div>
 					{!! Form::close() !!}
 				</div>

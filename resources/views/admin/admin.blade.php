@@ -34,7 +34,7 @@
 			            </div>
 			                    
 			            <!-- Event Details -->
-			            <div class="col m3 s5 offset-s1 btn-container" style="margin-top:20px;" id="test"> 
+			            <div class="col m3 s6 btn-container" style="margin-top:20px;" id="test"> 
 			            	<div>
 				                <a class="btn red darken-3" href="{{ url('admin/attendees') }}/{{ $event->id }}">Attendees</a>
 				                <a style="margin-top:5px;margin-bottom:5px" class="btn red darken-3" href="{{ url('admin/edit') }}/{{ $event->id }}">Edit Event</a>
@@ -48,12 +48,13 @@
 			  	<h4 class="center orange-text">There aren't any events. <a href="{{ url('/admin/create') }}" >Create one </a>.</h4>
 			@endif
         	<br>
-				<div class="fixed-action-btn" style="bottom: 25px; right: 24px;">
-					<a href="{{ url('/admin/create') }}" title="Create event" class="btn-floating btn-large red darken-3">
-				    	<i class="large material-icons">add</i>
+				<div class="fixed-action-btn click-to-toggle" style="bottom: 25px; right: 24px;">
+					<a class="btn-floating btn-large red darken-3">
+				    	<i class="large mdi-navigation-menu"></i>
 				    </a>
 				    <ul>
-				    	<li><a href="{{ url('/admin/manage') }}" title="Manage users" class="btn-floating blue"><i class="material-icons">perm_identity</i></a></li>
+				    	<li><a href="{{ url('/admin/manage') }}" title="Manage users" class="btn-floating green"><i class="material-icons">perm_identity</i></a></li>
+				    	<li><a href="{{ url('/admin/create') }}" title="Create event" class="btn-floating blue"><i class="material-icons">add</i></a></li>
 					</ul>
 				</div>      
   			</div>

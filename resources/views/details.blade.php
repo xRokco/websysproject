@@ -19,6 +19,44 @@
         .addeventatc_icon {
             background: url('{{ url('/img/calendar.png') }}') !important;
         }
+
+        /**
+         * CSS3 balancing hover effect
+         * Read the tutorial here: http://webbb.be/blog/little-css3-3d-hover-effects/
+         */
+        .block .normal {
+            cursor: pointer;
+            position:relative;
+            z-index:2;
+        }
+        .block .hover {
+            margin-top:-36px; display: block; text-decoration: none;
+            position: relative; z-index:1;
+            transition: all 250ms ease;
+        }
+        .block:hover .hover {
+            margin-top: 0; 
+            transform-origin: top;
+            /*
+            animation-name: balance;
+            animation-duration: 1.5s;
+            animation-timing-function: ease-in-out;
+            animation-delay: 110ms;
+            animation-iteration-count: 1;
+            animation-direction: alternate;
+            */
+            animation: balance 1.5s ease-in-out 110ms 1 alternate;
+        }
+
+        @keyframes balance { 
+            0% { margin-top: 0; } 
+            15% { margin-top: 0; transform: rotateX(-50deg); }  
+            30% { margin-top: 0; transform: rotateX(50deg); } 
+            45% { margin-top: 0; transform: rotateX(-30deg); } 
+            60% { margin-top: 0; transform: rotateX(30deg); } 
+            75% { margin-top: 0; transform: rotateX(-30deg); } 
+            100% { margin-top: 0; transform: rotateX(0deg);} 
+        }
     </style>
     <script src="{{ url('/sweetalert/dist/sweetalert.min.js') }}"></script>
 <link rel="stylesheet" type="text/css" href="{{ url('/sweetalert/dist/sweetalert.css') }}">
@@ -26,96 +64,99 @@
         <div class="section no-pad-bot" id="no-padding-top">
             <div class="row" id="event">
                 <!-- Event Image -->
-                <div class="col center m3 s6 offset-s3">
+                <div class="col center m3 s6 offset-s3" style="margin-bottom:5px;">
                     <img class="responsive-img circle" src="{{ url('/img/event_images') }}/{{ $ev->image }}" />
                 </div>
                 
                 <!-- Event Description -->
-                <div class="left-align col m5 s6">
+                <div class="left-align col m5 s5">
                     <h5>{{ $ev->name }}</h5>
                     <p>{{ $ev->information }}</p>
                 </div>
                 
                 <!-- Event Details -->
-                <div class="col m3 s6">
+                <div class="col m3 s7">
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">today</i>{{ $ev->date }}</p>
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">location_on</i>{{ $ev->venue}}, {{ $ev->city }}</p>
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">payment</i>&euro;{{ $ev->price }}</p>
-            <!-- Check if clicked attend already -->
-            @if($rsvp)
-                <!-- Add to Calendar API -->
-                <div class="btn-container">
-                    <div>
-                        <div title="Add to Calendar" class="btn red darken-3 addeventatc" style="padding-top:11px;">
-                            <span class="white-text" style="font-weight:normal" >Add to Calendar</span>
-                            <span class="start">{{ $ev->date }} {{ $ev->start_time }}</span>
-                            <span class="end">{{ $ev->date }} {{ $ev->end_time }}</span>
-                            <span class="title">{{ $ev->name }}</span>
-                            <span class="description">{{ $ev->information }}</span>
-                            <span class="location">{{ $ev->venue}}, {{ $ev->city }}</span>
-                            <span class="date_format">MM/DD/YYYY</span>
+                    <!-- Check if clicked attend already -->
+                    @if($rsvp)
+                        <!-- Add to Calendar API -->
+                        <div class="btn-container">
+                            <div>
+                                <div title="Add to Calendar" class="btn red darken-3 addeventatc" style="padding-top:11px;">
+                                    <span class="white-text" style="font-weight:normal" >Add to Calendar</span>
+                                    <span class="start">{{ $ev->date }} {{ $ev->start_time }}</span>
+                                    <span class="end">{{ $ev->date }} {{ $ev->end_time }}</span>
+                                    <span class="title">{{ $ev->name }}</span>
+                                    <span class="description">{{ $ev->information }}</span>
+                                    <span class="location">{{ $ev->venue}}, {{ $ev->city }}</span>
+                                    <span class="date_format">MM/DD/YYYY</span>
+                                </div>
+                                <a class="btn red darken-3" style="margin-top:5px;margin-bottom:5px" target="_blank" href="{{ url('/events/details/print') }}/{{ $ev->id }}">Print Ticket</a>
+                                <a class="btn red darken-3" id="unattend">Unattend Event</a>
+                            </div>
                         </div>
-                        <a class="btn red darken-3" style="margin-top:5px;margin-bottom:5px" target="_blank" href="{{ url('/events/details/print') }}/{{ $ev->id }}">Print Ticket</a>
-                        <button class="btn red darken-3" id="unattend">Unattend Event</button>
-                    </div>
+                    @else
+                        @if($full == TRUE)
+                            <div class="block btn-container">
+                                <div>
+                                    <div class="normal">
+                                        <span id="attend" class="btn red darken-3 disabled" title="Tickets Sold Out">Attend Event</span>
+                                    </div>
+                                    <span class="btn red darken-3 hover">Sold Out!</span>
+                                </div>
+                            </div>
+                        @else
+                        <a id="customButton" class="btn red darken-3" href="#">Attend Event</a>
+
+                            <script src="https://checkout.stripe.com/checkout.js"></script>
+                                <script>
+                                  var handler = StripeCheckout.configure({
+                                    key: "<?php echo $stripe['publishable']; ?>",
+                                    image: '{{ url('/img/event_images/') }}/{{ $ev->image }}',
+                                    locale: 'auto',
+                                    token: function(token) {
+                                        // Use the token to create the charge with a server-side script.
+                                        // You can access the token ID with `token.id`
+                                        $.post('{{ url('/events/details/attend') }}', {
+                                             _token: $('meta[name=csrf-token]').attr('content'),
+                                             evid: {{ $ev->id }}
+                                         }
+                                        )
+                                        window.location.href = "{{ url('/dash') }}";
+                                    }
+                                  });
+
+                                  $('#customButton').on('click', function(e) {
+                                    // Open Checkout with further options
+                                    handler.open({
+                                      name: '{{ $ev->name }}',
+                                      description: 'Non-refundable',
+                                      currency: "eur",
+                                      amount: '{{ $ev->price }}00',
+                                      email: '{{ Auth::user()->email }}'
+                                    });
+                                    e.preventDefault();
+
+                                  });
+
+                                  // Close Checkout on page navigation
+                                  $(window).on('popstate', function() {
+                                    handler.close();
+                                  });
+                                </script> 
+                        @endif
+                    @endif 
                 </div>
-            @else
-                @if($full == TRUE)
-                    <a id="attend" class="btn red darken-3 disabled" title="Tickets Sold Out">Attend Event</a>
-                @else
-                <a id="customButton" class="btn red darken-3" href="#">Attend Event</a>
-
-                    <script src="https://checkout.stripe.com/checkout.js"></script>
-                        <script>
-                          var handler = StripeCheckout.configure({
-                            key: "<?php echo $stripe['publishable']; ?>",
-                            image: '{{ url('/img/event_images/') }}/{{ $ev->image }}',
-                            locale: 'auto',
-                            token: function(token) {
-                                // Use the token to create the charge with a server-side script.
-                                // You can access the token ID with `token.id`
-                                $.post('{{ url('/events/details/attend') }}', {
-                                     _token: $('meta[name=csrf-token]').attr('content'),
-                                     evid: {{ $ev->id }}
-                                 }
-                                )
-                                window.location.href = "{{ url('/dash') }}";
-                            }
-                          });
-
-                          $('#customButton').on('click', function(e) {
-                            // Open Checkout with further options
-                            handler.open({
-                              name: '{{ $ev->name }}',
-                              description: 'Non-refundable',
-                              currency: "eur",
-                              amount: '{{ $ev->price }}00',
-                              email: '{{ Auth::user()->email }}'
+                <script>
+                    $(document).ready(function(){
+                            $("#hotels").load('{{ url('hotels.php') }}', {'venue':'{{ $ev->venue }}', 'city':'{{ $ev->city }}', 'api':'{{ env('MAPS_API')}}'});                    
+                            $( document ).ajaxComplete(function() {
+                                $(".progress").hide();
                             });
-                            e.preventDefault();
-
-                          });
-
-                          // Close Checkout on page navigation
-                          $(window).on('popstate', function() {
-                            handler.close();
-                          });
-                        </script> 
-                @endif
-            @endif
-                    
-                </div>
-            </div>
-            <script>
-                $(document).ready(function(){
-                    //$("#locationbutton").click(function(){
-                        $("#hotels").load('{{ url('hotels.php') }}', {'venue':'{{ $ev->venue }}', 'city':'{{ $ev->city }}', 'api':'{{ env('MAPS_API')}}'});                    
-                        $( document ).ajaxComplete(function() {
-                            $(".progress").hide();
-                        });
-                    //});
-                });
-            </script>
+                    });
+                </script>
             <script type="text/javascript">
                 $('button#unattend').on('click', function(){
                     var id = $(this).attr('eventid');
@@ -156,7 +197,7 @@
                 <div id="location" class="col s12">
                     <div class="row center">
                     <br><br>
-                        <iframe width="700" style="max-width:100%" height="525" frameborder="0" style="border:0"
+                        <iframe width="700" style="max-width:90%" height="525" frameborder="0" style="border:0"
                             src="https://www.google.com/maps/embed/v1/directions?origin={{ Auth::user()->direction }}&destination={{ $ev->venue }}, {{ $ev->city }}&key={{ env('MAPS_API') }}" allowfullscreen></iframe>
                     </div>
                     <h5 class="center">Here's a few of hotels within a couple of kilometers of the venue</h5>

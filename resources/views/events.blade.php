@@ -8,7 +8,8 @@
     
     <div class="container">
         <div class="section no-pad-bot" id="index-banner">
-            <h4 class="light red-text">Browse Events</h5>
+            <a class="btn red darken-3 right" style="margin-top:15px" href="{{ url('/past') }}">Past Events</a>
+            <h4 class="light red-text">Browse Events</h4>
             <div class="divider"></div>
             <br>
             @foreach ($events as $event)
@@ -23,13 +24,13 @@
                     </div>
                     
                     <!-- Event Description -->
-                    <div class="left-align col m5 s5 offset-s1">
+                    <div class="left-align col m6 s5 offset-s1">
                         <h5>{{ $event->name }}</h5></a>
                         <p>{{ $event->information }}</p>
                     </div>
                     
                     <!-- Event Details -->
-                    <div class="col m3 s5 offset-s1" id="test">
+                    <div class="col m3 s5 offset-s1" id="test" style="margin-bottom:20px">
                         <p class="condensed light left-align"><i class="material-icons">today</i>{{ $event->date }}</p>
                         <p class="condensed light left-align"><i class="material-icons">location_on</i>{{ $event->venue }}, {{ $event->city }}</p>
                         <p class="condensed light left-align"><i class="material-icons">payment</i>&euro;{{ $event->price }}</p>

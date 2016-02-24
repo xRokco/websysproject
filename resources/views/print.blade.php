@@ -1,4 +1,7 @@
 {!! MaterializeCSS::include_full() !!}
+	<head>
+		<title>Print all | Trump Events</title>
+	</head>
 @if($rsvp)
 	<body onload="window.print()">
 		<div style="border:1px solid black;width:350px;padding-left:15px">
