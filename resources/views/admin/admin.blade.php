@@ -38,7 +38,7 @@
 			            	<div>
 				                <a class="btn red darken-3" href="{{ url('admin/attendees') }}/{{ $event->id }}">Attendees</a>
 				                <a style="margin-top:5px;margin-bottom:5px" class="btn red darken-3" href="{{ url('admin/edit') }}/{{ $event->id }}">Edit Event</a>
-				                <button class="btn red darken-3" id="delete" eventid="{{ $event->id }}">Delete Event</button>
+				                <a class="btn red darken-3" id="delete" eventid="{{ $event->id }}">Delete Event</a>
 				            </div>
 			            </div>
 			        </div>
