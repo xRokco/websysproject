@@ -31,6 +31,10 @@
                     @if($rsvp)
                      <a class="btn red darken-3" style="margin-top:5px;margin-bottom:5px" href="{{ url('/past/pastDetails/addVideo/') }}/{{ $ev->id }}">Add Video</a>
                     @endif
+                    @if($admin)
+                     <a class="btn red darken-3" style="margin-top:5px;margin-bottom:5px" href="{{ url('/admin/attendees/') }}/{{ $ev->id }}">Attedees </a>
+                    @endif
+
             
                     
                 </div>

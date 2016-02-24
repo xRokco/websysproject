@@ -84,6 +84,12 @@ public function getPastEventDetails($id)
             ->select('videos.link','videos.title', 'users.*')
             ->where('events.id', '=', $id)
             ->get();
+        $admin = DB::table('admins')
+            ->join('users', 'users.id', '=', 'admins.userid')
+            ->select('admins.*')
+            ->where(['userid' => Auth::user()->id])
+            ->distinct()
+            ->get();
 
         $rsvp = DB::table('rsvp')->where('eventid', $id)->where('userid', Auth::user()->id)->get();
        //checks how many entries in the rsvp table there are for the given event, counts them
@@ -92,22 +98,27 @@ public function getPastEventDetails($id)
 
         //returns event details page for the corresponding ID, with event details ($ev), event videos ($videos)
        
-        return view('pastDetails', ['ev' => $ev, 'count' => $count, 'videos' => $videos, 'rsvp' => $rsvp]);
+        return view('pastDetails', ['ev' => $ev, 'count' => $count, 'videos' => $videos, 'rsvp' => $rsvp, 'admin' => $admin]);
       
     }
 
      public function addVideo($ev)
     {
         //returns create view.
+        $rsvp = DB::table('rsvp')->where('eventid', $ev)->where('userid', Auth::user()->id)->get();
+        if($rsvp){
         return view('addVideo',['ev' => $ev]); 
+    }else{
+        return redirect('past');
+    }
     }
 
     public function storeVideo(Request $input, $id)
     {
         //Validates the input from the create event page
         $this->validate($input, [
-        'title' => 'required|max:40',
-        'link' => 'required|max:50',
+        'title' => 'required|max:20',
+        'link' => 'required|max:50|unique:videos',
         ]);
 
         //Assigns each value from the form to a variable.
