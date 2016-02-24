@@ -96,7 +96,79 @@ class EventsTableSeeder extends Seeder {
        "updated_at" => "2016-01-21 14:17:48",
        "image" => "4.jpg",
        "deleted_at" => NULL
-				)
+				),
+array(
+        "id" => "5",
+       "name" => "French Winter Event",
+       "city" => "Paris, France",
+       "venue" => "Stade de France",
+       "price" => "199",
+       "information" => "Lets make France Great Again! Listen to a man who went to the Wharton School of Finance tell you how to fix all of Irelands problems.",
+       "description" => "Hugh Beadle (1905–1980) served as Rhodesia's Chief Justice from 1961 to 1977. Opening a law practice in 1931, he became a member of the Southern Rhodesian Legislative Assembly for Godfrey Huggins's ruling United Party in 1939. He was Huggins's Parliamentary Private Secretary (1940–46), then a Cabinet minister until 1950, when he resigned to become a High Court judge. In 1961 he was knighted and appointed Chief Justice; three years later he joined the British Privy Council. As independence talks between Britain and Rhodesia stalled, Beadle sought a compromise. After Rhodesia's Unilateral Declaration of Independence (UDI) in 1965 he brought together Harold Wilson and Ian Smith, the prime ministers, for talks aboard HMS Tiger. Wilson afterwards castigated Beadle for not persuading Smith to settle. Beadle's recognition of Smith's post-UDI administration as legal in 1968 drew accusations from the British Prime Minister and others that he had furtively supported UDI all along, but his true motives remain the subject of speculation. He stayed in office after Rhodesia declared itself a republic in 1970, and remained a Privy Counsellor for the rest of his life.",
+       "capacity" =>"1000",
+       "date" => "2016-12-21",
+       "start_time" => "11:00:00",
+       "end_time" => "14:00:00",
+       "created_at" => "2016-01-21 14:06:45",
+       "updated_at" => "2016-01-21 14:06:45",
+       "image" => "5.jpg",
+       "deleted_at" => NULL
+
+        ),
+array(
+        "id" => "6",
+       "name" => "Italian Spring Event",
+       "city" => "Rome, Italy",
+       "venue" => "Colosseum",
+       "price" => "149",
+       "information" => "Lets make Rome Great Again! Listen to a man who went to the Wharton School of Finance tell you how to fix all of Irelands problems.",
+       "description" => "Hugh Beadle (1905–1980) served as Rhodesia's Chief Justice from 1961 to 1977. Opening a law practice in 1931, he became a member of the Southern Rhodesian Legislative Assembly for Godfrey Huggins's ruling United Party in 1939. He was Huggins's Parliamentary Private Secretary (1940–46), then a Cabinet minister until 1950, when he resigned to become a High Court judge. In 1961 he was knighted and appointed Chief Justice; three years later he joined the British Privy Council. As independence talks between Britain and Rhodesia stalled, Beadle sought a compromise. After Rhodesia's Unilateral Declaration of Independence (UDI) in 1965 he brought together Harold Wilson and Ian Smith, the prime ministers, for talks aboard HMS Tiger. Wilson afterwards castigated Beadle for not persuading Smith to settle. Beadle's recognition of Smith's post-UDI administration as legal in 1968 drew accusations from the British Prime Minister and others that he had furtively supported UDI all along, but his true motives remain the subject of speculation. He stayed in office after Rhodesia declared itself a republic in 1970, and remained a Privy Counsellor for the rest of his life.",
+       "capacity" =>"250",
+       "date" => "2016-12-21",
+       "start_time" => "11:00:00",
+       "end_time" => "14:00:00",
+       "created_at" => "2016-01-21 14:06:45",
+       "updated_at" => "2016-01-21 14:06:45",
+       "image" => "6.jpg",
+       "deleted_at" => NULL
+
+        ),
+array(
+        "id" => "7",
+       "name" => "Spanish Summer Event",
+       "city" => "Barcelona, Spain",
+       "venue" => "Nou Camp",
+       "price" => "49",
+       "information" => "Lets make Spain Great Again! Listen to a man who went to the Wharton School of Finance tell you how to fix all of Irelands problems.",
+       "description" => "Hugh Beadle (1905–1980) served as Rhodesia's Chief Justice from 1961 to 1977. Opening a law practice in 1931, he became a member of the Southern Rhodesian Legislative Assembly for Godfrey Huggins's ruling United Party in 1939. He was Huggins's Parliamentary Private Secretary (1940–46), then a Cabinet minister until 1950, when he resigned to become a High Court judge. In 1961 he was knighted and appointed Chief Justice; three years later he joined the British Privy Council. As independence talks between Britain and Rhodesia stalled, Beadle sought a compromise. After Rhodesia's Unilateral Declaration of Independence (UDI) in 1965 he brought together Harold Wilson and Ian Smith, the prime ministers, for talks aboard HMS Tiger. Wilson afterwards castigated Beadle for not persuading Smith to settle. Beadle's recognition of Smith's post-UDI administration as legal in 1968 drew accusations from the British Prime Minister and others that he had furtively supported UDI all along, but his true motives remain the subject of speculation. He stayed in office after Rhodesia declared itself a republic in 1970, and remained a Privy Counsellor for the rest of his life.",
+       "capacity" =>"100000",
+       "date" => "2016-07-27",
+       "start_time" => "11:00:00",
+       "end_time" => "14:00:00",
+       "created_at" => "2016-01-21 14:06:45",
+       "updated_at" => "2016-01-21 14:06:45",
+       "image" => "7.jpg",
+       "deleted_at" => NULL
+
+        ),
+array(
+        "id" => "8",
+       "name" => "Greek Event",
+       "city" => "Athens, Greece",
+       "venue" => "Parthenon",
+       "price" => "99",
+       "information" => "Lets make Greece Great Again! Listen to a man who went to the Wharton School of Finance tell you how to fix all of Irelands problems.",
+       "description" => "Hugh Beadle (1905–1980) served as Rhodesia's Chief Justice from 1961 to 1977. Opening a law practice in 1931, he became a member of the Southern Rhodesian Legislative Assembly for Godfrey Huggins's ruling United Party in 1939. He was Huggins's Parliamentary Private Secretary (1940–46), then a Cabinet minister until 1950, when he resigned to become a High Court judge. In 1961 he was knighted and appointed Chief Justice; three years later he joined the British Privy Council. As independence talks between Britain and Rhodesia stalled, Beadle sought a compromise. After Rhodesia's Unilateral Declaration of Independence (UDI) in 1965 he brought together Harold Wilson and Ian Smith, the prime ministers, for talks aboard HMS Tiger. Wilson afterwards castigated Beadle for not persuading Smith to settle. Beadle's recognition of Smith's post-UDI administration as legal in 1968 drew accusations from the British Prime Minister and others that he had furtively supported UDI all along, but his true motives remain the subject of speculation. He stayed in office after Rhodesia declared itself a republic in 1970, and remained a Privy Counsellor for the rest of his life.",
+       "capacity" =>"500",
+       "date" => "2016-01-21",
+       "start_time" => "11:00:00",
+       "end_time" => "14:00:00",
+       "created_at" => "2016-01-21 14:06:45",
+       "updated_at" => "2016-01-21 14:06:45",
+       "image" => "8.jpg",
+       "deleted_at" => "2016-01-22 14:06:45"
+
+        )
 			);
 		DB::table('events')->insert($events);
 	}
