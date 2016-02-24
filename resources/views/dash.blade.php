@@ -157,10 +157,25 @@ function initialize() {
                 <div id="location" class="col s12">
                     <div class="row center">
                     	<div class="container light">
-							<p>Name - {{ Auth::user()->name }}</p>
-							<p>Surname - {{ Auth::user()->surname }}</p>
-							<p>E-mail Address - {{ Auth::user()->email }}</p>
-							<p>Travelling Address - {{ Auth::user()->direction }}</p>
+						
+						<table class="borderd">
+							<thead>
+								<tr>
+									<th data-field="id" class="red-text">Name</th>
+									<th data-field="name" class="red-text">E-mail Address</th>
+									<th data-field="price" class="red-text">Travelling Address</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr>
+									<td>{{ Auth::user()->name }}</td>
+									<td>{{ Auth::user()->email }}</td>
+									<td>{{ Auth::user()->direction }}</</td>
+								</tr>
+							</tbody>
+						</table>
+				  
 							<p>Edit your user details <a href="{{ url('/account') }}" >here</a></p>
 						</div>
                     </div>
