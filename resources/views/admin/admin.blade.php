@@ -34,11 +34,11 @@
 			            </div>
 			                    
 			            <!-- Event Details -->
-			            <div class="col m3 s5 offset-s1 btn-container" style="margin-top:20px;" id="test"> 
+			            <div class="col m3 s6 btn-container" style="margin-top:20px;" id="test"> 
 			            	<div>
 				                <a class="btn red darken-3" href="{{ url('admin/attendees') }}/{{ $event->id }}">Attendees</a>
 				                <a style="margin-top:5px;margin-bottom:5px" class="btn red darken-3" href="{{ url('admin/edit') }}/{{ $event->id }}">Edit Event</a>
-				                <a class="btn red darken-3" id="delete" eventid="{{ $event->id }}">Delete Event</a>
+				                <button class="btn red darken-3" id="delete" eventid="{{ $event->id }}">Delete Event</button>
 				            </div>
 			            </div>
 			        </div>
