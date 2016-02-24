@@ -19,6 +19,44 @@
         .addeventatc_icon {
             background: url('{{ url('/img/calendar.png') }}') !important;
         }
+
+        /**
+         * CSS3 balancing hover effect
+         * Read the tutorial here: http://webbb.be/blog/little-css3-3d-hover-effects/
+         */
+        .block .normal {
+            cursor: pointer;
+            position:relative;
+            z-index:2;
+        }
+        .block .hover {
+            margin-top:-36px; display: block; text-decoration: none;
+            position: relative; z-index:1;
+            transition: all 250ms ease;
+        }
+        .block:hover .hover {
+            margin-top: 0; 
+            transform-origin: top;
+            /*
+            animation-name: balance;
+            animation-duration: 1.5s;
+            animation-timing-function: ease-in-out;
+            animation-delay: 110ms;
+            animation-iteration-count: 1;
+            animation-direction: alternate;
+            */
+            animation: balance 1.5s ease-in-out 110ms 1 alternate;
+        }
+
+        @keyframes balance { 
+            0% { margin-top: 0; } 
+            15% { margin-top: 0; transform: rotateX(-50deg); }  
+            30% { margin-top: 0; transform: rotateX(50deg); } 
+            45% { margin-top: 0; transform: rotateX(-30deg); } 
+            60% { margin-top: 0; transform: rotateX(30deg); } 
+            75% { margin-top: 0; transform: rotateX(-30deg); } 
+            100% { margin-top: 0; transform: rotateX(0deg);} 
+        }
     </style>
     <script src="{{ url('/sweetalert/dist/sweetalert.min.js') }}"></script>
 <link rel="stylesheet" type="text/css" href="{{ url('/sweetalert/dist/sweetalert.css') }}">
@@ -26,7 +64,7 @@
         <div class="section no-pad-bot" id="no-padding-top">
             <div class="row" id="event">
                 <!-- Event Image -->
-                <div class="col center m3 s6 offset-s3">
+                <div class="col center m3 s6 offset-s3" style="margin-bottom:5px;">
                     <img class="responsive-img circle" src="{{ url('/img/event_images') }}/{{ $ev->image }}" />
                 </div>
                 
@@ -61,7 +99,14 @@
                         </div>
                     @else
                         @if($full == TRUE)
-                            <a id="attend" class="btn red darken-3 disabled" title="Tickets Sold Out">Attend Event</a>
+                            <div class="block btn-container">
+                                <div>
+                                    <div class="normal">
+                                        <span id="attend" class="btn red darken-3 disabled" title="Tickets Sold Out">Attend Event</span>
+                                    </div>
+                                    <span class="btn red darken-3 hover">Sold Out!</span>
+                                </div>
+                            </div>
                         @else
                         <a id="customButton" class="btn red darken-3" href="#">Attend Event</a>
 
