@@ -197,7 +197,7 @@
                 <div id="location" class="col s12">
                     <div class="row center">
                     <br><br>
-                        <iframe width="700" style="max-width:100%" height="525" frameborder="0" style="border:0"
+                        <iframe width="700" style="max-width:90%" height="525" frameborder="0" style="border:0"
                             src="https://www.google.com/maps/embed/v1/directions?origin={{ Auth::user()->direction }}&destination={{ $ev->venue }}, {{ $ev->city }}&key={{ env('MAPS_API') }}" allowfullscreen></iframe>
                     </div>
                     <h5 class="center">Here's a few of hotels within a couple of kilometers of the venue</h5>
