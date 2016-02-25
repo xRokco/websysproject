@@ -119,13 +119,13 @@
         	<div class="footer-copyright">
         		<div class="container">
         			<div class="left">
-        				<a class="white-text" href="{{ url('https://www.donaldjtrump.com/') }}">Offical Website</a>
+        				<a class="white-text" target="_blank" href="https://www.donaldjtrump.com/">Offical Website</a>
         				<b>&middot;</b>
-        				<a class="white-text" href="{{ url('https://en.wikipedia.org/wiki/Donald_Trump') }}">Wikipedia Page</a>
+        				<a class="white-text" target="_blank" href="https://en.wikipedia.org/wiki/Donald_Trump">Wikipedia Page</a>
         				<b>&middot;</b>
         				<a class="white-text" href="{{ url('#') }}">Disclaimer</a>
         				<b>&middot;</b>
-        				<a class="white-text" href="{{ url('http://trumpdonald.org/') }}">Surprise</a>
+        				<a class="white-text" target="_blank" href="http://trumpdonald.org/">Surprise</a>
         			</div>
             		<a class="white-text right" href="{{ url('/about') }}">© Web Systems Group 2016</a>
         		</div>
