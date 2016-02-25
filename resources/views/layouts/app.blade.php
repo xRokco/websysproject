@@ -49,7 +49,7 @@
 			<link rel="icon" href="{{ url('favicon.ico') }}" />
 		</head>
 		<body>
-    
+    		<!--Nav-->
 			<nav class="red darken-3" role="navigation">
 				<div class="nav-wrapper container">
 					<a id="logo-container" style="height:56px" href="{{ url('/') }}" class="brand-logo">
@@ -112,9 +112,13 @@
 		            </ul>
     			</div>
 			</nav>
+
+		<!--Page content-->
 		<main>
         	@yield('content')
     	</main>
+
+    	<!--Footer-->
 		<footer class="page-footer red darken-3">
         	<div class="footer-copyright">
         		<div class="container">
@@ -123,7 +127,7 @@
         				<b>&middot;</b>
         				<a class="white-text" href="{{ url('/contact') }}">Contact Us</a>
         				<b>&middot;</b>
-        				<a class="white-text" href="{{ url('#') }}">Disclaimer</a>
+        				<a class="white-text" href="{{ url('/disclaimer') }}">Disclaimer</a>
         				<b>&middot;</b>
         				<a class="white-text" target="_blank" href="http://trumpdonald.org/">Surprise</a>
         			</div>
@@ -131,6 +135,8 @@
         		</div>
         	</div>
     	</footer>
+
+    	<!--Mobile nav javascript-->
     	<script type="text/javascript">
     		$( document ).ready(function(){
     			$(".button-collapse").sideNav();

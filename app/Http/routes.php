@@ -39,7 +39,7 @@ Route::group(['middleware' => 'web'], function () {
         return view('about');
     });
 
-    //Route to retur the contact us page
+    //Route to return the contact us page
     Route::get('/contact', function () {
         return view('contact');
     });
@@ -48,6 +48,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/login', ['as' => 'login', function () {
         return view('auth/login');
     }]);
+
+    //Route to return the disclaimer page
+    Route::get('/disclaimer', function () {
+        return view('disclaimer');
+    });
 
     /*
     |----------------------------------------------------------------------
