@@ -106,11 +106,13 @@ public function getPastEventDetails($id)
     {
         //returns create view.
         $rsvp = DB::table('rsvp')->where('eventid', $ev)->where('userid', Auth::user()->id)->get();
-        if($rsvp){
-        return view('addVideo',['ev' => $ev]); 
-    }else{
-        return redirect('past');
-    }
+        $admin = Admin::where('userid', Auth::user()->id)->get();
+
+        if($rsvp || $admin){
+            return view('addVideo',['ev' => $ev]); 
+        }else{
+            return redirect('past');
+        }
     }
 
     public function storeVideo(Request $input, $id)
