@@ -48,13 +48,17 @@ class AuthController extends Controller
      */
     protected function validator(array $data)
     {
+        $messages = [
+            'regex' => 'The address must start with a letter or number.',
+        ];
+
         return Validator::make($data, [
             'name' => 'required|max:15',
             'surname' => 'required|max:15',
             'email' => 'required|email|max:30|unique:users',
             'password' => 'required|confirmed|min:6',
             'direction' => 'required|max:255|regex:/^[A-Za-z0-9][A-Za-z0-9]*/',
-        ]);
+        ], $messages);
     }
 
     /**
