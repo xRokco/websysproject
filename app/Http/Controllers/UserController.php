@@ -188,8 +188,15 @@ public function getPastEventDetails($id)
             ->distinct()
             ->get();
 
+        $admin = \DB::table('admins')
+            ->join('users', 'users.id', '=', 'admins.userid')
+            ->select('admins.*')
+            ->where(['userid' => Auth::user()->id])
+            ->distinct()
+            ->get();
+
         //returns dash view with $rsvp array with query results from above
-        return view('dash', ['rsvp' => $rsvp]);
+        return view('dash', ['rsvp' => $rsvp, 'admin' => $admin]);
     }
 
     /**

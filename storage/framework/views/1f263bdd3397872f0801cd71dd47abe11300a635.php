@@ -44,7 +44,7 @@
     <div class="section">
         <div class="row">
             <div class="col m6 s12">
-                <img style="margin-left:auto;margin-right:auto" class="center materialboxed responsive-img" src="<?php echo e(url('/img/event_images')); ?>/<?php echo e($randEvent[0]->image); ?>">
+                <img style="margin-left:auto;margin-right:auto;margin-top:10px;" width="400px" class="center materialboxed responsive-img" src="<?php echo e(url('/img/event_images')); ?>/<?php echo e($randEvent[0]->image); ?>">
             </div>            
             <div class="col m6 s12 center">    
                 <h2 class="center-align red-text text-darken-2"><?php echo e($randEvent[0]->name); ?><br><?php echo e($randEvent[0]->city); ?></h2>

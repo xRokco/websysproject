@@ -157,22 +157,25 @@ function initialize() {
                 <div id="location" class="col s12">
                     <div class="row center">
 					   <div class="col s12 m6">
-						<table class="borderd">
-							<thead>
-								<tr>
-									<th data-field="id" class="red-text">Name</th>
-									<th data-field="name" class="red-text">E-mail Address</th>
-									<th data-field="price" class="red-text">Travelling Address</th>
-								</tr>
-							</thead>
-
-							<tbody>
-								<tr>
-									<td>{{ Auth::user()->name }}</td>
-									<td>{{ Auth::user()->email }}</td>
-									<td>{{ Auth::user()->direction }}</</td>
-								</tr>
-							</tbody>
+						<table style="border-bottom:1px solid lightgrey">
+							<tr>
+                                <th data-field="id" class="red-text">Name</th>
+                                <td>{{ Auth::user()->name }} {{ Auth::user()->surname }}</td>
+                            </tr>
+							<tr>
+                                <th data-field="name" class="red-text">E-mail Address</th>
+                                <td>{{ Auth::user()->email }}</td>
+                            </tr>
+							<tr>
+                                <th data-field="price" class="red-text">Travelling Address</th>
+                                <td>{{ Auth::user()->direction }}</td>
+                            </tr>
+                            @if($admin)
+                                <tr>
+                                    <th data-field="price" class="red-text">Is Admin</th>
+                                    <td>Yes</td>
+                                </tr>
+                            @endif
 						</table>
 				  
 							<p class="left">Edit your user details <a href="{{ url('/account') }}" >here</a></p>
