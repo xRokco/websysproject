@@ -53,7 +53,7 @@
 
                 <div>
                     <label>What city or town will you be travelling from?</label>
-                    <input type="text" name="direction">
+                    <input type="text" name="direction" value="{{ old('direction') }}">
                 </div>
 
                 <button type="submit" class="btn red darken-3 btn-primary">
