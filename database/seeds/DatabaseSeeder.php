@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
          $this->call('AdminsTableSeeder');
          $this->call('VideosTableSeeder');
          factory(App\User::class, 50)->create();
-         factory(App\Rsvp::class, 50)->create();
+         factory(App\Rsvp::class, 100)->create();
     }
 }
 
@@ -252,12 +252,12 @@ class RsvpTableSeeder extends Seeder {
   $rsvp = array(
       array(
        "userid" => "1",
-       "eventid" => "2",
+       "eventid" => "8",
        "code" => "r4nd0mc0d3"
         ),
       array(
-       "userid" => "3",
-       "eventid" => "2",
+       "userid" => "2",
+       "eventid" => "8",
        "code" => "4n07HeR0n3"
         )
       );
