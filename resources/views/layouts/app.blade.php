@@ -111,13 +111,24 @@
 						@endif
 		            </ul>
     			</div>
-			</nav>	
+			</nav>
 		<main>
         	@yield('content')
     	</main>
 		<footer class="page-footer red darken-3">
         	<div class="footer-copyright">
-            	<a class="grey-text text-lighten-4 right" href="{{ url('/about') }}">© Web Systems Group 2016</a>
+        		<div class="container">
+        			<div class="left">
+        				<a class="white-text" href="{{ url('https://www.donaldjtrump.com/') }}">Offical Website</a>
+        				<b>&middot;</b>
+        				<a class="white-text" href="{{ url('https://en.wikipedia.org/wiki/Donald_Trump') }}">Wikipedia Page</a>
+        				<b>&middot;</b>
+        				<a class="white-text" href="{{ url('#') }}">Disclaimer</a>
+        				<b>&middot;</b>
+        				<a class="white-text" href="{{ url('http://trumpdonald.org/') }}">Surprise</a>
+        			</div>
+            		<a class="white-text right" href="{{ url('/about') }}">© Web Systems Group 2016</a>
+        		</div>
         	</div>
     	</footer>
     	<script type="text/javascript">

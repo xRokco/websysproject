@@ -120,6 +120,5 @@
     <div class="row center">
         <a class="btn-large red darken-2" href="{{ url('/events') }}">Upcoming Events</a>
     </div>    
-</div>
 <br><br>
 @endsection
