@@ -260,12 +260,16 @@ public function getPastEventDetails($id)
         $id = Auth::user()->id;
 
         //validates the input of the editUserInfo form
+        $messages = [
+            'regex' => 'The address must start with a letter or number.',
+        ];
+
         $this->validate($request, [
         'name' => 'required|max:15',
         'surname' => 'required|max:15',
         'email' => 'required|max:30|unique:users,email,'.$id,//makes sure the email entered is unique in the users table, but excludes the current user from the check, so that if the current user doesn't want to change his email it doesn't give an error.
-        'direction' => 'required|max:255',
-        ]);
+        'direction' => 'required|max:255|regex:/^[A-Za-z0-9][A-Za-z0-9]*/',
+        ], $messages);
 
         //Assigns each value from the form to a variable.
         $name = $request->input('name');
