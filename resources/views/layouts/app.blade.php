@@ -121,7 +121,7 @@
         			<div class="left">
         				<a class="white-text" href="{{ url('https://www.donaldjtrump.com/') }}">Offical Website</a>
         				<b>&middot;</b>
-        				<a class="white-text" href="{{ url('https://en.wikipedia.org/wiki/Donald_Trump') }}">Wikipedia Page</a>
+        				<a class="white-text" href="{{ url('/contact') }}">Contact Us</a>
         				<b>&middot;</b>
         				<a class="white-text" href="{{ url('#') }}">Disclaimer</a>
         				<b>&middot;</b>

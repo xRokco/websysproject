@@ -92,8 +92,10 @@
                 </div>
             </div>
             <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">What I Did<i class="material-icons right">expand_less</i></span>
-            <p>Dindu Nuffin</p>
+            <span class="card-title grey-text text-darken-4">More Info<i class="material-icons right">expand_less</i></span>
+            <p>Actually supports Trump</p>
+            <p>"Is a cool guy" - Conor Molloy</p>
+            <p>Brilliant Cleaning Even On Whites</p>
             </div>
         </div>
         
