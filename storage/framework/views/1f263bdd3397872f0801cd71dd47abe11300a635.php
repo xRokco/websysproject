@@ -56,16 +56,19 @@
     <div class="divider"></div>
     <div class="section">
         <div class="row">           
-            <div class="col m6 s12 center">    
-                <h2 class="center-align red-text text-darken-2"><?php echo e($randEvent[1]->name); ?><br><?php echo e($randEvent[1]->city); ?></h2>
-                <h5><?php echo e($randEvent[1]->information); ?></h5>
-                <a class="btn red darken-3" href="<?php echo e(url('events/details')); ?>/<?php echo e($randEvent[1]->id); ?>" style="margin-top: 20px">View Event</a>
-            </div>
-            <div class="col m6 s12">
+            <div class="col m6 s12 right">
                 <img style="margin-left:auto;margin-right:auto;margin-top:10px;" width="400px" class="center materialboxed responsive-img" src="<?php echo e(url('img/event_images')); ?>/<?php echo e($randEvent[1]->image); ?>">
             </div> 
+            <div class="col m6 s12 left">
+                <div class="center">    
+                    <h2 class="center-align red-text text-darken-2"><?php echo e($randEvent[1]->name); ?><br><?php echo e($randEvent[1]->city); ?></h2>
+                    <h5><?php echo e($randEvent[1]->information); ?></h5>
+                    <a class="btn red darken-3" href="<?php echo e(url('events/details')); ?>/<?php echo e($randEvent[1]->id); ?>" style="margin-top: 20px">View Event</a>
+                </div>
+            </div>
         </div>            
     </div>   
+    <div class="divider"></div>
     <div class="section">
         <div class="row">        
             <div class="col s10 offset-s1 m4">
@@ -115,7 +118,6 @@
     <div class="row center">
         <a class="btn-large red darken-2" href="<?php echo e(url('/events')); ?>">Upcoming Events</a>
     </div>    
-</div>
 <br><br>
 <?php $__env->stopSection(); ?>
 
