@@ -175,7 +175,7 @@ function initialize() {
 							</tbody>
 						</table>
 				  
-							<p>Edit your user details <a href="{{ url('/account') }}" >here</a></p>
+							<p class="left">Edit your user details <a href="{{ url('/account') }}" >here</a></p>
                     </div>
                     <div class="center col s12 m6 right">
                         <br><br>
