@@ -156,8 +156,7 @@ function initialize() {
                 </div>
                 <div id="location" class="col s12">
                     <div class="row center">
-                    	<div class="container light">
-						
+					   <div class="col s12 m6">
 						<table class="borderd">
 							<thead>
 								<tr>
@@ -177,14 +176,14 @@ function initialize() {
 						</table>
 				  
 							<p>Edit your user details <a href="{{ url('/account') }}" >here</a></p>
-						</div>
                     </div>
-                    <div class="center">
+                    <div class="center col s12 m6 right">
                         <br><br>
     					<div id="map_wrapper">
 						    <div id="map_canvas" class="mapping"></div>
 						</div> 
 					</div>
+                    </div>
                 </div>
             </div>
         </div>
