@@ -3,6 +3,8 @@
 @section('title', 'Event Details')
 @section('content')
     <!-- Navigation ( navigation.html ) -->
+	
+	<!-- Styling for responsivness -->
     <style>
         .btn-container {
           display: flex; 
@@ -60,6 +62,8 @@
     </style>
     <script src="{{ url('/sweetalert/dist/sweetalert.min.js') }}"></script>
     <link rel="stylesheet" type="text/css" href="{{ url('/sweetalert/dist/sweetalert.css') }}">
+	
+	<!-- Event details -->
     <div class="container">
         <div class="section no-pad-bot" id="no-padding-top">
             <div class="row" id="event">
@@ -97,6 +101,7 @@
                                 <a class="btn red darken-3" id="unattend">Unattend Event</a>
                             </div>
                         </div>
+						<!-- The attending button -->
                     @else
                         @if($full == TRUE)
                             <div class="block btn-container">
@@ -177,6 +182,7 @@
                         });
                     })
                 </script>
+				<!-- Tab stuff -->
                 <div class="row">
                     <div class="col s12">
                       <ul class="tabs">
@@ -185,12 +191,14 @@
                         <div class="indicator red" style="z-index:1"> </div>
                       </ul>
                     </div>
+					<!-- Description of the event -->
                     <div id="description" class="col s12">
                         <br>
                         <p id="">
                             {{ $ev->description }}
                         </p>
                     </div>
+					<!-- The location details on how to get to the event -->
                     <div id="location" class="col s12">
                         <div class="row center">
                         <br><br>

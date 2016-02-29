@@ -5,6 +5,7 @@
 @section('content') 
 
 <!-- Navigation ( navigation.html ) -->
+<!-- List of our past events -->
     
     <div class="container">
         <div class="section no-pad-bot" id="index-banner">
