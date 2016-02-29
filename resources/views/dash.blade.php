@@ -119,15 +119,6 @@
 
 <!-- Event content -->
 <div class="container">
-<<<<<<< HEAD
-	<div class="row">
-		<div class="col s12">
-			<ul class="tabs">
-
-							<p class="condensed light left-align valign-wrapper"><i class="material-icons">payment</i>&euro;{{ $pastevent->price }}</p>
-							<a class="btn red darken-3" href="{{ url('/events/details') }}/{{ $pastevent->id }}">View Event</a>
-						</div>
-=======
             <div class="row">
                 <div class="col s12">
                   <ul class="tabs">
@@ -193,44 +184,7 @@
                         @endif
                         <br>
                 </div>
-                <div id="location" class="col s12">
-                    <div class="row center">
-					   <div class="col s12 m6">
-						<table style="border-bottom:1px solid lightgrey">
-							<tr>
-                                <th data-field="id" class="red-text">Name</th>
-                                <td>{{ Auth::user()->name }} {{ Auth::user()->surname }}</td>
-                            </tr>
-							<tr>
-                                <th data-field="name" class="red-text">E-mail Address</th>
-                                <td>{{ Auth::user()->email }}</td>
-                            </tr>
-							<tr>
-                                <th data-field="price" class="red-text">Travelling Address</th>
-                                <td>{{ Auth::user()->direction }}</td>
-                            </tr>
-                            @if($admin)
-                                <tr>
-                                    <th data-field="price" class="red-text">Is Admin</th>
-                                    <td>Yes</td>
-                                </tr>
-                            @endif
-						</table>
-				  
-							<p class="left">Edit your user details <a href="{{ url('/account') }}" >here</a></p>
-                    </div>
-                    <div class="center col s12 m6 right">
-                        <br><br>
-    					<div id="map_wrapper">
-						    <div id="map_canvas" class="mapping"></div>
-						</div> 
->>>>>>> 409fd8708187c5c78031fb5ed94b962e5ca75d55
-					</div>
-				@endforeach
-			@endif
-			<br>
-		</div>
-	
+                
 		<!-- Table of user details -->
 		<div id="location" class="col s12">
 			<div class="row center">
