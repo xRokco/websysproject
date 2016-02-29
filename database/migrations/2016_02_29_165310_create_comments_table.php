@@ -17,6 +17,8 @@ class CreateCommentsTable extends Migration
             $table->integer('userid');
             $table->integer('eventid');
             $table->string('comment');
+            $table->dateTime('created_at');
+            $table->softDeletes();
              });
     }
 
