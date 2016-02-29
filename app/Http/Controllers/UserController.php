@@ -73,7 +73,7 @@ class UserController extends Controller
     }
 
 
-public function getPastEventDetails($id)
+    public function getPastEventDetails($id)
     {
         //Returns the past event details for event with id $id
        $ev = Event::where('id', $id)->onlyTrashed()->firstorfail();
@@ -103,7 +103,7 @@ public function getPastEventDetails($id)
       
     }
 
-     public function addVideo($ev)
+    public function addVideo($ev)
     {
         //returns create view.
         $rsvp = DB::table('rsvp')->where('eventid', $ev)->where('userid', Auth::user()->id)->get();
@@ -130,7 +130,7 @@ public function getPastEventDetails($id)
         $title = $input->input('title');
         $link = $input->input('link');
 
-  //Changes link to embed url
+        //Changes link to embed url
         if(strlen($link) > 11)
         {
             if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $link, $match))
@@ -141,14 +141,12 @@ public function getPastEventDetails($id)
                 return false;
         }
 
-      
-        
-
         //Updates the users table with the data from the form.
-       Video::insert(['userid' => Auth::user()->id, 'eventid' => $id, 'title' => $title, 'link' => $link]);
+        Video::insert(['userid' => Auth::user()->id, 'eventid' => $id, 'title' => $title, 'link' => $link]);
 
         return redirect('past/pastDetails/' .$id.'#video'); //redirects to events view when finished
     }
+
     /**
      * Show the print tickeyt page
      *
@@ -191,6 +189,15 @@ public function getPastEventDetails($id)
             ->distinct()
             ->get();
 
+        $pastrsvp = DB::table('events')
+            ->join('rsvp', 'events.id', '=', 'rsvp.eventid')
+            ->join('users', 'users.id', '=', 'rsvp.userid')
+            ->select('events.*')
+            ->where('rsvp.userid', '=', Auth::user()->id)
+            ->whereNotNull('events.deleted_at')
+            ->distinct()
+            ->get();
+
         $admin = \DB::table('admins')
             ->join('users', 'users.id', '=', 'admins.userid')
             ->select('admins.*')
@@ -199,7 +206,7 @@ public function getPastEventDetails($id)
             ->get();
 
         //returns dash view with $rsvp array with query results from above
-        return view('dash', ['rsvp' => $rsvp, 'admin' => $admin]);
+        return view('dash', ['rsvp' => $rsvp, 'admin' => $admin, 'pastrsvp' => $pastrsvp]);
     }
 
     /**
