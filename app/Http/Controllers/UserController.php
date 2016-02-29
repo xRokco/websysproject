@@ -91,6 +91,12 @@ class UserController extends Controller
             ->where(['userid' => Auth::user()->id])
             ->distinct()
             ->get();
+        $comments = DB::table('comments')
+            ->join('events', 'events.id', '=', 'comments.eventid')
+            ->join('users', 'users.id', '=', 'comments.userid')
+            ->select('comments.comment', 'users.*')
+            ->where('events.id', '=', $id)
+            ->get();
 
         $rsvp = DB::table('rsvp')->where('eventid', $id)->where('userid', Auth::user()->id)->get();
        //checks how many entries in the rsvp table there are for the given event, counts them
@@ -99,7 +105,7 @@ class UserController extends Controller
 
         //returns event details page for the corresponding ID, with event details ($ev), event videos ($videos)
        
-        return view('pastDetails', ['ev' => $ev, 'count' => $count, 'videos' => $videos, 'rsvp' => $rsvp, 'admin' => $admin]);
+        return view('pastDetails', ['ev' => $ev, 'comments' => $comments, 'count' => $count, 'videos' => $videos, 'rsvp' => $rsvp, 'admin' => $admin]);
       
     }
 
