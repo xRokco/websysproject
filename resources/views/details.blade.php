@@ -59,7 +59,7 @@
         }
     </style>
     <script src="{{ url('/sweetalert/dist/sweetalert.min.js') }}"></script>
-<link rel="stylesheet" type="text/css" href="{{ url('/sweetalert/dist/sweetalert.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('/sweetalert/dist/sweetalert.css') }}">
     <div class="container">
         <div class="section no-pad-bot" id="no-padding-top">
             <div class="row" id="event">
@@ -109,10 +109,9 @@
                             </div>
                         @else
                         <a id="customButton" class="btn red darken-3" href="#">Attend Event</a>
-
                             <script src="https://checkout.stripe.com/checkout.js"></script>
-                                <script>
-                                  var handler = StripeCheckout.configure({
+                            <script>
+                                var handler = StripeCheckout.configure({
                                     key: "<?php echo $stripe['publishable']; ?>",
                                     image: '{{ url('/img/event_images/') }}/{{ $ev->image }}',
                                     locale: 'auto',
@@ -120,33 +119,30 @@
                                         // Use the token to create the charge with a server-side script.
                                         // You can access the token ID with `token.id`
                                         $.post('{{ url('/events/details/attend') }}', {
-                                             _token: $('meta[name=csrf-token]').attr('content'),
-                                             evid: {{ $ev->id }}
-
-                                         }
-                                        )
+                                            _token: $('meta[name=csrf-token]').attr('content'),
+                                            evid: {{ $ev->id }}
+                                        })
                                         window.location.href = "{{ url('/dash') }}";
                                     }
-                                  });
+                                });
 
-                                  $('#customButton').on('click', function(e) {
+                                $('#customButton').on('click', function(e) {
                                     // Open Checkout with further options
                                     handler.open({
-                                      name: '{{ $ev->name }}',
-                                      description: 'Non-refundable',
-                                      currency: "eur",
-                                      amount: '{{ $ev->price }}00',
-                                      email: '{{ Auth::user()->email }}'
+                                        name: '{{ $ev->name }}',
+                                        description: 'Non-refundable',
+                                        currency: "eur",
+                                        amount: '{{ $ev->price }}00',
+                                        email: '{{ Auth::user()->email }}'
                                     });
                                     e.preventDefault();
+                                });
 
-                                  });
-
-                                  // Close Checkout on page navigation
-                                  $(window).on('popstate', function() {
+                                // Close Checkout on page navigation
+                                $(window).on('popstate', function() {
                                     handler.close();
-                                  });
-                                </script> 
+                                });
+                            </script> 
                         @endif
                     @endif 
                 </div>
@@ -158,65 +154,66 @@
                             });
                     });
                 </script>
-            <script type="text/javascript">
-                $('button#unattend').on('click', function(){
-                    var id = $(this).attr('eventid');
-                    swal({   
-                        title: "Are you sure?",   
-                        text: "This will unattend you from this event. A refund on any ticket paid for will not be given. This cannot be undone without repurchasing a ticket. Type \"{{Auth::user()->name}}\" below to confirm you want to do this:",   
-                        type: "input",   
-                        showCancelButton: true,   
-                        closeOnConfirm: false,   
-                        animation: "slide-from-top",   
-                        inputPlaceholder: "Write \"{{Auth::user()->name}}\""
-                    }, 
-                    function(inputValue){   
-                        if (inputValue === false) return false;      
-                        if (inputValue != "{{Auth::user()->name}}") {     
-                            swal.showInputError("You need to write \"{{Auth::user()->name}}\"!");     
-                            return false   
-                        }     
-                        swal("Unattended", "");
-                        setTimeout(function(){ window.location.href = "{{ url('/events/details/unattend') }}/{{$ev->id}}" }, 1000);
-                    });
-                })
-            </script>
-            <div class="row">
-                <div class="col s12">
-                  <ul class="tabs">
-                    <li class="tab col s6"><a class="red-text" href="#description">Description</a></li>
-                    <li class="tab col s6"><a id="locationbutton" class="red-text" href="#location">Directions</a></li>
-                    <div class="indicator red" style="z-index:1"> </div>
-                  </ul>
-                </div>
-                <div id="description" class="col s12">
-                    <br>
-                    <p id="">
-                        {{ $ev->description }}
-                    </p>
-                </div>
-                <div id="location" class="col s12">
-                    <div class="row center">
-                    <br><br>
-                        <iframe width="700" style="max-width:90%" height="525" frameborder="0" style="border:0"
-                            src="https://www.google.com/maps/embed/v1/directions?origin={{ Auth::user()->direction }}&destination={{ $ev->venue }}, {{ $ev->city }}&key={{ env('MAPS_API') }}" allowfullscreen></iframe>
+                <script type="text/javascript">
+                    $('button#unattend').on('click', function(){
+                        var id = $(this).attr('eventid');
+                        swal({   
+                            title: "Are you sure?",   
+                            text: "This will unattend you from this event. A refund on any ticket paid for will not be given. This cannot be undone without repurchasing a ticket. Type \"{{Auth::user()->name}}\" below to confirm you want to do this:",   
+                            type: "input",   
+                            showCancelButton: true,   
+                            closeOnConfirm: false,   
+                            animation: "slide-from-top",   
+                            inputPlaceholder: "Write \"{{Auth::user()->name}}\""
+                        }, 
+                        function(inputValue){   
+                            if (inputValue === false) return false;      
+                            if (inputValue != "{{Auth::user()->name}}") {     
+                                swal.showInputError("You need to write \"{{Auth::user()->name}}\"!");     
+                                return false   
+                            }     
+                            swal("Unattended", "");
+                            setTimeout(function(){ window.location.href = "{{ url('/events/details/unattend') }}/{{$ev->id}}" }, 1000);
+                        });
+                    })
+                </script>
+                <div class="row">
+                    <div class="col s12">
+                      <ul class="tabs">
+                        <li class="tab col s6"><a class="red-text" href="#description">Description</a></li>
+                        <li class="tab col s6"><a id="locationbutton" class="red-text" href="#location">Directions</a></li>
+                        <div class="indicator red" style="z-index:1"> </div>
+                      </ul>
                     </div>
-                    <h5 class="center">Here's a few of hotels within a couple of kilometers of the venue</h5>
-                    <table class="highlight">
-                        <thead>
-                            <th data-field="id">Hotel</th>
-                            <th data-field="address">Address</th>
-                            <th data-field="phone">Phone Number</th>
-                            <th data-field="rating">Rating</th>
-                        </thead>
-                        <tbody id="hotels">
-                            <div class="progress red">
-                              <div class="indeterminate red darken-3"></div>
-                            </div>
-                        </tbody>
-                    </table>
-                </div>
-            </div> 
+                    <div id="description" class="col s12">
+                        <br>
+                        <p id="">
+                            {{ $ev->description }}
+                        </p>
+                    </div>
+                    <div id="location" class="col s12">
+                        <div class="row center">
+                        <br><br>
+                            <iframe width="700" style="max-width:90%" height="525" frameborder="0" style="border:0"
+                                src="https://www.google.com/maps/embed/v1/directions?origin={{ Auth::user()->direction }}&destination={{ $ev->venue }}, {{ $ev->city }}&key={{ env('MAPS_API') }}" allowfullscreen></iframe>
+                        </div>
+                        <h5 class="center">Here's a few of hotels within a couple of kilometers of the venue</h5>
+                        <table class="highlight">
+                            <thead>
+                                <th data-field="id">Hotel</th>
+                                <th data-field="address">Address</th>
+                                <th data-field="phone">Phone Number</th>
+                                <th data-field="rating">Rating</th>
+                            </thead>
+                            <tbody id="hotels">
+                                <div class="progress red">
+                                  <div class="indeterminate red darken-3"></div>
+                                </div>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> 
+            </div>
         </div>
     </div>
 @endsection

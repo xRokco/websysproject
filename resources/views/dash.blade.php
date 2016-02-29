@@ -155,7 +155,7 @@ function initialize() {
             			<br>
 
                         @if ($pastrsvp)
-                            <h3 class="red-text center">Past events you attended</h3>
+                            <h4 class="red-text center">Past events you attended</h4>
                             @foreach ($pastrsvp as $pastevent)
                                 <div class="row grey lighten-5" id="event">
                                     <!-- Event Image -->
