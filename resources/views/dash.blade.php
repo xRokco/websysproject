@@ -153,6 +153,33 @@ function initialize() {
 				        	<h4 class="center red-text">You aren't attending any events yet. Checkout our <a class="red-text text-lighten-3" href="{{ url('/events') }}" >events</a> page.</h4>
 				        @endif
             			<br>
+
+                        @if ($pastrsvp)
+                            <h3 class="red-text center">Past events you attended</h3>
+                            @foreach ($pastrsvp as $pastevent)
+                                <div class="row grey lighten-5" id="event">
+                                    <!-- Event Image -->
+                                    <div class="col center m3 s12" style="margin-top:20px">
+                                        <a href="{{ url('events/details') }}/{{ $pastevent->id }}"><img class="responsive-img circle" src="{{ url('img/event_images') }}/{{ $pastevent->image }}" style="height:150px;width:150px;background-size:cover;" /></a>
+                                    </div>
+                                    
+                                    <!-- Event Description -->
+                                    <div class="left-align col m5 s5 offset-s1">
+                                        <h5>{{ $pastevent->name }}</h5>
+                                        <p>{{ $pastevent->information }}</p>
+                                    </div>
+                                    
+                                    <!-- Event Details -->
+                                    <div class="col m3 s5 offset-s1" id="test">
+                                        <p class="condensed light left-align valign-wrapper"><i class="material-icons">today</i>{{ $pastevent->date }}</p>
+                                        <p class="condensed light left-align valign-wrapper"><i class="material-icons">location_on</i>{{ $pastevent->venue }}, {{ $pastevent->city }}</p>
+                                        <p class="condensed light left-align valign-wrapper"><i class="material-icons">payment</i>&euro;{{ $pastevent->price }}</p>
+                                        <a class="btn red darken-3" href="{{ url('/events/details') }}/{{ $pastevent->id }}">View Event</a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
+                        <br>
                 </div>
                 <div id="location" class="col s12">
                     <div class="row center">
