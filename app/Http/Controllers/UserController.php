@@ -236,10 +236,13 @@ class UserController extends Controller
                 $code = str_random(10);
             } while (Rsvp::where("code", $code)->where('eventid', $evid)->first() instanceof Rsvp);
             
-            \Stripe\Stripe::setApiKey(env('STRIPE_PRI'));
-                                        $myCard = array('number' => '4242424242424242', 'exp_month' => 8, 'exp_year' => 2018);
-                                        $charge = \Stripe\Charge::create(array('card' => $myCard, 'amount' => $ev->price.'00', 'currency' => 'eur', 'description' => Auth::user()->email ));
             Rsvp::insert(['userid' => Auth::user()->id, 'eventid' => $evid, 'code' => $code]);
+
+            \Stripe\Stripe::setApiKey(env('STRIPE_PRI'));
+            
+            $myCard = array('number' => '4242424242424242', 'exp_month' => 8, 'exp_year' => 2018);
+            $charge = \Stripe\Charge::create(array('card' => $myCard, 'amount' => $ev->price.'00', 'currency' => 'eur', 'description' => Auth::user()->email ));
+            
 
         } else {
             echo "Event full";

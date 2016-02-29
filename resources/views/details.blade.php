@@ -160,7 +160,7 @@
                     });
                 </script>
                 <script type="text/javascript">
-                    $('button#unattend').on('click', function(){
+                    $('#unattend').on('click', function(){
                         var id = $(this).attr('eventid');
                         swal({   
                             title: "Are you sure?",   
