@@ -190,7 +190,7 @@
                 </div>
                 <div id="description" class="col s12">
                     <br>
-                    <p id="no-margin-top">
+                    <p id="">
                         {{ $ev->description }}
                     </p>
                 </div>
