@@ -114,14 +114,16 @@ class AdminController extends Controller
      */
     public function getAttendees($id)
     {
+        Event::where('id', $id)->firstorfail();
+
         $atns = DB::table('rsvp')
             ->join('users', 'users.id', '=', 'rsvp.userid')
             ->select('*')
             ->where('rsvp.eventid', '=', $id)
             ->get();
 
-//Gets the number of attendees
-$count = Rsvp::where('eventid', $id)->count();
+        //Gets the number of attendees
+        $count = Rsvp::where('eventid', $id)->count();
 
         return view('admin/attendees', ['atns' => $atns, 'id' => $id, 'count' => $count]);
     }
@@ -134,7 +136,7 @@ $count = Rsvp::where('eventid', $id)->count();
      */
     public function printAttendees($id)
     {
-        $ev = Event::where('id', $id)->first();
+        $ev = Event::where('id', $id)->firstorfail();
 
         $atns = DB::table('rsvp')
             ->join('users', 'users.id', '=', 'rsvp.userid')
@@ -166,7 +168,7 @@ $count = Rsvp::where('eventid', $id)->count();
      */
     public function editEventInfo($id)
     {
-        $event = Event::select('events.*')->where('id', '=', $id)->first();
+        $event = Event::select('events.*')->where('id', '=', $id)->firstorfail();
         return view('admin/edit',['event' => $event]);
     }
 

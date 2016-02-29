@@ -45,6 +45,11 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        return parent::render($request, $e);
+        if ($e instanceof ModelNotFoundException)
+        {
+            echo "there's some problem with the ID in the URL.";
+        } else {
+            return parent::render($request, $e);
+        }
     }
 }

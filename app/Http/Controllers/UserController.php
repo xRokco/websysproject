@@ -38,7 +38,7 @@ class UserController extends Controller
     public function getEventDetails($id)
     {
         //Returns the event details for event with id $id
-        $ev = Event::where('id', $id)->first();
+        $ev = Event::where('id', $id)->firstorfail();
 
         //Checks if the current user has an entry in the rsvp table for the current event
         $rsvp = DB::table('events')
@@ -76,14 +76,15 @@ class UserController extends Controller
 public function getPastEventDetails($id)
     {
         //Returns the past event details for event with id $id
-       $ev = Event::where('id', $id)->withTrashed()->first();
+       $ev = Event::where('id', $id)->onlyTrashed()->firstorfail();
 
-      $videos = DB::table('videos')
+        $videos = DB::table('videos')
             ->join('events', 'events.id', '=', 'videos.eventid')
             ->join('users', 'users.id', '=', 'videos.userid')
             ->select('videos.link','videos.title', 'users.*')
             ->where('events.id', '=', $id)
             ->get();
+
         $admin = DB::table('admins')
             ->join('users', 'users.id', '=', 'admins.userid')
             ->select('admins.*')
@@ -109,8 +110,10 @@ public function getPastEventDetails($id)
         $admin = Admin::where('userid', Auth::user()->id)->get();
 
         if($rsvp || $admin){
-            return view('addVideo',['ev' => $ev]); 
-        }else{
+            if(Event::where('id', $ev)->onlyTrashed()->firstorfail()){
+                return view('addVideo',['ev' => $ev]); 
+            }
+        }else {
             return redirect('past');
         }
     }
@@ -155,7 +158,7 @@ public function getPastEventDetails($id)
     public function printEventTicket($id)
     {
         //Returns the event details for event with id $id
-        $ev = Event::where('id', $id)->first();
+        $ev = Event::where('id', $id)->firstorfail();
         
         //checks that the current user is attending the current event
         $rsvp = Event::join('rsvp', 'events.id', '=', 'rsvp.eventid')
@@ -163,7 +166,7 @@ public function getPastEventDetails($id)
             ->select('rsvp.code')
             ->where(['userid' => Auth::user()->id, 'eventid' => $id])
             ->distinct()
-            ->first();
+            ->firstorfail();
 
         //returns event ticket print page with event details ($ev) and rsvp details ($rsvp)
         //passed in
