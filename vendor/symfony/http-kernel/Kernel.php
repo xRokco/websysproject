@@ -59,15 +59,15 @@ abstract class Kernel implements KernelInterface, TerminableInterface
     protected $startTime;
     protected $loadClassCache;
 
-    const VERSION = '2.8.2';
-    const VERSION_ID = 20802;
-    const MAJOR_VERSION = 2;
-    const MINOR_VERSION = 8;
-    const RELEASE_VERSION = 2;
+    const VERSION = '3.0.3';
+    const VERSION_ID = 30003;
+    const MAJOR_VERSION = 3;
+    const MINOR_VERSION = 0;
+    const RELEASE_VERSION = 3;
     const EXTRA_VERSION = '';
 
-    const END_OF_MAINTENANCE = '11/2018';
-    const END_OF_LIFE = '11/2019';
+    const END_OF_MAINTENANCE = '07/2016';
+    const END_OF_LIFE = '01/2017';
 
     /**
      * Constructor.
@@ -85,22 +85,6 @@ abstract class Kernel implements KernelInterface, TerminableInterface
         if ($this->debug) {
             $this->startTime = microtime(true);
         }
-
-        $defClass = new \ReflectionMethod($this, 'init');
-        $defClass = $defClass->getDeclaringClass()->name;
-
-        if (__CLASS__ !== $defClass) {
-            @trigger_error(sprintf('Calling the %s::init() method is deprecated since version 2.3 and will be removed in 3.0. Move your logic to the constructor method instead.', $defClass), E_USER_DEPRECATED);
-            $this->init();
-        }
-    }
-
-    /**
-     * @deprecated since version 2.3, to be removed in 3.0. Move your logic in the constructor instead.
-     */
-    public function init()
-    {
-        @trigger_error('The '.__METHOD__.' method is deprecated since version 2.3 and will be removed in 3.0. Move your logic to the constructor method instead.', E_USER_DEPRECATED);
     }
 
     public function __clone()
@@ -201,24 +185,6 @@ abstract class Kernel implements KernelInterface, TerminableInterface
     public function getBundles()
     {
         return $this->bundles;
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @deprecated since version 2.6, to be removed in 3.0.
-     */
-    public function isClassInActiveBundle($class)
-    {
-        @trigger_error('The '.__METHOD__.' method is deprecated since version 2.6 and will be removed in version 3.0.', E_USER_DEPRECATED);
-
-        foreach ($this->getBundles() as $bundle) {
-            if (0 === strpos($class, $bundle->getNamespace())) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     /**
@@ -713,14 +679,15 @@ abstract class Kernel implements KernelInterface, TerminableInterface
         $output = '';
         $tokens = token_get_all($source);
         $ignoreSpace = false;
-        for (reset($tokens); false !== $token = current($tokens); next($tokens)) {
-            if (is_string($token)) {
+        for ($i = 0; isset($tokens[$i]); ++$i) {
+            $token = $tokens[$i];
+            if (!isset($token[1]) || 'b"' === $token) {
                 $rawChunk .= $token;
             } elseif (T_START_HEREDOC === $token[0]) {
                 $output .= $rawChunk.$token[1];
                 do {
-                    $token = next($tokens);
-                    $output .= $token[1];
+                    $token = $tokens[++$i];
+                    $output .= isset($token[1]) && 'b"' !== $token ? $token[1] : $token;
                 } while ($token[0] !== T_END_HEREDOC);
                 $rawChunk = '';
             } elseif (T_WHITESPACE === $token[0]) {
@@ -745,6 +712,12 @@ abstract class Kernel implements KernelInterface, TerminableInterface
         }
 
         $output .= $rawChunk;
+
+        if (PHP_VERSION_ID >= 70000) {
+            // PHP 7 memory manager will not release after token_get_all(), see https://bugs.php.net/70098
+            unset($tokens, $rawChunk);
+            gc_mem_caches();
+        }
 
         return $output;
     }

@@ -122,6 +122,7 @@
                                         $.post('{{ url('/events/details/attend') }}', {
                                              _token: $('meta[name=csrf-token]').attr('content'),
                                              evid: {{ $ev->id }}
+
                                          }
                                         )
                                         window.location.href = "{{ url('/dash') }}";

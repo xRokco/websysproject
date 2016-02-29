@@ -55,7 +55,8 @@
                     <label>What city or town will you be travelling from?</label>
                     <input type="text" name="direction" value="{{ old('direction') }}">
                 </div>
-
+                 <div>
+            
                 <button type="submit" class="btn red darken-3 btn-primary">
                         Register<i class="material-icons right">send</i>
                 </button>

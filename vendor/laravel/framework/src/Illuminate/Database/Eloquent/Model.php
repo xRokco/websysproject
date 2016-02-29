@@ -9,6 +9,7 @@ use ArrayAccess;
 use Carbon\Carbon;
 use LogicException;
 use JsonSerializable;
+use DateTimeInterface;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
@@ -591,53 +592,6 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
     }
 
     /**
-     * Get the first record matching the attributes or create it.
-     *
-     * @param  array  $attributes
-     * @return static
-     */
-    public static function firstOrCreate(array $attributes)
-    {
-        if (! is_null($instance = (new static)->newQueryWithoutScopes()->where($attributes)->first())) {
-            return $instance;
-        }
-
-        return static::create($attributes);
-    }
-
-    /**
-     * Get the first record matching the attributes or instantiate it.
-     *
-     * @param  array  $attributes
-     * @return static
-     */
-    public static function firstOrNew(array $attributes)
-    {
-        if (! is_null($instance = (new static)->newQueryWithoutScopes()->where($attributes)->first())) {
-            return $instance;
-        }
-
-        return new static($attributes);
-    }
-
-    /**
-     * Create or update a record matching the attributes, and fill it with values.
-     *
-     * @param  array  $attributes
-     * @param  array  $values
-     * @param  array  $options
-     * @return static
-     */
-    public static function updateOrCreate(array $attributes, array $values = [], array $options = [])
-    {
-        $instance = static::firstOrNew($attributes);
-
-        $instance->fill($values)->save($options);
-
-        return $instance;
-    }
-
-    /**
      * Begin querying the model.
      *
      * @return \Illuminate\Database\Eloquent\Builder
@@ -693,28 +647,12 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
     }
 
     /**
-     * Find a model by its primary key or return new static.
-     *
-     * @param  mixed  $id
-     * @param  array  $columns
-     * @return \Illuminate\Support\Collection|static
-     */
-    public static function findOrNew($id, $columns = ['*'])
-    {
-        if (! is_null($model = static::find($id, $columns))) {
-            return $model;
-        }
-
-        return new static;
-    }
-
-    /**
      * Reload a fresh model instance from the database.
      *
-     * @param  array  $with
+     * @param  array|string  $with
      * @return $this|null
      */
-    public function fresh(array $with = [])
+    public function fresh($with = [])
     {
         if (! $this->exists) {
             return;
@@ -2985,17 +2923,19 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
     protected function asDateTime($value)
     {
         // If this value is already a Carbon instance, we shall just return it as is.
-        // This prevents us having to reinstantiate a Carbon instance when we know
+        // This prevents us having to re-instantiate a Carbon instance when we know
         // it already is one, which wouldn't be fulfilled by the DateTime check.
         if ($value instanceof Carbon) {
             return $value;
         }
 
-        // If the value is already a DateTime instance, we will just skip the rest of
-        // these checks since they will be a waste of time, and hinder performance
-        // when checking the field. We will just return the DateTime right away.
-        if ($value instanceof DateTime) {
-            return Carbon::instance($value);
+         // If the value is already a DateTime instance, we will just skip the rest of
+         // these checks since they will be a waste of time, and hinder performance
+         // when checking the field. We will just return the DateTime right away.
+        if ($value instanceof DateTimeInterface) {
+            return new Carbon(
+                $value->format('Y-m-d H:i:s.u'), $value->getTimeZone()
+            );
         }
 
         // If this value is an integer, we will assume it is a UNIX timestamp's value
@@ -3008,7 +2948,7 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
         // If the value is in simply year, month, day format, we will instantiate the
         // Carbon instances from that format. Again, this provides for simple date
         // fields on the database, while still supporting Carbonized conversion.
-        if (preg_match('/^(\d{4})-(\d{2})-(\d{2})$/', $value)) {
+        if (preg_match('/^(\d{4})-(\d{1,2})-(\d{1,2})$/', $value)) {
             return Carbon::createFromFormat('Y-m-d', $value)->startOfDay();
         }
 
@@ -3026,7 +2966,7 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
      */
     protected function asTimeStamp($value)
     {
-        return (int) $this->asDateTime($value)->timestamp;
+        return $this->asDateTime($value)->getTimestamp();
     }
 
     /**
@@ -3102,7 +3042,9 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
 
         $attributes = Arr::except($this->attributes, $except);
 
-        with($instance = new static)->setRawAttributes($attributes);
+        $instance = new static;
+
+        $instance->setRawAttributes($attributes);
 
         return $instance->setRelations($this->relations);
     }
@@ -3301,7 +3243,7 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
      */
     public function getConnection()
     {
-        return static::resolveConnection($this->connection);
+        return static::resolveConnection($this->getConnectionName());
     }
 
     /**
