@@ -84,7 +84,16 @@
                     @endforeach
                 </div>
                 <div id="comments" class="col s12">
-
+                @foreach ($comments as $comment)
+                        <div class="row center">
+                            <br/>
+                            <table class="col m3 s7 offset-m1 offset-s4">
+                                <tr><td>{{ $comment->id }}</td></tr>
+                                <tr><td>{{ $comment->comment }}</td></tr>
+                                 <tr><td>{{ $comment->created_at }}</td></tr>
+                                <tr><td>Submitted by user: {{ $comment->name }}</td></tr>
+                            </table>
+                            @endforeach
                 </div>
             </div> 
         </div>

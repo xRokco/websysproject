@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
          $this->call('RsvpTableSeeder');
          $this->call('AdminsTableSeeder');
          $this->call('VideosTableSeeder');
+         $this->call('CommentsTableSeeder');
          factory(App\User::class, 50)->create();
          factory(App\Rsvp::class, 100)->create();
     }
@@ -339,5 +340,47 @@ class VideosTableSeeder extends Seeder {
         )
       );
     DB::table('videos')->insert($videos);
+  }
+}
+
+class CommentsTableSeeder extends Seeder {
+  public function run() {
+    DB::table('comments')->delete();
+
+  $comments = array(
+      array(
+        "id" => "1",
+       "userid" => "2",
+       "eventid" => "8",
+       "comment" => " Sample comment.....Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu",
+       "created_at" => "2016-01-01 14:00:00",
+       "deleted_at" => NULL
+        ),
+      array(
+        "id" => "2",
+       "userid" => "1",
+       "eventid" => "8",
+       "comment" => " Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
+       "created_at" => "2016-01-01 14:00:00",
+       "deleted_at" => NULL
+        ),
+      array(
+        "id" => "3",
+       "userid" => "5",
+       "eventid" => "8",
+      "comment" => "Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada..",
+       "created_at" => "2016-01-01 14:00:00",
+       "deleted_at" => NULL
+        ),
+      array(
+        "id" => "4",
+       "userid" => "8",
+       "eventid" => "8",
+      "comment" => "Here's my long bug report. ",
+       "created_at" => "2016-01-01 14:00:00",
+       "deleted_at" => NULL
+        )
+      );
+    DB::table('comments')->insert($comments);
   }
 }

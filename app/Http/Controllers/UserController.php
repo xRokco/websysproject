@@ -94,8 +94,9 @@ class UserController extends Controller
         $comments = DB::table('comments')
             ->join('events', 'events.id', '=', 'comments.eventid')
             ->join('users', 'users.id', '=', 'comments.userid')
-            ->select('comments.comment', 'users.*')
+            ->select('comments.*', 'users.name')
             ->where('events.id', '=', $id)
+            ->orderBy('created_at', 'desc')
             ->get();
 
         $rsvp = DB::table('rsvp')->where('eventid', $id)->where('userid', Auth::user()->id)->get();
