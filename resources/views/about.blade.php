@@ -79,7 +79,7 @@
 				<div class="row valign-wrapper">
 					<div class="col s2">
 						<div class=" waves-effect waves-block waves-light">
-							<img src="{{ url('/img/conor.jpg') }}" alt="" class="activator circle responsive-img">
+							<img src="{{ url('/img/conor.png') }}" alt="" class="activator circle responsive-img">
 						</div>
 					</div>
 					<div class="col s9">
