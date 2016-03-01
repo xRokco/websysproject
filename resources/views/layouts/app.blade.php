@@ -48,7 +48,7 @@
 			<!-- AddEvent -->
 			<script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
 			
-			<link rel="icon" href="{{ url('favicon.ico') }}" />
+			<link rel="icon" href="{{ url('favicon.png') }}" />
 		</head>
 		<body>
     		<!--Nav-->
