@@ -130,7 +130,7 @@
                                         })
                                         setTimeout( function(){
                                             window.location.href = "{{ url('/dash') }}";
-                                        }, 300);
+                                        }, 500);
                                     }
                                 });
 
