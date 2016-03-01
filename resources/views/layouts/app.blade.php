@@ -5,6 +5,7 @@
 			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
 			<meta name="csrf-token" content="{{ Session::token() }}">
 			<meta name="theme-color" content="#c62828">
+			<link rel="manifest" href="{{ url('manifest.json') }}">
 			<title>@yield('title') | Trump Events</title>
 			{!! MaterializeCSS::include_full() !!}
 			
