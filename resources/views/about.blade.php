@@ -43,35 +43,6 @@
 		</div>
 	</div>
 
-	<!-- Conor -->
-	<div class="grey lighten-5 card">
-		<div class="col s12  offset-m2 l6 offset-l3">
-			<div class="grey lighten-5">
-				<div class="row valign-wrapper">
-					<div class="col s2">
-						<div class=" waves-effect waves-block waves-light">
-							<img src="{{ url('/img/conor.jpg') }}" alt="" class="activator circle responsive-img">
-						</div>
-					</div>
-					<div class="col s9">
-						<div class="card-content">
-							<span class="card-title activator grey-text text-darken-4">Conor Molloy<i class="material-icons right">expand_more</i></span>
-							<p>Front End Developer</p>
-							<p>3rd year Computer Science in UCC </p>
-							<p><a href="#">conmolloy@gmail.com</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="card-reveal">
-			<span class="card-title grey-text text-darken-4">More info<i class="material-icons right">expand_less</i></span>
-			<p>Likes wheat bread from subway</p>
-			<p>"Daz is a cool guy" - me</p>
-			<p>Knows all the lyric for We Didnt Sart The Fire</p>
-		</div>
-	</div>
-
 	<!-- Darragh -->
 	<div class="grey lighten-5 card">
 		<div class="col s12  offset-m2 l6 offset-l3">
@@ -98,6 +69,35 @@
 			<p>Actually supports Trump</p>
 			<p>"Is a cool guy" - Conor Molloy</p>
 			<p>Brilliant Cleaning Even On Whites</p>
+		</div>
+	</div>
+
+	<!-- Conor -->
+	<div class="grey lighten-5 card">
+		<div class="col s12  offset-m2 l6 offset-l3">
+			<div class="grey lighten-5">
+				<div class="row valign-wrapper">
+					<div class="col s2">
+						<div class=" waves-effect waves-block waves-light">
+							<img src="{{ url('/img/conor.jpg') }}" alt="" class="activator circle responsive-img">
+						</div>
+					</div>
+					<div class="col s9">
+						<div class="card-content">
+							<span class="card-title activator grey-text text-darken-4">Conor Molloy<i class="material-icons right">expand_more</i></span>
+							<p>Front End Developer</p>
+							<p>3rd year Computer Science in UCC </p>
+							<p><a href="#">conmolloy@gmail.com</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="card-reveal">
+			<span class="card-title grey-text text-darken-4">More info<i class="material-icons right">expand_less</i></span>
+			<p>Likes wheat bread from subway</p>
+			<p>"Daz is a cool guy" - me</p>
+			<p>Knows all the lyric for We Didnt Start The Fire</p>
 		</div>
 	</div>
 
