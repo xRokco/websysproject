@@ -121,7 +121,7 @@
     	</main>
 
     	<!--Footer-->
-		<footer class="page-footer red darken-3">
+		<footer class="page-footer red darken-3 hide-on-small-only">
         	<div class="footer-copyright">
         		<div class="container">
         			<div class="left">
@@ -137,6 +137,28 @@
         		</div>
         	</div>
     	</footer>
+
+    	<footer class="page-footer hide-on-med-and-up red darken-3">
+          <div class="container">
+            <div class="row">
+              <div class="col s12">
+                <h5 class="white-text">External Links</h5>
+                <ul>
+					<li><a class="white-text" target="_blank" href="https://www.donaldjtrump.com/">Offical Website</a></li>
+        			<li><a class="white-text" href="{{ url('/contact') }}">Contact Us</a></li>
+        			<li><a class="white-text" href="{{ url('/disclaimer') }}">Disclaimer</a></li>
+        			<li><a class="white-text" target="_blank" href="http://trumpdonald.org/">Surprise</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            Created by 
+            <a class="white-text" href="{{ url('/about') }}">Web Systems Group 2016</a>
+            </div>
+          </div>
+        </footer>
 
     	<!--Mobile nav javascript-->
     	<script type="text/javascript">
