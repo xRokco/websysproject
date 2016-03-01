@@ -104,7 +104,7 @@
 
     // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
     var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
-        this.setZoom(5);
+        this.setZoom(4);
         google.maps.event.removeListener(boundsListener);
     });
 }
@@ -144,7 +144,7 @@
 				                    </div>
 				                    
 				                    <!-- Event Details -->
-				                    <div class="col m3 s5 offset-s1" id="test">
+				                    <div class="col m3 s5 offset-s1" style="margin-bottom:20px;">
 				                        <p class="condensed light left-align valign-wrapper"><i class="material-icons">today</i>{{ $event->date }}</p>
 				                        <p class="condensed light left-align valign-wrapper"><i class="material-icons">location_on</i>{{ $event->venue }}, {{ $event->city }}</p>
 				                        <p class="condensed light left-align valign-wrapper"><i class="material-icons">payment</i>&euro;{{ $event->price }}</p>
@@ -154,8 +154,9 @@
 				            @endforeach
 				        @else
 				        	<h4 class="center red-text">You aren't attending any events yet. Checkout our <a class="red-text text-lighten-3" href="{{ url('/events') }}" >events</a> page.</h4>
+				        	<br>
+				        	<div class="divider"></div>
 				        @endif
-            			<br>
 
                         @if ($pastrsvp)
                             <h4 class="red-text center">Past events you attended</h4>
@@ -173,7 +174,7 @@
                                     </div>
                                     
                                     <!-- Event Details -->
-                                    <div class="col m3 s5 offset-s1" id="test">
+                                    <div class="col m3 s5 offset-s1" style="margin-bottom:20px;">
                                         <p class="condensed light left-align valign-wrapper"><i class="material-icons">today</i>{{ $pastevent->date }}</p>
                                         <p class="condensed light left-align valign-wrapper"><i class="material-icons">location_on</i>{{ $pastevent->venue }}, {{ $pastevent->city }}</p>
                                         <p class="condensed light left-align valign-wrapper"><i class="material-icons">payment</i>&euro;{{ $pastevent->price }}</p>

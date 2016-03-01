@@ -240,8 +240,9 @@ class UserController extends Controller
 
             \Stripe\Stripe::setApiKey(env('STRIPE_PRI'));
             
-            $myCard = array('number' => '4242424242424242', 'exp_month' => 8, 'exp_year' => 2018);
-            $charge = \Stripe\Charge::create(array('card' => $myCard, 'amount' => $ev->price.'00', 'currency' => 'eur', 'description' => Auth::user()->email ));
+            $token = $req->input('stripeToken');
+
+            $charge = \Stripe\Charge::create(array('source' => $token, 'amount' => $ev->price.'00', 'currency' => 'eur', 'description' => Auth::user()->email ));
         } else {
             echo "Event full";
         }  

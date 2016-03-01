@@ -125,10 +125,12 @@
                                         // You can access the token ID with `token.id`
                                         $.post('{{ url('/events/details/attend') }}', {
                                             _token: $('meta[name=csrf-token]').attr('content'),
-                                            evid: {{ $ev->id }}
+                                            evid: {{ $ev->id }},
+                                            stripeToken: token.id
                                         })
                                         setTimeout( function(){
-                                            window.location.href = "{{ url('/dash') }}";}, 300);
+                                            window.location.href = "{{ url('/dash') }}";
+                                        }, 300);
                                     }
                                 });
 
