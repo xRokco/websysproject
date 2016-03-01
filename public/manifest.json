@@ -38,7 +38,7 @@
       "density": 4.0
     }
   ],
-  "start_url": "index.php",
+  "start_url": "/trump",
   "display": "standalone",
   "orientation": "portrait"
 }
