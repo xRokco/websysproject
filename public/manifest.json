@@ -34,5 +34,6 @@
   ],
   "start_url": "/trump",
   "display": "standalone",
-  "orientation": "portrait"
+  "orientation": "portrait",
+  "background_color": "#c62828"
 }
