@@ -15,11 +15,7 @@
 				<div class="row grey lighten-5" id="event">
 					<!-- Event Image -->
 					<div class="col center m3 s12" style="margin-top:20px">
-						@if(Auth::check())
-							<a href="{{ url('/events/details') }}/{{ $event->id }}"><img class="responsive-img circle" src="{{ url('/img/event_images') }}/{{ $event->image }}" style="height:150px;width:150px;background-size:cover;" /></a>
-						@else
-							<a href="{{ url('/events/details') }}/{{ $event->id }}"><img class="responsive-img circle" src="{{ url('/img/event_images') }}/{{ $event->image }}" style="height:150px;width:150px;background-size:cover;" /></a>
-						@endif
+						<a href="{{ url('/events/details') }}/{{ $event->id }}"><img class="responsive-img circle" src="{{ url('/img/event_images') }}/{{ $event->image }}" style="height:150px;width:150px;background-size:cover;" /></a>
 					</div>
 					
 					<!-- Event Description -->
