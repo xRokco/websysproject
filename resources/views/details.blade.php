@@ -66,23 +66,34 @@
 	<!-- Event details -->
     <div class="container">
         <div class="section no-pad-bot" id="no-padding-top">
+            <div class="row valign-wrapper" style="margin-top: 1em; margin-bottom: 0">
+                <div class="col s6">
+                    <h4 class="light red-text" style="line-height:50%;">{{ $ev->name }}</h4>
+                </div>
+                <div class="col s6 right-align" style="padding-top: 1em">
+                    <a href="{{ url('/events') }}" class="light red-text breadcrumb">Events</a>
+                    <a href="#" class="red-text text-darken-1 breadcrumb">{{ $ev->name }}</a>
+                </div>
+            </div>
+            <div class="divider"></div>
+
             <div class="row" id="event">
                 <!-- Event Image -->
-                <div class="col center m3 s6 offset-s3" style="margin-bottom:5px;">
-                    <img class="responsive-img circle" src="{{ url('/img/event_images') }}/{{ $ev->image }}" />
+                <div class="col center m3" style="margin-bottom:5px; margin-top: 1em; margin-left: 1em;">
+                    <img style="max-width:300px" class="responsive-img circle" src="{{ url('/img/event_images') }}/{{ $ev->image }}" />
                 </div>
                 
                 <!-- Event Description -->
-                <div class="left-align col m5 s5">
-                    <h5>{{ $ev->name }}</h5>
-                    <p>{{ $ev->information }}</p>
+                <div class="left-align col m4">
+                    <h5 class="light red-text text-darken-3" style="padding-top: 1em; padding-left: 1em">Event Details</h5>
+                    <p class="flow-text" style="padding-left: 1em">{{ $ev->information }}</p>
                 </div>
-                
+
                 <!-- Event Details -->
-                <div class="col m3 s7">
-                    <p class="condensed light left-align valign-wrapper"><i class="material-icons">today</i>{{ $ev->date }}</p>
-                    <p class="condensed light left-align valign-wrapper"><i class="material-icons">location_on</i>{{ $ev->venue}}, {{ $ev->city }}</p>
-                    <p class="condensed light left-align valign-wrapper"><i class="material-icons">payment</i>&euro;{{ $ev->price }}</p>
+                <div class="col m3 right" style="padding-top: 2em">
+                    <p class="condensed light left-align valign-wrapper"><i class="material-icons red-text text-darken-3">today</i>{{ $ev->date }}</p>
+                    <p class="condensed light left-align valign-wrapper"><i class="material-icons red-text text-darken-3">location_on</i>{{ $ev->venue}}, {{ $ev->city }}</p>
+                    <p class="condensed light left-align valign-wrapper"><i class="material-icons red-text text-darken-3">payment</i>&euro;{{ $ev->price }}</p>
                     <!-- Check if clicked attend already -->
                     @if($rsvp)
                         <!-- Add to Calendar API -->
@@ -153,7 +164,10 @@
                             </script> 
                         @endif
                     @endif 
+                    </div>
+                    </div>
                 </div>
+                <div class="row">
                 <script>
                     $(document).ready(function(){
                             $("#hotels").load('{{ url('hotels.php') }}', {'venue':'{{ $ev->venue }}', 'city':'{{ $ev->city }}', 'api':'{{ env('MAPS_API')}}'});                    
@@ -270,6 +284,7 @@
                         </div>
                     </div>
                 </div> 
+                </div>
             </div>
         </div>
     </div>
