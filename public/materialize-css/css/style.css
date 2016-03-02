@@ -46,3 +46,7 @@ div > div > div > .row{
 #no-padding-bottom{
     padding-bottom: 0;
 }
+
+#event-icon{
+    padding-right: 0;
+}

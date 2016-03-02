@@ -7,8 +7,14 @@
     <!-- List of all the events -->
 	<div class="container">
 		<div class="section no-pad-bot" id="index-banner">
-			<a class="btn red darken-3 right" style="margin-top:15px" href="{{ url('/past') }}">Past Events</a>
-			<h4 class="light red-text">Browse Events</h4>
+			<div class="row valign-wrapper" style="margin-bottom: 0em; margin-top: 0em">
+				<div class="col s6" style="padding-top: 1em">
+					<h4 class="light red-text" style="line-height:50%">Browse Events</h4>
+				</div>
+				<div class="col s6" style="padding-top: 1em">
+					<a class="btn red darken-3 right" style="margin-bottom: 0.2em" href="{{ url('/past') }}">Past Events</a>
+				</div>
+			</div>
 			<div class="divider"></div>
 			<br>
 			@foreach ($events as $event)
@@ -24,15 +30,16 @@
 					
 					<!-- Event Description -->
 					<div class="left-align col m6 s5 offset-s1">
-						<h5>{{ $event->name }}</h5></a>
-						<p>{{ $event->information }}</p>
+						<br>
+						<h5 class="light red-text text-darken-3">{{ $event->name }}</h5></a>
+						<p >{{ $event->information }}</p>
 					</div>
 					
 					<!-- Event Details -->
 					<div class="col m3 s5 offset-s1" id="test" style="margin-bottom:20px;padding-right:0px">
-						<p class="condensed light left-align valign-wrapper"><i class="material-icons">today</i>{{ $event->date }}</p>
-						<p class="condensed light left-align valign-wrapper"><i class="material-icons">location_on</i>{{ $event->venue }}, {{ $event->city }}</p>
-						<p class="condensed light left-align valign-wrapper"><i class="material-icons">payment</i>&euro;{{ $event->price }}</p>
+						<p class="light valign-wrapper"><i class="red-text text-darken-3 material-icons">today</i>{{ $event->date }}</p>
+						<p class="light valign-wrapper"><i class="red-text text-darken-3 material-icons">location_on</i>{{ $event->venue }}, {{ $event->city }}</p>
+						<p class="light valign-wrapper"><i class="red-text text-darken-3 material-icons">payment</i>&euro;{{ $event->price }}</p>
 						@if(Auth::check())
 							<a class="btn red darken-3 lighten-1" href="{{ url('/events/details') }}/{{ $event->id }}">View Event</a>
 						@else

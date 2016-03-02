@@ -2776,7 +2776,7 @@ video.responsive-video {
 
 .breadcrumb:before {
   content: '\E5CC';
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(198, 40, 40, 0.7);
   vertical-align: top;
   display: inline-block;
   font-family: 'Material Icons';
@@ -2791,7 +2791,7 @@ video.responsive-video {
   display: none;
 }
 
-.breadcrumb:last-child {
+.breadcrumb[href="#"]{
   color: #fff;
 }
 
