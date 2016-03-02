@@ -4,6 +4,13 @@
 
 @section('content')
 
+<style type="text/css">
+    input[type="checkbox"]:checked+label:before{
+     border-bottom: 2px solid #c62828;
+     border-right: 2px solid #c62828;
+}
+</style>
+
 <div class="container">
     <br><br>
     <h2 class="header center red-text">Please Register</h2>
@@ -55,8 +62,11 @@
                     <label>What city or town will you be travelling from?</label>
                     <input type="text" name="direction" value="{{ old('direction') }}">
                 </div>
-                 <div>
-            
+                <div>
+                    <input type="checkbox" name="TandC" id="TandC" />
+                    <label for="TandC">I agree to the <a href="{{ url('/disclaimer') }}">Terms and Conditions</a></label>
+                </div>
+                <br/>
                 <button type="submit" class="btn red darken-3 btn-primary">
                         Register<i class="material-icons right">send</i>
                 </button>

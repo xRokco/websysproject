@@ -50,6 +50,7 @@ class AuthController extends Controller
     {
         $messages = [
             'regex' => 'The address must start with a letter or number.',
+            'accepted' => 'You must agree to our Terms and Coditions',
         ];
 
         return Validator::make($data, [
@@ -58,6 +59,7 @@ class AuthController extends Controller
             'email' => 'required|email|max:30|unique:users',
             'password' => 'required|confirmed|min:6',
             'direction' => 'required|max:255|regex:/^[A-Za-z0-9][A-Za-z0-9]*/',
+            'TandC' => 'accepted',
         ], $messages);
     }
 
