@@ -219,17 +219,27 @@
 					<!-- The location details on how to get to the event -->
                     <div id="location" class="col s12">
                         <div class="row center">
+                        <div class="col s6">
                         <br><br>
                             <iframe width="700" style="max-width:90%" height="525" frameborder="0" style="border:0"
                                 src="https://www.google.com/maps/embed/v1/directions?origin={{ Auth::user()->direction }}&destination={{ $ev->venue }}, {{ $ev->city }}&key={{ env('MAPS_API') }}" allowfullscreen></iframe>
                         </div>
-                        <h5 class="center">Here's a few of hotels within a couple of kilometers of the venue</h5>
+                        <div class="col s6" style="padding-top: 3em">
+                            <h4 class="light red-text">Your Location:</h4>
+                            <h5>{{ Auth::user()->direction }}</h5>
+                            <h4 class="light red-text" style="padding-top: 1em">Event Location:</h4>
+                            <h5>{{ $ev->venue}}, {{ $ev->city }}</h5>
+                        </div>
+                        </div>
+                        <div class="divider"></div>
+                        <h4 class="red-text light" style="padding-top: 1em">Hotels</h4>
+                        <h5 class="light" style="padding-bottom: 1em">Here's a few of hotels within a couple of kilometers of the venue</h5>
                         <table class="highlight">
-                            <thead>
-                                <th data-field="id">Hotel</th>
-                                <th data-field="address">Address</th>
-                                <th data-field="phone">Phone Number</th>
-                                <th data-field="rating">Rating</th>
+                            <thead class="red darken-2">
+                                <th data-field="id" class="white-text">Hotel</th>
+                                <th data-field="address" class="white-text">Address</th>
+                                <th data-field="phone" class="white-text">Phone Number</th>
+                                <th data-field="rating" class="white-text">Rating</th>
                             </thead>
                             <tbody id="hotels">
                                 <div class="progress red">
