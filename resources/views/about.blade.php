@@ -114,7 +114,7 @@
 					<div class="col s9">
 						<div class="card-content">
 							<span class="card-title activator grey-text text-darken-4">Kieran O'Driscoll<i class="material-icons right">expand_more</i></span>
-							<p>?</p>
+							<p>Documenter & Tester</p>
 							<p>3rd year Computer Science in UCC </p>
 							<p><a href="#">kieranodriscoll9@gmail.com</a></p>
 						</div>
@@ -126,7 +126,7 @@
 			<span class="card-title grey-text text-darken-4">More info<i class="material-icons right">expand_less</i></span>
 			<p>Kieran O'Driscoll was born at a very young age.</p>
 			<p>Clean the Bins at Trump HQ</p>
-			<p>Voting for Ben Carson or Bernie Sanders</p>
+			<p>Believes man and fish can coexist peacefully</p>
 		</div>
 	</div>
 
@@ -143,7 +143,7 @@
 						<div class="col s9">
 							<div class="card-content">
 								<span class="card-title activator grey-text text-darken-4">Peter Fitzgerald<i class="material-icons right">expand_more</i></span>
-								<p>Back end developer</p>
+								<p>Back End Developer</p>
 								<p>3rd year Computer Science in UCC </p>
 								<p><a href="#">petermfitz94@gmail.com</a></p>
 							</div>
@@ -155,8 +155,8 @@
 			<span class="card-title grey-text text-darken-4">More info<i class="material-icons right">expand_less</i></span>
 			<p>Back end developer.</p>
 			<p>Junior Vice President</p>
-			<p>Mobile commercial goods container reallocation technician.</p>
-			<p>Teleprocessing Services Analyst B</p>
+			<p>Chief Database Architect.</p>
+			
 		</div>
 	</div>
 </div>
