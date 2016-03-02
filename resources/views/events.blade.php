@@ -18,7 +18,7 @@
 						@if(Auth::check())
 							<a href="{{ url('/events/details') }}/{{ $event->id }}"><img class="responsive-img circle" src="{{ url('/img/event_images') }}/{{ $event->image }}" style="height:150px;width:150px;background-size:cover;" /></a>
 						@else
-							<a href="{{ url('/login') }}"><img class="responsive-img circle" src="{{ url('/img/event_images') }}/{{ $event->image }}" style="height:150px;width:150px;background-size:cover;" /></a>
+							<a href="{{ url('/events/details') }}/{{ $event->id }}"><img class="responsive-img circle" src="{{ url('/img/event_images') }}/{{ $event->image }}" style="height:150px;width:150px;background-size:cover;" /></a>
 						@endif
 					</div>
 					
@@ -36,8 +36,8 @@
 						@if(Auth::check())
 							<a class="btn red darken-3 lighten-1" href="{{ url('/events/details') }}/{{ $event->id }}">View Event</a>
 						@else
-                            <a class="hide-on-med-and-down btn red darken-3 lighten-1" href="{{ url('/login') }}">Login to view</a>
-                            <a class="hide-on-large-only btn red darken-3 lighten-1" href="{{ url('/login') }}">Login</a>
+                            <a class="hide-on-med-and-down btn red darken-3 lighten-1" href="{{ url('/events/details') }}/{{ $event->id }}">Login to view</a>
+                            <a class="hide-on-large-only btn red darken-3 lighten-1" href="{{ url('/events/details') }}/{{ $event->id }}">Login</a>
 						@endif
 					</div>
 				</div>
