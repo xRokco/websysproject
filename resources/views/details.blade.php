@@ -189,8 +189,9 @@
                 <div class="row">
                     <div class="col s12">
                       <ul class="tabs">
-                        <li class="tab col s6"><a class="red-text" href="#description">Description</a></li>
-                        <li class="tab col s6"><a id="locationbutton" class="red-text" href="#location">Directions</a></li>
+                        <li class="tab col s4"><a class="red-text" href="#description">Description</a></li>
+                        <li class="tab col s4"><a id="locationbutton" class="red-text" href="#location">Directions</a></li>
+                        <li class="tab col s4"><a class="red-text" href="#comments">Comments</a></li>
                         <div class="indicator red" style="z-index:1"> </div>
                       </ul>
                     </div>
@@ -222,6 +223,51 @@
                                 </div>
                             </tbody>
                         </table>
+                    </div>
+                    <div id="comments" class="col s12">
+                        <div class="row grey lighten-4" style="margin-bottom: 0.5em; padding-top: 1em">
+                            <div class="input-field col s12">
+                                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                <label for="textarea1">Write a Comment</label>
+                                <a class="btn red darken-3 right" style="margin-bottom: 1em" href="{{ url('#') }}">Post</a>
+                            </div>
+                        </div>
+                        <div class="row grey lighten-4" style="margin-bottom: 0.5em;">
+                            <div class="input-field col s3" style="border-right: 5px solid white; margin-top: 0">
+                                <h5 class="light red-text text-darken-3">Persons name</h5>
+                                <ul>
+                                <li>Posted at - 17:47</li>
+                                <li>On - 05/03/16 </li>
+                                </ul>
+                            </div>
+                            <div class="input-field col s9">
+                                <p class="valign-wrapper">I think Trump is a big silly head whats he done nothing wheres his wall no where yeah good stuff trump real funny</p>
+                            </div>
+                        </div>
+                        <div class="row grey lighten-4" style="margin-bottom: 0.5em;">
+                            <div class="input-field col s3" style="border-right: 5px solid white; margin-top: 0">
+                                <h5 class="light red-text text-darken-3">Persons name</h5>
+                                <ul>
+                                <li>Posted at - 17:47</li>
+                                <li>On - 05/03/16 </li>
+                                </ul>
+                            </div>
+                            <div class="input-field col s9">
+                                <p class="valign-wrapper">I think Trump is a big silly head whats he done nothing wheres his wall no where yeah good stuff trump real funny</p>
+                            </div>
+                        </div>
+                        <div class="row grey lighten-4" style="margin-bottom: 0.5em;">
+                            <div class="input-field col s3" style="border-right: 5px solid white; margin-top: 0">
+                                <h5 class="light red-text text-darken-3">Persons name</h5>
+                                <ul>
+                                <li>Posted at - 17:47</li>
+                                <li>On - 05/03/16 </li>
+                                </ul>
+                            </div>
+                            <div class="input-field col s9">
+                                <p class="valign-wrapper">I think Trump is a big silly head whats he done nothing wheres his wall no where yeah good stuff trump real funny</p>
+                            </div>
+                        </div>
                     </div>
                 </div> 
             </div>
