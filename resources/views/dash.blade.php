@@ -153,8 +153,13 @@
 				                </div>
 				            @endforeach
 				        @else
-				        	<h4 class="center red-text">You aren't attending any events yet. Checkout our <a class="red-text text-lighten-3" href="{{ url('/events') }}" >events</a> page.</h4>
+				        	<div class="col s3 m3">
+				        		<br>
+				        		<i class="medium material-icons right red-text">info_outline</i></div>
+				        	<div class="col s9 m9">
+				        	<h4 class="red-text light">You aren't attending any events yet. Checkout our <a class="blue-text text-darken-3" href="{{ url('/events') }}" >events</a> page.</h4>
 				        	<br>
+				        	</div>
 				        	<div class="divider"></div>
 				        @endif
 
@@ -188,33 +193,38 @@
                 
 		<!-- Table of user details -->
 		<div id="location" class="col s12">
+			<div class="row">
+				<br>
+			</div>
 			<div class="row center">
 			   <div class="col s12 m6">
-					<table style="border-bottom:1px solid lightgrey">
+			   		<span class="blue" style="width:100%">
+			   		<br>
+			   		<h5 class="left red-text text-darken-1">Your details</h5></span>
+					<table style="border-bottom:1px solid lightgrey; border-top:1px solid lightgrey;">
 						<tr>
-							<th data-field="id" class="red-text">Name</th>
+							<th data-field="id" class="red-text light text-darken-1">Name</th>
 							<td>{{ Auth::user()->name }} {{ Auth::user()->surname }}</td>
 						</tr>
 						<tr>
-							<th data-field="name" class="red-text">E-mail Address</th>
+							<th data-field="name" class="red-text light text-darken-1">E-mail Address</th>
 							<td>{{ Auth::user()->email }}</td>
 						</tr>
 						<tr>
-							<th data-field="price" class="red-text">Travelling Address</th>
+							<th data-field="price" class="red-text light text-darken-1">Travelling Address</th>
 							<td>{{ Auth::user()->direction }}</td>
 						</tr>
 						@if($admin)
 							<tr>
-								<th data-field="price" class="red-text">Is Admin</th>
+								<th data-field="price" class="red-text light text-darken-1">Is Admin</th>
 								<td>Yes</td>
 							</tr>
 						@endif
 					</table>
-			  
-					<p class="left">Edit your user details <a href="{{ url('/account') }}" >here</a></p>
+					<a style="padding-top: 0.5em;" class="light grey-text valign-wrapper" href="{{ url('/account') }}"><i class="material-icons" style="padding-right: 0.3em">settings</i>Edit your details </a>
 				</div>
 				<div class="center col s12 m6 right">
-					<br><br>
+					<br>
 					<div id="map_wrapper">
 						<div id="map_canvas" class="mapping"></div>
 					</div> 
