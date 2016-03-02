@@ -10,6 +10,7 @@ use App\Message;
 use App\Rsvp;
 use App\Admin;
 use App\Video;
+use App\Comment;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
@@ -313,4 +314,19 @@ class UserController extends Controller
         //redirects to the dash page.
         return redirect('/dash');
     }
+
+    public function storeComment(Request $req)
+    {
+        
+       $userid = Auth::id();
+        $comment = $req->input('comment');
+        $eventid = $req->input('ev');
+         $date = Carbon::now();
+       Comment::insert(['userid' => $userid, 'eventid' => $eventid, 'comment' => $comment, 'created_at' => $date]);
+       return redirect('/past/pastDetails/'.$eventid.'#comments');
+    
+    }
+
 }
+
+ 

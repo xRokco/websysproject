@@ -84,8 +84,25 @@
                     @endforeach
                 </div>
                 <div id="comments" class="col s12">
+                <meta name="_token" content=""/>
+<!-- Ajax Setup to bottom of HTML file, because jQuery wasn't loaded yet
+remove the 'url' option, because you have already the 'action' variant -->
+{!! Form::open(array('method'=>'POST', 'id'=>'myform', 'action' => 'UserController@storeComment')) !!}
+<div class="form-group">
+    {!! Form::label('comment',' ') !!}
+    {{ Form::hidden('ev', $ev->id) }}
+    {!! Form::textarea('comment',null,['placeholder'=>'Add a comment...','class' => 'form-control showbutton',
+    'rows'=>'1']) !!}
+</div>
+<div class="form-group buttoncomment">
+    {!! Form::submit('Comment',['class'=>'send btn btn-danger']) !!}
+</div>
+{!! Form::close() !!}
+
+
                 @foreach ($comments as $comment)
                         <div class="row center">
+
                             <br/>
                             <table class="col m3 s7 offset-m1 offset-s4">
                                 <tr><td>{{ $comment->id }}</td></tr>
