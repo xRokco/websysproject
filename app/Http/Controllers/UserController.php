@@ -78,20 +78,21 @@ class UserController extends Controller
     {
         //Returns the past event details for event with id $id
        $ev = Event::where('id', $id)->onlyTrashed()->firstorfail();
-
+//Checks if the current event has any entries in the video table
         $videos = DB::table('videos')
             ->join('events', 'events.id', '=', 'videos.eventid')
             ->join('users', 'users.id', '=', 'videos.userid')
             ->select('videos.link','videos.title', 'users.*')
             ->where('events.id', '=', $id)
             ->get();
-
+//Checks if the current user is an admin
         $admin = DB::table('admins')
             ->join('users', 'users.id', '=', 'admins.userid')
             ->select('admins.*')
             ->where(['userid' => Auth::user()->id])
             ->distinct()
             ->get();
+    //Checks if the current event has any entries in the comments table 
         $comments = DB::table('comments')
             ->join('events', 'events.id', '=', 'comments.eventid')
             ->join('users', 'users.id', '=', 'comments.userid')
@@ -99,7 +100,7 @@ class UserController extends Controller
             ->where('events.id', '=', $id)
             ->orderBy('created_at', 'desc')
             ->get();
-
+        //Checks if the current user has an entry in the rsvp table for the past event
         $rsvp = DB::table('rsvp')->where('eventid', $id)->where('userid', Auth::user()->id)->get();
        //checks how many entries in the rsvp table there are for the given event, counts them
         $count = Rsvp::where('eventid', $id)->count();
@@ -116,7 +117,9 @@ class UserController extends Controller
         //returns create view.
         $rsvp = DB::table('rsvp')->where('eventid', $ev)->where('userid', Auth::user()->id)->get();
         $admin = Admin::where('userid', Auth::user()->id)->get();
-
+        // Checks if the user is either an admin and/or attended the past event
+        //If true then the user can post videos
+        //Else redirect them
         if($rsvp || $admin){
             if(Event::where('id', $ev)->onlyTrashed()->firstorfail()){
                 return view('addVideo',['ev' => $ev]); 
@@ -196,7 +199,7 @@ class UserController extends Controller
             ->whereNull('events.deleted_at')
             ->distinct()
             ->get();
-
+        //Returns all events that the user previously attended
         $pastrsvp = DB::table('events')
             ->join('rsvp', 'events.id', '=', 'rsvp.eventid')
             ->join('users', 'users.id', '=', 'rsvp.userid')
@@ -205,7 +208,7 @@ class UserController extends Controller
             ->whereNotNull('events.deleted_at')
             ->distinct()
             ->get();
-
+        //Checks if the user is an admin
         $admin = \DB::table('admins')
             ->join('users', 'users.id', '=', 'admins.userid')
             ->select('admins.*')
@@ -227,22 +230,23 @@ class UserController extends Controller
     public function attendEvent(Request $req) 
     {
        
-
+        //requests the event id passed in form
         $evid = $req->input('evid');
+        //Counts the users attending the event
         $count = Rsvp::where('eventid', $evid)->count();
+        //Gets the details of the event
         $ev = Event::where('id', $evid)->first();
+        //Checks the count isn't >= capacity
         if($count < $ev->capacity)
         {
             do {
                 $code = str_random(10);
             } while (Rsvp::where("code", $code)->where('eventid', $evid)->first() instanceof Rsvp);
-            
+            // Inserts the user into the RSVP table for the current event
             Rsvp::insert(['userid' => Auth::user()->id, 'eventid' => $evid, 'code' => $code]);
-
+            //Charges the user via Stripe for the current event
             \Stripe\Stripe::setApiKey(env('STRIPE_PRI'));
-            
             $token = $req->input('stripeToken');
-
             $charge = \Stripe\Charge::create(array('source' => $token, 'amount' => $ev->price.'00', 'currency' => 'eur', 'description' => Auth::user()->email ));
         } else {
             echo "Event full";
@@ -317,7 +321,7 @@ class UserController extends Controller
 
     public function storeComment(Request $req)
     {
-        
+        //Adds the details to the comment table and redirects
        $userid = Auth::id();
         $comment = $req->input('comment');
         $eventid = $req->input('ev');
