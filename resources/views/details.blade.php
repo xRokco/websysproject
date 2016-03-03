@@ -63,6 +63,9 @@
         .breadcrumb::before{
             margin-top:-5px !important;
         }
+        .indicator{
+            width:33% !important;
+        }
     </style>
     <script src="{{ url('/sweetalert/dist/sweetalert.min.js') }}"></script>
     <link rel="stylesheet" type="text/css" href="{{ url('/sweetalert/dist/sweetalert.css') }}">
