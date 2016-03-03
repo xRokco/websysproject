@@ -90,17 +90,17 @@ class AdminController extends Controller
         'image' => 'image|required',
         ]);
 
-        $name = $request->input('name');
-        $venue = $request->input('venue');
-        $city = $request->input('city');
-        $price = $request->input('price');
-        $information = $request->input('information');
-        $description = $request->input('description');
-        $capacity = $request->input('capacity');
-        $date = $request->input('date');
+        $name = $input->input('name');
+        $venue = $input->input('venue');
+        $city = $input->input('city');
+        $price = $input->input('price');
+        $information = $input->input('information');
+        $description = $input->input('description');
+        $capacity = $input->input('capacity');
+        $date = $input->input('date');
         $start_time = $input->input('start_time');
         $end_time = $input->input('end_time');
-        $image = $request->input('image');
+        $image = $input->input('image');
 
         $start_date = $date . ' ' . $start_time;
         $end_date = $date . ' ' . $end_time;
