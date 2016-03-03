@@ -47,6 +47,14 @@
 							{!! Form::label('date', 'Date:') !!}
 							{!! Form::date('date', null, ['class' => 'datepicker']) !!}
 						</div>
+						<div class="row">
+							{!! Form::label('start_time', 'Start Time:') !!}
+							{!! Form::text('start_time', null) !!}
+						</div>
+						<div class="row">
+							{!! Form::label('end_time', 'End Time:') !!}
+							{!! Form::text('end_time', null) !!}
+						</div>
 						<div class="input-field row">
 							{!! Form::label('information', 'Information:') !!}
 							{!! Form::textarea('information', NULL, ['class' => 'materialize-textarea']) !!}

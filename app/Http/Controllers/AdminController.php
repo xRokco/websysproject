@@ -97,7 +97,7 @@ class AdminController extends Controller
         $name = Event::latest()->first()->id . "." . Input::file('image')->getClientOriginalExtension(); //gets the event ID and concat on the imaage file extension that was uploaded 
         
         //moves and renames the image selected from a temp directory to the event_images folder as 
-        Input::file('image')->move(__DIR__.'/../../../public/img/event_images',$name); //moves the uploaded image from the tmp directory to a premanant one (/public/img/event_images) and renames it to <eventID>.<fileExt>
+        Input::file('image')->move(public_path().'/img/event_images',$name); //moves the uploaded image from the tmp directory to a premanant one (/public/img/event_images) and renames it to <eventID>.<fileExt>
         
         $image = Event::latest()->first();//returns the latest event added to the table (the one just added above)
         $image->image = $name; //adds the image name from above to the image column of the latest event

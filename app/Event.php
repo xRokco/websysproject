@@ -30,5 +30,6 @@ class Event extends Model{
     protected $dates = [
     	'deleted_at',
         'date',
+        'end_time',
     ];
 }

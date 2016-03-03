@@ -21,9 +21,9 @@ class CreateEventsTable extends Migration
             $table->string('information');
             $table->text('description');
             $table->integer('capacity');
-            $table->date('date');
-            $table->time('start_time');
-            $table->time('end_time');
+            $table->datetime('date');
+            //$table->time('start_time');
+            $table->datetime('end_time');
             $table->string('image');
             $table->softDeletes();
 
