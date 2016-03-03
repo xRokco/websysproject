@@ -40,6 +40,9 @@
 				    border-bottom: 1px solid #c62828 !important;
 				    box-shadow: 0 1px 0 0 #c62828 !important;
 				}
+				.picker__weekday-display{
+					background-color: #c62828;
+				}
 			</style>
 
 			<!-- CSS  -->

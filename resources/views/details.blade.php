@@ -96,6 +96,7 @@
                 <!-- Event Details -->
                 <div class="col m3 right s6" style="padding-top: 2em">
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">today</i>{{ $ev->date->toFormattedDateString() }}</p>
+                    <p class="condensed light left-align valign-wrapper"><i class="material-icons">query_builder</i>{{ $ev->date->toTimeString() }} to {{ $ev->end_time->toTimeString() }}</p>                    
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">location_on</i>{{ $ev->venue}}, {{ $ev->city }}</p>
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">payment</i>&euro;{{ $ev->price }}</p>
                     <!-- Check if clicked attend already -->
@@ -105,8 +106,8 @@
                             <div>
                                 <div title="Add to Calendar" class="btn red darken-3 addeventatc" style="padding-top:11px;">
                                     <span class="white-text" style="font-weight:normal" >Add to Calendar</span>
-                                    <span class="start">{{ $ev->date }} {{ $ev->start_time }}</span>
-                                    <span class="end">{{ $ev->date }} {{ $ev->end_time }}</span>
+                                    <span class="start">{{ $ev->date }}</span>
+                                    <span class="end">{{ $ev->end_time }}</span>
                                     <span class="title">{{ $ev->name }}</span>
                                     <span class="description">{{ $ev->information }}</span>
                                     <span class="location">{{ $ev->venue}}, {{ $ev->city }}</span>
