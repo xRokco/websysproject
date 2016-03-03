@@ -30,7 +30,7 @@ class GuestController extends Controller
 
         //Returns the events view along with the $events array containing the query results from above
         return view('events', ['events' => $events]);
-}
+    }
 
 public function pastEvents()
     {

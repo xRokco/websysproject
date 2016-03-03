@@ -49,13 +49,15 @@ class UserController extends Controller
                 ->where(['userid' => Auth::user()->id, 'eventid' => $id])
                 ->distinct()
                 ->get();
-                $comments = DB::table('comments')
-            ->join('events', 'events.id', '=', 'comments.eventid')
+        
+        $comments = Comment::join('events', 'events.id', '=', 'comments.eventid')
             ->join('users', 'users.id', '=', 'comments.userid')
             ->select('comments.*', 'users.name')
             ->where('events.id', '=', $id)
             ->orderBy('created_at', 'desc')
             ->get();
+
+        //dd($comments[0]->created_at);
 
         //sets default value of full
         $full = FALSE;
@@ -198,23 +200,24 @@ class UserController extends Controller
     public function showUserEvents()
     {
         //Returns all events that the user is attending
-        $rsvp = DB::table('events')
-            ->join('rsvp', 'events.id', '=', 'rsvp.eventid')
+        $rsvp = Event::join('rsvp', 'events.id', '=', 'rsvp.eventid')
             ->join('users', 'users.id', '=', 'rsvp.userid')
             ->select('events.*')
             ->where('rsvp.userid', '=', Auth::user()->id)
             ->whereNull('events.deleted_at')
             ->distinct()
             ->get();
+
         //Returns all events that the user previously attended
-        $pastrsvp = DB::table('events')
-            ->join('rsvp', 'events.id', '=', 'rsvp.eventid')
+        $pastrsvp = Event::join('rsvp', 'events.id', '=', 'rsvp.eventid')
             ->join('users', 'users.id', '=', 'rsvp.userid')
             ->select('events.*')
             ->where('rsvp.userid', '=', Auth::user()->id)
             ->whereNotNull('events.deleted_at')
+            ->onlyTrashed()
             ->distinct()
             ->get();
+
         //Checks if the user is an admin
         $admin = \DB::table('admins')
             ->join('users', 'users.id', '=', 'admins.userid')
@@ -329,21 +332,18 @@ class UserController extends Controller
     public function storeComment(Request $req)
     {
         //Adds the details to the comment table and redirects
-       $userid = Auth::id();
+        $userid = Auth::id();
         $comment = $req->input('comment');
         $eventid = $req->input('ev');
-         $date = Carbon::now();
-       Comment::insert(['userid' => $userid, 'eventid' => $eventid, 'comment' => $comment, 'created_at' => $date]);
+        $date = Carbon::now();
+        Comment::insert(['userid' => $userid, 'eventid' => $eventid, 'comment' => $comment, 'created_at' => $date]);
         
-        if(Event::where('id', $eventid)->onlyTrashed()->firstorfail()){
+        if(Event::where('id', $eventid)->onlyTrashed()->first()){
             return redirect('/past/pastDetails/'.$eventid.'#comments');
         }else{
-            echo "this works";
+            return redirect ('/events/details/'.$eventid.'#comments');
         }
-       
-    
     }
-
 }
 
  

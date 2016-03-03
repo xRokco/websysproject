@@ -95,9 +95,9 @@
 
                 <!-- Event Details -->
                 <div class="col m3 right s6" style="padding-top: 2em">
-                    <p class="condensed light left-align valign-wrapper"><i class="material-icons red-text text-darken-3">today</i>{{ $ev->date }}</p>
-                    <p class="condensed light left-align valign-wrapper"><i class="material-icons red-text text-darken-3">location_on</i>{{ $ev->venue}}, {{ $ev->city }}</p>
-                    <p class="condensed light left-align valign-wrapper"><i class="material-icons red-text text-darken-3">payment</i>&euro;{{ $ev->price }}</p>
+                    <p class="condensed light left-align valign-wrapper"><i class="material-icons">today</i>{{ $ev->date->toFormattedDateString() }}</p>
+                    <p class="condensed light left-align valign-wrapper"><i class="material-icons">location_on</i>{{ $ev->venue}}, {{ $ev->city }}</p>
+                    <p class="condensed light left-align valign-wrapper"><i class="material-icons">payment</i>&euro;{{ $ev->price }}</p>
                     <!-- Check if clicked attend already -->
                     @if($rsvp)
                         <!-- Add to Calendar API -->
@@ -254,38 +254,37 @@
                     </div>
                     <div id="comments" class="col s12">
                         
-                           
-                        <meta name="_token" content=""/>
-<!-- Ajax Setup to bottom of HTML file, because jQuery wasn't loaded yet
-remove the 'url' option, because you have already the 'action' variant -->
-{!! Form::open(array('method'=>'POST', 'id'=>'myform', 'action' => 'UserController@storeComment')) !!}
-<div class="row grey lighten-4" style="margin-bottom: 0.5em; padding-top: 1em">
+                        <br/>
+                        <!-- Ajax Setup to bottom of HTML file, because jQuery wasn't loaded yet
+                        remove the 'url' option, because you have already the 'action' variant -->
+                        {!! Form::open(array('method'=>'POST', 'id'=>'myform', 'action' => 'UserController@storeComment')) !!}
+                        <div class="row grey lighten-4" style="margin-bottom: 0.5em; padding-top: 1em">
                             <div class="input-field col s12">
-    {!! Form::label('comment',' ') !!}
-    {{ Form::hidden('ev', $ev->id) }}
-    {!! Form::textarea('comment',null,['placeholder'=>'Add a comment...','class' => 'form-control showbutton',
-    'rows'=>'1']) !!}
-</div>
+                                {!! Form::label('comment',' ') !!}
+                                {{ Form::hidden('ev', $ev->id) }}
+                                {!! Form::textarea('comment',null,['placeholder'=>'Add a comment...','class' => 'form-control showbutton','rows'=>'1']) !!}
+                            </div>
 
-    {!! Form::submit('Comment',['class'=>'btn red darken-3 right', 'style'=>'margin-bottom: 1em']) !!}
-</div>
-{!! Form::close() !!}
-                        @foreach ($comments as $comment)
-                        <div class="row grey lighten-4" style="margin-bottom: 0.5em;">
-                            <div class="input-field col s3" style="border-right: 5px solid white; margin-top: 0">
-                                <h5 class="light red-text text-darken-3">{{ $comment->name }}</h5>
-                                <ul>
-                                <li>Posted on {{ $comment->created_at }}</li>
-                                <li>On - 05/03/16 </li>
-                                </ul>
-                            </div>
-                            <div class="input-field col s9">
-                                <p class="valign-wrapper">{{ $comment->comment }}</p>
-                            </div>
+                            {!! Form::submit('Comment',['class'=>'btn red darken-3 right', 'style'=>'margin-bottom: 1em']) !!}
+                        
                         </div>
-                        @endforeach
+                        {!! Form::close() !!}
+                            @foreach ($comments as $comment)
+                            <div class="row grey lighten-4" style="margin-bottom: 0.5em;">
+                                <div class="input-field col s3" style="border-right: 5px solid white; margin-top: 0">
+                                    <h5 class="light red-text text-darken-3">{{ $comment->name }}</h5>
+                                    <ul>
+                                    <li>Posted on {{ $comment->created_at->toFormattedDateString() }}</li>
+                                    <li>at {{ $comment->created_at->toTimeString() }}</li>
+                                    </ul>
+                                </div>
+                                <div class="input-field col s9">
+                                    <p class="valign-wrapper">{{ $comment->comment }}</p>
+                                </div>
+                            </div>
+                            @endforeach
                     </div>
-                </div> 
+                    </div> 
                 </div>
             </div>
         </div>
