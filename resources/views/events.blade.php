@@ -8,10 +8,10 @@
 	<div class="container">
 		<div class="section no-pad-bot" id="index-banner">
 			<div class="row valign-wrapper" style="margin-bottom: 0em; margin-top: 0em">
-				<div class="col s6" style="padding-top: 1em">
+				<div class="col s7" style="padding-top: 1em">
 					<h4 class="light red-text" style="line-height:50%">Browse Events</h4>
 				</div>
-				<div class="col s6" style="padding-top: 1em">
+				<div class="col s5" style="padding-top: 1em">
 					<a class="btn red darken-3 right" style="margin-bottom: 0.2em" href="{{ url('/past') }}">Past Events</a>
 				</div>
 			</div>
