@@ -253,49 +253,37 @@
                         </table>
                     </div>
                     <div id="comments" class="col s12">
-                        <div class="row grey lighten-4" style="margin-bottom: 0.5em; padding-top: 1em">
+                        
+                           
+                        <meta name="_token" content=""/>
+<!-- Ajax Setup to bottom of HTML file, because jQuery wasn't loaded yet
+remove the 'url' option, because you have already the 'action' variant -->
+{!! Form::open(array('method'=>'POST', 'id'=>'myform', 'action' => 'UserController@storeComment')) !!}
+<div class="row grey lighten-4" style="margin-bottom: 0.5em; padding-top: 1em">
                             <div class="input-field col s12">
-                                <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                <label for="textarea1">Write a Comment</label>
-                                <a class="btn red darken-3 right" style="margin-bottom: 1em" href="{{ url('#') }}">Post</a>
-                            </div>
-                        </div>
+    {!! Form::label('comment',' ') !!}
+    {{ Form::hidden('ev', $ev->id) }}
+    {!! Form::textarea('comment',null,['placeholder'=>'Add a comment...','class' => 'form-control showbutton',
+    'rows'=>'1']) !!}
+</div>
+
+    {!! Form::submit('Comment',['class'=>'btn red darken-3 right', 'style'=>'margin-bottom: 1em']) !!}
+</div>
+{!! Form::close() !!}
+                        @foreach ($comments as $comment)
                         <div class="row grey lighten-4" style="margin-bottom: 0.5em;">
                             <div class="input-field col s3" style="border-right: 5px solid white; margin-top: 0">
-                                <h5 class="light red-text text-darken-3">Persons name</h5>
+                                <h5 class="light red-text text-darken-3">{{ $comment->name }}</h5>
                                 <ul>
-                                <li>Posted at - 17:47</li>
+                                <li>Posted on {{ $comment->created_at }}</li>
                                 <li>On - 05/03/16 </li>
                                 </ul>
                             </div>
                             <div class="input-field col s9">
-                                <p class="valign-wrapper">I think Trump is a big silly head whats he done nothing wheres his wall no where yeah good stuff trump real funny</p>
+                                <p class="valign-wrapper">{{ $comment->comment }}</p>
                             </div>
                         </div>
-                        <div class="row grey lighten-4" style="margin-bottom: 0.5em;">
-                            <div class="input-field col s3" style="border-right: 5px solid white; margin-top: 0">
-                                <h5 class="light red-text text-darken-3">Persons name</h5>
-                                <ul>
-                                <li>Posted at - 17:47</li>
-                                <li>On - 05/03/16 </li>
-                                </ul>
-                            </div>
-                            <div class="input-field col s9">
-                                <p class="valign-wrapper">I think Trump is a big silly head whats he done nothing wheres his wall no where yeah good stuff trump real funny</p>
-                            </div>
-                        </div>
-                        <div class="row grey lighten-4" style="margin-bottom: 0.5em;">
-                            <div class="input-field col s3" style="border-right: 5px solid white; margin-top: 0">
-                                <h5 class="light red-text text-darken-3">Persons name</h5>
-                                <ul>
-                                <li>Posted at - 17:47</li>
-                                <li>On - 05/03/16 </li>
-                                </ul>
-                            </div>
-                            <div class="input-field col s9">
-                                <p class="valign-wrapper">I think Trump is a big silly head whats he done nothing wheres his wall no where yeah good stuff trump real funny</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div> 
                 </div>
