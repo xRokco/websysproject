@@ -124,7 +124,7 @@ Route::group(['middleware' => 'web'], function () {
     //This is called when the submit button on the edit user info page is clicked.
     Route::patch('/dash/{id}','UserController@updateUser');
 
-    Route::post('/past','UserController@storeComment');
+    Route::post('/events','UserController@storeComment');
 
     /*
     |----------------------------------------------------------------------

@@ -334,7 +334,13 @@ class UserController extends Controller
         $eventid = $req->input('ev');
          $date = Carbon::now();
        Comment::insert(['userid' => $userid, 'eventid' => $eventid, 'comment' => $comment, 'created_at' => $date]);
-       return redirect('/events/details/'.$eventid.'#comments');
+        
+        if(Event::where('id', $eventid)->onlyTrashed()->firstorfail()){
+            return redirect('/past/pastDetails/'.$eventid.'#comments');
+        }else{
+            echo "this works";
+        }
+       
     
     }
 

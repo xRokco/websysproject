@@ -83,36 +83,39 @@
                         <div class="divider"></div>
                     @endforeach
                 </div>
-                <div id="comments" class="col s12">
-                <meta name="_token" content=""/>
+            <div id="comments" class="col s12">
+                        
+                           
+                        <meta name="_token" content=""/>
 <!-- Ajax Setup to bottom of HTML file, because jQuery wasn't loaded yet
 remove the 'url' option, because you have already the 'action' variant -->
 {!! Form::open(array('method'=>'POST', 'id'=>'myform', 'action' => 'UserController@storeComment')) !!}
-<div class="form-group">
+<div class="row grey lighten-4" style="margin-bottom: 0.5em; padding-top: 1em">
+                            <div class="input-field col s12">
     {!! Form::label('comment',' ') !!}
     {{ Form::hidden('ev', $ev->id) }}
     {!! Form::textarea('comment',null,['placeholder'=>'Add a comment...','class' => 'form-control showbutton',
     'rows'=>'1']) !!}
 </div>
-<div class="form-group buttoncomment">
-    {!! Form::submit('Comment',['class'=>'send btn btn-danger']) !!}
+
+    {!! Form::submit('Comment',['class'=>'btn red darken-3 right', 'style'=>'margin-bottom: 1em']) !!}
 </div>
 {!! Form::close() !!}
-
-
-                @foreach ($comments as $comment)
-                        <div class="row center">
-
-                            <br/>
-                            <table class="col m3 s7 offset-m1 offset-s4">
-                                <tr><td>{{ $comment->id }}</td></tr>
-                                <tr><td>{{ $comment->comment }}</td></tr>
-                                 <tr><td>{{ $comment->created_at }}</td></tr>
-                                <tr><td>Submitted by user: {{ $comment->name }}</td></tr>
-                            </table>
-                            @endforeach
-                </div>
-            </div> 
+                        @foreach ($comments as $comment)
+                        <div class="row grey lighten-4" style="margin-bottom: 0.5em;">
+                            <div class="input-field col s3" style="border-right: 5px solid white; margin-top: 0">
+                                <h5 class="light red-text text-darken-3">{{ $comment->name }}</h5>
+                                <ul>
+                                <li>Posted on {{ $comment->created_at }}</li>
+                                <li>On - 05/03/16 </li>
+                                </ul>
+                            </div>
+                            <div class="input-field col s9">
+                                <p class="valign-wrapper">{{ $comment->comment }}</p>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
         </div>
     </div>
 @endsection
