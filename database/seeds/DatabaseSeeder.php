@@ -350,33 +350,33 @@ class CommentsTableSeeder extends Seeder {
   $comments = array(
       array(
         "id" => "1",
-       "userid" => "2",
-       "eventid" => "8",
-       "comment" => " Sample comment..... , eu sollicitudin est fermentum eu",
+       "userid" => "12",
+       "eventid" => "1",
+       "comment" => " David Duke here, Big Fan Mr.Trump, Love your work.",
        "created_at" => "2016-01-01 14:00:00",
        "deleted_at" => NULL
         ),
       array(
         "id" => "2",
        "userid" => "1",
-       "eventid" => "8",
-       "comment" => " Proin consequat massa nec tortor maximus, mentum eu. Curabitur . ortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
+       "eventid" => "1",
+       "comment" => " They took our Jobs! #MakeAmericaGreatAgain.",
        "created_at" => "2016-01-01 14:00:00",
        "deleted_at" => NULL
         ),
       array(
         "id" => "3",
        "userid" => "5",
-       "eventid" => "8",
-      "comment" => "Maecenas congue ligula velit, eu sollicitudin est  erat quis malesuada..",
+       "eventid" => "1",
+      "comment" => "I think Trump is a big silly head whats he done nothing wheres his wall no where yeah good stuff trump real funny",
        "created_at" => "2016-01-01 14:00:00",
        "deleted_at" => NULL
         ),
       array(
         "id" => "4",
        "userid" => "8",
-       "eventid" => "8",
-      "comment" => "Here's my long bug report. ",
+       "eventid" => "1",
+      "comment" => "Feel the bernnnnnnn. ",
        "created_at" => "2016-01-01 14:00:00",
        "deleted_at" => NULL
         )

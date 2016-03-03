@@ -49,6 +49,13 @@ class UserController extends Controller
                 ->where(['userid' => Auth::user()->id, 'eventid' => $id])
                 ->distinct()
                 ->get();
+                $comments = DB::table('comments')
+            ->join('events', 'events.id', '=', 'comments.eventid')
+            ->join('users', 'users.id', '=', 'comments.userid')
+            ->select('comments.*', 'users.name')
+            ->where('events.id', '=', $id)
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         //sets default value of full
         $full = FALSE;
@@ -70,7 +77,7 @@ class UserController extends Controller
 
         //returns event details page for the corresponding ID, with event details ($ev),
         //rsvp details ($rsvp), capacity details ($full) and stripe details ($stripe) passed in.
-        return view('details', ['ev' => $ev, 'rsvp' => $rsvp, 'full' => $full, 'stripe' => $stripe]);
+        return view('details', ['ev' => $ev, 'rsvp' => $rsvp, 'comments' => $comments, 'full' => $full, 'stripe' => $stripe]);
     }
 
 
@@ -327,7 +334,7 @@ class UserController extends Controller
         $eventid = $req->input('ev');
          $date = Carbon::now();
        Comment::insert(['userid' => $userid, 'eventid' => $eventid, 'comment' => $comment, 'created_at' => $date]);
-       return redirect('/past/pastDetails/'.$eventid.'#comments');
+       return redirect('/events/details/'.$eventid.'#comments');
     
     }
 
