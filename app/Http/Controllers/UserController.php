@@ -57,6 +57,7 @@ class UserController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
+        
         //dd($comments[0]->created_at);
 
         //sets default value of full

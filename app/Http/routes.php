@@ -124,7 +124,7 @@ Route::group(['middleware' => 'web'], function () {
     //This is called when the submit button on the edit user info page is clicked.
     Route::patch('/dash/{id}','UserController@updateUser');
 
-    Route::post('/events','UserController@storeComment');
+    Route::post('/past','UserController@storeComment');
 
     /*
     |----------------------------------------------------------------------
@@ -165,4 +165,7 @@ Route::group(['middleware' => 'web'], function () {
 
     //Route to demote an admin to a regular user.
     Route::get('/admin/demote/{id}', 'AdminController@demote');
+
+    //Route to delete a users comment.
+    Route::get('/events/delete/{id}', 'AdminController@deleteComment');
 });
