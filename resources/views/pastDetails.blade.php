@@ -7,6 +7,10 @@
         .indicator {
             width:32% !important;
         }
+
+        .breadcrumb::before{
+            margin-top:-5px !important;
+        }
     </style>
     <script type="text/javascript">
         function reload() {
