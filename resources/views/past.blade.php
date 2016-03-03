@@ -6,7 +6,11 @@
 
 <!-- Navigation ( navigation.html ) -->
 <!-- List of our past events -->
-    
+    <style type="text/css">
+        .breadcrumb::before{
+            margin-top:-5px !important;
+        }
+    </style>
     <div class="container">
         <div class="section no-pad-bot" id="index-banner">
             <div class="row valign-wrapper" style="margin-top: 1em; margin-bottom: 0">

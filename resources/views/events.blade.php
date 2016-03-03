@@ -4,6 +4,11 @@
 
 @section('content') 
 
+	<style type="text/css">
+		.breadcrumb::before{
+            margin-top:-5px !important;
+        }
+	</style>
     <!-- List of all the events -->
 	<div class="container">
 		<div class="section no-pad-bot" id="index-banner">
