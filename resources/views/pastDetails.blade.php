@@ -85,8 +85,7 @@
                 </div>
             <div id="comments" class="col s12">
                         
-                           
-                        <meta name="_token" content=""/>
+                <br/>        
 <!-- Ajax Setup to bottom of HTML file, because jQuery wasn't loaded yet
 remove the 'url' option, because you have already the 'action' variant -->
 {!! Form::open(array('method'=>'POST', 'id'=>'myform', 'action' => 'UserController@storeComment')) !!}
@@ -104,10 +103,10 @@ remove the 'url' option, because you have already the 'action' variant -->
                         @foreach ($comments as $comment)
                         <div class="row grey lighten-4" style="margin-bottom: 0.5em;">
                             <div class="input-field col s3" style="border-right: 5px solid white; margin-top: 0">
+                                <a href="{{ url('/events/delete/') }}/{{ $comment->id }}"><i style="margin-top:15px;" class="material-icons right">delete</i></a>
                                 <h5 class="light red-text text-darken-3">{{ $comment->name }}</h5>
                                 <ul>
                                 <li>Posted on {{ $comment->created_at }}</li>
-                                <li> <a class="btn red darken-3" style="margin-top:5px;margin-bottom:5px"  href="{{ url('/events/delete/') }}/{{ $comment->id }}">Delete Comment</a></li>
                                 </ul>
                             </div>
                             <div class="input-field col s9">

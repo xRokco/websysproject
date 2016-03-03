@@ -90,7 +90,7 @@
                 <!-- Event Description -->
                 <div class="left-align col m4 s6">
                     <h5 class="light red-text text-darken-3" style="padding-top: 1em; padding-left: 1em">Event Details</h5>
-                    <p class="flow-text" style="padding-left: 1em">{{ $ev->information }}</p>
+                    <p style="padding-left: 1em">{{ $ev->information }}</p>
                 </div>
 
                 <!-- Event Details -->
@@ -273,11 +273,11 @@
                             @foreach ($comments as $comment)
                             <div class="row grey lighten-4" style="margin-bottom: 0.5em;">
                                 <div class="input-field col s3" style="border-right: 5px solid white; margin-top: 0">
+                                    <a href="{{ url('/events/delete/') }}/{{ $comment->id }}"><i style="margin-top:15px;" class="material-icons right">delete</i></a>
                                     <h5 class="light red-text text-darken-3">{{ $comment->name }}</h5>
                                     <ul>
-                                    <li>Posted on {{ $comment->created_at->toFormattedDateString() }}</li>
-                                    <li>at {{ $comment->created_at->toTimeString() }}</li>
-                                    <li> <a class="btn red darken-3" style="margin-top:5px;margin-bottom:5px"  href="{{ url('/events/delete/') }}/{{ $comment->id }}">Delete Comment</a></li>
+                                        <li>Posted on {{ $comment->created_at->toFormattedDateString() }}</li>
+                                        <li>at {{ $comment->created_at->toTimeString() }}</li>
                                     </ul>
                                 </div>
                                 <div class="input-field col s9">
