@@ -59,6 +59,10 @@
             75% { margin-top: 0; transform: rotateX(-30deg); } 
             100% { margin-top: 0; transform: rotateX(0deg);} 
         }
+
+        .breadcrumb::before{
+            margin-top:-5px !important;
+        }
     </style>
     <script src="{{ url('/sweetalert/dist/sweetalert.min.js') }}"></script>
     <link rel="stylesheet" type="text/css" href="{{ url('/sweetalert/dist/sweetalert.css') }}">
@@ -79,18 +83,18 @@
 
             <div class="row" id="event">
                 <!-- Event Image -->
-                <div class="col center m3" style="margin-bottom:5px; margin-top: 1em; margin-left: 1em;">
-                    <img style="max-width:300px" class="responsive-img circle" src="{{ url('/img/event_images') }}/{{ $ev->image }}" />
+                <div class="col center m4 s12" style="margin-bottom:5px; margin-top: 1em; margin-left: 1em;">
+                    <img class="responsive-img circle" src="{{ url('/img/event_images') }}/{{ $ev->image }}" />
                 </div>
                 
                 <!-- Event Description -->
-                <div class="left-align col m4">
+                <div class="left-align col m4 s6">
                     <h5 class="light red-text text-darken-3" style="padding-top: 1em; padding-left: 1em">Event Details</h5>
                     <p class="flow-text" style="padding-left: 1em">{{ $ev->information }}</p>
                 </div>
 
                 <!-- Event Details -->
-                <div class="col m3 right" style="padding-top: 2em">
+                <div class="col m3 right s6" style="padding-top: 2em">
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons red-text text-darken-3">today</i>{{ $ev->date }}</p>
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons red-text text-darken-3">location_on</i>{{ $ev->venue}}, {{ $ev->city }}</p>
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons red-text text-darken-3">payment</i>&euro;{{ $ev->price }}</p>
@@ -219,16 +223,16 @@
 					<!-- The location details on how to get to the event -->
                     <div id="location" class="col s12">
                         <div class="row center">
-                        <div class="col s6">
+                        <div class="col m8 s12">
                         <br><br>
                             <iframe width="700" style="max-width:90%" height="525" frameborder="0" style="border:0"
                                 src="https://www.google.com/maps/embed/v1/directions?origin={{ Auth::user()->direction }}&destination={{ $ev->venue }}, {{ $ev->city }}&key={{ env('MAPS_API') }}" allowfullscreen></iframe>
                         </div>
-                        <div class="col s6" style="padding-top: 3em">
-                            <h4 class="light red-text">Your Location:</h4>
-                            <h5>{{ Auth::user()->direction }}</h5>
-                            <h4 class="light red-text" style="padding-top: 1em">Event Location:</h4>
-                            <h5>{{ $ev->venue}}, {{ $ev->city }}</h5>
+                        <div class="col m4 s12" style="padding-top: 3em">
+                            <h5 class="light red-text">Your Location:</h5>
+                            <h6>{{ Auth::user()->direction }}</h6>
+                            <h5 class="light red-text" style="padding-top: 1em">Event Location:</h5>
+                            <h6>{{ $ev->venue}}, {{ $ev->city }}</h6>
                         </div>
                         </div>
                         <div class="divider"></div>
