@@ -9,7 +9,6 @@ use App\Event;
 use App\Message;
 use App\Rsvp;
 use App\Admin;
-use App\Comment;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
@@ -75,10 +74,10 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $input
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $input)
+    public function store(Request $request)
     {
         //Validates the input from the create event page
-        $this->validate($input, [
+        $this->validate($request, [
         'name' => 'required|max:40',
         'venue' => 'required|max:30',
         'city' => 'required|max:30',
@@ -90,22 +89,22 @@ class AdminController extends Controller
         'image' => 'image|required',
         ]);
 
-        $name = $input->input('name');
-        $venue = $input->input('venue');
-        $city = $input->input('city');
-        $price = $input->input('price');
-        $information = $input->input('information');
-        $description = $input->input('description');
-        $capacity = $input->input('capacity');
-        $date = $input->input('date');
-        $start_time = $input->input('start_time');
-        $end_time = $input->input('end_time');
-        $image = $input->input('image');
-
-        $start_date = $date . ' ' . $start_time;
-        $end_date = $date . ' ' . $end_time;
-
         //adds all the data from the create events page to the database in the events table
+
+        $name = $request->input('name');
+        $venue = $request->input('venue');
+        $city = $request->input('city');
+        $price = $request->input('price');
+        $information = $request->input('information');
+        $description = $request->input('description');
+        $capacity = $request->input('capacity');
+        $date = $request->input('date');
+        $start_time = $date . ' ' . $request->input('start_time');
+        $end_time = $date . ' ' . $request->input('end_time');
+        $image = 'image';
+
+        echo $end_time;
+        
         Event::create([
             'name'=>$name, 
             'venue'=>$venue, 
@@ -114,10 +113,10 @@ class AdminController extends Controller
             'information'=>$information, 
             'description'=>$description, 
             'capacity'=>$capacity, 
-            'date'=>$date,
-            'start_time' => $start_date,
-            'end_time' => $end_date,
-            'image'=>$image]);
+            'date'=>$start_time, 
+            'end_time'=>$end_time, 
+            'image'=>$image
+        ]);
 
         //gets the id of the event above and concats it to the file extension of the image uploaded.
         $name = Event::latest()->first()->id . "." . Input::file('image')->getClientOriginalExtension(); //gets the event ID and concat on the imaage file extension that was uploaded 
@@ -299,6 +298,7 @@ class AdminController extends Controller
 
         return redirect('admin/manage');
     }
+<<<<<<< HEAD
     public function deleteComment($id)
     {
         Comment::where('id', $id)->delete();
@@ -316,4 +316,6 @@ class AdminController extends Controller
             return redirect ('/events/details/'.$ev.'#comments');
         }*/
     }
+=======
+>>>>>>> d5196f5566a1b6cbce34fb45cecbd2594fa6567e
 }
