@@ -107,7 +107,7 @@ remove the 'url' option, because you have already the 'action' variant -->
                                 <h5 class="light red-text text-darken-3">{{ $comment->name }}</h5>
                                 <ul>
                                 <li>Posted on {{ $comment->created_at }}</li>
-                                <li>On - 05/03/16 </li>
+                                <li> <a class="btn red darken-3" style="margin-top:5px;margin-bottom:5px"  href="{{ url('/events/delete/') }}/{{ $comment->id }}">Delete Comment</a></li>
                                 </ul>
                             </div>
                             <div class="input-field col s9">

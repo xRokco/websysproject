@@ -305,4 +305,24 @@ class AdminController extends Controller
 
         return redirect('admin/manage');
     }
+<<<<<<< HEAD
+    public function deleteComment($id)
+    {
+        Comment::where('id', $id)->delete();
+        return redirect()->back();
+       /* $type = Event::join('comments', 'events.id', '=', 'comments.eventid')
+            ->select('*')
+            ->where('comments.id', $id)
+            ->onlyTrashed()
+            ->get();
+
+            $ev = DB::table('comments')->select('comments.eventid')->where('id',$id)->first();
+        if($type){
+            return redirect('/past/pastDetails/'.$ev.'#comments');
+        }else{
+            return redirect ('/events/details/'.$ev.'#comments');
+        }*/
+    }
+=======
+>>>>>>> d5196f5566a1b6cbce34fb45cecbd2594fa6567e
 }

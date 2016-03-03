@@ -353,7 +353,7 @@ class CommentsTableSeeder extends Seeder {
        "userid" => "1",
        "eventid" => "1",
        "comment" => " They took our Jobs! #MakeAmericaGreatAgain.",
-       "created_at" => "2016-01-01 14:00:00",
+       "created_at" => "2016-02-01 11:00:00",
        "deleted_at" => NULL
         ),
       array(
@@ -361,7 +361,7 @@ class CommentsTableSeeder extends Seeder {
        "userid" => "5",
        "eventid" => "1",
       "comment" => "I think Trump is a big silly head whats he done nothing wheres his wall no where yeah good stuff trump real funny",
-       "created_at" => "2016-01-01 14:00:00",
+       "created_at" => "2016-02-07 16:00:00",
        "deleted_at" => NULL
         ),
       array(
@@ -369,9 +369,65 @@ class CommentsTableSeeder extends Seeder {
        "userid" => "8",
        "eventid" => "1",
       "comment" => "Feel the bernnnnnnn. ",
+       "created_at" => "2016-01-28 17:00:00",
+       "deleted_at" => NULL
+        ),
+      array(
+        "id" => "5",
+       "userid" => "7",
+       "eventid" => "2",
+       "comment" => " They took our Jobs! #MakeAmericaGreatAgain.",
+       "created_at" => "2016-02-28 10:00:00",
+       "deleted_at" => NULL
+        ),
+      array(
+        "id" => "6",
+       "userid" => "13",
+       "eventid" => "3",
+       "comment" => " They took our Jobs! #MakeAmericaGreatAgain.",
+       "created_at" => "2016-01-01 10:00:00",
+       "deleted_at" => NULL
+        ),
+      array(
+        "id" => "7",
+       "userid" => "14",
+       "eventid" => "4",
+       "comment" => " They took our Jobs! #MakeAmericaGreatAgain.",
        "created_at" => "2016-01-01 14:00:00",
        "deleted_at" => NULL
-        )
+        ),
+      array(
+        "id" => "8",
+       "userid" => "15",
+       "eventid" => "5",
+       "comment" => " They took our Jobs! #MakeAmericaGreatAgain.",
+       "created_at" => "2016-01-01 14:00:00",
+       "deleted_at" => NULL
+        ),
+      array(
+        "id" => "9",
+       "userid" => "16",
+       "eventid" => "6",
+       "comment" => " They took our Jobs! #MakeAmericaGreatAgain.",
+       "created_at" => "2016-01-01 14:00:00",
+       "deleted_at" => NULL
+        ),
+      array(
+        "id" => "10",
+       "userid" => "17",
+       "eventid" => "7",
+       "comment" => " They took our Jobs! #MakeAmericaGreatAgain.",
+       "created_at" => "2016-01-01 14:00:00",
+       "deleted_at" => NULL
+        ),
+      array(
+        "id" => "11",
+       "userid" => "23",
+       "eventid" => "8",
+       "comment" => " They took our Jobs! #MakeAmericaGreatAgain.",
+       "created_at" => "2016-01-01 14:00:00",
+       "deleted_at" => NULL
+        ),
       );
     DB::table('comments')->insert($comments);
   }
