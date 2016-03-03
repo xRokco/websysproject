@@ -71,10 +71,10 @@
     <div class="container">
         <div class="section no-pad-bot" id="no-padding-top">
             <div class="row valign-wrapper" style="margin-top: 1em; margin-bottom: 0">
-                <div class="col s6">
+                <div class="col m6 s12">
                     <h4 class="light red-text" style="line-height:50%;">{{ $ev->name }}</h4>
                 </div>
-                <div class="col s6 right-align" style="padding-top: 1em">
+                <div class="col m6 s12 right-align" style="padding-top: 1em">
                     <a href="{{ url('/events') }}" class="light red-text breadcrumb">Events</a>
                     <a href="#" class="red-text text-darken-1 breadcrumb">{{ $ev->name }}</a>
                 </div>
