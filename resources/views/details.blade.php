@@ -277,6 +277,7 @@
                                     <ul>
                                     <li>Posted on {{ $comment->created_at->toFormattedDateString() }}</li>
                                     <li>at {{ $comment->created_at->toTimeString() }}</li>
+                                    <li> <a class="btn red darken-3" style="margin-top:5px;margin-bottom:5px" target="_blank" href="{{ url('/events/delete/') }}/{{ $comment->id }}">Delete Comment</a></li>
                                     </ul>
                                 </div>
                                 <div class="input-field col s9">
