@@ -9,6 +9,7 @@ use App\Event;
 use App\Message;
 use App\Rsvp;
 use App\Admin;
+Use App\Comment;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
