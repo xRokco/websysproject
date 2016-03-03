@@ -19,7 +19,7 @@ class Event extends Model{
      * @var array
      */
     protected $fillable = [
-        'id', 'name', 'city', 'venue', 'price', 'information', 'description', 'capacity', 'date', 'image'
+        'id', 'name', 'city', 'venue', 'price', 'information', 'description', 'capacity', 'date', 'end_time', 'image'
     ];
 
     /**
