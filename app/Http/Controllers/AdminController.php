@@ -305,7 +305,7 @@ class AdminController extends Controller
 
         return redirect('admin/manage');
     }
-<<<<<<< HEAD
+
     public function deleteComment($id)
     {
         Comment::where('id', $id)->delete();
@@ -323,6 +323,4 @@ class AdminController extends Controller
             return redirect ('/events/details/'.$ev.'#comments');
         }*/
     }
-=======
->>>>>>> d5196f5566a1b6cbce34fb45cecbd2594fa6567e
 }
