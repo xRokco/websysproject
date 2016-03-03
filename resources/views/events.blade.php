@@ -12,7 +12,7 @@
 					<h4 class="light red-text" style="line-height:50%">Browse Events</h4>
 				</div>
 				<div class="col s5" style="padding-top: 1em">
-					<a class="btn red darken-3 right" style="margin-bottom: 0.2em" href="{{ url('/past') }}">Past Events</a>
+					<a class="btn red darken-3 right" style="margin-bottom: 0.2em; padding-left:1rem; padding-right:1rem" href="{{ url('/past') }}">Past Events</a>
 				</div>
 			</div>
 			<div class="divider"></div>
