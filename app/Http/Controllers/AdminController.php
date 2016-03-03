@@ -76,6 +76,11 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
+
+        $messages = [
+            'date_format' => 'The start time does not match the format HH:MM:SS',
+        ];
+
         //Validates the input from the create event page
         $this->validate($request, [
         'name' => 'required|max:40',
@@ -86,8 +91,10 @@ class AdminController extends Controller
         'description' => 'required',
         'capacity' => 'required|numeric',
         'date' => 'required|date',
+        'start_time' => 'required|date_format:H:i:s',
+        'end_time' => 'required|date_format:H:i:s',
         'image' => 'image|required',
-        ]);
+        ], $messages);
 
         //adds all the data from the create events page to the database in the events table
 
