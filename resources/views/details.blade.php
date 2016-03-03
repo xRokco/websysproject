@@ -74,10 +74,11 @@
                 <div class="col m6 s12">
                     <h4 class="light red-text" style="line-height:50%;">{{ $ev->name }}</h4>
                 </div>
-                <div class="col m6 s11 offset-s1 right-align" style="padding-top: 1em">
+                <div class="col m6 s7 offset-s1 right-align" style="padding-top: 1em">
                     <a href="{{ url('/events') }}" class="light red-text breadcrumb">Events</a>
                     <a href="#" class="red-text text-darken-1 breadcrumb">{{ $ev->name }}</a>
                 </div>
+                <div class="m0 s4"></div>
             </div>
             <div class="divider"></div>
 
