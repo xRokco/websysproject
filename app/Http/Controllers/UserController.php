@@ -57,7 +57,7 @@ class UserController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-        
+
         //dd($comments[0]->created_at);
 
         //sets default value of full
@@ -258,7 +258,7 @@ class UserController extends Controller
             //Charges the user via Stripe for the current event
             \Stripe\Stripe::setApiKey(env('STRIPE_PRI'));
             $token = $req->input('stripeToken');
-            $charge = \Stripe\Charge::create(array('source' => $token, 'amount' => $ev->price.'00', 'currency' => 'eur', 'description' => Auth::user()->email ));
+            $charge = \Stripe\Charge::create(array('source' => $token, 'amount' => $ev->price.'00', 'currency' => 'eur', 'description' => Auth::user()->email,"metadata" => array("Event" => $ev->name,"Customer Name" => Auth::user()->name.' '.Auth::user()->surname,"Address" => Auth::user()->direction ) ));
         } else {
             echo "Event full";
         }  
