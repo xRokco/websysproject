@@ -113,7 +113,7 @@
                                     <span class="date_format">MM/DD/YYYY</span>
                                 </div>
                                 <a class="btn red darken-3" style="margin-top:5px;margin-bottom:5px" target="_blank" href="{{ url('/events/details/print') }}/{{ $ev->id }}">Print Ticket</a>
-                                <a class="btn red darken-3" id="unattend">Unattend Event</a>
+                                <a class="btn red darken-3" id="unattend">Unattend</a>
                             </div>
                         </div>
 						<!-- The attending button -->
@@ -122,13 +122,13 @@
                             <div class="block btn-container">
                                 <div>
                                     <div class="normal">
-                                        <span id="attend" class="btn red darken-3 disabled" title="Tickets Sold Out">Attend Event</span>
+                                        <span id="attend" class="btn red darken-3 disabled" title="Tickets Sold Out">Attend</span>
                                     </div>
                                     <span class="btn red darken-3 hover">Sold Out!</span>
                                 </div>
                             </div>
                         @else
-                        <a id="customButton" class="btn red darken-3" href="#">Attend Event</a>
+                        <a id="customButton" class="btn red darken-3" href="#">Attend</a>
                             <script src="https://checkout.stripe.com/checkout.js"></script>
                             <script>
                                 var handler = StripeCheckout.configure({
