@@ -37,7 +37,8 @@ class AdminController extends Controller
     public function index()
     {
         //Gets all the event details from the event table
-        $events = Event::all();
+        $events = Event::paginate(5,['*'],'events');
+        $pastevents = Event::onlyTrashed()->paginate(5,['*'],'past');
 
         //gets all messages from the messages table
          $messages = Message::join('users', 'users.id', '=', 'messages.userid')
@@ -55,7 +56,7 @@ class AdminController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
         //Returns the events view along with the $events, $messages and $readMessages arrays containing the query results from above
-        return view('admin/admin', ['events' => $events, 'messages' => $messages, 'readMessages' => $readMessages]);
+        return view('admin/admin', ['events' => $events, 'pastevents' => $pastevents, 'messages' => $messages, 'readMessages' => $readMessages]);
     }
 
     /**

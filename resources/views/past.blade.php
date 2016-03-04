@@ -46,8 +46,9 @@
                         @if(Auth::check())
                             <a class="btn red darken-3 lighten-1" href="{{ url('/past/pastDetails') }}/{{ $event->id }}">View Event</a>
                         @else
-                            <a class="btn red darken-3 lighten-1" href="{{ url('/past/pastDetails') }}/{{ $event->id }}">Login to view</a>
-                        @endif
+                            <a class="hide-on-med-and-down btn red darken-3 lighten-1" href="{{ url('/past/pastDetails') }}/{{ $event->id }}">Login to view</a>
+                            <a class="hide-on-large-only btn red darken-3 lighten-1" href="{{ url('/past/pastDetails') }}/{{ $event->id }}">Login</a>
+                                                @endif
                     </div>
                 </div>
             @endforeach
@@ -56,6 +57,9 @@
                 <h4 class="red-text">No Past Events</h4>
             @endif
 
+            <div class="center">
+                @include('layouts.pagination', ['paginator' => $events])
+            </div>
             <br>
         </div>
     </div>

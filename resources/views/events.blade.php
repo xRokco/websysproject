@@ -3,6 +3,9 @@
 @section('title', 'Events')
 
 @section('content') 
+<?php
+use Builder;
+?>
 
 	<style type="text/css">
 		.breadcrumb::before{
@@ -12,12 +15,13 @@
     <!-- List of all the events -->
 	<div class="container">
 		<div class="section no-pad-bot" id="index-banner">
-			<div class="row valign-wrapper" style="margin-bottom: 0em; margin-top: 0em">
-				<div class="col s7" style="padding-top: 1em">
-					<h4 class="light red-text" style="line-height:50%">Browse Events</h4>
+			<div class="row" style="margin-bottom: 0em; margin-top: 0em">
+				<div class="col m6 s12" style="padding-top: 1em">
+					<h4 class="light red-text hide-on-small-only" style="line-height:50%">Browse Events</h4>
+                    <h4 class="light red-text center hide-on-med-and-up" style="line-height:1">Browse Events</h4>
 				</div>
-				<div class="col s5" style="padding-top: 1em">
-					<a class="btn red darken-3 right" style="margin-bottom: 0.2em; padding-left:1rem; padding-right:1rem" href="{{ url('/past') }}">Past Events</a>
+				<div class="col m6 s12 right-align" style="padding-top: 1em">
+					<a class="btn red darken-3 right" style="margin-bottom: 0.2em;" href="{{ url('/past') }}">Past Events</a>
 				</div>
 			</div>
 			<div class="divider"></div>
@@ -50,6 +54,13 @@
 					</div>
 				</div>
 			@endforeach
+
+			@if($events->count()==0)
+				<h4 class="center red-text">No upcoming events</h4>
+			@endif
+			<div class="center"> 
+				@include('layouts.pagination', ['paginator' => $events])
+			</div>
 			<br>
 		</div>
 	</div>

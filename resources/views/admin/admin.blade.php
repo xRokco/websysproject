@@ -17,8 +17,6 @@
 		</div>
 		<div id="events" class="col s12">
 			<br><br>
-			<!--Checks that there are any events at all-->
-        	@if ($events)
         		<!--Outputs html for each event returned-->
 				@foreach ($events as $event)
 					<div class="row grey lighten-5" id="event">
@@ -43,10 +41,46 @@
 			            </div>
 			        </div>
 			    @endforeach
-			<!--If there are no events, output this message-->
-			@else
-			  	<h4 class="center orange-text">There aren't any events. <a href="{{ url('/admin/create') }}" >Create one </a>.</h4>
-			@endif
+				<!--If there are no events, output this message-->
+				@if($events->count()==0)
+					<h4 class="center red-text">No upcoming events</h4>
+				@endif
+				<div class="center">
+					@include('layouts.pagination', ['paginator' => $events])
+				</div>
+			<div class="divider"></div>
+			<br/>
+
+				<!--Outputs html for each event returned-->
+				@foreach ($pastevents as $pastevent)
+					<div class="row grey lighten-5" id="event">
+			        	<!-- Event Image -->
+			            <div class="col center m3 s12" style="margin-top:20px">
+			                <a href="{{ url('past/pastdetails') }}/{{ $pastevent->id }}"><img class="responsive-img circle" src="{{ url('img/event_images') }}/{{ $pastevent->image }}" style="height:150px;width:150px;background-size:cover;" /></a>
+			            </div>
+			                    
+			            <!-- Event Description -->
+			            <div class="left-align col m5 s5 offset-s1">
+			                <h5>{{ $pastevent->name }}</h5>
+			                <p>{{ $pastevent->information }}</p>
+			            </div>
+			                    
+			            <!-- Event Details -->
+			            <div class="col m3 s6 btn-container" style="margin-top:20px;" id="test"> 
+			            	<div>
+				                <a class="btn red darken-3" href="{{ url('admin/attendees') }}/{{ $pastevent->id }}">Attendees</a>
+				                <a style="margin-top:5px;margin-bottom:5px" class="btn red darken-3" href="{{ url('admin/edit') }}/{{ $pastevent->id }}">Edit Event</a>
+				            </div>
+			            </div>
+			        </div>
+			    @endforeach
+				<!--If there are no events, output this message-->
+				@if($pastevents->count()==0)
+					<h4 class="center red-text">No past events</h4>
+				@endif
+				<div class="center"> 
+					@include('layouts.pagination', ['paginator' => $pastevents])
+				</div>
         	<br>
 				<div class="fixed-action-btn click-to-toggle" style="bottom: 25px; right: 24px;">
 					<a class="btn-floating btn-large red darken-3">
