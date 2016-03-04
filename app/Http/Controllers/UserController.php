@@ -57,8 +57,13 @@ class UserController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-
-        //dd($comments[0]->created_at);
+        //Checks if the current user is an admin
+        $admin = DB::table('admins')
+            ->join('users', 'users.id', '=', 'admins.userid')
+            ->select('admins.*')
+            ->where(['userid' => Auth::user()->id])
+            ->distinct()
+            ->get();
 
         //sets default value of full
         $full = FALSE;
@@ -80,7 +85,7 @@ class UserController extends Controller
 
         //returns event details page for the corresponding ID, with event details ($ev),
         //rsvp details ($rsvp), capacity details ($full) and stripe details ($stripe) passed in.
-        return view('details', ['ev' => $ev, 'rsvp' => $rsvp, 'comments' => $comments, 'full' => $full, 'stripe' => $stripe]);
+        return view('details', ['ev' => $ev, 'rsvp' => $rsvp, 'comments' => $comments, 'full' => $full, 'stripe' => $stripe, 'admin' => $admin]);
     }
 
 
@@ -88,21 +93,24 @@ class UserController extends Controller
     {
         //Returns the past event details for event with id $id
        $ev = Event::where('id', $id)->onlyTrashed()->firstorfail();
-//Checks if the current event has any entries in the video table
+
+        //Checks if the current event has any entries in the video table
         $videos = DB::table('videos')
             ->join('events', 'events.id', '=', 'videos.eventid')
             ->join('users', 'users.id', '=', 'videos.userid')
             ->select('videos.link','videos.title', 'users.*')
             ->where('events.id', '=', $id)
             ->get();
-//Checks if the current user is an admin
+        
+        //Checks if the current user is an admin
         $admin = DB::table('admins')
             ->join('users', 'users.id', '=', 'admins.userid')
             ->select('admins.*')
             ->where(['userid' => Auth::user()->id])
             ->distinct()
             ->get();
-    //Checks if the current event has any entries in the comments table 
+        
+        //Checks if the current event has any entries in the comments table 
         $comments = DB::table('comments')
             ->join('events', 'events.id', '=', 'comments.eventid')
             ->join('users', 'users.id', '=', 'comments.userid')
@@ -110,14 +118,15 @@ class UserController extends Controller
             ->where('events.id', '=', $id)
             ->orderBy('created_at', 'desc')
             ->get();
+
         //Checks if the current user has an entry in the rsvp table for the past event
         $rsvp = DB::table('rsvp')->where('eventid', $id)->where('userid', Auth::user()->id)->get();
-       //checks how many entries in the rsvp table there are for the given event, counts them
+       
+        //checks how many entries in the rsvp table there are for the given event, counts them
         $count = Rsvp::where('eventid', $id)->count();
 
 
         //returns event details page for the corresponding ID, with event details ($ev), event videos ($videos)
-       
         return view('pastDetails', ['ev' => $ev, 'comments' => $comments, 'count' => $count, 'videos' => $videos, 'rsvp' => $rsvp, 'admin' => $admin]);
       
     }

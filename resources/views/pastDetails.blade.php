@@ -118,7 +118,9 @@
                     @foreach ($comments as $comment)
                         <div class="row grey lighten-4" style="margin-bottom: 0.5em;">
                             <div class="input-field col s3" style="border-right: 5px solid white; margin-top: 0">
-                                <a href="{{ url('/events/delete/') }}/{{ $comment->id }}"><i style="margin-top:15px;" class="material-icons right">delete</i></a>
+                                @if($admin)
+                                    <a href="{{ url('/events/delete/') }}/{{ $comment->id }}"><i style="margin-top:15px;" class="material-icons right">delete</i></a>
+                                @endif
                                 <h5 class="light red-text text-darken-3">{{ $comment->name }}</h5>
                                 <ul>
                                 <li>Posted on {{ $comment->created_at }}</li>

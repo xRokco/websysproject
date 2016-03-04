@@ -92,13 +92,13 @@
                 </div>
                 
                 <!-- Event Description -->
-                <div class="left-align col m4 s6">
+                <div class="left-align col m4 s5">
                     <h5 class="light red-text text-darken-3" style="padding-top: 1em; padding-left: 1em">Event Details</h5>
                     <p style="padding-left: 1em">{{ $ev->information }}</p>
                 </div>
 
                 <!-- Event Details -->
-                <div class="col m3 right s6" style="padding-top: 2em">
+                <div class="col m3 right s7" style="padding-top: 2em">
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">today</i>{{ $ev->date->toFormattedDateString() }}</p>
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">query_builder</i>{{ $ev->date->toTimeString() }} to {{ $ev->end_time->toTimeString() }}</p>                    
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">location_on</i>{{ $ev->venue}}, {{ $ev->city }}</p>
@@ -267,7 +267,7 @@
                             <div class="input-field col s12">
                                 {!! Form::label('comment',' ') !!}
                                 {{ Form::hidden('ev', $ev->id) }}
-                                {!! Form::textarea('comment',null,['placeholder'=>'Add a comment...','class' => 'form-control showbutton','rows'=>'1']) !!}
+                                {!! Form::textarea('comment',null,['placeholder'=>'Add a comment...','class' => 'materialize-textarea']) !!}
                             </div>
 
                             {!! Form::submit('Comment',['class'=>'btn red darken-3 right', 'style'=>'margin-bottom: 1em']) !!}
@@ -277,7 +277,9 @@
                             @foreach ($comments as $comment)
                             <div class="row grey lighten-4" style="margin-bottom: 0.5em;">
                                 <div class="input-field col s3" style="border-right: 5px solid white; margin-top: 0">
-                                    <a href="{{ url('/events/delete/') }}/{{ $comment->id }}"><i style="margin-top:15px;" class="material-icons right">delete</i></a>
+                                    @if($admin)
+                                        <a href="{{ url('/events/delete/') }}/{{ $comment->id }}"><i style="margin-top:15px;" class="material-icons right">delete</i></a>
+                                    @endif
                                     <h5 class="light red-text text-darken-3">{{ $comment->name }}</h5>
                                     <ul>
                                         <li>Posted on {{ $comment->created_at->toFormattedDateString() }}</li>
