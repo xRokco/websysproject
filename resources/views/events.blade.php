@@ -3,10 +3,6 @@
 @section('title', 'Events')
 
 @section('content') 
-<?php
-use Builder;
-?>
-
 	<style type="text/css">
 		.breadcrumb::before{
             margin-top:-5px !important;
