@@ -46,11 +46,18 @@
 					<h4 class="center red-text">No upcoming events</h4>
 				@endif
 				<div class="center">
-					@include('layouts.pagination', ['paginator' => $events])
+					@include('layouts.pagination', 
+						['paginator' => $events->appends(
+							['past' => Request::get('past',1),
+							'messages' => Request::get('messages',1),
+							'read' => Request::get('read',1)
+							])->fragment('events')
+						])
 				</div>
 			<div class="divider"></div>
 			<br/>
 
+			<div id="past">
 				<!--Outputs html for each event returned-->
 				@foreach ($pastevents as $pastevent)
 					<div class="row grey lighten-5" id="event">
@@ -79,8 +86,15 @@
 					<h4 class="center red-text">No past events</h4>
 				@endif
 				<div class="center"> 
-					@include('layouts.pagination', ['paginator' => $pastevents])
+					@include('layouts.pagination', 
+						['paginator' => $pastevents->appends(
+							['events' => Request::get('events',1),
+							'messages' => Request::get('messages',1),
+							'read' => Request::get('read',1)
+							])->fragment('past')
+						])
 				</div>
+			</div>
         	<br>
 				<div class="fixed-action-btn click-to-toggle" style="bottom: 25px; right: 24px;">
 					<a class="btn-floating btn-large red darken-3">
@@ -97,7 +111,6 @@
         <div id="inbox" class="col s12">
 			<br><br>
 			<div>
-				@if ($messages)
 					@foreach ($messages as $message)
 					    <div class="card grey lighten-5">
 					        <div class="col s12">
@@ -127,13 +140,21 @@
 					        </div>
 					    </div>
 					@endforeach
-				@endif
+					<div class="center">
+						@include('layouts.pagination', 
+						['paginator' => $messages->appends(
+							['events' => Request::get('events',1),
+							'past' => Request::get('past',1),
+							'read' => Request::get('read',1)
+							])->fragment('inbox')
+						])
+					</div>
 				@if(! isset($message))
 				    <h4 class="center">No unread messages</h4>
 				    <div class="divider"></div>
 				@endif
 
-				<h4 class="center">Read Messages:</h4>
+				<h4 id="read" class="center">Read Messages:</h4>
 				<div class="divider"></div>
 
 				@foreach ($readMessages as $readMessage)
@@ -163,7 +184,15 @@
 				        </div>
 				    </div>
 				@endforeach
-				
+				<div class="center">
+					@include('layouts.pagination', 
+						['paginator' => $readMessages->appends(
+							['events' => Request::get('events',1),
+							'past' => Request::get('past',1),
+							'messages' => Request::get('messages',1)
+							])->fragment('inbox')
+						])
+				</div>
 				@if(! isset($readMessage))
 				    <h4 class="center">No read messages</h4>
 				@endif

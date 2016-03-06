@@ -44,7 +44,7 @@ class AdminController extends Controller
          $messages = Message::join('users', 'users.id', '=', 'messages.userid')
             ->select('users.name', 'users.email', 'messages.*')
             ->whereNull('deleted_at')
-            ->get();
+            ->paginate(5,['*'],'messages');
                      
 
         //gets all the read (deleted) messages from the messags table.
@@ -54,7 +54,8 @@ class AdminController extends Controller
             ->whereNotNull('deleted_at')
             ->onlyTrashed()
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(5,['*'],'read');
+
         //Returns the events view along with the $events, $messages and $readMessages arrays containing the query results from above
         return view('admin/admin', ['events' => $events, 'pastevents' => $pastevents, 'messages' => $messages, 'readMessages' => $readMessages]);
     }

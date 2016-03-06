@@ -48,24 +48,20 @@ public function pastEvents()
      */
     public function contactUs(Request $input)
     {
-         //Sets the id of the current user to $id.
-         $id = Auth::user()->id;
+        //Sets the id of the current user to $id.
+        $id = Auth::user()->id;
+
         //Validates the fields in the contactus form.
         $this->validate($input, [
-        'subject' => 'required|max:40',
-        'message' => 'required',
+            'subject' => 'required|max:40',
+            'message' => 'required',
         ]);
 
         $subject = $input->input('subject');
         $message = $input->input('message');
-        //gets current date
-        $date = Carbon::now();
 
         //creates a new message with details the user inputs
-        \DB::table('messages')->insert(['userid' => $id, 'subject' => $subject, 'message' => $message]);
-
-        //Gets the latest message (the one added above) and fills the date column for it
-        Message::latest()->first()->update(['date' => $date]);
+        Message::create(['userid' => $id, 'subject' => $subject, 'message' => $message]);
 
         return redirect('/'); //redirects to homepage
     }
