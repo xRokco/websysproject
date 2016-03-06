@@ -127,6 +127,7 @@
 					                            <a href="{{ url('/admin/inbox/delete') }}/{{ $message->id }}"><i class="material-icons right">done</i></a>
 					                          
 					                            <p>{{ $message->name }}</p>
+					                            <p>ID: {{ $message->userid }}</p>
 					                            <p>{{ $message->email }}</p>
 					                            <p>{{ $message->created_at->toTimeString() }} on {{ $message->created_at->toFormattedDateString() }}</p>
 					                        </div>
