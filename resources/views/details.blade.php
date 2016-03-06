@@ -221,8 +221,8 @@
 					<!-- Description of the event -->
                     <div id="description" class="col s12">
                         <br>
-                        <p id="">
-                            {{ $ev->description }}
+                        <p>
+                            {!! nl2br(e($ev->description)) !!}
                         </p>
                     </div>
 					<!-- The location details on how to get to the event -->
@@ -291,7 +291,10 @@
                                 </div>
                             </div>
                             @endforeach
-                    </div>
+                            @if($comments->count() == 0)
+                                <h4 class="red-text light center">No comments yet</h4>
+                            @endif
+                        </div>
                     </div> 
                 </div>
             </div>

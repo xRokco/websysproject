@@ -42,8 +42,7 @@ class UserController extends Controller
         $ev = Event::where('id', $id)->firstorfail();
 
         //Checks if the current user has an entry in the rsvp table for the current event
-        $rsvp = DB::table('events')
-                ->join('rsvp', 'events.id', '=', 'rsvp.eventid')
+        $rsvp = Event::join('rsvp', 'events.id', '=', 'rsvp.eventid')
                 ->join('users', 'users.id', '=', 'rsvp.userid')
                 ->select('events.*')
                 ->where(['userid' => Auth::user()->id, 'eventid' => $id])
@@ -58,8 +57,7 @@ class UserController extends Controller
             ->get();
 
         //Checks if the current user is an admin
-        $admin = DB::table('admins')
-            ->join('users', 'users.id', '=', 'admins.userid')
+        $admin = Admin::join('users', 'users.id', '=', 'admins.userid')
             ->select('admins.*')
             ->where(['userid' => Auth::user()->id])
             ->distinct()
@@ -95,24 +93,21 @@ class UserController extends Controller
        $ev = Event::where('id', $id)->onlyTrashed()->firstorfail();
 
         //Checks if the current event has any entries in the video table
-        $videos = DB::table('videos')
-            ->join('events', 'events.id', '=', 'videos.eventid')
+        $videos = Video::join('events', 'events.id', '=', 'videos.eventid')
             ->join('users', 'users.id', '=', 'videos.userid')
             ->select('videos.link','videos.title', 'users.*')
             ->where('events.id', '=', $id)
             ->get();
         
         //Checks if the current user is an admin
-        $admin = DB::table('admins')
-            ->join('users', 'users.id', '=', 'admins.userid')
+        $admin = Admin::join('users', 'users.id', '=', 'admins.userid')
             ->select('admins.*')
             ->where(['userid' => Auth::user()->id])
             ->distinct()
             ->get();
         
         //Checks if the current event has any entries in the comments table 
-        $comments = DB::table('comments')
-            ->join('events', 'events.id', '=', 'comments.eventid')
+        $comments = Comment::join('events', 'events.id', '=', 'comments.eventid')
             ->join('users', 'users.id', '=', 'comments.userid')
             ->select('comments.*', 'users.name')
             ->where('events.id', '=', $id)
@@ -120,7 +115,7 @@ class UserController extends Controller
             ->get();
 
         //Checks if the current user has an entry in the rsvp table for the past event
-        $rsvp = DB::table('rsvp')->where('eventid', $id)->where('userid', Auth::user()->id)->get();
+        $rsvp = Rsvp::where('eventid', $id)->where('userid', Auth::user()->id)->get();
        
         //checks how many entries in the rsvp table there are for the given event, counts them
         $count = Rsvp::where('eventid', $id)->count();
@@ -134,7 +129,7 @@ class UserController extends Controller
     public function addVideo($ev)
     {
         //returns create view.
-        $rsvp = DB::table('rsvp')->where('eventid', $ev)->where('userid', Auth::user()->id)->get();
+        $rsvp = Rsvp::where('eventid', $ev)->where('userid', Auth::user()->id)->get();
         $admin = Admin::where('userid', Auth::user()->id)->get();
         // Checks if the user is either an admin and/or attended the past event
         //If true then the user can post videos
@@ -229,8 +224,7 @@ class UserController extends Controller
             ->get();
 
         //Checks if the user is an admin
-        $admin = \DB::table('admins')
-            ->join('users', 'users.id', '=', 'admins.userid')
+        $admin = Admin::join('users', 'users.id', '=', 'admins.userid')
             ->select('admins.*')
             ->where(['userid' => Auth::user()->id])
             ->distinct()

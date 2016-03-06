@@ -6,7 +6,7 @@
 
 <!--Heading-->
 <div class="container">
-    <h2 class="header center red-text">Disclaimer</h2>
+    <h2 class="header center red-text light">Disclaimer</h2>
 </div>
 
 <!--Main page content-->

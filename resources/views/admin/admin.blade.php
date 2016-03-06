@@ -43,7 +43,7 @@
 			    @endforeach
 				<!--If there are no events, output this message-->
 				@if($events->count()==0)
-					<h4 class="center red-text">No upcoming events</h4>
+					<h4 class="center red-text light">No upcoming events</h4>
 				@endif
 				<div class="center">
 					@include('layouts.pagination', 
@@ -83,7 +83,7 @@
 			    @endforeach
 				<!--If there are no events, output this message-->
 				@if($pastevents->count()==0)
-					<h4 class="center red-text">No past events</h4>
+					<h4 class="center red-text light">No past events</h4>
 				@endif
 				<div class="center"> 
 					@include('layouts.pagination', 
@@ -149,8 +149,8 @@
 							])->fragment('inbox')
 						])
 					</div>
-				@if(! isset($message))
-				    <h4 class="center">No unread messages</h4>
+				@if($messages->count() == 0)
+				    <h4 class="center red-text light">No unread messages</h4>
 				    <div class="divider"></div>
 				@endif
 
@@ -193,8 +193,8 @@
 							])->fragment('inbox')
 						])
 				</div>
-				@if(! isset($readMessage))
-				    <h4 class="center">No read messages</h4>
+				@if($readMessage->count() == 0)
+				    <h4 class="center red-text light">No read messages</h4>
 				@endif
 
 			</div>

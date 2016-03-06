@@ -80,7 +80,7 @@
                 <div id="description" class="col s12">
                     <br>
                     <p id="no-margin-top">
-                        {{ $ev->description }}
+                        {!! nl2br(e($ev->description)) !!}
                     </p>
                 </div>
 
@@ -100,6 +100,10 @@
                         </div>
                         <div class="divider"></div>
                     @endforeach
+
+                    @if($videos->count() == 0)
+                        <h4 class="red-text light center">No video's added yet</h4>
+                    @endif
                 </div>
             <div id="comments" class="col s12">        
                 <br/>        
@@ -131,6 +135,9 @@
                             </div>
                         </div>
                     @endforeach
+                    @if($comments->count() == 0)
+                        <h4 class="red-text light center">No comments yet</h4>
+                    @endif
                 </div>
             </div>
         </div>

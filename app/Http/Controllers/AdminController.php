@@ -151,8 +151,7 @@ class AdminController extends Controller
     {
         Event::where('id', $id)->firstorfail();
 
-        $atns = DB::table('rsvp')
-            ->join('users', 'users.id', '=', 'rsvp.userid')
+        $atns = Rsvp::join('users', 'users.id', '=', 'rsvp.userid')
             ->select('*')
             ->where('rsvp.eventid', '=', $id)
             ->get();
@@ -173,8 +172,7 @@ class AdminController extends Controller
     {
         $ev = Event::where('id', $id)->firstorfail();
 
-        $atns = DB::table('rsvp')
-            ->join('users', 'users.id', '=', 'rsvp.userid')
+        $atns = Rsvp::join('users', 'users.id', '=', 'rsvp.userid')
             ->select('*')
             ->where('rsvp.eventid', '=', $id)
             ->get();
@@ -292,7 +290,7 @@ class AdminController extends Controller
     public function promote($id)
     {
     
-        \DB::table('admins')->insert(['userid' => $id]);
+        Admins::insert(['userid' => $id]);
         return redirect('admin/manage');
     }
 
