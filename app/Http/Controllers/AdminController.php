@@ -44,6 +44,7 @@ class AdminController extends Controller
          $messages = Message::join('users', 'users.id', '=', 'messages.userid')
             ->select('users.name', 'users.email', 'messages.*')
             ->whereNull('deleted_at')
+            ->orderBy('created_at', 'desc')
             ->paginate(5,['*'],'messages');
                      
 

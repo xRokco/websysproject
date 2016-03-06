@@ -136,7 +136,7 @@
 					        </div>
 					        <div class="card-reveal">
 					            <span class="card-title grey-text text-darken-4"><i class="material-icons right">expand_less</i></span>
-					            <p>{{ $message->message }}</p>
+					            <p>{!! nl2br(e($message->message)) !!}</p>
 					        </div>
 					    </div>
 					@endforeach
