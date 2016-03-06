@@ -172,6 +172,7 @@
 				                        <div class="card-content">
 				                            <span class="card-title activator grey-text text-darken-4">{{ $readMessage->subject }}<i class="material-icons right">expand_more</i></span>
 				                     		<p>{{ $readMessage->name }}</p>
+				                     		<p>ID: {{ $readMessage->userid }}</p>
 					                        <p>{{ $readMessage->email }}</p>
 				                            <p>{{ $readMessage->created_at->toTimeString() }} on {{ $readMessage->created_at->toFormattedDateString() }}</p>
 				                        </div>
@@ -181,7 +182,7 @@
 				        </div>
 				        <div class="card-reveal">
 				            <span class="card-title grey-text text-darken-4"><i class="material-icons right">expand_less</i></span>
-				            <p>{{ $readMessage->message }}</p>
+				            <p>{!! nl2br(e($readMessage->message)) !!}</p>
 				        </div>
 				    </div>
 				@endforeach
