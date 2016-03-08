@@ -291,7 +291,7 @@ class AdminController extends Controller
     public function promote($id)
     {
     
-        Admins::insert(['userid' => $id]);
+        Admin::insert(['userid' => $id]);
         return redirect('admin/manage');
     }
 
