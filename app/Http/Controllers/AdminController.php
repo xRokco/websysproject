@@ -150,7 +150,7 @@ class AdminController extends Controller
      */
     public function getAttendees($id)
     {
-        Event::where('id', $id)->withTrashed()->firstorfail();
+        $ev = Event::where('id', $id)->withTrashed()->firstorfail();
 
         $atns = Rsvp::join('users', 'users.id', '=', 'rsvp.userid')
             ->select('*')
@@ -160,7 +160,7 @@ class AdminController extends Controller
         //Gets the number of attendees
         $count = Rsvp::where('eventid', $id)->count();
 
-        return view('admin/attendees', ['atns' => $atns, 'id' => $id, 'count' => $count]);
+        return view('admin/attendees', ['atns' => $atns, 'id' => $id, 'count' => $count, 'ev' => $ev]);
     }
 
     /**

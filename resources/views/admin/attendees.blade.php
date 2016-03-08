@@ -5,7 +5,9 @@
 	@section('content')
 		<div class="container">
 			@if($atns->count()>0)
-				<h4 class="center"><a href="{{ url('/admin/attendees/print') }}/{{ $id }}" target="_blank">Print all {{ $count }} attendees </a></h4>
+				@if($ev->deleted_at==NULL)
+					<h4 class="center"><a href="{{ url('/admin/attendees/print') }}/{{ $id }}" target="_blank">Print all {{ $count }} attendees </a></h4>
+				@endif
 				<table class="responsive-table highlight">
 					<thead>
 						<th data-field="id">User ID</th>
