@@ -58,6 +58,7 @@
 			<br/>
 
 			<div id="past">
+				<h4 class="center red-text light">Past Events</h4>
 				<!--Outputs html for each event returned-->
 				@foreach ($pastevents as $pastevent)
 					<div class="row grey lighten-5" id="event">

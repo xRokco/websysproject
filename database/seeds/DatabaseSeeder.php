@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
          $this->call('AdminsTableSeeder');
          $this->call('VideosTableSeeder');
          $this->call('CommentsTableSeeder');
-         factory(App\User::class, 50)->create();
-         factory(App\Rsvp::class, 100)->create();
+         factory(App\User::class, 100)->create();
+         factory(App\Rsvp::class, 300)->create();
     }
 }
 
@@ -220,18 +220,144 @@ class MessagesTableSeeder extends Seeder {
       "userid" => "2",
        "subject" => "I found a bug",
        "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
-       "created_at" => "2016-01-01 14:00:00",
+       "created_at" => "2016-01-01 15:00:00",
        "updated_at" => "2016-01-01 14:00:00",
        "deleted_at" => NULL
         ),
       array(
        "id" => "2",
+      "userid" => "6",
+       "subject" => "Another bug",
+       "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
+       "created_at" => "2016-01-14 14:00:00",
+       "updated_at" => "2016-01-01 14:00:00",
+       "deleted_at" => NULL
+        ),
+      array(
+       "id" => "3",
+      "userid" => "9",
+       "subject" => "Need a refund",
+       "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
+       "created_at" => "2016-02-01 16:00:00",
+       "updated_at" => "2016-01-01 14:00:00",
+       "deleted_at" => NULL
+        ),
+      array(
+       "id" => "4",
+      "userid" => "5",
+       "subject" => "I'm lonely",
+       "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
+       "created_at" => "2016-01-18 14:00:00",
+       "updated_at" => "2016-01-01 14:00:00",
+       "deleted_at" => NULL
+        ),
+      array(
+       "id" => "5",
+      "userid" => "2",
+       "subject" => "MakeAmericaGreatAgain",
+       "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
+       "created_at" => "2016-03-11 14:00:00",
+       "updated_at" => "2016-01-01 14:00:00",
+       "deleted_at" => NULL
+        ),
+      array(
+       "id" => "6",
+      "userid" => "14",
+       "subject" => "Trump for prez",
+       "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
+       "created_at" => "2016-03-01 14:00:00",
+       "updated_at" => "2016-01-01 14:00:00",
+       "deleted_at" => NULL
+        ),
+      array(
+       "id" => "7",
+      "userid" => "32",
+       "subject" => "Massive security vulverability",
+       "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
+       "created_at" => "2016-01-11 14:00:00",
+       "updated_at" => "2016-01-01 14:00:00",
+       "deleted_at" => NULL
+        ),
+      array(
+       "id" => "8",
+      "userid" => "12",
+       "subject" => "How's it going guys?",
+       "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
+       "created_at" => "2016-02-01 14:00:00",
+       "updated_at" => "2016-01-01 14:00:00",
+       "deleted_at" => NULL
+        ),
+      array(
+       "id" => "9",
+       "userid" => "3",
+       "subject" => "What's the story?",
+       "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
+       "created_at" => "2016-01-01 14:00:00",
+       "updated_at" => "2016-01-01 14:00:00",
+       "deleted_at" => "2016-01-02 15:00:00"
+        ),
+      array(
+       "id" => "10",
+       "userid" => "2",
+       "subject" => "I didn't mean to buy this ticket",
+       "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
+       "created_at" => "2016-01-01 14:00:00",
+       "updated_at" => "2016-01-01 14:00:00",
+       "deleted_at" => "2016-01-09 13:32:00"
+        ),
+      array(
+       "id" => "11",
        "userid" => "1",
+       "subject" => "Hot singles in your area!",
+       "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
+       "created_at" => "2016-01-01 14:00:00",
+       "updated_at" => "2016-01-01 14:00:00",
+       "deleted_at" => "2016-03-02 09:00:00"
+        ),
+      array(
+       "id" => "12",
+       "userid" => "22",
+       "subject" => "Bug alert",
+       "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
+       "created_at" => "2016-01-01 14:00:00",
+       "updated_at" => "2016-01-01 14:00:00",
+       "deleted_at" => "2016-01-12 16:00:00"
+        ),
+      array(
+       "id" => "13",
+       "userid" => "43",
+       "subject" => "wow there really are a lot of messages",
+       "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
+       "created_at" => "2016-01-01 14:00:00",
+       "updated_at" => "2016-01-01 14:00:00",
+       "deleted_at" => "2016-01-11 14:00:00"
+        ),
+      array(
+       "id" => "14",
+       "userid" => "8",
        "subject" => "I also found a bug",
        "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
        "created_at" => "2016-01-01 14:00:00",
        "updated_at" => "2016-01-01 14:00:00",
-       "deleted_at" => "2016-01-02 14:00:00"
+       "deleted_at" => "2016-02-12 10:00:00"
+        ),
+      array(
+       "id" => "15",
+       "userid" => "16",
+       "subject" => "I also found a bug",
+       "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
+       "created_at" => "2016-01-01 14:00:00",
+       "updated_at" => "2016-01-01 14:00:00",
+       "deleted_at" => "2016-02-02 14:08:00"
+        ),
+      array(
+       "id" => "16",
+       "userid" => "23",
+       "subject" => "I also found a bug",
+       "message" => "Here's my long bug report. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu. Curabitur varius tincidunt erat quis malesuada. Proin consequat massa nec tortor maximus, ac sollicitudin felis maximus. Maecenas congue ligula velit, eu sollicitudin est fermentum eu.",
+       "created_at" => "2016-01-01 14:00:00",
+       "updated_at" => "2016-01-01 14:00:00",
+       "deleted_at" => "2016-01-02 17:04:00"
         )
       );
     DB::table('messages')->insert($messages);

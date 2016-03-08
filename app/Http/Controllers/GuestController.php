@@ -26,7 +26,7 @@ class GuestController extends Controller
     public function index()
     {
         //Gets all the event details from the event database table
-        $events = Event::paginate(5);
+        $events = Event::orderBy('created_at', 'desc')->paginate(5);
 
         //Returns the events view along with the $events array containing the query results from above
         return view('events', ['events' => $events]);
@@ -35,7 +35,7 @@ class GuestController extends Controller
 public function pastEvents()
     {
         //Gets all the event details from the event database table
-        $events = Event::onlyTrashed()->paginate(5);
+        $events = Event::onlyTrashed()->orderBy('deleted_at', 'desc')->paginate(5);
 
         //Returns the events view along with the $events array containing the query results from above
         return view('past', ['events' => $events]);

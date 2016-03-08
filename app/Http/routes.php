@@ -95,8 +95,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/events/details/{id}','UserController@getEventDetails');
     //Route to return the event details page
     Route::get('/past/pastDetails/{id}','UserController@getPastEventDetails');
-
-
     //Route to return GuestController@index and return the event page view
     Route::get('/events', ['as' => 'events', 'uses' => 'GuestController@index']);
     //Route to return GuestController@index and return the past events page view

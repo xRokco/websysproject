@@ -37,8 +37,8 @@ class AdminController extends Controller
     public function index()
     {
         //Gets all the event details from the event table
-        $events = Event::paginate(5,['*'],'events');
-        $pastevents = Event::onlyTrashed()->paginate(5,['*'],'past');
+        $events = Event::orderBy('created_at', 'desc')->paginate(5,['*'],'events');
+        $pastevents = Event::onlyTrashed()->orderBy('deleted_at', 'desc')->paginate(5,['*'],'past');
 
         //gets all messages from the messages table
          $messages = Message::join('users', 'users.id', '=', 'messages.userid')
@@ -150,7 +150,7 @@ class AdminController extends Controller
      */
     public function getAttendees($id)
     {
-        Event::where('id', $id)->firstorfail();
+        Event::where('id', $id)->withTrashed()->firstorfail();
 
         $atns = Rsvp::join('users', 'users.id', '=', 'rsvp.userid')
             ->select('*')
