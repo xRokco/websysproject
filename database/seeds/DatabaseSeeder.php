@@ -44,7 +44,6 @@ class EventsTableSeeder extends Seeder {
        "updated_at" => "2016-01-21 14:06:45",
        "image" => "1.jpg",
        "deleted_at" => NULL
-
 				),
 			array(
 				"id" => "2",
@@ -94,7 +93,7 @@ class EventsTableSeeder extends Seeder {
        "image" => "4.jpg",
        "deleted_at" => NULL
 				),
-array(
+      array(
         "id" => "5",
        "name" => "French Winter Event",
        "city" => "Paris, France",
@@ -111,7 +110,7 @@ array(
        "deleted_at" => NULL
 
         ),
-array(
+      array(
         "id" => "6",
        "name" => "Italian Spring Event",
        "city" => "Rome, Italy",
@@ -128,7 +127,7 @@ array(
        "deleted_at" => NULL
 
         ),
-array(
+      array(
         "id" => "7",
        "name" => "Spanish Summer Event",
        "city" => "Barcelona, Spain",
@@ -145,7 +144,7 @@ array(
        "deleted_at" => NULL
 
         ),
-array(
+      array(
         "id" => "8",
        "name" => "Greek Event",
        "city" => "Athens, Greece",
@@ -160,7 +159,6 @@ array(
        "updated_at" => "2016-01-21 14:06:45",
        "image" => "8.jpg",
        "deleted_at" => "2016-01-22 14:06:45"
-
         )
 			);
 		DB::table('events')->insert($events);
