@@ -64,7 +64,7 @@
                 </div>
                 <div>
                     <input type="checkbox" name="TandC" id="TandC" />
-                    <label for="TandC">I agree to the <a href="{{ url('/disclaimer') }}">Terms and Conditions</a></label>
+                    <label for="TandC">I agree to the <a target="_blank" href="{{ url('/disclaimer') }}">Terms and Conditions</a></label>
                 </div>
                 <br/>
                 <button type="submit" class="btn red darken-3 btn-primary">
