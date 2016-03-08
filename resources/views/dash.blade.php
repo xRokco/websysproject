@@ -72,7 +72,7 @@
     // Info Window Content
     var infoWindowContent = [
     @foreach ($rsvp as $event)
-        ['<div class="info_content">' + '<h3>{{ $event->venue }}, {{ $event->city }}</h3>' + '<p><a href="{{ url('/events/details') }}/{{ $event->id }}#location">{{ $event->name }}</a></p>' + '</div>'],
+        ['<div class="info_content">' + '<h3>{{ $event->venue }}, {{ $event->city }}</h3>' + '<p><a href="{{ url('/events/pastDetails') }}/{{ $event->id }}#location">{{ $event->name }}</a></p>' + '</div>'],
     @endforeach
         ['<div class="info_content">' + '<h3>{{Auth::user()->direction}}</h3>' + '<p>Your address</p>' + '</div>']
     ];

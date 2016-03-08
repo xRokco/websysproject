@@ -104,7 +104,7 @@
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">location_on</i>{{ $ev->venue}}, {{ $ev->city }}</p>
                     <p class="condensed light left-align valign-wrapper"><i class="material-icons">payment</i>&euro;{{ $ev->price }}</p>
                     <!-- Check if clicked attend already -->
-                    @if($rsvp)
+                    @if($rsvp->count()>0)
                         <!-- Add to Calendar API -->
                         <div class="btn-container">
                             <div>
