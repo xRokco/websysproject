@@ -88,7 +88,7 @@
             <div class="row" id="event">
                 <!-- Event Image -->
                 <div class="col center m4 s12" style="margin-bottom:5px; margin-top: 1em; margin-left: 1em;">
-                    <img class="responsive-img circle" src="{{ url('/img/event_images') }}/{{ $ev->image }}" />
+                    <img class="responsive-img circle" src="{{ $ev->image }}" />
                 </div>
                 
                 <!-- Event Description -->

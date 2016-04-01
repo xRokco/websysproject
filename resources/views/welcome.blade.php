@@ -51,7 +51,7 @@
 		<!-- Will display random event  -->
 		<div class="row">
 			<div class="col m6 s12">
-				<img style="margin-left:auto;margin-right:auto;margin-top:10px;" width="400px" class="center materialboxed responsive-img" src="{{ url('/img/event_images') }}/{{ $randEvent[0]->image }}">
+				<img style="margin-left:auto;margin-right:auto;margin-top:10px;" width="400px" class="center materialboxed responsive-img" src="{{ $randEvent[0]->image }}">
 			</div>            
 			<!-- Random event 1  -->
 			<div class="col m6 s12 center">    
@@ -63,7 +63,7 @@
 		<div class="divider"></div>
 		<div class="row">           
 			<div class="col m6 s12 right">
-				<img style="margin-left:auto;margin-right:auto;margin-top:10px;" width="400px" class="center materialboxed responsive-img" src="{{ url('img/event_images') }}/{{ $randEvent[1]->image }}">
+				<img style="margin-left:auto;margin-right:auto;margin-top:10px;" width="400px" class="center materialboxed responsive-img" src="{{ $randEvent[1]->image }}">
 			</div> 
 			<!-- Random Event 2  -->
 			<div class="col m6 s12 left">

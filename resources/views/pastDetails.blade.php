@@ -37,7 +37,7 @@
             <div class="row" id="event">
                 <!-- Event Image -->
                 <div class="col center m3 s6 offset-s3" style="margin-top:20px;">
-                    <img class="responsive-img circle" src="{{ url('/img/event_images/') }}/{{ $ev->image }}" />
+                    <img class="responsive-img circle" src="{{ $ev->image }}" />
                 </div>
                 
                 <!-- Event Description -->

@@ -29,7 +29,7 @@
                 <div class="row grey lighten-5" id="event">
                     <!-- Event Image -->
                     <div class="col center m3 s12">
-                        <a href="{{ url('/events/details') }}/{{ $event->id }}"><img class="responsive-img circle" src='{{ url('/img/event_images') }}/{{ $event->image }}' style='height:150px;width:150px;background-size:cover;' /></a>
+                        <a href="{{ url('/events/details') }}/{{ $event->id }}"><img class="responsive-img circle" src='{{ $event->image }}' style='height:150px;width:150px;background-size:cover;' /></a>
                     </div>
                     
                     <!-- Event Description -->

@@ -82,7 +82,7 @@ class AdminController extends Controller
     {
 
         $messages = [
-            'date_format' => 'The start time does not match the format HH:MM:SS',
+            'date_format' => 'The time does not match the format HH:MM:SS',
         ];
 
         //Validates the input from the create event page
@@ -131,12 +131,14 @@ class AdminController extends Controller
 
         //gets the id of the event above and concats it to the file extension of the image uploaded.
         $name = Event::latest()->first()->id . "." . Input::file('image')->getClientOriginalExtension(); //gets the event ID and concat on the imaage file extension that was uploaded 
-        
+            
+        \Storage::disk('s3')->put($name, file_get_contents(Input::file('image')), 'public');
+
         //moves and renames the image selected from a temp directory to the event_images folder as 
-        Input::file('image')->move(public_path().'/img/event_images',$name); //moves the uploaded image from the tmp directory to a premanant one (/public/img/event_images) and renames it to <eventID>.<fileExt>
+        //Input::file('image')->move(public_path().'/img/event_images',$name); //moves the uploaded image from the tmp directory to a premanant one (/public/img/event_images) and renames it to <eventID>.<fileExt>
         
         $image = Event::latest()->first();//returns the latest event added to the table (the one just added above)
-        $image->image = $name; //adds the image name from above to the image column of the latest event
+        $image->image = "https://s3-eu-west-1.amazonaws.com/trump-bucket/" . $name; //adds the image name from above to the image column of the latest event
         $image->save(); //saves the above action
 
         return redirect('events'); //redirects to events view when finished
@@ -155,7 +157,7 @@ class AdminController extends Controller
         $atns = Rsvp::join('users', 'users.id', '=', 'rsvp.userid')
             ->select('*')
             ->where('rsvp.eventid', '=', $id)
-            ->get();
+            ->paginate(50);
 
         //Gets the number of attendees
         $count = Rsvp::where('eventid', $id)->count();
@@ -242,10 +244,12 @@ class AdminController extends Controller
         if(Input::hasfile('image')){
             Event::where('id', $id)->update(['name'=>$name, 'venue'=>$venue, 'city'=>$city, 'price'=>$price, 'information'=>$information, 'description'=>$description, 'capacity'=>$capacity, 'date'=>$date, 'image'=>$image]);
             $imgName = $id . "." . Input::file('image')->getClientOriginalExtension(); //gets the event ID and concat on the imaage file extension that was uploaded 
-            Input::file('image')->move(__DIR__.'/../../../public/img/event_images',$imgName); //moves the uploaded image from the tmp directory to a premanant one (/public/img/event_images) and renames it to <eventID>.<fileExt>
+            \Storage::disk('s3')->put($imgName, file_get_contents(Input::file('image')), 'public');
+            
+            //Input::file('image')->move(__DIR__.'/../../../public/img/event_images',$imgName); //moves the uploaded image from the tmp directory to a premanant one (/public/img/event_images) and renames it to <eventID>.<fileExt>
             
             $image = Event::where('id', $id)->first();//returns the same event as the one being updated
-            $image->image = $imgName; //adds the image name from above to the image column of the latest event
+            $image->image = "https://s3-eu-west-1.amazonaws.com/trump-bucket/" . $imgName; //adds the image name from above to the image column of the latest event
             $image->save(); //saves the above action
         }else{
             Event::where('id', $id)->update(['name'=>$name, 'venue'=>$venue, 'city'=>$city, 'price'=>$price, 'information'=>$information, 'description'=>$description, 'capacity'=>$capacity, 'date'=>$date]);
@@ -275,9 +279,7 @@ class AdminController extends Controller
      */
     public function manageAdmins()
     {
-        $users = User::orderBy('id', 'desc')->get();
-
-
+        $users = User::orderBy('id', 'desc')->paginate(50);
 
         return view('admin/manage', ['users' => $users]);
     }

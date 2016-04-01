@@ -26,6 +26,9 @@
 					@endforeach
 					</tbody>
 				</table>
+				<div class="center"> 
+					@include('layouts.pagination', ['paginator' => $atns])
+				</div>
 			@else
 				<h4 class="center red-text light">No attendees yet</h4>
 			@endif

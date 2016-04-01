@@ -22,7 +22,7 @@
 					<div class="row grey lighten-5" id="event">
 			        	<!-- Event Image -->
 			            <div class="col center m3 s12" style="margin-top:20px">
-			                <a href="{{ url('events/details') }}/{{ $event->id }}"><img class="responsive-img circle" src="{{ url('img/event_images') }}/{{ $event->image }}" style="height:150px;width:150px;background-size:cover;" /></a>
+			                <a href="{{ url('events/details') }}/{{ $event->id }}"><img class="responsive-img circle" src="{{ $event->image }}" style="height:150px;width:150px;background-size:cover;" /></a>
 			            </div>
 			                    
 			            <!-- Event Description -->
@@ -64,7 +64,7 @@
 					<div class="row grey lighten-5" id="event">
 			        	<!-- Event Image -->
 			            <div class="col center m3 s12" style="margin-top:20px">
-			                <a href="{{ url('past/pastDetails') }}/{{ $pastevent->id }}"><img class="responsive-img circle" src="{{ url('img/event_images') }}/{{ $pastevent->image }}" style="height:150px;width:150px;background-size:cover;" /></a>
+			                <a href="{{ url('past/pastDetails') }}/{{ $pastevent->id }}"><img class="responsive-img circle" src="{{ $pastevent->image }}" style="height:150px;width:150px;background-size:cover;" /></a>
 			            </div>
 			                    
 			            <!-- Event Description -->
@@ -206,7 +206,7 @@
 					var id = $(this).attr('eventid');
 					swal({   
 						title: "Are you sure?",   
-						text: "This will delete the event and remove all attendees. This cannot be undone. Type \"delete\" below to confirm you want to do this:",   
+						text: "This will delete the event and it will be listed as a past event. This cannot be undone. Type \"delete\" below to confirm you want to do this:",   
 						type: "input",   
 						showCancelButton: true,   
 						closeOnConfirm: false,   

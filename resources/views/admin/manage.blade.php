@@ -37,5 +37,8 @@
 					@endforeach
 				</tbody>
 			</table>
+			<div class="center"> 
+				@include('layouts.pagination', ['paginator' => $users])
+			</div>
 		</div>
 	@stop

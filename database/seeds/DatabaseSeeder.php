@@ -42,7 +42,7 @@ class EventsTableSeeder extends Seeder {
        "end_time" => "2016-12-21 14:00:00",
        "created_at" => "2016-01-21 14:06:45",
        "updated_at" => "2016-01-21 14:06:45",
-       "image" => "1.jpg",
+       "image" => "https://s3-eu-west-1.amazonaws.com/trump-bucket/1.jpg",
        "deleted_at" => NULL
 				),
 			array(
@@ -58,7 +58,7 @@ class EventsTableSeeder extends Seeder {
        "end_time" => "2016-03-27 14:00:00",
        "created_at" => "2016-01-21 14:15:23",
        "updated_at" => "2016-01-21 14:15:23",
-       "image" => "2.jpg",
+       "image" => "https://s3-eu-west-1.amazonaws.com/trump-bucket/2.jpg",
        "deleted_at" => NULL
 				),
 			array(
@@ -74,7 +74,7 @@ class EventsTableSeeder extends Seeder {
        "end_time" => "2016-08-25 13:00:00",
        "created_at" => "2016-01-21 14:16:58",
        "updated_at" => "2016-01-21 14:16:58",
-       "image" => "3.jpg",
+       "image" => "https://s3-eu-west-1.amazonaws.com/trump-bucket/3.jpg",
        "deleted_at" => NULL
 				),
 			array(
@@ -90,7 +90,7 @@ class EventsTableSeeder extends Seeder {
        "end_time" => "2016-06-30 13:00:00",
        "created_at" => "2016-01-21 14:17:48",
        "updated_at" => "2016-01-21 14:17:48",
-       "image" => "4.jpg",
+       "image" => "https://s3-eu-west-1.amazonaws.com/trump-bucket/4.jpg",
        "deleted_at" => NULL
 				),
       array(
@@ -106,7 +106,7 @@ class EventsTableSeeder extends Seeder {
        "end_time" => "2016-11-19 13:00:00",
        "created_at" => "2016-01-21 14:06:45",
        "updated_at" => "2016-01-21 14:06:45",
-       "image" => "5.jpg",
+       "image" => "https://s3-eu-west-1.amazonaws.com/trump-bucket/5.jpg",
        "deleted_at" => NULL
 
         ),
@@ -123,7 +123,7 @@ class EventsTableSeeder extends Seeder {
        "end_time" => "2016-04-05 13:00:00",
        "created_at" => "2016-01-21 14:06:45",
        "updated_at" => "2016-01-21 14:06:45",
-       "image" => "6.jpg",
+       "image" => "https://s3-eu-west-1.amazonaws.com/trump-bucket/6.jpg",
        "deleted_at" => NULL
 
         ),
@@ -140,7 +140,7 @@ class EventsTableSeeder extends Seeder {
        "end_time" => "2016-07-15 13:00:00",
        "created_at" => "2016-01-21 14:06:45",
        "updated_at" => "2016-01-21 14:06:45",
-       "image" => "7.jpg",
+       "image" => "https://s3-eu-west-1.amazonaws.com/trump-bucket/7.jpg",
        "deleted_at" => NULL
 
         ),
@@ -157,7 +157,7 @@ class EventsTableSeeder extends Seeder {
        "end_time" => "2016-05-25 13:00:00",
        "created_at" => "2016-01-21 14:06:45",
        "updated_at" => "2016-01-21 14:06:45",
-       "image" => "8.jpg",
+       "image" => "https://s3-eu-west-1.amazonaws.com/trump-bucket/8.jpg",
        "deleted_at" => "2016-01-22 14:06:45"
         )
 			);
