@@ -49,9 +49,9 @@ Laravel
     * `DB_DATABASE=websysproject  //your database name, created as websysproject up above`
     * `DB_USERNAME=root          //database username, root will do here`
     * `DB_PASSWORD=WHATEVERPASSWORDYOUCHOSE //password chose when you installed mysql`
-    * `MAPS_API=AIzaSyBFaySDzqmlKyFwdG9qGWxGD3rjM1Ub0Bg //our API keys, don't share.`
-    * `STRIPE_PRI=sk_test_B0nWhDWzkxkF3oX6ZL9rZIEy`
-    * `STRIPE_PUB=pk_test_qqbGUEke0JuODLnXOpEHbF7z`
+    * `MAPS_API=ghjcghjgchj //API keys
+    * `STRIPE_PRI=sk_test_sdfsdfsdf`
+    * `STRIPE_PUB=pk_test_sdfsdfsdfsd`
   * Save and close .env
 
 * Next `cd` into the websysproject folder and run:
